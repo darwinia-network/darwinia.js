@@ -1,1 +1,1 @@
-export * from "./bridge_messages";
+export * from "./pallets/bridge_messages";

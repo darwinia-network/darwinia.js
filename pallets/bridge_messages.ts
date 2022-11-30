@@ -5,7 +5,7 @@ import { providers } from "ethers";
 type BaseProvider = providers.BaseProvider;
 
 
-import { ValueMeta, getStorage, blake2_128Concat } from "./helpers";
+import { ValueMeta, getStorage, blake2_128Concat } from "../helpers";
 
 async function inboundLanes(provider: BaseProvider, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
     const key = blake2_128Concat(laneId);
