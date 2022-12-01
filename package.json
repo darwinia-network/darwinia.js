@@ -1,10 +1,13 @@
 {
+  "type": "commonjs",
   "devDependencies": {
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@darwinia/types-augment": "^2.8.10",
+    "@darwinia/types-support": "^2.8.10",
     "@polkadot/types": "^9.9.4",
-    "ethers": "^5.7.2"
+    "ethers": "^5.7.2",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   }
 }

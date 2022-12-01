@@ -1,27 +1,40 @@
-import * as bridgeMessages from "./index";
-import { TypeRegistry } from "@polkadot/types";
-import { MessageKey } from '@polkadot/types/interfaces';
+import { feeMarket, bridgeMessages } from "./pallets";
 import { ethers } from "ethers";
+import { MessageKey } from "@polkadot/types/interfaces";
+
+import metaStatic from '@darwinia/types-support/metadata/v14/crab-hex';
+import {Metadata, TypeRegistry} from "@polkadot/types";
 
 async function main(): Promise<void> {
+    // provide by users
     const provider = new ethers.providers.JsonRpcProvider("https://darwinia-crab.api.onfinality.io/public/");
-    const typeRegistry = new TypeRegistry();
+
+    // provide by users
+    const registry = new TypeRegistry();
+    const metadata = new Metadata(registry, metaStatic);
+    registry.setMetadata(metadata);
+
+    let r;
 
     // Storages under pallet `BridgeDarwiniaMessages`
-    let r = await bridgeMessages.inboundLanes(provider, "BridgeDarwiniaMessages", "0x00000001");
+    r = await bridgeMessages.inboundLanes(provider, registry, "BridgeDarwiniaMessages", "0x00000001");
     console.log(`    decoded: ${r}\n`);
 
-    r = await bridgeMessages.outboundLanes(provider, "BridgeDarwiniaMessages", "0x00000000");
+    r = await bridgeMessages.outboundLanes(provider, registry, "BridgeDarwiniaMessages", "0x00000000");
     console.log(`    decoded: ${r}\n`);
 
-    const messageKey: MessageKey = typeRegistry.createType("MessageKey", {laneId: "0x00000000", nonce: 10});
-    r = await bridgeMessages.outboundMessages(provider, "BridgeDarwiniaMessages", messageKey);
+    const messageKey: MessageKey = registry.createType("MessageKey", {laneId: "0x00000000", nonce: 10});
+    r = await bridgeMessages.outboundMessages(provider, registry, "BridgeDarwiniaMessages", messageKey);
     console.log(`    decoded: ${r}\n`);
     
-    r = await bridgeMessages.palletOperatingMode(provider, "BridgeDarwiniaMessages");
+    r = await bridgeMessages.palletOperatingMode(provider, registry, "BridgeDarwiniaMessages");
     console.log(`    decoded: ${r}\n`);
 
-    r = await bridgeMessages.palletOwner(provider, "BridgeDarwiniaMessages");
+    r = await bridgeMessages.palletOwner(provider, registry, "BridgeDarwiniaMessages");
+    console.log(`    decoded: ${r}\n`);
+
+    // Storages under pallet `FeeMarket`
+    r = await feeMarket.assignedRelayers(provider, registry, "DarwiniaFeeMarket");
     console.log(`    decoded: ${r}\n`);
 }
 

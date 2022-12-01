@@ -1,6 +1,6 @@
 import { blake2AsU8a, xxhashAsU8a } from '@polkadot/util-crypto';
 import { u8aConcat, u8aToU8a, u8aToHex } from '@polkadot/util';
-import { TypeRegistry } from "@polkadot/types";
+import { Metadata, TypeRegistry } from '@polkadot/types';
 import { HexString } from '@polkadot/util/types';
 
 import { ethers, providers } from "ethers";
@@ -25,7 +25,7 @@ export interface ValueMeta {
     fallback: Uint8Array,
 }
 
-export async function getStorage(provider: BaseProvider, prefix: string, method: string, valueMeta: ValueMeta, key?: Uint8Array): Promise<string | null> {
+export async function getStorage(provider: BaseProvider, registry: TypeRegistry, prefix: string, method: string, valueMeta: ValueMeta, key?: Uint8Array): Promise<string | null> {
     // Build storage key
     let storageKey = u8aConcat(
         xxhashAsU8a(prefix, 128), xxhashAsU8a(method, 128)
@@ -43,11 +43,9 @@ export async function getStorage(provider: BaseProvider, prefix: string, method:
     if (data.toString() == "0x" && !valueMeta.optional) {
         data = valueMeta.fallback;
     }
-
     if (data.toString() == "0x") {
         return null;
     } else {
-        const registry = new TypeRegistry();
         return registry.createType(valueMeta.valueType, data).toString();
     }
 }
