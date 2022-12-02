@@ -4,7 +4,7 @@ A library to help fetch internal substrate storages via ethereum json-rpc `eth.c
 
 ## Install
 ```shell
-npm install darwinia-storage
+npm install darwinia-storage --save
 ```
 
 ## Usage
