@@ -2,7 +2,7 @@ import { feeMarket, bridgeMessages } from "./pallets";
 import { ethers } from "ethers";
 import { MessageKey } from "@polkadot/types/interfaces";
 
-import metaStatic from '@darwinia/types-support/metadata/v14/crab-hex';
+import metaStatic from './crab-hex';
 import {Metadata, TypeRegistry} from "@polkadot/types";
 
 async function main(): Promise<void> {
