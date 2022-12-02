@@ -3,7 +3,7 @@ import {ethers} from "ethers";
 
 import metaStatic from './crab-hex';
 import {Metadata, TypeRegistry} from "@polkadot/types";
-import {getStorage1} from "./helpers";
+import {getStorage} from "./helpers";
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -44,10 +44,10 @@ async function main(): Promise<void> {
     // General way.
     //////////////////////////////////////////////////
     // Note the difference of last param, `input` is an array
-    r = await getStorage1(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", [{laneId: "0x00000000", nonce: 10}]);
+    r = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", [{laneId: "0x00000000", nonce: 10}]);
     console.log(`    decoded: ${r}\n`);
 
-    r = await getStorage1(provider, metadata, "DarwiniaFeeMarket", 'AssignedRelayersNumber');
+    r = await getStorage(provider, metadata, "DarwiniaFeeMarket", 'AssignedRelayersNumber');
     console.log(`    decoded: ${r}\n`);
 
 }

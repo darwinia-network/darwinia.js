@@ -1,6 +1,6 @@
 import {blake2AsU8a, xxhashAsU8a} from '@polkadot/util-crypto';
 import {u8aConcat, u8aToHex, u8aToU8a} from '@polkadot/util';
-import {Metadata, TypeRegistry, Vec} from '@polkadot/types';
+import {Metadata, Vec} from '@polkadot/types';
 import {HexString} from '@polkadot/util/types';
 
 import {ethers, providers} from "ethers";
@@ -20,37 +20,6 @@ export async function getStorageRaw(provider: BaseProvider, storageKey: Uint8Arr
 
 export function blake2_128Concat(data: HexString | Uint8Array): Uint8Array { // eslint-disable-line camelcase
     return u8aConcat(blake2AsU8a(data, 128), u8aToU8a(data));
-}
-
-export interface ValueMeta {
-    valueType: string,
-    optional: boolean,
-    fallback: Uint8Array,
-}
-
-export async function getStorage(provider: BaseProvider, registry: TypeRegistry, prefix: string, method: string, valueMeta: ValueMeta, key?: Uint8Array): Promise<string | null> {
-    // Build storage key
-    let storageKey = u8aConcat(
-        xxhashAsU8a(prefix, 128), xxhashAsU8a(method, 128)
-    );
-    if (key) {
-        storageKey = u8aConcat(storageKey, key)
-    }
-    console.debug(`storage key: ${u8aToHex(storageKey)}`);
-
-    // Fetch storage data
-    let data = await getStorageRaw(provider, storageKey);
-    console.debug(`        raw: ${data}`);
-
-    // Process storage data
-    if (data.toString() == "0x" && !valueMeta.optional) {
-        data = valueMeta.fallback;
-    }
-    if (data.toString() == "0x") {
-        return null;
-    } else {
-        return registry.createType(valueMeta.valueType, data).toString();
-    }
 }
 
 export function getStorageEntry(metadata: Metadata, prefix: string, method: string): StorageEntryMetadataV14 | null {
@@ -94,7 +63,7 @@ function buildFullStorageKey(input: Array<unknown>, hashers: Vec<StorageHasherV1
     return storageKey;
 }
 
-export async function getStorage1(provider: BaseProvider, metadata: Metadata, prefix: string, method: string, input?: Array<unknown>): Promise<string | null> {
+export async function getStorage(provider: BaseProvider, metadata: Metadata, prefix: string, method: string, input?: Array<unknown>): Promise<string | null> {
     // 0. FIND STORAGE ENTRY FROM METADATA
     const storageEntry = getStorageEntry(metadata, prefix, method);
     if (!storageEntry) {
