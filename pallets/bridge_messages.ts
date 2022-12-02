@@ -5,55 +5,27 @@ import { providers } from "ethers";
 type BaseProvider = providers.BaseProvider;
 
 
-import { ValueMeta, getStorage, blake2_128Concat } from "../helpers";
-import {TypeRegistry} from "@polkadot/types";
+import {ValueMeta, getStorage, blake2_128Concat, getStorage1} from "../helpers";
+import {Metadata, TypeRegistry} from "@polkadot/types";
 
-async function inboundLanes(provider: BaseProvider, registry: TypeRegistry, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
-    const key = blake2_128Concat(laneId);
-    const valueMeta: ValueMeta = {
-        valueType: 'InboundLaneData',
-        optional: false,
-        fallback: u8aToU8a("0x000000000000000000")
-    }
-    return await getStorage(provider, registry, prefix, 'InboundLanes', valueMeta, key);
+async function inboundLanes(provider: BaseProvider, metadata: Metadata, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'InboundLanes', [laneId]);
 }
 
-async function outboundLanes(provider: BaseProvider, registry: TypeRegistry, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
-    const key = blake2_128Concat(laneId);
-    const valueMeta: ValueMeta = {
-        valueType: 'OutboundLaneData',
-        optional: false,
-        fallback: u8aToU8a("0x010000000000000000000000000000000000000000000000")
-    }
-    return await getStorage(provider, registry, prefix, 'OutboundLanes', valueMeta, key);
+async function outboundLanes(provider: BaseProvider, metadata: Metadata, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'OutboundLanes', [laneId]);
 }
 
-async function outboundMessages(provider: BaseProvider, registry: TypeRegistry, prefix: string, messageKey: MessageKey): Promise<string | null> {
-    const key = blake2_128Concat(messageKey.toU8a());
-    const valueMeta: ValueMeta = {
-        valueType: 'MessageData',
-        optional: true,
-        fallback: u8aToU8a("0x00")
-    }
-    return await getStorage(provider, registry, prefix, 'OutboundMessages', valueMeta, key);
+async function outboundMessages(provider: BaseProvider, metadata: Metadata, prefix: string, messageKey: unknown): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'OutboundMessages', [messageKey]);
 }
 
-async function palletOperatingMode(provider: BaseProvider, registry: TypeRegistry, prefix: string): Promise<string | null> {
-    const valueMeta: ValueMeta = {
-        valueType: 'OperatingMode',
-        optional: false,
-        fallback: u8aToU8a("0x00")
-    }
-    return await getStorage(provider, registry, prefix, 'PalletOperatingMode', valueMeta);
+async function palletOperatingMode(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'PalletOperatingMode');
 }
 
-async function palletOwner(provider: BaseProvider, registry: TypeRegistry, prefix: string): Promise<string | null> {
-    const valueMeta: ValueMeta = {
-        valueType: 'AccountId32',
-        optional: true,
-        fallback: u8aToU8a("0x00")
-    }
-    return await getStorage(provider, registry, prefix, 'PalletOwner', valueMeta);
+async function palletOwner(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'PalletOwner');
 }
 
 export const bridgeMessages = {
