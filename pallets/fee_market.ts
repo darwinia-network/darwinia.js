@@ -1,19 +1,19 @@
-import { u8aToU8a } from '@polkadot/util';
-import { TypeRegistry } from "@polkadot/types";
-import { providers } from "ethers";
+import {providers} from "ethers";
+import {Metadata} from "@polkadot/types";
+
+import {getStorage1} from "../helpers";
+
 type BaseProvider = providers.BaseProvider;
 
-import { ValueMeta, getStorage, blake2_128Concat } from "../helpers";
+async function assignedRelayers(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'AssignedRelayers');
+}
 
-async function assignedRelayers(provider: BaseProvider, registry: TypeRegistry, prefix: string): Promise<string | null> {
-    const valueMeta: ValueMeta = {
-        valueType: 'Vec<PalletFeeMarketRelayer>',
-        optional: true,
-        fallback: u8aToU8a("0x00")
-    }
-    return await getStorage(provider, registry, prefix, 'AssignedRelayers', valueMeta);
+async function orders(provider: BaseProvider, metadata: Metadata, prefix: string, input: [[Uint8Array, number]]): Promise<string | null> {
+    return await getStorage1(provider, metadata, prefix, 'Orders', input);
 }
 
 export const feeMarket = {
-    assignedRelayers
+    assignedRelayers,
+    orders
 };
