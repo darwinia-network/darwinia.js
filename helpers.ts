@@ -126,7 +126,14 @@ export async function getStorage1(provider: BaseProvider, metadata: Metadata, pr
     // 2. GET RAW STORAGE DATA BY STORAGE KEY
     let raw = await getStorageRaw(provider, storageKey);
     console.debug(`        raw: ${raw}`);
+    if (raw.toString() == "0x" && storageEntry.modifier.isDefault) {
+        raw = storageEntry.fallback
+    }
 
     // 3. DECODE THE RAW STORAGE DATA BY THE RESULT TYPE
-    return metadata.registry.createType(valueType, raw).toString();
+    if (raw.toString() == "0x") {
+        return null;
+    } else {
+        return metadata.registry.createType(valueType, raw).toString();
+    }
 }
