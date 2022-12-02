@@ -1,6 +1,6 @@
 {
   "name": "darwinia-storage",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "types": "./index.d.ts",
   "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
   "main": "dist/index.js",
@@ -26,13 +26,13 @@
   "homepage": "https://github.com/darwinia-network/darwinia-storage#readme",
   "type": "commonjs",
   "devDependencies": {
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
   },
   "dependencies": {
     "@polkadot/types": "^9.9.4",
-    "ethers": "^5.7.2",
-    "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1"
+    "ethers": "^5.7.2"
   }
 }
 
