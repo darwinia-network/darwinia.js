@@ -1,4 +1,27 @@
 {
+  "name": "darwinia-storage",
+  "version": "1.0.0",
+  "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darwinia-network/darwinia-storage.git"
+  },
+  "keywords": [
+    "substrate",
+    "darwinia",
+    "storage",
+    "evm"
+  ],
+  "author": "Aki Wu",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/darwinia-network/darwinia-storage/issues"
+  },
+  "homepage": "https://github.com/darwinia-network/darwinia-storage#readme",
   "type": "commonjs",
   "devDependencies": {
     "typescript": "^4.9.3"
@@ -10,3 +33,4 @@
     "ts-node": "^10.9.1"
   }
 }
+
