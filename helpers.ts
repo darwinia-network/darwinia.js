@@ -60,7 +60,7 @@ function buildStorageKey(metadata: Metadata, prefix: string, method: string, key
             } else if (theHasher == "Identity") {
                 theKeyItemAppliedHasher = identity(theKeyItemEncoded);
             } else {
-                throw `The hasher ${theHasher} is not support. Contact Aki for help`;
+                throw new Error(`The hasher ${theHasher} is not support. Contact Aki for help`);
             }
             storageKey = u8aConcat(storageKey, theKeyItemAppliedHasher);
         }
@@ -72,7 +72,7 @@ export async function getStorage(provider: BaseProvider, metadata: Metadata, pre
     // 0. FIND STORAGE ENTRY FROM METADATA
     const storageEntry = getStorageEntry(metadata, prefix, method);
     if (!storageEntry) {
-        throw "Can not find the storage entry from metadata";
+        throw new Error("Can not find the storage entry from metadata");
     }
 
     // 1. GET STORAGE KEY & THE RESULT TYPE
@@ -83,12 +83,12 @@ export async function getStorage(provider: BaseProvider, metadata: Metadata, pre
     } else if (storageEntry.type.isMap) {
         const {hashers, key, value} = storageEntry.type.asMap;
         if (input.length != hashers.length) {
-            throw "The `input` param is not correct";
+            throw new Error("The `input` param is not correct");
         }
         storageKey = buildStorageKey(metadata, prefix, method, key, hashers, input);
         valueType = metadata.registry.createLookupType(value);
     } else {
-        throw "Only support plain and map type";
+        throw new Error("Only support plain and map type");
     }
 
     console.debug(`storage key: ${u8aToHex(storageKey)}`);
