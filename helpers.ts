@@ -6,6 +6,7 @@ import {HexString} from '@polkadot/util/types';
 import {ethers, providers} from "ethers";
 import {StorageEntryMetadataV14, StorageHasherV14} from "@polkadot/types/interfaces/metadata/types";
 import {SiLookupTypeId} from "@polkadot/types/interfaces";
+import {identity, twox64Concat, blake2128Concat} from "./hashers";
 
 type BaseProvider = providers.BaseProvider;
 
@@ -16,10 +17,6 @@ export async function getStorageRaw(provider: BaseProvider, storageKey: Uint8Arr
     ];
     const contract = new ethers.Contract(contractAddress, abi, provider);
     return await contract.state_storage(storageKey);
-}
-
-export function blake2_128Concat(data: HexString | Uint8Array): Uint8Array { // eslint-disable-line camelcase
-    return u8aConcat(blake2AsU8a(data, 128), u8aToU8a(data));
 }
 
 export function getStorageEntry(metadata: Metadata, prefix: string, method: string): StorageEntryMetadataV14 | null {
@@ -40,27 +37,32 @@ function buildStorageKey(metadata: Metadata, prefix: string, method: string, key
     let storageKey = u8aConcat(
         xxhashAsU8a(prefix, 128), xxhashAsU8a(method, 128)
     );
-    if(keyTypeId && hashers && input) {
+    if (keyTypeId && hashers && input) {
         let keyTypeIds = hashers.length === 1
             ? [keyTypeId]
             : metadata.registry.lookup.getSiType(keyTypeId).def.asTuple;
 
         for (let i = 0; i < keyTypeIds.length; i++) {
             const theKeyTypeId = keyTypeIds[i];
-            const theHasher = hashers[i];
+            const theHasher = hashers[i].toString();
             const theKeyItem = input[i];
 
             // get the scale encoded input data by encoding the input
             const theKeyType = metadata.registry.createLookupType(theKeyTypeId);
-            const theKeyDataEncoded = metadata.registry.createType(theKeyType, theKeyItem).toU8a();
+            const theKeyItemEncoded = metadata.registry.createType(theKeyType, theKeyItem).toU8a();
 
             // apply hasher
-            if (theHasher.toString() == "Blake2_128Concat") {
-                const theKeyDataAppliedHasher = blake2_128Concat(theKeyDataEncoded);
-                storageKey = u8aConcat(storageKey, theKeyDataAppliedHasher);
+            let theKeyItemAppliedHasher;
+            if (theHasher == "Blake2_128Concat") {
+                theKeyItemAppliedHasher = blake2128Concat(theKeyItemEncoded);
+            } else if (theHasher == "Twox64Concat") {
+                theKeyItemAppliedHasher = twox64Concat(theKeyItemEncoded);
+            } else if (theHasher == "Identity") {
+                theKeyItemAppliedHasher = identity(theKeyItemEncoded);
             } else {
-                throw `The hasher ${theHasher.toString()} is not support. Contact Aki for help`;
+                throw `The hasher ${theHasher} is not support. Contact Aki for help`;
             }
+            storageKey = u8aConcat(storageKey, theKeyItemAppliedHasher);
         }
     }
     return storageKey;
@@ -88,6 +90,7 @@ export async function getStorage(provider: BaseProvider, metadata: Metadata, pre
     } else {
         throw "Only support plain and map type";
     }
+
     console.debug(`storage key: ${u8aToHex(storageKey)}`);
 
     // 2. GET RAW STORAGE DATA BY STORAGE KEY

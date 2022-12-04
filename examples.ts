@@ -24,7 +24,10 @@ async function main(): Promise<void> {
     r = await bridgeMessages.outboundLanes(provider, metadata, "BridgeDarwiniaMessages", "0x00000000");
     console.log(`    decoded: ${r}\n`);
 
-    r = await bridgeMessages.outboundMessages(provider, metadata, "BridgeDarwiniaMessages", {laneId: "0x00000000", nonce: 10});
+    r = await bridgeMessages.outboundMessages(provider, metadata, "BridgeDarwiniaMessages", {
+        laneId: "0x00000000",
+        nonce: 10
+    });
     console.log(`    decoded: ${r}\n`);
 
     r = await bridgeMessages.palletOperatingMode(provider, metadata, "BridgeDarwiniaMessages");
@@ -38,17 +41,29 @@ async function main(): Promise<void> {
     r = await feeMarket.assignedRelayers(provider, metadata, "DarwiniaFeeMarket");
     console.log(`    decoded: ${r}\n`);
 
-    r = await feeMarket.orders(provider, metadata, "DarwiniaFeeMarket", [[1, 1, 1, 1], 11]);
+    r = await feeMarket.orders(provider, metadata, "DarwiniaFeeMarket", [[1, 1, 1, 1], 11]); // tuple
     console.log(`    decoded: ${r}\n`);
 
     // General way.
     //////////////////////////////////////////////////
-    // Note the difference of last param, `input` is an array
-    r = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", {laneId: "0x00000000", nonce: 10});
+    r = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", {
+        laneId: "0x00000000",
+        nonce: 10
+    }); // struct
     console.log(`    decoded: ${r}\n`);
 
     r = await getStorage(provider, metadata, "DarwiniaFeeMarket", 'AssignedRelayersNumber');
     console.log(`    decoded: ${r}\n`);
+
+    // input has two params
+    r = await getStorage(
+        provider,
+        metadata,
+        "Recovery",
+        'ActiveRecoveries',
+        '0x9adf3c6e5e6fbef52a5146b0a759b014387ab60099fd28ee6e884869d9c6a32d', '0x9adf3c6e5e6fbef52a5146b0a759b014387ab60099fd28ee6e884869d9c6a32d');
+    console.log(`    decoded: ${r}\n`);
+
 
 }
 
