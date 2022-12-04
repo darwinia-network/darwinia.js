@@ -1,2 +1,2 @@
 export * from "./pallets"
-export { getStorage } from "./helpers"
+export * from "./storage"

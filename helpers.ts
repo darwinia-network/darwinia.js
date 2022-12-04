@@ -1,9 +1,17 @@
-import {Metadata} from '@polkadot/types';
+import {Metadata, TypeRegistry} from '@polkadot/types';
 import {StorageEntryMetadataV14, StorageHasherV14} from "@polkadot/types/interfaces/metadata/types";
 import {SiLookupTypeId} from "@polkadot/types/interfaces";
 import {u8aConcat} from "@polkadot/util";
 import {xxhashAsU8a} from "@polkadot/util-crypto";
 import {blake2128Concat, identity, twox64Concat} from "./hashers";
+import {HexString} from "@polkadot/util/types";
+
+export function buildMetadata(metaStatic: Uint8Array | HexString) {
+    const registry = new TypeRegistry();
+    const metadata = new Metadata(registry, metaStatic);
+    registry.setMetadata(metadata);
+    return metadata;
+}
 
 export function getStorageEntry(metadata: Metadata, prefix: string, method: string): StorageEntryMetadataV14 | null {
     for (const pallet of metadata.asV14.pallets) {

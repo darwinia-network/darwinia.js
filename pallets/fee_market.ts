@@ -1,16 +1,11 @@
-import {providers} from "ethers";
-import {Metadata} from "@polkadot/types";
+import {GetStorage} from "../storage";
 
-import {getStorage} from "../storage";
-
-type BaseProvider = providers.BaseProvider;
-
-async function assignedRelayers(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'AssignedRelayers');
+async function assignedRelayers(getStorage: GetStorage, prefix: string): Promise<string | null> {
+    return await getStorage(prefix, 'AssignedRelayers');
 }
 
-async function orders(provider: BaseProvider, metadata: Metadata, prefix: string, input: [Array<number>, number]): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'Orders', input);
+async function orders(getStorage: GetStorage, prefix: string, input: [Array<number>, number]): Promise<string | null> {
+    return await getStorage(prefix, 'Orders', input);
 }
 
 export const feeMarket = {

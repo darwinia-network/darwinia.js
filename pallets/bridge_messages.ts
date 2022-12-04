@@ -1,29 +1,24 @@
 import {HexString} from '@polkadot/util/types';
-import {providers} from "ethers";
-import {getStorage} from "../storage";
-import {Metadata} from "@polkadot/types";
+import {GetStorage} from "../storage";
 
-type BaseProvider = providers.BaseProvider;
-
-
-async function inboundLanes(provider: BaseProvider, metadata: Metadata, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'InboundLanes', laneId);
+async function inboundLanes(getStorage: GetStorage, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
+    return await getStorage(prefix, 'InboundLanes', laneId);
 }
 
-async function outboundLanes(provider: BaseProvider, metadata: Metadata, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'OutboundLanes', laneId);
+async function outboundLanes(getStorage: GetStorage, prefix: string, laneId: HexString | Uint8Array): Promise<string | null> {
+    return await getStorage(prefix, 'OutboundLanes', laneId);
 }
 
-async function outboundMessages(provider: BaseProvider, metadata: Metadata, prefix: string, messageKey: unknown): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'OutboundMessages', messageKey);
+async function outboundMessages(getStorage: GetStorage, prefix: string, messageKey: unknown): Promise<string | null> {
+    return await getStorage(prefix, 'OutboundMessages', messageKey);
 }
 
-async function palletOperatingMode(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'PalletOperatingMode');
+async function palletOperatingMode(getStorage: GetStorage, prefix: string): Promise<string | null> {
+    return await getStorage(prefix, 'PalletOperatingMode');
 }
 
-async function palletOwner(provider: BaseProvider, metadata: Metadata, prefix: string): Promise<string | null> {
-    return await getStorage(provider, metadata, prefix, 'PalletOwner');
+async function palletOwner(getStorage: GetStorage, prefix: string): Promise<string | null> {
+    return await getStorage(prefix, 'PalletOwner');
 }
 
 export const bridgeMessages = {
