@@ -3,7 +3,7 @@ import {ethers} from "ethers";
 
 import metaStatic from './crab-hex';
 import {Metadata, TypeRegistry} from "@polkadot/types";
-import {getStorage} from "./helpers";
+import {getStorage} from "./storage";
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users

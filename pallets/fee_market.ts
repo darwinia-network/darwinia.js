@@ -1,7 +1,7 @@
 import {providers} from "ethers";
 import {Metadata} from "@polkadot/types";
 
-import {getStorage} from "../helpers";
+import {getStorage} from "../storage";
 
 type BaseProvider = providers.BaseProvider;
 
