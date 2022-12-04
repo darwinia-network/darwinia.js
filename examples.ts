@@ -38,13 +38,13 @@ async function main(): Promise<void> {
     r = await feeMarket.assignedRelayers(provider, metadata, "DarwiniaFeeMarket");
     console.log(`    decoded: ${r}\n`);
 
-    r = await feeMarket.orders(provider, metadata, "DarwiniaFeeMarket", [[Uint8Array.of(1, 1, 1, 1), 11]]);
+    r = await feeMarket.orders(provider, metadata, "DarwiniaFeeMarket", [[1, 1, 1, 1], 11]);
     console.log(`    decoded: ${r}\n`);
 
     // General way.
     //////////////////////////////////////////////////
     // Note the difference of last param, `input` is an array
-    r = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", [{laneId: "0x00000000", nonce: 10}]);
+    r = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", {laneId: "0x00000000", nonce: 10});
     console.log(`    decoded: ${r}\n`);
 
     r = await getStorage(provider, metadata, "DarwiniaFeeMarket", 'AssignedRelayersNumber');

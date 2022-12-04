@@ -9,7 +9,7 @@ async function assignedRelayers(provider: BaseProvider, metadata: Metadata, pref
     return await getStorage(provider, metadata, prefix, 'AssignedRelayers');
 }
 
-async function orders(provider: BaseProvider, metadata: Metadata, prefix: string, input: [[Uint8Array, number]]): Promise<string | null> {
+async function orders(provider: BaseProvider, metadata: Metadata, prefix: string, input: [Array<number>, number]): Promise<string | null> {
     return await getStorage(provider, metadata, prefix, 'Orders', input);
 }
 

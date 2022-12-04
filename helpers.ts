@@ -36,34 +36,37 @@ export function getStorageEntry(metadata: Metadata, prefix: string, method: stri
     return null;
 }
 
-function buildFullStorageKey(input: Array<unknown>, hashers: Vec<StorageHasherV14>, keyTypeId: SiLookupTypeId, metadata: Metadata, partialStorageKey: Uint8Array) {
-    let storageKey = partialStorageKey;
+function buildStorageKey(metadata: Metadata, prefix: string, method: string, keyTypeId?: SiLookupTypeId, hashers?: Array<StorageHasherV14>, input?: Array<unknown>): Uint8Array {
+    let storageKey = u8aConcat(
+        xxhashAsU8a(prefix, 128), xxhashAsU8a(method, 128)
+    );
+    if(keyTypeId && hashers && input) {
+        let keyTypeIds = hashers.length === 1
+            ? [keyTypeId]
+            : metadata.registry.lookup.getSiType(keyTypeId).def.asTuple;
 
-    let keys = hashers.length === 1
-        ? [keyTypeId]
-        : metadata.registry.lookup.getSiType(keyTypeId).def.asTuple;
+        for (let i = 0; i < keyTypeIds.length; i++) {
+            const theKeyTypeId = keyTypeIds[i];
+            const theHasher = hashers[i];
+            const theKeyItem = input[i];
 
-    for (let i = 0; i < keys.length; i++) {
-        const theKeyObj = input[i];
-        const theHasher = hashers[i];
-        const theKeyTypeId = keys[i];
+            // get the scale encoded input data by encoding the input
+            const theKeyType = metadata.registry.createLookupType(theKeyTypeId);
+            const theKeyDataEncoded = metadata.registry.createType(theKeyType, theKeyItem).toU8a();
 
-        // get the scale encoded key data by encoding the input
-        const theKeyType = metadata.registry.createLookupType(theKeyTypeId);
-        const theKeyDataEncoded = metadata.registry.createType(theKeyType, theKeyObj).toU8a();
-
-        // apply hasher
-        if (theHasher.toString() == "Blake2_128Concat") {
-            const theKeyDataAppliedHasher = blake2_128Concat(theKeyDataEncoded);
-            storageKey = u8aConcat(storageKey, theKeyDataAppliedHasher);
-        } else {
-            throw `The hasher ${theHasher.toString()} is not support. Contact Aki for help`;
+            // apply hasher
+            if (theHasher.toString() == "Blake2_128Concat") {
+                const theKeyDataAppliedHasher = blake2_128Concat(theKeyDataEncoded);
+                storageKey = u8aConcat(storageKey, theKeyDataAppliedHasher);
+            } else {
+                throw `The hasher ${theHasher.toString()} is not support. Contact Aki for help`;
+            }
         }
     }
     return storageKey;
 }
 
-export async function getStorage(provider: BaseProvider, metadata: Metadata, prefix: string, method: string, input?: Array<unknown>): Promise<string | null> {
+export async function getStorage(provider: BaseProvider, metadata: Metadata, prefix: string, method: string, ...input: Array<unknown>): Promise<string | null> {
     // 0. FIND STORAGE ENTRY FROM METADATA
     const storageEntry = getStorageEntry(metadata, prefix, method);
     if (!storageEntry) {
@@ -71,21 +74,16 @@ export async function getStorage(provider: BaseProvider, metadata: Metadata, pre
     }
 
     // 1. GET STORAGE KEY & THE RESULT TYPE
-    let storageKey = u8aConcat(
-        xxhashAsU8a(prefix, 128), xxhashAsU8a(method, 128)
-    );
-    let valueType;
-
+    let storageKey, valueType;
     if (storageEntry.type.isPlain) {
+        storageKey = buildStorageKey(metadata, prefix, method);
         valueType = metadata.registry.createLookupType(storageEntry.type.asPlain);
     } else if (storageEntry.type.isMap) {
         const {hashers, key, value} = storageEntry.type.asMap;
-
-        if (!input || input.length != hashers.length) {
+        if (input.length != hashers.length) {
             throw "The `input` param is not correct";
         }
-
-        storageKey = buildFullStorageKey(input, hashers, key, metadata, storageKey);
+        storageKey = buildStorageKey(metadata, prefix, method, key, hashers, input);
         valueType = metadata.registry.createLookupType(value);
     } else {
         throw "Only support plain and map type";

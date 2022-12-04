@@ -2,6 +2,8 @@
 
 A library to help fetch internal substrate storages via ethereum json-rpc `eth.call`.
 
+You can use this lib to fetch all Darwinia storages allowed by [StateStorage precompile](https://docs.darwinia.network/builder/solidity-precompiles).
+
 ## Install
 ```shell
 npm install darwinia-storage --save
@@ -21,8 +23,8 @@ registry.setMetadata(metadata);
 //  1. use storage specific functions already defined in this lib.
 const outboundMessages1 = await bridgeMessages.outboundMessages(provider, metadata, "BridgeDarwiniaMessages", {laneId: "0x00000000", nonce: 10});
 
-//  2. use the general function `getStorage`. The input value should be an array.
-const outboundMessages2 = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", [{laneId: "0x00000000", nonce: 10}]);
+//  2. use the general function `getStorage`.
+const outboundMessages2 = await getStorage(provider, metadata, "BridgeDarwiniaMessages", "OutboundMessages", {laneId: "0x00000000", nonce: 10});
 ```
 
 [examples.ts](./examples.ts)
