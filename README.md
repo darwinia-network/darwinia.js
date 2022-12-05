@@ -12,6 +12,8 @@ npm install darwinia-storage --save
 ## Usage
 
 The returns of this lib's functions are all json string or null.
+
+
 ```typescript
 import {ethers} from "ethers";
 import {bridgeMessages, feeMarket, getStorage} from "darwinia-storage";
@@ -19,7 +21,7 @@ import {bridgeMessages, feeMarket, getStorage} from "darwinia-storage";
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://darwinia-crab.api.onfinality.io/public/");
-    const metaStatic = ...; // hex string read from file or network
+    const metaStatic = ...; // read from file or network(see below curl)
     const getCrabStorage = getStorage(provider, metaStatic);
 
     // There are two ways to fetch a storage.
@@ -68,4 +70,11 @@ async function main(): Promise<void> {
 main();
 ```
 
+Get the metadata static hex string from darwinia node
+```shell
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"jsonrpc":"2.0","id":"1","method":"state_getMetadata","params":[]}' \
+     https://darwinia-crab.api.onfinality.io/public/
+```
 more in [examples.ts](./examples.ts)
