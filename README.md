@@ -19,7 +19,7 @@ import {bridgeMessages, feeMarket, getStorage} from "darwinia-storage";
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://darwinia-crab.api.onfinality.io/public/");
-    const metaStatic = ...; // read from file or network
+    const metaStatic = ...; // hex string read from file or network
     const getCrabStorage = getStorage(provider, metaStatic);
 
     // There are two ways to fetch a storage.
