@@ -1,38 +1,26 @@
-import {GetStorage} from "../storage";
+import {GetStorage} from "../../storage";
 
-<%
-const moduleName = prefix.charAt(0).toLowerCase() + prefix.slice(1);
-for(let i = 0; i < entries.length; i++) {
-    const entry = entries[i];
-    const methodName = entry.name.charAt(0).toLowerCase() + entry.name.slice(1);
-    if(entry.type.isPlain) {
-%>
-async function <%= methodName %>(getStorage: GetStorage): Promise<string | null> {
-    return await getStorage('<%= prefix %>', '<%= entry.name %>');
-}
-    <% } else if(entry.type.isMap) { %>
-    <%      const len = entry.type.asMap.hashers.length %>
-    <%
-            let input = [];
-            let input2 = []
-            for(let j = 0; j < len; j++) {
-                input.push(`param${j}: unknown`);
-                input2.push(`param${j}`)
-            }
-    %>
-async function <%= methodName %>(getStorage: GetStorage, <%= input.join(", ") %>): Promise<string | null> {
-    return await getStorage('<%= prefix %>', '<%= entry.name %>', <%= input2.join(", ") %>);
-}
-    <% } %>
-<% } %>
-
-
-export const <%= moduleName %> = {
-<%
-   for(let i = 0; i < entries.length; i++) {
+export default {
+<%_ for(let i = 0; i < entries.length; i++) {
        const entry = entries[i];
        const methodName = entry.name.charAt(0).toLowerCase() + entry.name.slice(1);
-%>
-<%= methodName %>,
-<% } %>
+       if(entry.type.isPlain) { _%>
+    <%= methodName %>: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('<%= prefix %>', '<%= entry.name %>');
+    },
+            <%_ } else if(entry.type.isMap) { _%>
+            <%_      const len = entry.type.asMap.hashers.length _%>
+            <%_
+                let input = [];
+                let input2 = []
+                for(let j = 0; j < len; j++) {
+                    input.push(`param${j}: unknown`);
+                    input2.push(`param${j}`)
+                }
+            _%>
+    <%= methodName %>: async (getStorage: GetStorage, <%= input.join(", ") %>): Promise<string | null> => {
+        return await getStorage('<%= prefix %>', '<%= entry.name %>', <%= input2.join(", ") %>);
+    },
+                <%_ } _%>
+<%_ } _%>
 };
