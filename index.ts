@@ -1,2 +1,2 @@
-export * from "./pallets"
+export * from "./chains"
 export * from "./storage"
