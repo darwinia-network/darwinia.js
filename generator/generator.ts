@@ -1,12 +1,11 @@
 import ejs from 'ejs';
 import fs from 'fs';
-import type {HexString} from '@polkadot/util/types';
+import type { HexString } from '@polkadot/util/types';
 import axios from 'axios';
-import {buildMetadata} from '../helpers';
-import {StorageEntryMetadataV14, StorageHasherV14} from "@polkadot/types/interfaces/metadata/types";
-import {SiLookupTypeId, SiType} from "@polkadot/types/interfaces";
-import {Metadata, Vec} from "@polkadot/types";
-import { AnyJson } from '@polkadot/types/types';
+import { buildMetadata } from '../helpers';
+import { StorageEntryMetadataV14, StorageHasherV14 } from "@polkadot/types/interfaces/metadata/types";
+import { SiLookupTypeId } from "@polkadot/types/interfaces";
+import { Metadata, Vec } from "@polkadot/types";
 
 async function getMetadata(url: string): Promise<HexString> {
     const response = await axios.post(url, {
@@ -64,9 +63,12 @@ function getInputTypes(map: StorageMap, metadata: Metadata): string[] {
         const type = metadata.registry.lookup.getSiType(inputTypeId);
         const typeName = type.path.map(p => {
             return p.toString();
-        }).join("::");
-        // console.log(type.path.length);
-        return `${typeName}: ${getType(inputTypeId, metadata)}`;
+        });
+        if(typeName.length == 0) {
+            return `${getType(inputTypeId, metadata)}`;
+        } else {
+            return `${typeName[typeName.length - 1]}: ${getType(inputTypeId, metadata)}`;
+        }
     });
 }
 
@@ -80,7 +82,7 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
             result.push(getType(type.def.asArray.type, metadata));
         }
         // return `[${result.join(",")}]`;
-        return `[${result[0]};${result.length}]`;
+        return `[${result[0]}; ${result.length}]`;
     } else if (type.def.isComposite) {
         let result = [];
         let fields = type.def.asComposite.fields.values();
@@ -96,13 +98,13 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
         if(result[0][0] == 'field') {
             const str = result.map((item) => {
                 return item[1]
-            }).join(',');
+            }).join(', ');
 
             return `(${str})`;
         } else {
             const str = result.map((item) => {
                 return `${item[0]}: ${item[1]}`
-            }).join(',');
+            }).join(', ');
 
             return `\{${str}\}`; 
         }
@@ -112,7 +114,7 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     } else if(type.def.isTuple) {
         const str = type.def.asTuple.map(a => {
             return getType(a, metadata);
-        }).join(",");
+        }).join(", ");
         return `(${str})`;
     } else {
         throw new Error(`unimplemented: ${type.def.toHuman}`);

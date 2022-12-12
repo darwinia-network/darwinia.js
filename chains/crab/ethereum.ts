@@ -33,21 +33,21 @@ export default {
     /**
      * Remaining ring balance for dvm account.
      */
-    remainingRingBalance: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    remainingRingBalance: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Ethereum', 'RemainingRingBalance', param0);
     },
 
     /**
      * Remaining kton balance for dvm account.
      */
-    remainingKtonBalance: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    remainingKtonBalance: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Ethereum', 'RemainingKtonBalance', param0);
     },
 
     /**
      * Mapping for block number and hashes.
      */
-    blockHash: async (getStorage: GetStorage, param0: unknown /* primitive_types::U256: [U64;4] */): Promise<string | null> => {
+    blockHash: async (getStorage: GetStorage, param0: unknown /* U256: [U64; 4] */): Promise<string | null> => {
         return await getStorage('Ethereum', 'BlockHash', param0);
     },
 };

@@ -32,7 +32,7 @@ export default {
     /**
      * A ring buffer of imported hashes. Ordered by the insertion time.
      */
-    importedHashes: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    importedHashes: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('BridgePolkadotGrandpa', 'ImportedHashes', param0);
     },
 
@@ -46,7 +46,7 @@ export default {
     /**
      * Headers which have been imported into the pallet.
      */
-    importedHeaders: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    importedHeaders: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('BridgePolkadotGrandpa', 'ImportedHeaders', param0);
     },
 

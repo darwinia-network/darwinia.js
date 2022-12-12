@@ -14,7 +14,7 @@ export default {
      *
      * NOTE: This is only used in the case that this pallet is used to store balances.
      */
-    account: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    account: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Kton', 'Account', param0);
     },
 
@@ -22,14 +22,14 @@ export default {
      * Any liquidity locks on some account balances.
      * NOTE: Should only be accessed when setting, changing and freeing a lock.
      */
-    locks: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    locks: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Kton', 'Locks', param0);
     },
 
     /**
      * Named reserves on some account balances.
      */
-    reserves: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    reserves: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Kton', 'Reserves', param0);
     },
 

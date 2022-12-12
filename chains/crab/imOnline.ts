@@ -30,7 +30,7 @@ export default {
      * For each session index, we keep a mapping of `SessionIndex` and `AuthIndex` to
      * `WrapperOpaque&lt;BoundedOpaqueNetworkState&gt;`.
      */
-    receivedHeartbeats: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* : U32 */): Promise<string | null> => {
+    receivedHeartbeats: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('ImOnline', 'ReceivedHeartbeats', param0, param1);
     },
 
@@ -38,7 +38,7 @@ export default {
      * For each session index, we keep a mapping of `ValidatorId&lt;T&gt;` to the
      * number of blocks authored by the given authority.
      */
-    authoredBlocks: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    authoredBlocks: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('ImOnline', 'AuthoredBlocks', param0, param1);
     },
 };

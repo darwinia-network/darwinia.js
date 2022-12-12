@@ -86,7 +86,7 @@ export default {
     /**
      * TWOX-NOTE: `SegmentIndex` is an increasing integer, so this is okay.
      */
-    underConstruction: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    underConstruction: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Babe', 'UnderConstruction', param0);
     },
 

@@ -12,14 +12,14 @@ export default {
     /**
      * Actual proposal for a given hash, if it&#39;s current.
      */
-    proposalOf: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    proposalOf: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('TechnicalCommittee', 'ProposalOf', param0);
     },
 
     /**
      * Votes on a given proposal, if it is ongoing.
      */
-    voting: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    voting: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('TechnicalCommittee', 'Voting', param0);
     },
 

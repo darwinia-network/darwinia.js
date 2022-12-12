@@ -4,7 +4,7 @@ export default {
 
     /**
      */
-    relayersMap: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    relayersMap: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('DarwiniaParachainFeeMarket', 'RelayersMap', param0);
     },
 
@@ -22,7 +22,7 @@ export default {
 
     /**
      */
-    orders: async (getStorage: GetStorage, param0: unknown /* : ([U8;4],U64) */): Promise<string | null> => {
+    orders: async (getStorage: GetStorage, param0: unknown /* ([U8; 4], U64) */): Promise<string | null> => {
         return await getStorage('DarwiniaParachainFeeMarket', 'Orders', param0);
     },
 

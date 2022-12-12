@@ -5,7 +5,7 @@ export default {
     /**
      * The set of recoverable accounts and their recovery configuration.
      */
-    recoverable: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    recoverable: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Recovery', 'Recoverable', param0);
     },
 
@@ -15,7 +15,7 @@ export default {
      * First account is the account to be recovered, and the second account
      * is the user trying to recover the account.
      */
-    activeRecoveries: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    activeRecoveries: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Recovery', 'ActiveRecoveries', param0, param1);
     },
 
@@ -24,7 +24,7 @@ export default {
      *
      * Map from the user who can access it to the recovered account.
      */
-    proxy: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    proxy: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Recovery', 'Proxy', param0);
     },
 };

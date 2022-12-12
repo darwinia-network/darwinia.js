@@ -46,14 +46,14 @@ export default {
     /**
      * The next session keys for a validator.
      */
-    nextKeys: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    nextKeys: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Session', 'NextKeys', param0);
     },
 
     /**
      * The owner of a key. The key is the `KeyTypeId` + the encoded key.
      */
-    keyOwner: async (getStorage: GetStorage, param0: unknown /* : ([U8;4],Vec&lt;U8&gt;) */): Promise<string | null> => {
+    keyOwner: async (getStorage: GetStorage, param0: unknown /* ([U8; 4], Vec&lt;U8&gt;) */): Promise<string | null> => {
         return await getStorage('Session', 'KeyOwner', param0);
     },
 };

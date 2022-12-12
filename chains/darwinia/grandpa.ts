@@ -44,7 +44,7 @@ export default {
      *
      * TWOX-NOTE: `SetId` is not under user control.
      */
-    setIdSession: async (getStorage: GetStorage, param0: unknown /* : U64 */): Promise<string | null> => {
+    setIdSession: async (getStorage: GetStorage, param0: unknown /* U64 */): Promise<string | null> => {
         return await getStorage('Grandpa', 'SetIdSession', param0);
     },
 };

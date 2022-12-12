@@ -26,21 +26,21 @@ export default {
     /**
      * Map of lane id =&gt; inbound lane data.
      */
-    inboundLanes: async (getStorage: GetStorage, param0: unknown /* : [U8;4] */): Promise<string | null> => {
+    inboundLanes: async (getStorage: GetStorage, param0: unknown /* [U8; 4] */): Promise<string | null> => {
         return await getStorage('BridgeDarwiniaParachainMessages', 'InboundLanes', param0);
     },
 
     /**
      * Map of lane id =&gt; outbound lane data.
      */
-    outboundLanes: async (getStorage: GetStorage, param0: unknown /* : [U8;4] */): Promise<string | null> => {
+    outboundLanes: async (getStorage: GetStorage, param0: unknown /* [U8; 4] */): Promise<string | null> => {
         return await getStorage('BridgeDarwiniaParachainMessages', 'OutboundLanes', param0);
     },
 
     /**
      * All queued outbound messages.
      */
-    outboundMessages: async (getStorage: GetStorage, param0: unknown /* bp_messages::MessageKey: {lane_id: [U8;4],nonce: U64} */): Promise<string | null> => {
+    outboundMessages: async (getStorage: GetStorage, param0: unknown /* MessageKey: {lane_id: [U8; 4], nonce: U64} */): Promise<string | null> => {
         return await getStorage('BridgeDarwiniaParachainMessages', 'OutboundMessages', param0);
     },
 };

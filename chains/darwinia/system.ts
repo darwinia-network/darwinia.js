@@ -5,7 +5,7 @@ export default {
     /**
      * The full account information for a particular account ID.
      */
-    account: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    account: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('System', 'Account', param0);
     },
 
@@ -33,14 +33,14 @@ export default {
     /**
      * Map of block numbers to block hashes.
      */
-    blockHash: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    blockHash: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('System', 'BlockHash', param0);
     },
 
     /**
      * Extrinsics data for the current block (maps an extrinsic&#39;s index to its data).
      */
-    extrinsicData: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    extrinsicData: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('System', 'ExtrinsicData', param0);
     },
 
@@ -94,7 +94,7 @@ export default {
      * the `EventIndex` then in case if the topic has the same contents on the next block
      * no notification will be triggered thus the event might be lost.
      */
-    eventTopics: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    eventTopics: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('System', 'EventTopics', param0);
     },
 

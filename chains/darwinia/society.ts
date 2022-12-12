@@ -27,7 +27,7 @@ export default {
     /**
      * The set of suspended candidates.
      */
-    suspendedCandidates: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    suspendedCandidates: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'SuspendedCandidates', param0);
     },
 
@@ -55,7 +55,7 @@ export default {
     /**
      * The set of suspended members.
      */
-    suspendedMembers: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    suspendedMembers: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'SuspendedMembers', param0);
     },
 
@@ -69,28 +69,28 @@ export default {
     /**
      * Members currently vouching or banned from vouching again
      */
-    vouching: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    vouching: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'Vouching', param0);
     },
 
     /**
      * Pending payouts; ordered by block number, with the amount that should be paid out.
      */
-    payouts: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    payouts: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'Payouts', param0);
     },
 
     /**
      * The ongoing number of losing votes cast by the member.
      */
-    strikes: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    strikes: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'Strikes', param0);
     },
 
     /**
      * Double map from Candidate -&gt; Voter -&gt; (Maybe) Vote.
      */
-    votes: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    votes: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'Votes', param0, param1);
     },
 
@@ -104,7 +104,7 @@ export default {
     /**
      * Votes for the defender.
      */
-    defenderVotes: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    defenderVotes: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Society', 'DefenderVotes', param0);
     },
 

@@ -45,7 +45,7 @@ export default {
      *
      * TWOX-NOTE: SAFE as `AccountId` is a crypto hash.
      */
-    voting: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    voting: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('PhragmenElection', 'Voting', param0);
     },
 };

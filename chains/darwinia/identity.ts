@@ -7,7 +7,7 @@ export default {
      *
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      */
-    identityOf: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    identityOf: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Identity', 'IdentityOf', param0);
     },
 
@@ -15,7 +15,7 @@ export default {
      * The super-identity of an alternative &#34;sub&#34; identity together with its name, within that
      * context. If the account is not some other account&#39;s sub-identity, then just `None`.
      */
-    superOf: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    superOf: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Identity', 'SuperOf', param0);
     },
 
@@ -26,7 +26,7 @@ export default {
      *
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      */
-    subsOf: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    subsOf: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Identity', 'SubsOf', param0);
     },
 

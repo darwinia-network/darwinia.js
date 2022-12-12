@@ -41,7 +41,7 @@ export default {
     /**
      * Map from all locked &#34;stash&#34; accounts to the controller account.
      */
-    bonded: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    bonded: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'Bonded', param0);
     },
 
@@ -71,21 +71,21 @@ export default {
     /**
      * Map from all (unlocked) &#34;controller&#34; accounts to the info regarding the staking.
      */
-    ledger: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    ledger: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'Ledger', param0);
     },
 
     /**
      * Where the reward payment should be made. Keyed by stash.
      */
-    payee: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    payee: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'Payee', param0);
     },
 
     /**
      * The map from (wannabe) validator stash key to the preferences of that validator.
      */
-    validators: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    validators: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'Validators', param0);
     },
 
@@ -108,7 +108,7 @@ export default {
     /**
      * The map from nominator stash key to the set of stash keys of all validators to nominate.
      */
-    nominators: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    nominators: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'Nominators', param0);
     },
 
@@ -154,7 +154,7 @@ export default {
      * Note: This tracks the starting session (i.e. session index when era start being active)
      * for the eras in `[CurrentEra - HISTORY_DEPTH, CurrentEra]`.
      */
-    erasStartSessionIndex: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    erasStartSessionIndex: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasStartSessionIndex', param0);
     },
 
@@ -166,7 +166,7 @@ export default {
      * Is it removed after `HISTORY_DEPTH` eras.
      * If stakers hasn&#39;t been set or has been removed then empty exposure is returned.
      */
-    erasStakers: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    erasStakers: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasStakers', param0, param1);
     },
 
@@ -183,7 +183,7 @@ export default {
      * Is it removed after `HISTORY_DEPTH` eras.
      * If stakers hasn&#39;t been set or has been removed then empty exposure is returned.
      */
-    erasStakersClipped: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    erasStakersClipped: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasStakersClipped', param0, param1);
     },
 
@@ -194,7 +194,7 @@ export default {
      *
      * Is it removed after `HISTORY_DEPTH` eras.
      */
-    erasValidatorPrefs: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    erasValidatorPrefs: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasValidatorPrefs', param0, param1);
     },
 
@@ -203,7 +203,7 @@ export default {
      *
      * Eras that haven&#39;t finished yet or has been removed doesn&#39;t have reward.
      */
-    erasValidatorReward: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    erasValidatorReward: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasValidatorReward', param0);
     },
 
@@ -211,7 +211,7 @@ export default {
      * Rewards for the last `HISTORY_DEPTH` eras.
      * If reward hasn&#39;t been set or has been removed then 0 reward is returned.
      */
-    erasRewardPoints: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    erasRewardPoints: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasRewardPoints', param0);
     },
 
@@ -219,7 +219,7 @@ export default {
      * The total amount staked for the last `HISTORY_DEPTH` eras.
      * If total hasn&#39;t been set or has been removed then 0 stake is returned.
      */
-    erasTotalStake: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    erasTotalStake: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Staking', 'ErasTotalStake', param0);
     },
 
@@ -250,7 +250,7 @@ export default {
     /**
      * All unapplied slashes that are queued for later.
      */
-    unappliedSlashes: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    unappliedSlashes: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Staking', 'UnappliedSlashes', param0);
     },
 
@@ -268,21 +268,21 @@ export default {
      * All slashing events on validators, mapped by era to the highest slash proportion
      * and slash value of the era.
      */
-    validatorSlashInEra: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    validatorSlashInEra: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'ValidatorSlashInEra', param0, param1);
     },
 
     /**
      * All slashing events on nominators, mapped by era to the highest slash value of the era.
      */
-    nominatorSlashInEra: async (getStorage: GetStorage, param0: unknown /* : U32 */, param1: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    nominatorSlashInEra: async (getStorage: GetStorage, param0: unknown /* U32 */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'NominatorSlashInEra', param0, param1);
     },
 
     /**
      * Slashing spans for stash accounts.
      */
-    slashingSpans: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    slashingSpans: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Staking', 'SlashingSpans', param0);
     },
 
@@ -290,7 +290,7 @@ export default {
      * Records information about the maximum slash of a stash within a slashing span,
      * as well as how much reward has been paid out.
      */
-    spanSlash: async (getStorage: GetStorage, param0: unknown /* : ([U8;32],U32) */): Promise<string | null> => {
+    spanSlash: async (getStorage: GetStorage, param0: unknown /* ([U8; 32], U32) */): Promise<string | null> => {
         return await getStorage('Staking', 'SpanSlash', param0);
     },
 

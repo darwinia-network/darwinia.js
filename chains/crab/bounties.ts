@@ -12,14 +12,14 @@ export default {
     /**
      * Bounties that have been made.
      */
-    bounties: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    bounties: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Bounties', 'Bounties', param0);
     },
 
     /**
      * The description of each bounty.
      */
-    bountyDescriptions: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    bountyDescriptions: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Bounties', 'BountyDescriptions', param0);
     },
 

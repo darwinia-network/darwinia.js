@@ -21,7 +21,7 @@ export default {
      *
      * TWOX-NOTE: Safe, as increasing integer keys are safe.
      */
-    depositOf: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    depositOf: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Democracy', 'DepositOf', param0);
     },
 
@@ -29,7 +29,7 @@ export default {
      * Map of hashes to the proposal preimage, along with who registered it and their deposit.
      * The block number is the block at which it was deposited.
      */
-    preimages: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    preimages: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Democracy', 'Preimages', param0);
     },
 
@@ -53,7 +53,7 @@ export default {
      *
      * TWOX-NOTE: SAFE as indexes are not under an attacker’s control.
      */
-    referendumInfoOf: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    referendumInfoOf: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Democracy', 'ReferendumInfoOf', param0);
     },
 
@@ -63,7 +63,7 @@ export default {
      *
      * TWOX-NOTE: SAFE as `AccountId`s are crypto hashes anyway.
      */
-    votingOf: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    votingOf: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Democracy', 'VotingOf', param0);
     },
 
@@ -73,7 +73,7 @@ export default {
      *
      * TWOX-NOTE: OK ― `AccountId` is a secure hash.
      */
-    locks: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    locks: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Democracy', 'Locks', param0);
     },
 
@@ -99,14 +99,14 @@ export default {
      * A record of who vetoed what. Maps proposal hash to a possible existent block number
      * (until when it may not be resubmitted) and who vetoed it.
      */
-    blacklist: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    blacklist: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Democracy', 'Blacklist', param0);
     },
 
     /**
      * Record of all proposals that have been subject to emergency cancellation.
      */
-    cancellations: async (getStorage: GetStorage, param0: unknown /* primitive_types::H256: [U8;32] */): Promise<string | null> => {
+    cancellations: async (getStorage: GetStorage, param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Democracy', 'Cancellations', param0);
     },
 

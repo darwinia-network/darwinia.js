@@ -91,7 +91,7 @@ export default {
      * Twox note: the key of the map is an auto-incrementing index which users cannot inspect or
      * affect; we shouldn&#39;t need a cryptographically secure hasher.
      */
-    signedSubmissionsMap: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    signedSubmissionsMap: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('ElectionProviderMultiPhase', 'SignedSubmissionsMap', param0);
     },
 

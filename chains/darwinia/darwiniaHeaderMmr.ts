@@ -12,7 +12,7 @@ export default {
     /**
      * Peaks of the MMR
      */
-    peaks: async (getStorage: GetStorage, param0: unknown /* : U64 */): Promise<string | null> => {
+    peaks: async (getStorage: GetStorage, param0: unknown /* U64 */): Promise<string | null> => {
         return await getStorage('DarwiniaHeaderMmr', 'Peaks', param0);
     },
 };

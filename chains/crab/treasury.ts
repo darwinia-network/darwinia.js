@@ -12,7 +12,7 @@ export default {
     /**
      * Proposals that have been made.
      */
-    proposals: async (getStorage: GetStorage, param0: unknown /* : U32 */): Promise<string | null> => {
+    proposals: async (getStorage: GetStorage, param0: unknown /* U32 */): Promise<string | null> => {
         return await getStorage('Treasury', 'Proposals', param0);
     },
 

@@ -5,7 +5,7 @@ export default {
     /**
      * Information regarding the vesting of a given account.
      */
-    vesting: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
+    vesting: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
         return await getStorage('Vesting', 'Vesting', param0);
     },
 
