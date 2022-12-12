@@ -1,0 +1,40 @@
+import {GetStorage} from "../../storage";
+
+export default {
+
+    /**
+     */
+    relayersMap: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'RelayersMap', param0);
+    },
+
+    /**
+     */
+    relayers: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'Relayers');
+    },
+
+    /**
+     */
+    assignedRelayers: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'AssignedRelayers');
+    },
+
+    /**
+     */
+    orders: async (getStorage: GetStorage, param0: unknown /* ([U8; 4], U64) */): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'Orders', param0);
+    },
+
+    /**
+     */
+    collateralSlashProtect: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'CollateralSlashProtect');
+    },
+
+    /**
+     */
+    assignedRelayersNumber: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('PangolinParachainFeeMarket', 'AssignedRelayersNumber');
+    },
+};

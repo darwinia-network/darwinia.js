@@ -15,7 +15,8 @@ async function getMetadata(url: string): Promise<HexString> {
         params: [],
     }, {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept-Encoding': 'deflate',
         },
     })
     return response.data.result;
