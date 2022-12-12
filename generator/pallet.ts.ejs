@@ -1,0 +1,48 @@
+import {GetStorage} from "../../storage";
+
+export default {
+<%_
+    for(let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
+        // const inputTypeNames = entryInputTypes.get(entry.name.toString());
+        const methodName = entry.name.charAt(0).toLowerCase() + entry.name.slice(1);
+_%>
+
+    /**
+<%_
+        entry.docs.forEach((doc) => {
+_%>
+     *<%= doc %>
+<%_
+        })
+_%>   
+     */
+<%_
+        if(entry.type.isPlain) {
+_%>
+    <%= methodName %>: async (getStorage: GetStorage): Promise<string | null> => {
+        return await getStorage('<%= prefix %>', '<%= entry.name %>');
+    },
+<%_
+        } else if(entry.type.isMap) {
+            const inputTypeNames = entryInputTypes.get(entry.name.toString());
+            const len = entry.type.asMap.hashers.length;
+            let input = [];
+            let input2 = []
+            for(let j = 0; j < len; j++) {
+                const typeName = inputTypeNames[j];
+                //console.log(typeName);
+                input.push(`param${j}: unknown /* ${typeName} */`);
+                input2.push(`param${j}`)
+            }
+_%>
+    <%= methodName %>: async (getStorage: GetStorage, <%= input.join(", ") %>): Promise<string | null> => {
+        return await getStorage('<%= prefix %>', '<%= entry.name %>', <%= input2.join(", ") %>);
+    },
+<%_
+        }
+_%>
+<%_
+    }
+_%>
+};
