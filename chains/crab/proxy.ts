@@ -1,10 +1,19 @@
 import {GetStorage} from "../../storage";
 
 export default {
-    proxies: async (getStorage: GetStorage, param0: unknown): Promise<string | null> => {
+
+    /**
+     * The set of account proxies. Maps the account which has delegated to the accounts
+     * which are being delegated to, together with the amount held on deposit.
+     */
+    proxies: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
         return await getStorage('Proxy', 'Proxies', param0);
     },
-    announcements: async (getStorage: GetStorage, param0: unknown): Promise<string | null> => {
+
+    /**
+     * The announcements made by the proxy (key).
+     */
+    announcements: async (getStorage: GetStorage, param0: unknown /* sp_core::crypto::AccountId32: [U8;32] */): Promise<string | null> => {
         return await getStorage('Proxy', 'Announcements', param0);
     },
 };
