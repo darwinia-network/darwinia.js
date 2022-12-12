@@ -123,8 +123,14 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
 }
 
 async function main() {
-    const chain = process.env["CHAIN"] || "crab";
+    const chainName = process.env["CHAIN"] || "crab";
     const endpoint = process.env["ENDPOINT"] || "https://darwiniacrab-rpc.dwellir.com";
+
+    // Remove old files
+    fs.rmSync(`./chains/${chainName}`, { recursive: true, force: true });
+
+    // Create dir
+    fs.mkdirSync(`./chains/${chainName}`);
 
     // Prepare templates
     const template = fs.readFileSync('./generator/pallet.ts.ejs', 'utf8');
@@ -136,6 +142,7 @@ async function main() {
 
     // Generate files according to the pallet name
     const moduleNames: String[] = [];
+    const prefixs: String[] = [];
     metadata.asV14.pallets.forEach((pallet) => {
         if (!pallet.storage.isSome) {
             return;
@@ -145,19 +152,21 @@ async function main() {
         const prefix = storage.prefix.toString();
         const entries = storage.items;
         const moduleName = getModuleName(prefix);
+        
 
         const entryInputTypes = buildInputTypes(entries, metadata);
 
         // Generate file for a pallet
         const result = ejs.render(template, {prefix, moduleName, entries, entryInputTypes});
-        fs.writeFileSync(`./chains/${chain}/${moduleName}.ts`, result);
+        fs.writeFileSync(`./chains/${chainName}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
+        prefixs.push(prefix);
     })
 
     // Generate the index.ts
-    const result = ejs.render(indexTemplate, {moduleNames});
-    fs.writeFileSync(`./chains/${chain}/index.ts`, result);
+    const result = ejs.render(indexTemplate, {chainName, moduleNames, prefixs});
+    fs.writeFileSync(`./chains/${chainName}/index.ts`, result);
 }
 
 main();

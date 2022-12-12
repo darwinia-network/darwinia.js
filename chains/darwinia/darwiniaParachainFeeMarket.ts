@@ -1,40 +1,42 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getDarwiniaParachainFeeMarket = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     */
-    relayersMap: async (getStorage: GetStorage, param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'RelayersMap', param0);
-    },
+        /**
+        */
+        relayersMap: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'RelayersMap', param0);
+        },
 
-    /**
-     */
-    relayers: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'Relayers');
-    },
+        /**
+        */
+        relayers: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'Relayers');
+        },
 
-    /**
-     */
-    assignedRelayers: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'AssignedRelayers');
-    },
+        /**
+        */
+        assignedRelayers: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'AssignedRelayers');
+        },
 
-    /**
-     */
-    orders: async (getStorage: GetStorage, param0: unknown /* ([U8; 4], U64) */): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'Orders', param0);
-    },
+        /**
+        */
+        orders: async (param0: unknown /* ([U8; 4], U64) */): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'Orders', param0);
+        },
 
-    /**
-     */
-    collateralSlashProtect: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'CollateralSlashProtect');
-    },
+        /**
+        */
+        collateralSlashProtect: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'CollateralSlashProtect');
+        },
 
-    /**
-     */
-    assignedRelayersNumber: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('DarwiniaParachainFeeMarket', 'AssignedRelayersNumber');
-    },
+        /**
+        */
+        assignedRelayersNumber: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaParachainFeeMarket', 'AssignedRelayersNumber');
+        },
+    };
 };

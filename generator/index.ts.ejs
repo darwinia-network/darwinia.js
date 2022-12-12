@@ -1,9 +1,19 @@
-<%_ for(let i = 0; i < moduleNames.length; i++) { _%>
-import <%= moduleNames[i] %> from "./<%= moduleNames[i] %>";
+import {GetStorage} from "../../storage";
+
+<%_ 
+for(let i = 0; i < moduleNames.length; i++) { 
+    const prefix = prefixs[i];
+_%>
+import {get<%= prefix %>} from "./<%= moduleNames[i] %>";
 <%_ } _%>
 
-export default {
-<%_ for(let i = 0; i < moduleNames.length; i++) { _%>
-    <%= moduleNames[i] %>,
+export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>Client = (getStorage: GetStorage) => {
+    return {
+<%_ 
+for(let i = 0; i < moduleNames.length; i++) { 
+    const prefix = prefixs[i];
+_%>
+        <%= moduleNames[i] %>: get<%= prefix %>(getStorage),
 <%_ } _%>
+    };
 }

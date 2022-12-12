@@ -1,22 +1,24 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getBaseFee = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     */
-    baseFeePerGas: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('BaseFee', 'BaseFeePerGas');
-    },
+        /**
+        */
+        baseFeePerGas: async (): Promise<string | null> => {
+            return await getStorage('BaseFee', 'BaseFeePerGas');
+        },
 
-    /**
-     */
-    isActive: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('BaseFee', 'IsActive');
-    },
+        /**
+        */
+        isActive: async (): Promise<string | null> => {
+            return await getStorage('BaseFee', 'IsActive');
+        },
 
-    /**
-     */
-    elasticity: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('BaseFee', 'Elasticity');
-    },
+        /**
+        */
+        elasticity: async (): Promise<string | null> => {
+            return await getStorage('BaseFee', 'Elasticity');
+        },
+    };
 };

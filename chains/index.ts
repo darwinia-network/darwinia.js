@@ -1,10 +1,4 @@
-import pangolin from './pangolin';
-import crab from './crab';
-import pangoro from './pangoro';
-import darwinia from './darwinia';
-export default {
-    pangolin,
-    crab,
-    pangoro,
-    darwinia,
-}
+export * from './pangolin';
+export * from './crab';
+export * from './pangoro';
+export * from './darwinia';

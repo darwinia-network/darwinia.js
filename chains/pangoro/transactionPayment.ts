@@ -1,16 +1,18 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getTransactionPayment = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     */
-    nextFeeMultiplier: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('TransactionPayment', 'NextFeeMultiplier');
-    },
+        /**
+        */
+        nextFeeMultiplier: async (): Promise<string | null> => {
+            return await getStorage('TransactionPayment', 'NextFeeMultiplier');
+        },
 
-    /**
-     */
-    storageVersion: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('TransactionPayment', 'StorageVersion');
-    },
+        /**
+        */
+        storageVersion: async (): Promise<string | null> => {
+            return await getStorage('TransactionPayment', 'StorageVersion');
+        },
+    };
 };

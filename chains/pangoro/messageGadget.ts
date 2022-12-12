@@ -1,10 +1,12 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getMessageGadget = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     */
-    commitmentContract: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('MessageGadget', 'CommitmentContract');
-    },
+        /**
+        */
+        commitmentContract: async (): Promise<string | null> => {
+            return await getStorage('MessageGadget', 'CommitmentContract');
+        },
+    };
 };

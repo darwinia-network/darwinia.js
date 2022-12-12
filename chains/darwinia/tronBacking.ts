@@ -1,4 +1,6 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getTronBacking = (getStorage: GetStorage) => {
+    return {
+    };
 };

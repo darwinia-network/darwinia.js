@@ -1,6 +1,7 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const get<%= prefix %> = (getStorage: GetStorage) => {
+    return {
 <%_
     for(let i = 0; i < entries.length; i++) {
         const entry = entries[i];
@@ -8,21 +9,21 @@ export default {
         const methodName = entry.name.charAt(0).toLowerCase() + entry.name.slice(1);
 _%>
 
-    /**
+        /**
 <%_
         entry.docs.forEach((doc) => {
 _%>
-     *<%= doc %>
+        *<%= doc %>
 <%_
         })
 _%>   
-     */
+        */
 <%_
         if(entry.type.isPlain) {
 _%>
-    <%= methodName %>: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('<%= prefix %>', '<%= entry.name %>');
-    },
+        <%= methodName %>: async (): Promise<string | null> => {
+            return await getStorage('<%= prefix %>', '<%= entry.name %>');
+        },
 <%_
         } else if(entry.type.isMap) {
             const inputTypeNames = entryInputTypes.get(entry.name.toString());
@@ -36,13 +37,14 @@ _%>
                 input2.push(`param${j}`)
             }
 _%>
-    <%= methodName %>: async (getStorage: GetStorage, <%= input.join(", ") %>): Promise<string | null> => {
-        return await getStorage('<%= prefix %>', '<%= entry.name %>', <%= input2.join(", ") %>);
-    },
+        <%= methodName %>: async (<%= input.join(", ") %>): Promise<string | null> => {
+            return await getStorage('<%= prefix %>', '<%= entry.name %>', <%= input2.join(", ") %>);
+        },
 <%_
         }
 _%>
 <%_
     }
 _%>
+    };
 };

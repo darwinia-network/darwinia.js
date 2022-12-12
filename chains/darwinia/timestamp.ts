@@ -1,18 +1,20 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getTimestamp = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     * Current time for the current block.
-     */
-    now: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('Timestamp', 'Now');
-    },
+        /**
+        * Current time for the current block.
+        */
+        now: async (): Promise<string | null> => {
+            return await getStorage('Timestamp', 'Now');
+        },
 
-    /**
-     * Did the timestamp get updated in this block?
-     */
-    didUpdate: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('Timestamp', 'DidUpdate');
-    },
+        /**
+        * Did the timestamp get updated in this block?
+        */
+        didUpdate: async (): Promise<string | null> => {
+            return await getStorage('Timestamp', 'DidUpdate');
+        },
+    };
 };

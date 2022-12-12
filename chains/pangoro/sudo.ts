@@ -1,11 +1,13 @@
 import {GetStorage} from "../../storage";
 
-export default {
+export const getSudo = (getStorage: GetStorage) => {
+    return {
 
-    /**
-     * The `AccountId` of the sudo key.
-     */
-    key: async (getStorage: GetStorage): Promise<string | null> => {
-        return await getStorage('Sudo', 'Key');
-    },
+        /**
+        * The `AccountId` of the sudo key.
+        */
+        key: async (): Promise<string | null> => {
+            return await getStorage('Sudo', 'Key');
+        },
+    };
 };
