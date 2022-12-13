@@ -4,7 +4,7 @@ export const getTransactionPayment = (getStorage: GetStorage) => {
     return {
 
         /**
-
+        *
         * @return FixedU128: U128
         */
         nextFeeMultiplier: async (): Promise<string | null> => {
@@ -12,8 +12,8 @@ export const getTransactionPayment = (getStorage: GetStorage) => {
         },
 
         /**
-
-        * @return Releases: Enum&lt;{&#34;0/V1Ancient&#34;, &#34;1/V2&#34;}&gt;
+        *
+        * @return Releases: Enum<{"0/V1Ancient", "1/V2"}>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('TransactionPayment', 'StorageVersion');

@@ -5,7 +5,7 @@ export const getIndices = (getStorage: GetStorage) => {
 
         /**
         * The lookup from index to account.
-
+        *
         * @param param0: U32
         * @return ([U8; 32], U128, Bool)
         */

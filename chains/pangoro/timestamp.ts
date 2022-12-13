@@ -5,7 +5,7 @@ export const getTimestamp = (getStorage: GetStorage) => {
 
         /**
         * Current time for the current block.
-
+        *
         * @return U64
         */
         now: async (): Promise<string | null> => {
@@ -14,7 +14,7 @@ export const getTimestamp = (getStorage: GetStorage) => {
 
         /**
         * Did the timestamp get updated in this block?
-
+        *
         * @return Bool
         */
         didUpdate: async (): Promise<string | null> => {

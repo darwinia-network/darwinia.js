@@ -7,8 +7,8 @@ export const getPhragmenElection = (getStorage: GetStorage) => {
         * The current elected members.
         *
         * Invariant: Always sorted based on account id.
-
-        * @return Vec&lt;{who: [U8; 32], stake: U128, deposit: U128}&gt;
+        *
+        * @return Vec<{who: [U8; 32], stake: U128, deposit: U128}>
         */
         members: async (): Promise<string | null> => {
             return await getStorage('PhragmenElection', 'Members');
@@ -19,8 +19,8 @@ export const getPhragmenElection = (getStorage: GetStorage) => {
         *
         * Invariant: Always sorted based on rank (worse to best). Upon removal of a member, the
         * last (i.e. _best_) runner-up will be replaced.
-
-        * @return Vec&lt;{who: [U8; 32], stake: U128, deposit: U128}&gt;
+        *
+        * @return Vec<{who: [U8; 32], stake: U128, deposit: U128}>
         */
         runnersUp: async (): Promise<string | null> => {
             return await getStorage('PhragmenElection', 'RunnersUp');
@@ -33,8 +33,8 @@ export const getPhragmenElection = (getStorage: GetStorage) => {
         * Second element is the deposit.
         *
         * Invariant: Always sorted based on account id.
-
-        * @return Vec&lt;([U8; 32], U128)&gt;
+        *
+        * @return Vec<([U8; 32], U128)>
         */
         candidates: async (): Promise<string | null> => {
             return await getStorage('PhragmenElection', 'Candidates');
@@ -42,7 +42,7 @@ export const getPhragmenElection = (getStorage: GetStorage) => {
 
         /**
         * The total number of vote rounds that have happened, excluding the upcoming one.
-
+        *
         * @return U32
         */
         electionRounds: async (): Promise<string | null> => {
@@ -53,9 +53,9 @@ export const getPhragmenElection = (getStorage: GetStorage) => {
         * Votes and locked stake of a particular voter.
         *
         * TWOX-NOTE: SAFE as `AccountId` is a crypto hash.
-
+        *
         * @param param0: AccountId32: [U8; 32]
-        * @return Voter: {votes: Vec&lt;[U8; 32]&gt;, stake: U128, deposit: U128}
+        * @return Voter: {votes: Vec<[U8; 32]>, stake: U128, deposit: U128}
         */
         voting: async (param0: unknown): Promise<string | null> => {
             return await getStorage('PhragmenElection', 'Voting', param0);

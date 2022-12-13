@@ -4,7 +4,7 @@ export const getBaseFee = (getStorage: GetStorage) => {
     return {
 
         /**
-
+        *
         * @return U256: [U64; 4]
         */
         baseFeePerGas: async (): Promise<string | null> => {
@@ -12,7 +12,7 @@ export const getBaseFee = (getStorage: GetStorage) => {
         },
 
         /**
-
+        *
         * @return Bool
         */
         isActive: async (): Promise<string | null> => {
@@ -20,7 +20,7 @@ export const getBaseFee = (getStorage: GetStorage) => {
         },
 
         /**
-
+        *
         * @return Permill: U32
         */
         elasticity: async (): Promise<string | null> => {

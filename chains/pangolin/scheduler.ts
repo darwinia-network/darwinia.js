@@ -5,9 +5,9 @@ export const getScheduler = (getStorage: GetStorage) => {
 
         /**
         * Items to be executed, indexed by the block number that they should be executed on.
-
+        *
         * @param param0: U32
-        * @return Vec&lt;Enum&lt;{&#34;0/None&#34;, &#34;1/Some&#34;}&gt;&gt;
+        * @return Vec<Enum<{"0/None", "1/Some"}>>
         */
         agenda: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Scheduler', 'Agenda', param0);
@@ -15,8 +15,8 @@ export const getScheduler = (getStorage: GetStorage) => {
 
         /**
         * Lookup from identity to the block number and index of the task.
-
-        * @param param0: Vec&lt;U8&gt;
+        *
+        * @param param0: Vec<U8>
         * @return (U32, U32)
         */
         lookup: async (param0: unknown): Promise<string | null> => {

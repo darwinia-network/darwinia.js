@@ -5,8 +5,8 @@ export const getGrandpa = (getStorage: GetStorage) => {
 
         /**
         * State of the current authority set.
-
-        * @return StoredState: Enum&lt;{&#34;0/Live&#34;, &#34;1/PendingPause&#34;, &#34;2/Paused&#34;, &#34;3/PendingResume&#34;}&gt;
+        *
+        * @return StoredState: Enum<{"0/Live", "1/PendingPause", "2/Paused", "3/PendingResume"}>
         */
         state: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'State');
@@ -14,8 +14,8 @@ export const getGrandpa = (getStorage: GetStorage) => {
 
         /**
         * Pending change: (signaled at, scheduled change).
-
-        * @return StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec&lt;([U8; 32], U64)&gt;, forced: Enum&lt;{&#34;0/None&#34;, &#34;1/Some&#34;}&gt;}
+        *
+        * @return StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec<([U8; 32], U64)>, forced: Enum<{"0/None", "1/Some"}>}
         */
         pendingChange: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'PendingChange');
@@ -23,7 +23,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
 
         /**
         * next block number where we can force a change.
-
+        *
         * @return U32
         */
         nextForced: async (): Promise<string | null> => {
@@ -32,7 +32,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
 
         /**
         * `true` if we are currently stalled.
-
+        *
         * @return (U32, U32)
         */
         stalled: async (): Promise<string | null> => {
@@ -42,7 +42,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
         * The number of changes (both in terms of keys and underlying economic responsibilities)
         * in the &#34;set&#34; of Grandpa validators from genesis.
-
+        *
         * @return U64
         */
         currentSetId: async (): Promise<string | null> => {
@@ -54,7 +54,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         * members were responsible.
         *
         * TWOX-NOTE: `SetId` is not under user control.
-
+        *
         * @param param0: U64
         * @return U32
         */

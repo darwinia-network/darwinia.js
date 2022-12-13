@@ -5,7 +5,7 @@ export const getBridgeRococoParachains = (getStorage: GetStorage) => {
 
         /**
         * Best parachain heads.
-
+        *
         * @param param0: ParaId: U32
         * @return BestParaHead: {at_relay_block_number: U32, head_hash: [U8; 32], next_imported_hash_position: U32}
         */
@@ -15,10 +15,10 @@ export const getBridgeRococoParachains = (getStorage: GetStorage) => {
 
         /**
         * Parachain heads which have been imported into the pallet.
-
+        *
         * @param param0: ParaId: U32
         * @param param1: H256: [U8; 32]
-        * @return ParaHead: Vec&lt;U8&gt;
+        * @return ParaHead: Vec<U8>
         */
         importedParaHeads: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('BridgeRococoParachains', 'ImportedParaHeads', param0, param1);
@@ -26,7 +26,7 @@ export const getBridgeRococoParachains = (getStorage: GetStorage) => {
 
         /**
         * A ring buffer of imported parachain head hashes. Ordered by the insertion time.
-
+        *
         * @param param0: ParaId: U32
         * @param param1: U32
         * @return H256: [U8; 32]

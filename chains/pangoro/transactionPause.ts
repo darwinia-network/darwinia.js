@@ -7,8 +7,8 @@ export const getTransactionPause = (getStorage: GetStorage) => {
         * The paused transaction map
         *
         * map (PalletNameBytes, FunctionNameBytes) =&gt; Option&lt;()&gt;
-
-        * @param param0: (Vec&lt;U8&gt;, Vec&lt;U8&gt;)
+        *
+        * @param param0: (Vec<U8>, Vec<U8>)
         * @return ()
         */
         pausedTransactions: async (param0: unknown): Promise<string | null> => {

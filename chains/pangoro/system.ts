@@ -5,7 +5,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * The full account information for a particular account ID.
-
+        *
         * @param param0: AccountId32: [U8; 32]
         * @return AccountInfo: {nonce: U32, consumers: U32, providers: U32, sufficients: U32, data: {free: U128, reserved: U128, free_kton: U128, reserved_kton: U128}}
         */
@@ -15,7 +15,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Total extrinsics count for the current block.
-
+        *
         * @return U32
         */
         extrinsicCount: async (): Promise<string | null> => {
@@ -24,7 +24,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * The current weight for the block.
-
+        *
         * @return PerDispatchClass: {normal: U64, operational: U64, mandatory: U64}
         */
         blockWeight: async (): Promise<string | null> => {
@@ -33,7 +33,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Total length (in bytes) for all extrinsics put together, for the current block.
-
+        *
         * @return U32
         */
         allExtrinsicsLen: async (): Promise<string | null> => {
@@ -42,7 +42,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Map of block numbers to block hashes.
-
+        *
         * @param param0: U32
         * @return H256: [U8; 32]
         */
@@ -52,9 +52,9 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Extrinsics data for the current block (maps an extrinsic&#39;s index to its data).
-
+        *
         * @param param0: U32
-        * @return Vec&lt;U8&gt;
+        * @return Vec<U8>
         */
         extrinsicData: async (param0: unknown): Promise<string | null> => {
             return await getStorage('System', 'ExtrinsicData', param0);
@@ -62,7 +62,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * The current block number being processed. Set by `execute_block`.
-
+        *
         * @return U32
         */
         number: async (): Promise<string | null> => {
@@ -71,7 +71,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Hash of the previous block.
-
+        *
         * @return H256: [U8; 32]
         */
         parentHash: async (): Promise<string | null> => {
@@ -80,8 +80,8 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Digest of the current block, also part of the block header.
-
-        * @return Digest: {logs: Vec&lt;Enum&lt;{&#34;6/PreRuntime&#34;, &#34;4/Consensus&#34;, &#34;5/Seal&#34;, &#34;0/Other&#34;, &#34;8/RuntimeEnvironmentUpdated&#34;}&gt;&gt;}
+        *
+        * @return Digest: {logs: Vec<Enum<{"6/PreRuntime", "4/Consensus", "5/Seal", "0/Other", "8/RuntimeEnvironmentUpdated"}>>}
         */
         digest: async (): Promise<string | null> => {
             return await getStorage('System', 'Digest');
@@ -92,8 +92,8 @@ export const getSystem = (getStorage: GetStorage) => {
         *
         * NOTE: This storage item is explicitly unbounded since it is never intended to be read
         * from within the runtime.
-
-        * @return Vec&lt;{phase: Enum&lt;{&#34;0/ApplyExtrinsic&#34;, &#34;1/Finalization&#34;, &#34;2/Initialization&#34;}&gt;, event: Enum&lt;{&#34;0/System&#34;, &#34;4/Balances&#34;, &#34;5/Kton&#34;, &#34;8/ElectionProviderMultiPhase&#34;, &#34;9/Staking&#34;, &#34;10/Offences&#34;, &#34;12/Session&#34;, &#34;13/Grandpa&#34;, &#34;32/EcdsaAuthority&#34;, &#34;14/ImOnline&#34;, &#34;24/Treasury&#34;, &#34;16/Sudo&#34;, &#34;21/Scheduler&#34;, &#34;33/Preimage&#34;, &#34;18/BridgePangolinDispatch&#34;, &#34;17/BridgePangolinMessages&#34;, &#34;22/PangolinFeeMarket&#34;, &#34;23/TransactionPause&#34;, &#34;25/EVM&#34;, &#34;26/Ethereum&#34;, &#34;31/BaseFee&#34;}&gt;, topics: Vec&lt;[U8; 32]&gt;}&gt;
+        *
+        * @return Vec<{phase: Enum<{"0/ApplyExtrinsic", "1/Finalization", "2/Initialization"}>, event: Enum<{"0/System", "4/Balances", "5/Kton", "8/ElectionProviderMultiPhase", "9/Staking", "10/Offences", "12/Session", "13/Grandpa", "32/EcdsaAuthority", "14/ImOnline", "24/Treasury", "16/Sudo", "21/Scheduler", "33/Preimage", "18/BridgePangolinDispatch", "17/BridgePangolinMessages", "22/PangolinFeeMarket", "23/TransactionPause", "25/EVM", "26/Ethereum", "31/BaseFee"}>, topics: Vec<[U8; 32]>}>
         */
         events: async (): Promise<string | null> => {
             return await getStorage('System', 'Events');
@@ -101,7 +101,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * The number of events in the `Events&lt;T&gt;` list.
-
+        *
         * @return U32
         */
         eventCount: async (): Promise<string | null> => {
@@ -119,9 +119,9 @@ export const getSystem = (getStorage: GetStorage) => {
         * The value has the type `(T::BlockNumber, EventIndex)` because if we used only just
         * the `EventIndex` then in case if the topic has the same contents on the next block
         * no notification will be triggered thus the event might be lost.
-
+        *
         * @param param0: H256: [U8; 32]
-        * @return Vec&lt;(U32, U32)&gt;
+        * @return Vec<(U32, U32)>
         */
         eventTopics: async (param0: unknown): Promise<string | null> => {
             return await getStorage('System', 'EventTopics', param0);
@@ -129,8 +129,8 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * Stores the `spec_version` and `spec_name` of when the last runtime upgrade happened.
-
-        * @return LastRuntimeUpgradeInfo: {spec_version: Compact&lt;U32&gt;, spec_name: Str}
+        *
+        * @return LastRuntimeUpgradeInfo: {spec_version: Compact<U32>, spec_name: Str}
         */
         lastRuntimeUpgrade: async (): Promise<string | null> => {
             return await getStorage('System', 'LastRuntimeUpgrade');
@@ -138,7 +138,7 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * True if we have upgraded so that `type RefCount` is `u32`. False (default) if not.
-
+        *
         * @return Bool
         */
         upgradedToU32RefCount: async (): Promise<string | null> => {
@@ -148,7 +148,7 @@ export const getSystem = (getStorage: GetStorage) => {
         /**
         * True if we have upgraded so that AccountInfo contains three types of `RefCount`. False
         * (default) if not.
-
+        *
         * @return Bool
         */
         upgradedToTripleRefCount: async (): Promise<string | null> => {
@@ -157,8 +157,8 @@ export const getSystem = (getStorage: GetStorage) => {
 
         /**
         * The execution phase of the block.
-
-        * @return Phase: Enum&lt;{&#34;0/ApplyExtrinsic&#34;, &#34;1/Finalization&#34;, &#34;2/Initialization&#34;}&gt;
+        *
+        * @return Phase: Enum<{"0/ApplyExtrinsic", "1/Finalization", "2/Initialization"}>
         */
         executionPhase: async (): Promise<string | null> => {
             return await getStorage('System', 'ExecutionPhase');

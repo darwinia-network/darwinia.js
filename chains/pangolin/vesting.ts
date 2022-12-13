@@ -5,9 +5,9 @@ export const getVesting = (getStorage: GetStorage) => {
 
         /**
         * Information regarding the vesting of a given account.
-
+        *
         * @param param0: AccountId32: [U8; 32]
-        * @return BoundedVec: Vec&lt;{locked: U128, per_block: U128, starting_block: U32}&gt;
+        * @return BoundedVec: Vec<{locked: U128, per_block: U128, starting_block: U32}>
         */
         vesting: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Vesting', 'Vesting', param0);
@@ -17,8 +17,8 @@ export const getVesting = (getStorage: GetStorage) => {
         * Storage version of the pallet.
         *
         * New networks start with latest version, as determined by the genesis build.
-
-        * @return Releases: Enum&lt;{&#34;0/V0&#34;, &#34;1/V1&#34;}&gt;
+        *
+        * @return Releases: Enum<{"0/V0", "1/V1"}>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('Vesting', 'StorageVersion');

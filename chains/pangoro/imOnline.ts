@@ -15,7 +15,7 @@ export const getImOnline = (getStorage: GetStorage) => {
         * This value will only be used as a fallback if we fail to get a proper session
         * progress estimate from `NextSessionRotation`, as those estimates should be
         * more accurate then the value we calculate for `HeartbeatAfter`.
-
+        *
         * @return U32
         */
         heartbeatAfter: async (): Promise<string | null> => {
@@ -24,8 +24,8 @@ export const getImOnline = (getStorage: GetStorage) => {
 
         /**
         * The current set of keys that may issue a heartbeat.
-
-        * @return WeakBoundedVec: Vec&lt;[U8; 32]&gt;
+        *
+        * @return WeakBoundedVec: Vec<[U8; 32]>
         */
         keys: async (): Promise<string | null> => {
             return await getStorage('ImOnline', 'Keys');
@@ -34,10 +34,10 @@ export const getImOnline = (getStorage: GetStorage) => {
         /**
         * For each session index, we keep a mapping of `SessionIndex` and `AuthIndex` to
         * `WrapperOpaque&lt;BoundedOpaqueNetworkState&gt;`.
-
+        *
         * @param param0: U32
         * @param param1: U32
-        * @return WrapperOpaque: (Compact&lt;U32&gt;, {peer_id: Vec&lt;U8&gt;, external_addresses: Vec&lt;Vec&lt;U8&gt;&gt;})
+        * @return WrapperOpaque: (Compact<U32>, {peer_id: Vec<U8>, external_addresses: Vec<Vec<U8>>})
         */
         receivedHeartbeats: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('ImOnline', 'ReceivedHeartbeats', param0, param1);
@@ -46,7 +46,7 @@ export const getImOnline = (getStorage: GetStorage) => {
         /**
         * For each session index, we keep a mapping of `ValidatorId&lt;T&gt;` to the
         * number of blocks authored by the given authority.
-
+        *
         * @param param0: U32
         * @param param1: AccountId32: [U8; 32]
         * @return U32
