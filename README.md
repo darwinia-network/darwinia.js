@@ -19,14 +19,14 @@ import {ethers} from "ethers";
 import { getStorage, buildCrabClient } from "darwinia-storage";
 
 async function main(): Promise<void> {
-    // web3 provider, provided by sdk users
+    // web3 provider(eth compatible api endpoint)
     const provider = new ethers.providers.JsonRpcProvider("https://darwinia-crab.api.onfinality.io/public/");
 
-    // read from file or network(see below curl)
-    const metaStatic = "0x...";
+    // read from file or network(see the curl command below)
+    const crabMetadataStatic = "0x...";
 
     // a general storage function for a specific chain
-    const getCrabStorage = getStorage(provider, metaStatic);
+    const getCrabStorage = getStorage(provider, crabMetadataStatic);
 
     // There are two ways to fetch a storage.
     //
