@@ -5,7 +5,8 @@ export const get<%= prefix %> = (getStorage: GetStorage) => {
 <%_
     for(let i = 0; i < entries.length; i++) {
         const entry = entries[i];
-        // const inputTypeNames = entryInputTypes.get(entry.name.toString());
+        const inputTypeNames = entryInputTypes.get(entry.name.toString());
+        const outputTypeName = outputTypes[i];
         const methodName = entry.name.charAt(0).toLowerCase() + entry.name.slice(1);
 _%>
 
@@ -16,7 +17,19 @@ _%>
         *<%= doc %>
 <%_
         })
-_%>   
+_%>
+
+<%_
+        if(inputTypeNames) {
+            for(let j = 0; j < inputTypeNames.length; j++) {
+                const inputTypeName = inputTypeNames[j];
+_%>
+        * @param param<%= j %>: <%= inputTypeName %>
+<%_
+            }
+        }
+_%>
+        * @return <%= outputTypeName %>
         */
 <%_
         if(entry.type.isPlain) {
@@ -26,14 +39,14 @@ _%>
         },
 <%_
         } else if(entry.type.isMap) {
-            const inputTypeNames = entryInputTypes.get(entry.name.toString());
+            // const inputTypeNames = entryInputTypes.get(entry.name.toString());
             const len = entry.type.asMap.hashers.length;
             let input = [];
             let input2 = []
             for(let j = 0; j < len; j++) {
-                const typeName = inputTypeNames[j];
-                //console.log(typeName);
-                input.push(`param${j}: unknown /* ${typeName} */`);
+                // const typeName = inputTypeNames[j];
+                // console.log(typeName);
+                input.push(`param${j}: unknown`);
                 input2.push(`param${j}`)
             }
 _%>
