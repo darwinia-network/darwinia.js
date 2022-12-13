@@ -5,6 +5,8 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The first member.
+
+        * @return AccountId32: [U8; 32]
         */
         founder: async (): Promise<string | null> => {
             return await getStorage('Society', 'Founder');
@@ -13,6 +15,8 @@ export const getSociety = (getStorage: GetStorage) => {
         /**
         * A hash of the rules of this society concerning membership. Can only be set once and
         * only by the founder.
+
+        * @return H256: [U8; 32]
         */
         rules: async (): Promise<string | null> => {
             return await getStorage('Society', 'Rules');
@@ -20,6 +24,8 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The current set of candidates; bidders that are attempting to become members.
+
+        * @return Vec&lt;{who: [U8; 32], kind: Enum&lt;{&#34;0/Deposit&#34;, &#34;1/Vouch&#34;}&gt;, value: U128}&gt;
         */
         candidates: async (): Promise<string | null> => {
             return await getStorage('Society', 'Candidates');
@@ -27,13 +33,18 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The set of suspended candidates.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return (U128, Enum&lt;{&#34;0/Deposit&#34;, &#34;1/Vouch&#34;}&gt;)
         */
-        suspendedCandidates: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        suspendedCandidates: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'SuspendedCandidates', param0);
         },
 
         /**
         * Amount of our account balance that is specifically for the next round&#39;s bid(s).
+
+        * @return U128
         */
         pot: async (): Promise<string | null> => {
             return await getStorage('Society', 'Pot');
@@ -41,6 +52,8 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The most primary from the most recently approved members.
+
+        * @return AccountId32: [U8; 32]
         */
         head: async (): Promise<string | null> => {
             return await getStorage('Society', 'Head');
@@ -48,6 +61,8 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The current set of members, ordered.
+
+        * @return Vec&lt;[U8; 32]&gt;
         */
         members: async (): Promise<string | null> => {
             return await getStorage('Society', 'Members');
@@ -55,13 +70,18 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * The set of suspended members.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return Bool
         */
-        suspendedMembers: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        suspendedMembers: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'SuspendedMembers', param0);
         },
 
         /**
         * The current bids, stored ordered by the value of the bid.
+
+        * @return Vec&lt;{who: [U8; 32], kind: Enum&lt;{&#34;0/Deposit&#34;, &#34;1/Vouch&#34;}&gt;, value: U128}&gt;
         */
         bids: async (): Promise<string | null> => {
             return await getStorage('Society', 'Bids');
@@ -69,34 +89,49 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * Members currently vouching or banned from vouching again
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return VouchingStatus: Enum&lt;{&#34;0/Vouching&#34;, &#34;1/Banned&#34;}&gt;
         */
-        vouching: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        vouching: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Vouching', param0);
         },
 
         /**
         * Pending payouts; ordered by block number, with the amount that should be paid out.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return Vec&lt;(U32, U128)&gt;
         */
-        payouts: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        payouts: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Payouts', param0);
         },
 
         /**
         * The ongoing number of losing votes cast by the member.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return U32
         */
-        strikes: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        strikes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Strikes', param0);
         },
 
         /**
         * Double map from Candidate -&gt; Voter -&gt; (Maybe) Vote.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @param param1: AccountId32: [U8; 32]
+        * @return Vote: Enum&lt;{&#34;0/Skeptic&#34;, &#34;1/Reject&#34;, &#34;2/Approve&#34;}&gt;
         */
-        votes: async (param0: unknown /* AccountId32: [U8; 32] */, param1: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        votes: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Votes', param0, param1);
         },
 
         /**
         * The defending member currently being challenged.
+
+        * @return AccountId32: [U8; 32]
         */
         defender: async (): Promise<string | null> => {
             return await getStorage('Society', 'Defender');
@@ -104,13 +139,18 @@ export const getSociety = (getStorage: GetStorage) => {
 
         /**
         * Votes for the defender.
+
+        * @param param0: AccountId32: [U8; 32]
+        * @return Vote: Enum&lt;{&#34;0/Skeptic&#34;, &#34;1/Reject&#34;, &#34;2/Approve&#34;}&gt;
         */
-        defenderVotes: async (param0: unknown /* AccountId32: [U8; 32] */): Promise<string | null> => {
+        defenderVotes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'DefenderVotes', param0);
         },
 
         /**
         * The max number of members for the society at one time.
+
+        * @return U32
         */
         maxMembers: async (): Promise<string | null> => {
             return await getStorage('Society', 'MaxMembers');

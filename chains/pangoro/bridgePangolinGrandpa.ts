@@ -11,6 +11,8 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
         *
         * The `RequestCount` is decreased by one at the beginning of every block. This is to ensure
         * that the pallet can always make progress.
+
+        * @return U32
         */
         requestCount: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'RequestCount');
@@ -18,6 +20,8 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
 
         /**
         * Hash of the header used to bootstrap the pallet.
+
+        * @return H256: [U8; 32]
         */
         initialHash: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'InitialHash');
@@ -25,6 +29,8 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
 
         /**
         * Hash of the best finalized header.
+
+        * @return H256: [U8; 32]
         */
         bestFinalized: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'BestFinalized');
@@ -32,13 +38,18 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
 
         /**
         * A ring buffer of imported hashes. Ordered by the insertion time.
+
+        * @param param0: U32
+        * @return H256: [U8; 32]
         */
-        importedHashes: async (param0: unknown /* U32 */): Promise<string | null> => {
+        importedHashes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'ImportedHashes', param0);
         },
 
         /**
         * Current ring buffer position.
+
+        * @return U32
         */
         importedHashesPointer: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'ImportedHashesPointer');
@@ -46,13 +57,18 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
 
         /**
         * Headers which have been imported into the pallet.
+
+        * @param param0: H256: [U8; 32]
+        * @return Header: {parent_hash: [U8; 32], number: Compact&lt;U32&gt;, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec&lt;Enum&lt;{&#34;6/PreRuntime&#34;, &#34;4/Consensus&#34;, &#34;5/Seal&#34;, &#34;0/Other&#34;, &#34;8/RuntimeEnvironmentUpdated&#34;}&gt;&gt;}}
         */
-        importedHeaders: async (param0: unknown /* H256: [U8; 32] */): Promise<string | null> => {
+        importedHeaders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'ImportedHeaders', param0);
         },
 
         /**
         * The current GRANDPA Authority set.
+
+        * @return AuthoritySet: {authorities: Vec&lt;([U8; 32], U64)&gt;, set_id: U64}
         */
         currentAuthoritySet: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'CurrentAuthoritySet');
@@ -65,6 +81,8 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
         * `None`, then there are no direct ways to halt/resume pallet operations, but other
         * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
         * flag directly or call the `halt_operations`).
+
+        * @return AccountId32: [U8; 32]
         */
         palletOwner: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'PalletOwner');
@@ -72,6 +90,8 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
 
         /**
         * If true, all pallet transactions are failed immediately.
+
+        * @return Bool
         */
         isHalted: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinGrandpa', 'IsHalted');
