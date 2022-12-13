@@ -1,6 +1,6 @@
 {
   "name": "darwinia-storage",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "types": "./index.d.ts",
   "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
   "main": "dist/index.js",
