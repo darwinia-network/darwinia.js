@@ -1,3 +1,6 @@
+import metadata from "./metadata";
+export const pangoroMetaStatic = metadata;
+
 import {GetStorage} from "../../storage";
 
 import {getSystem} from "./system";

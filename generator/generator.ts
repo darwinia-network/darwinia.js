@@ -4,9 +4,8 @@ import type { HexString } from '@polkadot/util/types';
 import axios from 'axios';
 import { buildMetadata } from '../helpers';
 import { StorageEntryMetadataV14, StorageHasherV14 } from "@polkadot/types/interfaces/metadata/types";
-import {Si1Field, SiLookupTypeId} from "@polkadot/types/interfaces";
+import { Si1Field, SiLookupTypeId } from "@polkadot/types/interfaces";
 import { Metadata, Vec } from "@polkadot/types";
-import {SiType} from "@polkadot/types/interfaces/scaleInfo";
 
 async function getMetadata(url: string): Promise<HexString> {
     const response = await axios.post(url, {
@@ -23,7 +22,7 @@ async function getMetadata(url: string): Promise<HexString> {
     return response.data.result;
 }
 
-function isFullUppercaseWord(str: string){
+function isFullUppercaseWord(str: string) {
     const str1 = str.replace(/ /g, "")
     return /^[A-Z]*$/.test(str1)
 }
@@ -47,7 +46,7 @@ function formatSiType(tid: SiLookupTypeId, metadata: Metadata): string {
     const typeName = t.path.map(p => {
         return p.toString();
     });
-    if(typeName.length == 0) {
+    if (typeName.length == 0) {
         return `${getType(tid, metadata)}`;
     } else {
         return `${typeName[typeName.length - 1]}: ${getType(tid, metadata)}`;
@@ -69,7 +68,7 @@ function buildOutputType(entries: Vec<StorageEntryMetadataV14>, metadata: Metada
 function buildInputTypes(entries: Vec<StorageEntryMetadataV14>, metadata: Metadata): Map<string, string[] | null> {
     const result = new Map<string, string[] | null>();
     entries.forEach(entry => {
-        if(entry.type.isMap) {
+        if (entry.type.isMap) {
             const map = entry.type.asMap;
             result.set(entry.name.toString(), getInputTypes(map, metadata));
         } else {
@@ -89,7 +88,7 @@ function getInputTypes(map: StorageMap, metadata: Metadata): string[] {
         const typeName = type.path.map(p => {
             return p.toString();
         });
-        if(typeName.length == 0) {
+        if (typeName.length == 0) {
             return `${getType(inputTypeId, metadata)}`;
         } else {
             return `${typeName[typeName.length - 1]}: ${getType(inputTypeId, metadata)}`;
@@ -104,7 +103,7 @@ function buildFields(fields: IterableIterator<Si1Field>, metadata: Metadata) {
         result.push([name, getType(field.type, metadata)]);
     }
 
-    if(result.length == 0) {
+    if (result.length == 0) {
         return ""
     }
 
@@ -129,7 +128,7 @@ function buildFields(fields: IterableIterator<Si1Field>, metadata: Metadata) {
 
 function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     const type = metadata.registry.lookup.getSiType(typeId);
-    if(type.def.isPrimitive) {
+    if (type.def.isPrimitive) {
         return type.def.asPrimitive.toString();
     } else if (type.def.isArray) {
         let result = [];
@@ -141,17 +140,17 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     } else if (type.def.isComposite) {
         let fields = type.def.asComposite.fields.values();
         return buildFields(fields, metadata);
-    } else if(type.def.isSequence) {
+    } else if (type.def.isSequence) {
         const typeName = getType(type.def.asSequence.type, metadata);
         return `Vec<${typeName}>`
-    } else if(type.def.isTuple) {
+    } else if (type.def.isTuple) {
         const str = type.def.asTuple.map(a => {
             return getType(a, metadata);
         }).join(", ");
         return `(${str})`;
-    } else if(type.def.isVariant) {
+    } else if (type.def.isVariant) {
         let str = "Enum<\{";
-        if(type.def.isBasic) {
+        if (type.def.isBasic) {
             str = str + type.def.asVariant.variants.map(v => {
                 return `"${v.name}"`
             }).join(", ");
@@ -164,10 +163,10 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
         }
         str = str + "\}>";
         return str;
-    } else if(type.def.isCompact) {
+    } else if (type.def.isCompact) {
         const innerTypeName = getType(type.def.asCompact.type, metadata);
         return `Compact<${innerTypeName}>`;
-    } else if(type.def.isBitSequence) {
+    } else if (type.def.isBitSequence) {
         const bitStoreType = getType(type.def.asBitSequence.bitStoreType, metadata);
         return `BitVec<${bitStoreType}>`;
     } else {
@@ -188,10 +187,15 @@ async function main() {
     // Prepare templates
     const template = fs.readFileSync('./generator/pallet.ts.ejs', 'utf8');
     const indexTemplate = fs.readFileSync('./generator/index.ts.ejs', 'utf8');
+    const metadataTemplate = fs.readFileSync('./generator/metadata.ts.ejs', 'utf8');
 
     // Prepare metadata
     const metaStatic = await getMetadata(endpoint);
     const metadata = buildMetadata(metaStatic);
+
+    // Generate metadata.ts
+    const metaResult = ejs.render(metadataTemplate, { metaStatic });
+    fs.writeFileSync(`./chains/${chainName}/metadata.ts`, metaResult);
 
     // Generate files according to the pallet name
     const moduleNames: String[] = [];
@@ -211,7 +215,7 @@ async function main() {
         const outputTypes = buildOutputType(entries, metadata);
 
         // Generate file for a pallet
-        const result = ejs.render(template, {prefix, moduleName, entries, entryInputTypes, outputTypes});
+        const result = ejs.render(template, { prefix, moduleName, entries, entryInputTypes, outputTypes });
         fs.writeFileSync(`./chains/${chainName}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
@@ -219,7 +223,7 @@ async function main() {
     })
 
     // Generate the index.ts
-    const result = ejs.render(indexTemplate, {chainName, moduleNames, prefixs});
+    const result = ejs.render(indexTemplate, { chainName, moduleNames, prefixs });
     fs.writeFileSync(`./chains/${chainName}/index.ts`, result);
 }
 

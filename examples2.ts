@@ -1,22 +1,5 @@
-# darwinia-storage
-
-A library to help fetch internal substrate storages via ethereum json-rpc `eth.call`.
-
-You can use this lib to fetch all Darwinia storages allowed by [StateStorage precompile](https://docs.darwinia.network/builder/solidity-precompiles).
-
-## Install
-```shell
-npm install darwinia-storage --save
-```
-
-## Usage
-
-The returns of this lib's functions are all json string or null.
-
-
-```typescript
 import {ethers} from "ethers";
-import { getStorage, buildPangolin2Client, pangolin2MetaStatic } from "darwinia-storage";
+import { getStorage, buildPangolin2Client, pangolin2MetaStatic } from "./index";
 
 async function main(): Promise<void> {
     // web3 provider(eth compatible api endpoint)
@@ -42,14 +25,3 @@ async function main(): Promise<void> {
 }
 
 main();
-```
-more examples in [examples.ts](./examples.ts)
-
-### Get the metadata static hex string from darwinia node
-```shell
-curl -X POST \
-     -H 'Content-Type: application/json' \
-     -d '{"jsonrpc":"2.0","id":"1","method":"state_getMetadata","params":[]}' \
-     https://darwinia-crab.api.onfinality.io/public/
-```
-

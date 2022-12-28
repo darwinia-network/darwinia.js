@@ -1,13 +1,12 @@
 import { ethers } from "ethers";
-import metaStatic from './crab-hex';
-import { getStorage, buildCrabClient } from "./index"
+import { getStorage, buildCrabClient, crabMetaStatic } from "./index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://darwinia-crab.api.onfinality.io/public/");
 
     // a general storage function for a specific chain
-    const getCrabStorage = getStorage(provider, metaStatic);
+    const getCrabStorage = getStorage(provider, crabMetaStatic);
 
     ////////////////////////////////////////////////////////////
     // Way 1: use pallet name and storage name to fetch storages

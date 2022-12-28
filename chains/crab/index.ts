@@ -1,3 +1,6 @@
+import metadata from "./metadata";
+export const crabMetaStatic = metadata;
+
 import {GetStorage} from "../../storage";
 
 import {getSystem} from "./system";

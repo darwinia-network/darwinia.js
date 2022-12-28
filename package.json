@@ -6,8 +6,9 @@
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "tsc",
+    "genpangolin2": "CHAIN=pangolin2 ENDPOINT=http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
-    "gencrab": "CHAIN=crab ENDPOINT=https://darwiniacrab-rpc.dwellir.com ts-node generator/generator.ts",
+    "gencrab": "CHAIN=crab ENDPOINT=https://darwinia-crab.api.onfinality.io/public ts-node generator/generator.ts",
     "genpangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
     "gendarwinia": "CHAIN=darwinia ENDPOINT=https://darwinia-rpc.dwellir.com ts-node generator/generator.ts",
     "test": "echo \"Error: no test specified\" && exit 1"

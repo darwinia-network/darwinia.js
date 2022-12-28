@@ -1,3 +1,6 @@
+import metadata from "./metadata";
+export const pangolinMetaStatic = metadata;
+
 import {GetStorage} from "../../storage";
 
 import {getSystem} from "./system";
