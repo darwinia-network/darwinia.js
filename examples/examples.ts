@@ -16,9 +16,9 @@ async function main(): Promise<void> {
     const wallet = new ethers.Wallet("d5dd1909b74029eb3164b10ce84abaf9b0ea379b3ea0d4e2a96241806b8f8175");
 
     // Way 1
-    const key: HexString = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
-    const ecdsaKey: HexString = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00";
-    const keys: Keys = {
+    const key = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
+    const ecdsaKey = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00";
+    const keys = {
         babe: key,
         grandpa: key,
         beefy: ecdsaKey,
