@@ -1,0 +1,33 @@
+import { Dispatch } from "../../../call";
+import { ethers } from "ethers";
+
+export const get<%= prefix %> = (dispatch: Dispatch) => {
+    return {
+<%_ for(let i = 0; i < palletCalls.length; i++) {
+        const call = palletCalls[i];
+        const callName = call[0];
+	const callParams = call[1];
+	const input = [];
+	const input2 = [];
+_%>
+        /**
+<%_
+        for(let j = 0; j < callParams.length; j++) {
+	    const callParam = callParams[j];
+_%>
+         * @param param<%= j %>: <%- callParam %>
+<%_
+	    input.push(`param${j}: unknown`)
+	    input2.push(`param${j}`)
+	}
+_%>
+	 */
+        <%= callName %>: async (signer: ethers.Signer<%= input.length > 0 ? `, ${input.join(", ")}` : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
+        },
+
+<%_ 
+    }
+%>
+    }
+}

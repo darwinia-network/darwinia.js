@@ -1,0 +1,19 @@
+import { Dispatch } from "../../../call";
+
+<%_ 
+for(let i = 0; i < moduleNames.length; i++) { 
+    const prefix = prefixs[i];
+_%>
+import {get<%= prefix %>} from "./<%= moduleNames[i] %>";
+<%_ } _%>
+
+export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>CallsClient = (dispatch: Dispatch) => {
+    return {
+<%_ 
+for(let i = 0; i < moduleNames.length; i++) { 
+    const prefix = prefixs[i];
+_%>
+        <%= moduleNames[i] %>: get<%= prefix %>(dispatch),
+<%_ } _%>
+    };
+}

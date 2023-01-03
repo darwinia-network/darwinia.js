@@ -1,7 +1,4 @@
-import metadata from "./metadata";
-export const <%= chainName %>MetaStatic = metadata;
-
-import {GetStorage} from "../../storage";
+import {GetStorage} from "../../../storage";
 
 <%_ 
 for(let i = 0; i < moduleNames.length; i++) { 
@@ -10,7 +7,7 @@ _%>
 import {get<%= prefix %>} from "./<%= moduleNames[i] %>";
 <%_ } _%>
 
-export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>Client = (getStorage: GetStorage) => {
+export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>StoragesClient = (getStorage: GetStorage) => {
     return {
 <%_ 
 for(let i = 0; i < moduleNames.length; i++) { 
