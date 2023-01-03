@@ -1,5 +1,5 @@
-export * from './pangolin2';
-export * from './pangolin';
-export * from './crab';
-export * from './pangoro';
-export * from './darwinia';
+import * as s from "./storages";
+import * as c from "./calls";
+
+export const storages = s;
+export const calls = c;

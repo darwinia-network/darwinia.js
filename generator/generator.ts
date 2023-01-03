@@ -22,6 +22,14 @@ async function getMetadata(url: string): Promise<HexString> {
     return response.data.result;
 }
 
+const snakeCaseToCamel = (str: string) => {
+    return str.replace(/([-_][a-z])/ig, ($1) => {
+        return $1.toUpperCase()
+            .replace('-', '')
+            .replace('_', '');
+    });
+}
+
 function isFullUppercaseWord(str: string) {
     const str1 = str.replace(/ /g, "")
     return /^[A-Z]*$/.test(str1)
@@ -174,28 +182,68 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     }
 }
 
-async function main() {
-    const chainName = process.env["CHAIN"] || "crab";
-    const endpoint = process.env["ENDPOINT"] || "https://darwiniacrab-rpc.dwellir.com";
+async function generateCalls(chainName: string, metadata: Metadata) {
+    const callsRoot = "./chains/calls";
+    fs.rmSync(`${callsRoot}/${chainName}`, { recursive: true, force: true });
+    fs.mkdirSync(`${callsRoot}/${chainName}`);
+
+    const palletCallsTemplate = fs.readFileSync('./generator/palletCalls.ts.ejs', 'utf8');
+    const callsIndexTemplate = fs.readFileSync('./generator/callsIndex.ts.ejs', 'utf8');
+
+    const moduleNames: String[] = [];
+    const prefixs: String[] = [];
+    metadata.asLatest.pallets.forEach((pallet) => {
+        if (pallet.calls.isNone) {
+            return;
+        }
+
+        const prefix = pallet.name.toString();
+        const moduleName = getModuleName(prefix);
+
+        const palletCalls: [string, string[]][] = [];
+        const calls = pallet.calls.unwrap();
+        const callsType = metadata.registry.lookup.getSiType(calls.type);
+        callsType.def.asVariant.variants.forEach(call => {
+            const callName = snakeCaseToCamel(call.name.toString());
+
+            const callParams: string[] = [];
+            call.fields.forEach(field => {
+                const paramTypeString = getType(field.type, metadata);
+                callParams.push(paramTypeString);
+            });
+
+            palletCalls.push([callName, callParams])
+        });
+
+        const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls });
+        fs.writeFileSync(`${callsRoot}/${chainName}/${moduleName}.ts`, result);
+
+        moduleNames.push(moduleName);
+        prefixs.push(prefix);
+    });
+
+    // Generate the index.ts
+    const result = ejs.render(callsIndexTemplate, { chainName, moduleNames, prefixs });
+    fs.writeFileSync(`${callsRoot}/${chainName}/index.ts`, result);
+}
+
+function generateStorages(chainName: string, metadata: Metadata, metaStatic: string) {
+    const storagesRoot = "./chains/storages";
 
     // Remove old files
-    fs.rmSync(`./chains/${chainName}`, { recursive: true, force: true });
+    fs.rmSync(`${storagesRoot}/${chainName}`, { recursive: true, force: true });
 
     // Create dir
-    fs.mkdirSync(`./chains/${chainName}`);
+    fs.mkdirSync(`${storagesRoot}/${chainName}`);
 
     // Prepare templates
     const template = fs.readFileSync('./generator/pallet.ts.ejs', 'utf8');
     const indexTemplate = fs.readFileSync('./generator/index.ts.ejs', 'utf8');
     const metadataTemplate = fs.readFileSync('./generator/metadata.ts.ejs', 'utf8');
 
-    // Prepare metadata
-    const metaStatic = await getMetadata(endpoint);
-    const metadata = buildMetadata(metaStatic);
-
     // Generate metadata.ts
     const metaResult = ejs.render(metadataTemplate, { metaStatic });
-    fs.writeFileSync(`./chains/${chainName}/metadata.ts`, metaResult);
+    fs.writeFileSync(`${storagesRoot}/${chainName}/metadata.ts`, metaResult);
 
     // Generate files according to the pallet name
     const moduleNames: String[] = [];
@@ -216,7 +264,7 @@ async function main() {
 
         // Generate file for a pallet
         const result = ejs.render(template, { prefix, moduleName, entries, entryInputTypes, outputTypes });
-        fs.writeFileSync(`./chains/${chainName}/${moduleName}.ts`, result);
+        fs.writeFileSync(`${storagesRoot}/${chainName}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
         prefixs.push(prefix);
@@ -224,7 +272,19 @@ async function main() {
 
     // Generate the index.ts
     const result = ejs.render(indexTemplate, { chainName, moduleNames, prefixs });
-    fs.writeFileSync(`./chains/${chainName}/index.ts`, result);
+    fs.writeFileSync(`${storagesRoot}/${chainName}/index.ts`, result);
+}
+
+async function main() {
+    const chainName = process.env["CHAIN"] || "pangolin";
+    const endpoint = process.env["ENDPOINT"] || "https://pangolin-rpc.darwinia.network";
+
+    // Prepare metadata
+    const metaStatic = await getMetadata(endpoint);
+    const metadata = buildMetadata(metaStatic);
+
+    generateStorages(chainName, metadata, metaStatic);
+    generateCalls(chainName, metadata);
 }
 
 main();
