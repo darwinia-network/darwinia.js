@@ -1,10 +1,10 @@
 import { ethers } from "ethers";
-import { buildMetadata, dispatch, storages, calls, setSessionKeys } from "../index"
+import { buildMetadata, metadatas, dispatch, calls, setSessionKeys } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
-    const metadata = buildMetadata(storages.pangoroMetaStatic);
+    const metadata = buildMetadata(metadatas.pangolinMetaStatic);
 
     const dispatchPangolinCall = dispatch(provider, metadata);
     // const wallet = provider.getSigner();

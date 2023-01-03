@@ -1,6 +1,3 @@
-import metadata from "./metadata";
-export const darwiniaMetaStatic = metadata;
-
 import {GetStorage} from "../../../storage";
 
 import {getSystem} from "./system";

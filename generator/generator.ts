@@ -227,7 +227,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
     fs.writeFileSync(`${callsRoot}/${chainName}/index.ts`, result);
 }
 
-function generateStorages(chainName: string, metadata: Metadata, metaStatic: string) {
+function generateStorages(chainName: string, metadata: Metadata) {
     const storagesRoot = "./chains/storages";
 
     // Remove old files
@@ -239,11 +239,6 @@ function generateStorages(chainName: string, metadata: Metadata, metaStatic: str
     // Prepare templates
     const template = fs.readFileSync('./generator/pallet.ts.ejs', 'utf8');
     const indexTemplate = fs.readFileSync('./generator/index.ts.ejs', 'utf8');
-    const metadataTemplate = fs.readFileSync('./generator/metadata.ts.ejs', 'utf8');
-
-    // Generate metadata.ts
-    const metaResult = ejs.render(metadataTemplate, { metaStatic });
-    fs.writeFileSync(`${storagesRoot}/${chainName}/metadata.ts`, metaResult);
 
     // Generate files according to the pallet name
     const moduleNames: String[] = [];
@@ -275,6 +270,13 @@ function generateStorages(chainName: string, metadata: Metadata, metaStatic: str
     fs.writeFileSync(`${storagesRoot}/${chainName}/index.ts`, result);
 }
 
+function generateMetadatas(chainName: string, metaStatic: string) {
+    const metadatasRoot = "./chains/metadatas";
+    const metadataTemplate = fs.readFileSync('./generator/metadata.ts.ejs', 'utf8');
+    const metaResult = ejs.render(metadataTemplate, { metaStatic });
+    fs.writeFileSync(`${metadatasRoot}/${chainName}Metadata.ts`, metaResult);
+}
+
 async function main() {
     const chainName = process.env["CHAIN"] || "pangolin";
     const endpoint = process.env["ENDPOINT"] || "https://pangolin-rpc.darwinia.network";
@@ -283,8 +285,9 @@ async function main() {
     const metaStatic = await getMetadata(endpoint);
     const metadata = buildMetadata(metaStatic);
 
-    generateStorages(chainName, metadata, metaStatic);
+    generateStorages(chainName, metadata);
     generateCalls(chainName, metadata);
+    generateMetadatas(chainName, metaStatic);
 }
 
 main();
