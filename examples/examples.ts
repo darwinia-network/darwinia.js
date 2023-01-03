@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
 import { buildMetadata, pangolinMetaStatic } from "../index"
 import { getStorage, buildPangolinClient } from "../index"
-import { dispatch, setKeys, Keys } from "../index"
-import { HexString } from "@polkadot/util/types";
+import { dispatch, setSessionKeys } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -25,11 +24,11 @@ async function main(): Promise<void> {
         im_online: key,
         authority_discovery: key
     };
-    dispatchPangolinCall(wallet, "Session", "setKeys", false, keys, "0x");
+    await dispatchPangolinCall(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Way 2
     const keys2 = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dc1d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
-    setKeys(dispatchPangolinCall, wallet, keys2)
+    await setSessionKeys(dispatchPangolinCall, wallet, keys2);
 
     ////////////////////////////////////////////////////////////
     // STORAGE

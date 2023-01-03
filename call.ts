@@ -23,7 +23,7 @@ type EthersError = {
     };
 }
 
-async function doDispatch(provider: BaseProvider, wallet: ethers.Wallet, callData: HexString | Uint8Array, gasLimit: number): Promise<TxHash> {
+async function doDispatch(provider: BaseProvider, signer: ethers.Signer, callData: HexString | Uint8Array, gasLimit: number): Promise<ethers.providers.TransactionReceipt> {
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
         await dryRun(provider, contractAddress, callData, gasLimit);
@@ -34,12 +34,11 @@ async function doDispatch(provider: BaseProvider, wallet: ethers.Wallet, callDat
             data: callData,
             gasLimit: gasLimit,
             gasPrice: ethers.utils.parseUnits("1", "gwei"),
-            nonce: await provider.getTransactionCount(wallet.getAddress())
+            nonce: await provider.getTransactionCount(signer.getAddress())
         };
-        let signedTx = await wallet.signTransaction(tx);
+        let signedTx = await signer.signTransaction(tx);
         let sentTx = await provider.sendTransaction(signedTx);
-        await sentTx.wait();
-        return sentTx.hash as TxHash;
+        return sentTx.wait();
     } catch (ex: any) {
         // TODO: better error handling
         const message = (ex as EthersError).error?.error?.message;
@@ -101,7 +100,7 @@ function getCallParamLookupTypes(metadata: Metadata, call: SiVariant): string[] 
 }
 
 export function dispatch(provider: BaseProvider, metadata: Metadata) {
-    return async (wallet: ethers.Wallet, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>): Promise<TxHash> => {
+    return async (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>): Promise<ethers.providers.TransactionReceipt> => {
         // palletName = camelToSnakeCase(palletName);
         callName = camelToSnakeCase(callName);
         const { call, callIndex } = getCall(metadata, palletName, callName);
@@ -124,21 +123,12 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
 
         let callData = u8aConcat(callIndex, paramsData);
         console.debug(`call data: ${u8aToHex(callData)}`);
-        return doDispatch(provider, wallet, callData, 800000);
+        return doDispatch(provider, signer, callData, 800000);
     };
 }
 
-export type Keys = {
-    babe: HexString,
-    grandpa: HexString,
-    beefy: HexString,
-    im_online: HexString,
-    authority_discovery: HexString
-};
+export type Dispatch = (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>) => Promise<ethers.providers.TransactionReceipt>;
 
-export type TxHash = HexString;
-export type Dispatch = (wallet: ethers.Wallet, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>) => Promise<TxHash>;
-
-export async function setKeys(dispatch: Dispatch, wallet: ethers.Wallet, keys: HexString): Promise<TxHash> {
-    return await dispatch(wallet, "Session", "set_keys", true, hexToU8a(keys), hexToU8a("0x00"));
+export async function setSessionKeys(dispatch: Dispatch, signer: ethers.Signer, keys: HexString): Promise<ethers.providers.TransactionReceipt> {
+    return await dispatch(signer, "Session", "set_keys", true, hexToU8a(keys), hexToU8a("0x00"));
 }
