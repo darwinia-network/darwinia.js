@@ -1,12 +1,13 @@
-import {ethers} from "ethers";
-import { getStorage, buildPangolin2Client, pangolin2MetaStatic } from "./index";
+import { ethers } from "ethers";
+import { buildMetadata, getStorage, buildPangolin2Client, pangolin2MetaStatic } from "../index";
 
 async function main(): Promise<void> {
     // web3 provider(eth compatible api endpoint)
     const provider = new ethers.providers.JsonRpcProvider("http://g1.dev.darwinia.network:10000");
+    const metadata = buildMetadata(pangolin2MetaStatic);
 
     // a general storage function for a specific chain
-    const getPangolin2Storage = getStorage(provider, pangolin2MetaStatic);
+    const getPangolin2Storage = getStorage(provider, metadata);
 
     // There are two ways to fetch a storage.
     //
@@ -17,7 +18,7 @@ async function main(): Promise<void> {
 
     //  2. the general way.
     result = await getPangolin2Storage(
-        "System", 
+        "System",
         "Account",
         '0x794BF0B66926D84CB735283D849f454A2A8d9a44'
     );

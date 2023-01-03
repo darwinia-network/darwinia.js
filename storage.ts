@@ -2,6 +2,7 @@ import {u8aToHex} from '@polkadot/util';
 import {ethers, providers} from "ethers";
 import {buildMetadata, buildStorageKey, getStorageEntry} from "./helpers";
 import {HexString} from "@polkadot/util/types";
+import { Metadata } from '@polkadot/types';
 
 type BaseProvider = providers.BaseProvider;
 
@@ -16,8 +17,7 @@ export async function getStorageRaw(provider: BaseProvider, storageKey: Uint8Arr
 
 export type GetStorage = (prefix: string, method: string, ...input: Array<unknown>) => Promise<string | null>;
 
-export function getStorage(provider: BaseProvider, metaStatic: Uint8Array | HexString) {
-    const metadata = buildMetadata(metaStatic);
+export function getStorage(provider: BaseProvider, metadata: Metadata) {
     return async (prefix: string, method: string, ...input: Array<unknown>): Promise<string | null> => {
         // 0. FIND STORAGE ENTRY FROM METADATA
         const storageEntry = getStorageEntry(metadata, prefix, method);
