@@ -18,7 +18,7 @@ The returns of this lib's functions are all json string or null.
 
 ```typescript
 import { ethers } from "ethers";
-import { buildMetadata, getStorage, buildPangolin2Client, pangolin2MetaStatic } from "darwinia-storage";
+import { buildMetadata, getStorage, buildPangolin2Client, pangolin2MetaStatic } from "darwinia-js-sdk";
 
 async function main(): Promise<void> {
     // web3 provider(eth compatible api endpoint)
@@ -50,30 +50,31 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { buildMetadata, dispatch, setKeys, Keys, pangolinMetaStatic } from "darwinia-storage";
+import { buildMetadata, dispatch, setSessionKeys, pangolinMetaStatic } from "darwinia-js-sdk";
 
 async function main(): Promise<void> {
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
     const metadata = buildMetadata(pangolinMetaStatic);
   
     const dispatchPangolinCall = dispatch(provider, metadata);
+    // const wallet = provider.getSigner();
     const wallet = new ethers.Wallet("d5dd1909b74029eb3164b10ce84abaf9b0ea379b3ea0d4e2a96241806b8f8175");
   
       // Way 1
-    const key: HexString = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
-    const ecdsaKey: HexString = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00";
-    const keys: Keys = {
+    const key = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
+    const ecdsaKey = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00";
+    const keys = {
         babe: key,
         grandpa: key,
         beefy: ecdsaKey,
         im_online: key,
         authority_discovery: key
     };
-    dispatchPangolinCall(wallet, "Session", "setKeys", false, keys, "0x");
+    await dispatchPangolinCall(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Way 2
     const keys2 = "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dc1d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27dd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d";
-    setKeys(dispatchPangolinCall, wallet, keys2)
+    await setSessionKeys(dispatchPangolinCall, wallet, keys2)
 }
 
 main();
