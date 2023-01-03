@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 export const get<%= prefix %> = (dispatch: Dispatch) => {
     return {
 <%_ for(let i = 0; i < palletCalls.length; i++) {
+        // [callName, [paramName, paramType]]
         const call = palletCalls[i];
         const callName = call[0];
 	const callParams = call[1];
@@ -13,12 +14,15 @@ _%>
         /**
 <%_
         for(let j = 0; j < callParams.length; j++) {
+	    // [paramName, paramType]
 	    const callParam = callParams[j];
+	    const paramName = callParam[0];
+	    const paramType = callParam[1];
 _%>
-         * @param param<%= j %>: <%- callParam %>
+         * @param <%- paramName %>: <%- paramType %>
 <%_
-	    input.push(`param${j}: unknown`)
-	    input2.push(`param${j}`)
+	    input.push(`${paramName}: unknown`)
+	    input2.push(`${paramName}`)
 	}
 _%>
 	 */
