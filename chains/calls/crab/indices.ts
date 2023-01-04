@@ -4,41 +4,41 @@ import { ethers } from "ethers";
 export const getIndices = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U32
+         * @param _index: U32
 	 */
-        claim: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Indices', 'claim', false, param0);
+        claim: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'claim', false, _index);
         },
 
         /**
-         * @param param0: [U8; 32]
-         * @param param1: U32
+         * @param _new: [U8; 32]
+         * @param _index: U32
 	 */
-        transfer: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Indices', 'transfer', false, param0, param1);
+        transfer: async (signer: ethers.Signer, _new: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'transfer', false, _new, _index);
         },
 
         /**
-         * @param param0: U32
+         * @param _index: U32
 	 */
-        free: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Indices', 'free', false, param0);
+        free: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'free', false, _index);
         },
 
         /**
-         * @param param0: [U8; 32]
-         * @param param1: U32
-         * @param param2: Bool
+         * @param _new: [U8; 32]
+         * @param _index: U32
+         * @param _freeze: Bool
 	 */
-        forceTransfer: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Indices', 'forceTransfer', false, param0, param1, param2);
+        forceTransfer: async (signer: ethers.Signer, _new: unknown, _index: unknown, _freeze: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'forceTransfer', false, _new, _index, _freeze);
         },
 
         /**
-         * @param param0: U32
+         * @param _index: U32
 	 */
-        freeze: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Indices', 'freeze', false, param0);
+        freeze: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'freeze', false, _index);
         },
 
 

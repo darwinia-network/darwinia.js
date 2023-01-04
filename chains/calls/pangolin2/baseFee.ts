@@ -4,17 +4,17 @@ import { ethers } from "ethers";
 export const getBaseFee = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: [U64; 4]
+         * @param _fee: [U64; 4]
 	 */
-        setBaseFeePerGas: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, param0);
+        setBaseFeePerGas: async (signer: ethers.Signer, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, _fee);
         },
 
         /**
-         * @param param0: U32
+         * @param _elasticity: U32
 	 */
-        setElasticity: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setElasticity', false, param0);
+        setElasticity: async (signer: ethers.Signer, _elasticity: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BaseFee', 'setElasticity', false, _elasticity);
         },
 
 

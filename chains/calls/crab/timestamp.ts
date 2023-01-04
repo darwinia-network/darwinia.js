@@ -4,10 +4,10 @@ import { ethers } from "ethers";
 export const getTimestamp = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: Compact<U64>
+         * @param _now: Compact<U64>
 	 */
-        set: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Timestamp', 'set', false, param0);
+        set: async (signer: ethers.Signer, _now: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Timestamp', 'set', false, _now);
         },
 
 

@@ -4,49 +4,49 @@ import { ethers } from "ethers";
 export const getTips = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: Vec<U8>
-         * @param param1: [U8; 20]
+         * @param _reason: Vec<U8>
+         * @param _who: [U8; 20]
 	 */
-        reportAwesome: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'reportAwesome', false, param0, param1);
+        reportAwesome: async (signer: ethers.Signer, _reason: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'reportAwesome', false, _reason, _who);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _hash: [U8; 32]
 	 */
-        retractTip: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'retractTip', false, param0);
+        retractTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'retractTip', false, _hash);
         },
 
         /**
-         * @param param0: Vec<U8>
-         * @param param1: [U8; 20]
-         * @param param2: Compact<U128>
+         * @param _reason: Vec<U8>
+         * @param _who: [U8; 20]
+         * @param _tip_value: Compact<U128>
 	 */
-        tipNew: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'tipNew', false, param0, param1, param2);
+        tipNew: async (signer: ethers.Signer, _reason: unknown, _who: unknown, _tip_value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'tipNew', false, _reason, _who, _tip_value);
         },
 
         /**
-         * @param param0: [U8; 32]
-         * @param param1: Compact<U128>
+         * @param _hash: [U8; 32]
+         * @param _tip_value: Compact<U128>
 	 */
-        tip: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'tip', false, param0, param1);
+        tip: async (signer: ethers.Signer, _hash: unknown, _tip_value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'tip', false, _hash, _tip_value);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _hash: [U8; 32]
 	 */
-        closeTip: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'closeTip', false, param0);
+        closeTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'closeTip', false, _hash);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _hash: [U8; 32]
 	 */
-        slashTip: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Tips', 'slashTip', false, param0);
+        slashTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Tips', 'slashTip', false, _hash);
         },
 
 

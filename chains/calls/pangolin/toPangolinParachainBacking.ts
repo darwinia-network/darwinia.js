@@ -4,43 +4,43 @@ import { ethers } from "ethers";
 export const getToPangolinParachainBacking = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U32
-         * @param param1: U64
-         * @param param2: Compact<U128>
-         * @param param3: Compact<U128>
-         * @param param4: [U8; 32]
+         * @param _spec_version: U32
+         * @param _weight: U64
+         * @param _value: Compact<U128>
+         * @param _fee: Compact<U128>
+         * @param _recipient: [U8; 32]
 	 */
-        lockAndRemoteIssue: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown, param4: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ToPangolinParachainBacking', 'lockAndRemoteIssue', false, param0, param1, param2, param3, param4);
+        lockAndRemoteIssue: async (signer: ethers.Signer, _spec_version: unknown, _weight: unknown, _value: unknown, _fee: unknown, _recipient: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'lockAndRemoteIssue', false, _spec_version, _weight, _value, _fee, _recipient);
         },
 
         /**
-         * @param param0: U128
-         * @param param1: [U8; 32]
+         * @param _amount: U128
+         * @param _recipient: [U8; 32]
 	 */
-        unlockFromRemote: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ToPangolinParachainBacking', 'unlockFromRemote', false, param0, param1);
+        unlockFromRemote: async (signer: ethers.Signer, _amount: unknown, _recipient: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'unlockFromRemote', false, _amount, _recipient);
         },
 
         /**
-         * @param param0: U32
+         * @param _period: U32
 	 */
-        setSecureLimitedPeriod: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecureLimitedPeriod', false, param0);
+        setSecureLimitedPeriod: async (signer: ethers.Signer, _period: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecureLimitedPeriod', false, _period);
         },
 
         /**
-         * @param param0: U128
+         * @param _limitation: U128
 	 */
-        setSecurityLimitationRingAmount: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecurityLimitationRingAmount', false, param0);
+        setSecurityLimitationRingAmount: async (signer: ethers.Signer, _limitation: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecurityLimitationRingAmount', false, _limitation);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _account: [U8; 32]
 	 */
-        setRemoteMappingTokenFactoryAccount: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ToPangolinParachainBacking', 'setRemoteMappingTokenFactoryAccount', false, param0);
+        setRemoteMappingTokenFactoryAccount: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setRemoteMappingTokenFactoryAccount', false, _account);
         },
 
 

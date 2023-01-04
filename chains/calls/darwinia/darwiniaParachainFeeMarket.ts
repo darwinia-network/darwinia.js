@@ -4,25 +4,25 @@ import { ethers } from "ethers";
 export const getDarwiniaParachainFeeMarket = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U128
-         * @param param1: Enum<{"0/None", "1/Some"}>
+         * @param _lock_collateral: U128
+         * @param _relay_fee: Enum<{"0/None", "1/Some"}>
 	 */
-        enrollAndLockCollateral: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'enrollAndLockCollateral', false, param0, param1);
+        enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
         },
 
         /**
-         * @param param0: U128
+         * @param _new_collateral: U128
 	 */
-        updateLockedCollateral: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'updateLockedCollateral', false, param0);
+        updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
 
         /**
-         * @param param0: U128
+         * @param _new_fee: U128
 	 */
-        updateRelayFee: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'updateRelayFee', false, param0);
+        updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'updateRelayFee', false, _new_fee);
         },
 
         /**
@@ -32,17 +32,17 @@ export const getDarwiniaParachainFeeMarket = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param param0: U128
+         * @param _slash_protect: U128
 	 */
-        setSlashProtect: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'setSlashProtect', false, param0);
+        setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'setSlashProtect', false, _slash_protect);
         },
 
         /**
-         * @param param0: U32
+         * @param _number: U32
 	 */
-        setAssignedRelayersNumber: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'setAssignedRelayersNumber', false, param0);
+        setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'setAssignedRelayersNumber', false, _number);
         },
 
 
