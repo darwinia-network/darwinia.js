@@ -10,8 +10,8 @@ export const getEVM = (dispatch: Dispatch) => {
          * @param _value: [U64; 4]
          * @param _gas_limit: U64
          * @param _max_fee_per_gas: [U64; 4]
-         * @param _max_priority_fee_per_gas: Enum<{"0/None", "1/Some"}>
-         * @param _nonce: Enum<{"0/None", "1/Some"}>
+         * @param _max_priority_fee_per_gas: Enum<{None: , Some: [U64; 4]}>
+         * @param _nonce: Enum<{None: , Some: [U64; 4]}>
          * @param _access_list: Vec<([U8; 20], Vec<[U8; 32]>)>
 	 */
         call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -24,8 +24,8 @@ export const getEVM = (dispatch: Dispatch) => {
          * @param _value: [U64; 4]
          * @param _gas_limit: U64
          * @param _max_fee_per_gas: [U64; 4]
-         * @param _max_priority_fee_per_gas: Enum<{"0/None", "1/Some"}>
-         * @param _nonce: Enum<{"0/None", "1/Some"}>
+         * @param _max_priority_fee_per_gas: Enum<{None: , Some: [U64; 4]}>
+         * @param _nonce: Enum<{None: , Some: [U64; 4]}>
          * @param _access_list: Vec<([U8; 20], Vec<[U8; 32]>)>
 	 */
         create: async (signer: ethers.Signer, _source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -39,8 +39,8 @@ export const getEVM = (dispatch: Dispatch) => {
          * @param _value: [U64; 4]
          * @param _gas_limit: U64
          * @param _max_fee_per_gas: [U64; 4]
-         * @param _max_priority_fee_per_gas: Enum<{"0/None", "1/Some"}>
-         * @param _nonce: Enum<{"0/None", "1/Some"}>
+         * @param _max_priority_fee_per_gas: Enum<{None: , Some: [U64; 4]}>
+         * @param _nonce: Enum<{None: , Some: [U64; 4]}>
          * @param _access_list: Vec<([U8; 20], Vec<[U8; 32]>)>
 	 */
         create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {

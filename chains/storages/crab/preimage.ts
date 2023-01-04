@@ -7,7 +7,7 @@ export const getPreimage = (getStorage: GetStorage) => {
         * The request status of a given hash.
         *
         * @param param0: H256: [U8; 32]
-        * @return RequestStatus: Enum<{"0/Unrequested", "1/Requested"}>
+        * @return RequestStatus: Enum<{Unrequested: Enum<{None: , Some: ([U8; 32], U128)}>, Requested: U32}>
         */
         statusFor: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Preimage', 'StatusFor', param0);

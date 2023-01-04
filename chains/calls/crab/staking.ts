@@ -4,9 +4,9 @@ import { ethers } from "ethers";
 export const getStaking = (dispatch: Dispatch) => {
     return {
         /**
-         * @param _controller: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
-         * @param _value: Enum<{"0/RingBalance", "1/KtonBalance"}>
-         * @param _payee: Enum<{"0/Staked", "1/Stash", "2/Controller", "3/Account", "4/None"}>
+         * @param _controller: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _value: Enum<{RingBalance: U128, KtonBalance: U128}>
+         * @param _payee: Enum<{Staked: , Stash: , Controller: , Account: [U8; 32], None: }>
          * @param _promise_month: U8
 	 */
         bond: async (signer: ethers.Signer, _controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -14,7 +14,7 @@ export const getStaking = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _max_additional: Enum<{"0/RingBalance", "1/KtonBalance"}>
+         * @param _max_additional: Enum<{RingBalance: U128, KtonBalance: U128}>
          * @param _promise_month: U8
 	 */
         bondExtra: async (signer: ethers.Signer, _max_additional: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -30,7 +30,7 @@ export const getStaking = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _value: Enum<{"0/RingBalance", "1/KtonBalance"}>
+         * @param _value: Enum<{RingBalance: U128, KtonBalance: U128}>
 	 */
         unbond: async (signer: ethers.Signer, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unbond', false, _value);
@@ -64,7 +64,7 @@ export const getStaking = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _targets: Vec<Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>>
+         * @param _targets: Vec<Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>>
 	 */
         nominate: async (signer: ethers.Signer, _targets: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', false, _targets);
@@ -77,14 +77,14 @@ export const getStaking = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _payee: Enum<{"0/Staked", "1/Stash", "2/Controller", "3/Account", "4/None"}>
+         * @param _payee: Enum<{Staked: , Stash: , Controller: , Account: [U8; 32], None: }>
 	 */
         setPayee: async (signer: ethers.Signer, _payee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', false, _payee);
         },
 
         /**
-         * @param _controller: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _controller: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
 	 */
         setController: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setController', false, _controller);
@@ -185,7 +185,7 @@ export const getStaking = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _who: Vec<Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>>
+         * @param _who: Vec<Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>>
 	 */
         kick: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', false, _who);
@@ -194,9 +194,9 @@ export const getStaking = (dispatch: Dispatch) => {
         /**
          * @param _min_nominator_bond: U128
          * @param _min_validator_bond: U128
-         * @param _max_nominator_count: Enum<{"0/None", "1/Some"}>
-         * @param _max_validator_count: Enum<{"0/None", "1/Some"}>
-         * @param _chill_threshold: Enum<{"0/None", "1/Some"}>
+         * @param _max_nominator_count: Enum<{None: , Some: U32}>
+         * @param _max_validator_count: Enum<{None: , Some: U32}>
+         * @param _chill_threshold: Enum<{None: , Some: U8}>
          * @param _min_commission: U32
 	 */
         setStakingConfigs: async (signer: ethers.Signer, _min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown): Promise<ethers.providers.TransactionReceipt> => {

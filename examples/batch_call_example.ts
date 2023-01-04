@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, dispatch, calls, setSessionKeys } from "../index"
+import { buildMetadata, metadatas, dispatch } from "../index"
 
 async function main(): Promise<void> {
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");

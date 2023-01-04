@@ -13,7 +13,7 @@ export const getTransactionPayment = (getStorage: GetStorage) => {
 
         /**
         *
-        * @return Releases: Enum<{"0/V1Ancient", "1/V2"}>
+        * @return Releases: Enum<{V1Ancient: , V2: }>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('TransactionPayment', 'StorageVersion');

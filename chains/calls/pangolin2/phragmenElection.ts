@@ -25,7 +25,7 @@ export const getPhragmenElection = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _renouncing: Enum<{"0/Member", "1/RunnerUp", "2/Candidate"}>
+         * @param _renouncing: Enum<{Member: , RunnerUp: , Candidate: Compact<U32>}>
 	 */
         renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);

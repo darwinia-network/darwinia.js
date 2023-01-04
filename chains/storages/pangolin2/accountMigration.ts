@@ -21,7 +21,7 @@ export const getAccountMigration = (getStorage: GetStorage) => {
         * https://github.dev/paritytech/substrate/blob/polkadot-v0.9.30/frame/assets/src/types.rs#L115
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return AssetAccount: {balance: U128, is_frozen: Bool, reason: Enum<{"0/Consumer", "1/Sufficient", "2/DepositHeld", "3/DepositRefunded"}>, extra: ()}
+        * @return AssetAccount: {balance: U128, is_frozen: Bool, reason: Enum<{Consumer: , Sufficient: , DepositHeld: U128, DepositRefunded: }>, extra: ()}
         */
         ktonAccounts: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'KtonAccounts', param0);

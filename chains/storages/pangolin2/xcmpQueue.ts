@@ -6,7 +6,7 @@ export const getXcmpQueue = (getStorage: GetStorage) => {
         /**
         * Status of the inbound XCMP channels.
         *
-        * @return Vec<{sender: U32, state: Enum<{"0/Ok", "1/Suspended"}>, message_metadata: Vec<(U32, Enum<{"0/ConcatenatedVersionedXcm", "1/ConcatenatedEncodedBlob", "2/Signals"}>)>}>
+        * @return Vec<{sender: U32, state: Enum<{Ok: , Suspended: }>, message_metadata: Vec<(U32, Enum<{ConcatenatedVersionedXcm: , ConcatenatedEncodedBlob: , Signals: }>)>}>
         */
         inboundXcmpStatus: async (): Promise<string | null> => {
             return await getStorage('XcmpQueue', 'InboundXcmpStatus');
@@ -31,7 +31,7 @@ export const getXcmpQueue = (getStorage: GetStorage) => {
         * case of the need to send a high-priority signal message this block.
         * The bool is true if there is a signal message waiting to be sent.
         *
-        * @return Vec<{recipient: U32, state: Enum<{"0/Ok", "1/Suspended"}>, signals_exist: Bool, first_index: U16, last_index: U16}>
+        * @return Vec<{recipient: U32, state: Enum<{Ok: , Suspended: }>, signals_exist: Bool, first_index: U16, last_index: U16}>
         */
         outboundXcmpStatus: async (): Promise<string | null> => {
             return await getStorage('XcmpQueue', 'OutboundXcmpStatus');

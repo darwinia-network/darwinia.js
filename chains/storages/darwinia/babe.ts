@@ -61,7 +61,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
         * Pending epoch configuration change that will be applied when the next epoch is enacted.
         *
-        * @return NextConfigDescriptor: Enum<{"1/V1"}>
+        * @return NextConfigDescriptor: Enum<{V1: {c: (U64, U64), allowed_slots: Enum<{PrimarySlots: , PrimaryAndSecondaryPlainSlots: , PrimaryAndSecondaryVRFSlots: }>}}>
         */
         pendingEpochConfigChange: async (): Promise<string | null> => {
             return await getStorage('Babe', 'PendingEpochConfigChange');
@@ -116,7 +116,7 @@ export const getBabe = (getStorage: GetStorage) => {
         * Temporary value (cleared at block finalization) which is `Some`
         * if per-block initialization has already been called for current block.
         *
-        * @return Option: Enum<{"0/None", "1/Some"}>
+        * @return Option: Enum<{None: , Some: [U8; 32]}>
         */
         initialized: async (): Promise<string | null> => {
             return await getStorage('Babe', 'Initialized');
@@ -128,7 +128,7 @@ export const getBabe = (getStorage: GetStorage) => {
         *
         * It is set in `on_initialize`, before it will contain the value from the last block.
         *
-        * @return Option: Enum<{"0/None", "1/Some"}>
+        * @return Option: Enum<{None: , Some: [U8; 32]}>
         */
         authorVrfRandomness: async (): Promise<string | null> => {
             return await getStorage('Babe', 'AuthorVrfRandomness');
@@ -164,7 +164,7 @@ export const getBabe = (getStorage: GetStorage) => {
         * The configuration for the current epoch. Should never be `None` as it is initialized in
         * genesis.
         *
-        * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{"0/PrimarySlots", "1/PrimaryAndSecondaryPlainSlots", "2/PrimaryAndSecondaryVRFSlots"}>}
+        * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{PrimarySlots: , PrimaryAndSecondaryPlainSlots: , PrimaryAndSecondaryVRFSlots: }>}
         */
         epochConfig: async (): Promise<string | null> => {
             return await getStorage('Babe', 'EpochConfig');
@@ -174,7 +174,7 @@ export const getBabe = (getStorage: GetStorage) => {
         * The configuration for the next epoch, `None` if the config will not change
         * (you can fallback to `EpochConfig` instead in that case).
         *
-        * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{"0/PrimarySlots", "1/PrimaryAndSecondaryPlainSlots", "2/PrimaryAndSecondaryVRFSlots"}>}
+        * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{PrimarySlots: , PrimaryAndSecondaryPlainSlots: , PrimaryAndSecondaryVRFSlots: }>}
         */
         nextEpochConfig: async (): Promise<string | null> => {
             return await getStorage('Babe', 'NextEpochConfig');

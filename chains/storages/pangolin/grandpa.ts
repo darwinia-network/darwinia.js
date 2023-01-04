@@ -6,7 +6,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
         * State of the current authority set.
         *
-        * @return StoredState: Enum<{"0/Live", "1/PendingPause", "2/Paused", "3/PendingResume"}>
+        * @return StoredState: Enum<{Live: , PendingPause: {scheduled_at: U32, delay: U32}, Paused: , PendingResume: {scheduled_at: U32, delay: U32}}>
         */
         state: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'State');
@@ -15,7 +15,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
         * Pending change: (signaled at, scheduled change).
         *
-        * @return StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec<([U8; 32], U64)>, forced: Enum<{"0/None", "1/Some"}>}
+        * @return StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec<([U8; 32], U64)>, forced: Enum<{None: , Some: U32}>}
         */
         pendingChange: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'PendingChange');

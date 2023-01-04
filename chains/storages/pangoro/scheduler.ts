@@ -7,7 +7,7 @@ export const getScheduler = (getStorage: GetStorage) => {
         * Items to be executed, indexed by the block number that they should be executed on.
         *
         * @param param0: U32
-        * @return Vec<Enum<{"0/None", "1/Some"}>>
+        * @return Vec<Enum<{None: , Some: {maybe_id: Enum<{None: , Some: Vec<U8>}>, priority: U8, call: Enum<{Value: Enum<{System, Babe, Timestamp, Balances, Kton, Authorship, ElectionProviderMultiPhase, Staking, Session, Grandpa, MessageGadget, EcdsaAuthority, ImOnline, Treasury, Sudo, Scheduler, Preimage, BridgePangolinGrandpa, BridgePangolinMessages, PangolinFeeMarket, TransactionPause, EVM, Ethereum, BaseFee}>, Hash: [U8; 32]}>, maybe_periodic: Enum<{None: , Some: (U32, U32)}>, origin: Enum<{system: Enum<{Root, Signed, None}>, Ethereum: Enum<{EthereumTransaction}>, Void: Enum<{}>}>}}>>
         */
         agenda: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Scheduler', 'Agenda', param0);

@@ -20,7 +20,7 @@ export const getBounties = (dispatch: Dispatch) => {
 
         /**
          * @param _bounty_id: Compact<U32>
-         * @param _curator: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _curator: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
          * @param _fee: Compact<U128>
 	 */
         proposeCurator: async (signer: ethers.Signer, _bounty_id: unknown, _curator: unknown, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -43,7 +43,7 @@ export const getBounties = (dispatch: Dispatch) => {
 
         /**
          * @param _bounty_id: Compact<U32>
-         * @param _beneficiary: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _beneficiary: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
 	 */
         awardBounty: async (signer: ethers.Signer, _bounty_id: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'awardBounty', false, _bounty_id, _beneficiary);

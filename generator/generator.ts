@@ -104,11 +104,11 @@ function getInputTypes(map: StorageMap, metadata: Metadata): string[] {
     });
 }
 
-function buildFields(fields: IterableIterator<Si1Field>, metadata: Metadata) {
+function buildFields(level: number, fields: IterableIterator<Si1Field>, metadata: Metadata) {
     let result = [];
     for (const field of fields) {
         let name = field.name.isNone ? "field" : field.name.unwrap();
-        result.push([name, getType(field.type, metadata)]);
+        result.push([name, doGetType(level, field.type, metadata)]);
     }
 
     if (result.length == 0) {
@@ -135,47 +135,64 @@ function buildFields(fields: IterableIterator<Si1Field>, metadata: Metadata) {
 }
 
 function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
+    // console.log("START------------------------....................");
+    let level = 0;
+    const result = doGetType(level, typeId, metadata);
+    // console.log("END--------------------------....................");
+    return result;
+}
+
+function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): string {
     const type = metadata.registry.lookup.getSiType(typeId);
+
+
     if (type.def.isPrimitive) {
         return type.def.asPrimitive.toString();
     } else if (type.def.isArray) {
         let result = [];
         for (let i = 0; i < type.def.asArray.len.toNumber(); i++) {
-            result.push(getType(type.def.asArray.type, metadata));
+            result.push(doGetType(level, type.def.asArray.type, metadata));
         }
         // return `[${result.join(",")}]`;
         return `[${result[0]}; ${result.length}]`;
     } else if (type.def.isComposite) {
         let fields = type.def.asComposite.fields.values();
-        return buildFields(fields, metadata);
+        return buildFields(level, fields, metadata);
     } else if (type.def.isSequence) {
-        const typeName = getType(type.def.asSequence.type, metadata);
+        const typeName = doGetType(level, type.def.asSequence.type, metadata);
         return `Vec<${typeName}>`
     } else if (type.def.isTuple) {
         const str = type.def.asTuple.map(a => {
-            return getType(a, metadata);
+            return doGetType(level, a, metadata);
         }).join(", ");
         return `(${str})`;
     } else if (type.def.isVariant) {
         let str = "Enum<\{";
         if (type.def.isBasic) {
             str = str + type.def.asVariant.variants.map(v => {
-                return `"${v.name}"`
+                return `${v.name}`
             }).join(", ");
         } else {
+            level = level + 1;
+
             str = str + type.def.asVariant.variants.map(v => {
-                // const itemStr = buildFields(v.fields.values(), metadata);
-                // return `"${v.index}/${v.name}": ${itemStr}`
-                return `"${v.index}/${v.name}"`
+                if(level > 2) {
+                    return v.name;
+                } else {
+                    const itemStr = buildFields(level, v.fields.values(), metadata);
+                    return `${v.name}: ${itemStr}`
+                }
+                // return `"${v.index}/${v.name}": "${itemStr}"`
+                // return `"${v.index}/${v.name}"`
             }).join(", ");
         }
         str = str + "\}>";
         return str;
     } else if (type.def.isCompact) {
-        const innerTypeName = getType(type.def.asCompact.type, metadata);
+        const innerTypeName = doGetType(level, type.def.asCompact.type, metadata);
         return `Compact<${innerTypeName}>`;
     } else if (type.def.isBitSequence) {
-        const bitStoreType = getType(type.def.asBitSequence.bitStoreType, metadata);
+        const bitStoreType = doGetType(level, type.def.asBitSequence.bitStoreType, metadata);
         return `BitVec<${bitStoreType}>`;
     } else {
         throw new Error(`unimplemented: ${type.def.toString()}`);
