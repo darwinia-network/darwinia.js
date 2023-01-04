@@ -200,16 +200,18 @@ async function generateCalls(chainName: string, metadata: Metadata) {
         const prefix = pallet.name.toString();
         const moduleName = getModuleName(prefix);
 
-        const palletCalls: [string, string[]][] = [];
+        // [callName, [paramName, paramType]]
+        const palletCalls: [string, [string, string][]][] = [];
         const calls = pallet.calls.unwrap();
         const callsType = metadata.registry.lookup.getSiType(calls.type);
         callsType.def.asVariant.variants.forEach(call => {
             const callName = snakeCaseToCamel(call.name.toString());
 
-            const callParams: string[] = [];
+            const callParams: [string, string][] = [];
             call.fields.forEach(field => {
                 const paramTypeString = getType(field.type, metadata);
-                callParams.push(paramTypeString);
+                const paramName = field.name.unwrap().toString();
+                callParams.push([paramName, paramTypeString]);
             });
 
             palletCalls.push([callName, callParams])

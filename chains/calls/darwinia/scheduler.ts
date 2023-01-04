@@ -4,60 +4,60 @@ import { ethers } from "ethers";
 export const getScheduler = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U32
-         * @param param1: Enum<{"0/None", "1/Some"}>
-         * @param param2: U8
-         * @param param3: Enum<{"0/Value", "1/Hash"}>
+         * @param _when: U32
+         * @param _maybe_periodic: Enum<{"0/None", "1/Some"}>
+         * @param _priority: U8
+         * @param _call: Enum<{"0/Value", "1/Hash"}>
 	 */
-        schedule: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'schedule', false, param0, param1, param2, param3);
+        schedule: async (signer: ethers.Signer, _when: unknown, _maybe_periodic: unknown, _priority: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'schedule', false, _when, _maybe_periodic, _priority, _call);
         },
 
         /**
-         * @param param0: U32
-         * @param param1: U32
+         * @param _when: U32
+         * @param _index: U32
 	 */
-        cancel: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'cancel', false, param0, param1);
+        cancel: async (signer: ethers.Signer, _when: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'cancel', false, _when, _index);
         },
 
         /**
-         * @param param0: Vec<U8>
-         * @param param1: U32
-         * @param param2: Enum<{"0/None", "1/Some"}>
-         * @param param3: U8
-         * @param param4: Enum<{"0/Value", "1/Hash"}>
+         * @param _id: Vec<U8>
+         * @param _when: U32
+         * @param _maybe_periodic: Enum<{"0/None", "1/Some"}>
+         * @param _priority: U8
+         * @param _call: Enum<{"0/Value", "1/Hash"}>
 	 */
-        scheduleNamed: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown, param4: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'scheduleNamed', false, param0, param1, param2, param3, param4);
+        scheduleNamed: async (signer: ethers.Signer, _id: unknown, _when: unknown, _maybe_periodic: unknown, _priority: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'scheduleNamed', false, _id, _when, _maybe_periodic, _priority, _call);
         },
 
         /**
-         * @param param0: Vec<U8>
+         * @param _id: Vec<U8>
 	 */
-        cancelNamed: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'cancelNamed', false, param0);
+        cancelNamed: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'cancelNamed', false, _id);
         },
 
         /**
-         * @param param0: U32
-         * @param param1: Enum<{"0/None", "1/Some"}>
-         * @param param2: U8
-         * @param param3: Enum<{"0/Value", "1/Hash"}>
+         * @param _after: U32
+         * @param _maybe_periodic: Enum<{"0/None", "1/Some"}>
+         * @param _priority: U8
+         * @param _call: Enum<{"0/Value", "1/Hash"}>
 	 */
-        scheduleAfter: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'scheduleAfter', false, param0, param1, param2, param3);
+        scheduleAfter: async (signer: ethers.Signer, _after: unknown, _maybe_periodic: unknown, _priority: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'scheduleAfter', false, _after, _maybe_periodic, _priority, _call);
         },
 
         /**
-         * @param param0: Vec<U8>
-         * @param param1: U32
-         * @param param2: Enum<{"0/None", "1/Some"}>
-         * @param param3: U8
-         * @param param4: Enum<{"0/Value", "1/Hash"}>
+         * @param _id: Vec<U8>
+         * @param _after: U32
+         * @param _maybe_periodic: Enum<{"0/None", "1/Some"}>
+         * @param _priority: U8
+         * @param _call: Enum<{"0/Value", "1/Hash"}>
 	 */
-        scheduleNamedAfter: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown, param4: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Scheduler', 'scheduleNamedAfter', false, param0, param1, param2, param3, param4);
+        scheduleNamedAfter: async (signer: ethers.Signer, _id: unknown, _after: unknown, _maybe_periodic: unknown, _priority: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Scheduler', 'scheduleNamedAfter', false, _id, _after, _maybe_periodic, _priority, _call);
         },
 
 

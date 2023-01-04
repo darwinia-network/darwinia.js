@@ -4,60 +4,60 @@ import { ethers } from "ethers";
 export const getBridgePangoroMessages = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: Enum<{"0/None", "1/Some"}>
+         * @param _new_owner: Enum<{"0/None", "1/Some"}>
 	 */
-        setOwner: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'setOwner', false, param0);
+        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'setOwner', false, _new_owner);
         },
 
         /**
-         * @param param0: Enum<{"0/Normal", "1/RejectingOutboundMessages", "2/Halted"}>
+         * @param _operating_mode: Enum<{"0/Normal", "1/RejectingOutboundMessages", "2/Halted"}>
 	 */
-        setOperatingMode: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'setOperatingMode', false, param0);
+        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'setOperatingMode', false, _operating_mode);
         },
 
         /**
-         * @param param0: Enum<{"0/PangoroToPangolinConversionRate"}>
+         * @param _parameter: Enum<{"0/PangoroToPangolinConversionRate"}>
 	 */
-        updatePalletParameter: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'updatePalletParameter', false, param0);
+        updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'updatePalletParameter', false, _parameter);
         },
 
         /**
-         * @param param0: [U8; 4]
-         * @param param1: {spec_version: U32, weight: U64, origin: Enum<{"0/SourceRoot", "1/TargetAccount", "2/SourceAccount"}>, dispatch_fee_payment: Enum<{"0/AtSourceChain", "1/AtTargetChain"}>, call: Vec<U8>}
-         * @param param2: U128
+         * @param _lane_id: [U8; 4]
+         * @param _payload: {spec_version: U32, weight: U64, origin: Enum<{"0/SourceRoot", "1/TargetAccount", "2/SourceAccount"}>, dispatch_fee_payment: Enum<{"0/AtSourceChain", "1/AtTargetChain"}>, call: Vec<U8>}
+         * @param _delivery_and_dispatch_fee: U128
 	 */
-        sendMessage: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'sendMessage', false, param0, param1, param2);
+        sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'sendMessage', false, _lane_id, _payload, _delivery_and_dispatch_fee);
         },
 
         /**
-         * @param param0: [U8; 4]
-         * @param param1: U64
-         * @param param2: U128
+         * @param _lane_id: [U8; 4]
+         * @param _nonce: U64
+         * @param _additional_fee: U128
 	 */
-        increaseMessageFee: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'increaseMessageFee', false, param0, param1, param2);
+        increaseMessageFee: async (signer: ethers.Signer, _lane_id: unknown, _nonce: unknown, _additional_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'increaseMessageFee', false, _lane_id, _nonce, _additional_fee);
         },
 
         /**
-         * @param param0: [U8; 32]
-         * @param param1: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4], nonces_start: U64, nonces_end: U64}
-         * @param param2: U32
-         * @param param3: U64
+         * @param _relayer_id_at_bridged_chain: [U8; 32]
+         * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4], nonces_start: U64, nonces_end: U64}
+         * @param _messages_count: U32
+         * @param _dispatch_weight: U64
 	 */
-        receiveMessagesProof: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'receiveMessagesProof', false, param0, param1, param2, param3);
+        receiveMessagesProof: async (signer: ethers.Signer, _relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'receiveMessagesProof', false, _relayer_id_at_bridged_chain, _proof, _messages_count, _dispatch_weight);
         },
 
         /**
-         * @param param0: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4]}
-         * @param param1: {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64}
+         * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4]}
+         * @param _relayers_state: {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64}
 	 */
-        receiveMessagesDeliveryProof: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePangoroMessages', 'receiveMessagesDeliveryProof', false, param0, param1);
+        receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroMessages', 'receiveMessagesDeliveryProof', false, _proof, _relayers_state);
         },
 
 

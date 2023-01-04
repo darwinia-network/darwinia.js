@@ -4,46 +4,46 @@ import { ethers } from "ethers";
 export const getTechnicalMembership = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: [U8; 32]
+         * @param _who: [U8; 32]
 	 */
-        addMember: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'addMember', false, param0);
+        addMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'addMember', false, _who);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _who: [U8; 32]
 	 */
-        removeMember: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, param0);
+        removeMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, _who);
         },
 
         /**
-         * @param param0: [U8; 32]
-         * @param param1: [U8; 32]
+         * @param _remove: [U8; 32]
+         * @param _add: [U8; 32]
 	 */
-        swapMember: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, param0, param1);
+        swapMember: async (signer: ethers.Signer, _remove: unknown, _add: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, _remove, _add);
         },
 
         /**
-         * @param param0: Vec<[U8; 32]>
+         * @param _members: Vec<[U8; 32]>
 	 */
-        resetMembers: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, param0);
+        resetMembers: async (signer: ethers.Signer, _members: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, _members);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _new: [U8; 32]
 	 */
-        changeKey: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, param0);
+        changeKey: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, _new);
         },
 
         /**
-         * @param param0: [U8; 32]
+         * @param _who: [U8; 32]
 	 */
-        setPrime: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, param0);
+        setPrime: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, _who);
         },
 
         /**

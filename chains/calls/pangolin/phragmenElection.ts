@@ -4,11 +4,11 @@ import { ethers } from "ethers";
 export const getPhragmenElection = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: Vec<[U8; 32]>
-         * @param param1: Compact<U128>
+         * @param _votes: Vec<[U8; 32]>
+         * @param _value: Compact<U128>
 	 */
-        vote: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PhragmenElection', 'vote', false, param0, param1);
+        vote: async (signer: ethers.Signer, _votes: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'vote', false, _votes, _value);
         },
 
         /**
@@ -18,33 +18,33 @@ export const getPhragmenElection = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param param0: Compact<U32>
+         * @param _candidate_count: Compact<U32>
 	 */
-        submitCandidacy: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, param0);
+        submitCandidacy: async (signer: ethers.Signer, _candidate_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, _candidate_count);
         },
 
         /**
-         * @param param0: Enum<{"0/Member", "1/RunnerUp", "2/Candidate"}>
+         * @param _renouncing: Enum<{"0/Member", "1/RunnerUp", "2/Candidate"}>
 	 */
-        renounceCandidacy: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, param0);
+        renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);
         },
 
         /**
-         * @param param0: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
-         * @param param1: Bool
+         * @param _who: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _has_replacement: Bool
 	 */
-        removeMember: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PhragmenElection', 'removeMember', false, param0, param1);
+        removeMember: async (signer: ethers.Signer, _who: unknown, _has_replacement: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'removeMember', false, _who, _has_replacement);
         },
 
         /**
-         * @param param0: U32
-         * @param param1: U32
+         * @param _num_voters: U32
+         * @param _num_defunct: U32
 	 */
-        cleanDefunctVoters: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, param0, param1);
+        cleanDefunctVoters: async (signer: ethers.Signer, _num_voters: unknown, _num_defunct: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, _num_voters, _num_defunct);
         },
 
 

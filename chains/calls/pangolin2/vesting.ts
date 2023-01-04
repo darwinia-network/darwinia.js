@@ -10,35 +10,35 @@ export const getVesting = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param param0: [U8; 20]
+         * @param _target: [U8; 20]
 	 */
-        vestOther: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestOther', false, param0);
+        vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
         },
 
         /**
-         * @param param0: [U8; 20]
-         * @param param1: {locked: U128, per_block: U128, starting_block: U32}
+         * @param _target: [U8; 20]
+         * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
-        vestedTransfer: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestedTransfer', false, param0, param1);
+        vestedTransfer: async (signer: ethers.Signer, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'vestedTransfer', false, _target, _schedule);
         },
 
         /**
-         * @param param0: [U8; 20]
-         * @param param1: [U8; 20]
-         * @param param2: {locked: U128, per_block: U128, starting_block: U32}
+         * @param _source: [U8; 20]
+         * @param _target: [U8; 20]
+         * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
-        forceVestedTransfer: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, param0, param1, param2);
+        forceVestedTransfer: async (signer: ethers.Signer, _source: unknown, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, _source, _target, _schedule);
         },
 
         /**
-         * @param param0: U32
-         * @param param1: U32
+         * @param _schedule1_index: U32
+         * @param _schedule2_index: U32
 	 */
-        mergeSchedules: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'mergeSchedules', false, param0, param1);
+        mergeSchedules: async (signer: ethers.Signer, _schedule1_index: unknown, _schedule2_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'mergeSchedules', false, _schedule1_index, _schedule2_index);
         },
 
 

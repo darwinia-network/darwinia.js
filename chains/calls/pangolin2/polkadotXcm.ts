@@ -4,90 +4,90 @@ import { ethers } from "ethers";
 export const getPolkadotXcm = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
-         * @param param1: Enum<{"0/V0", "1/V1", "2/V2"}>
+         * @param _dest: Enum<{"0/V0", "1/V1"}>
+         * @param _message: Enum<{"0/V0", "1/V1", "2/V2"}>
 	 */
-        send: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'send', false, param0, param1);
+        send: async (signer: ethers.Signer, _dest: unknown, _message: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'send', false, _dest, _message);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
-         * @param param1: Enum<{"0/V0", "1/V1"}>
-         * @param param2: Enum<{"0/V0", "1/V1"}>
-         * @param param3: U32
+         * @param _dest: Enum<{"0/V0", "1/V1"}>
+         * @param _beneficiary: Enum<{"0/V0", "1/V1"}>
+         * @param _assets: Enum<{"0/V0", "1/V1"}>
+         * @param _fee_asset_item: U32
 	 */
-        teleportAssets: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'teleportAssets', false, param0, param1, param2, param3);
+        teleportAssets: async (signer: ethers.Signer, _dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'teleportAssets', false, _dest, _beneficiary, _assets, _fee_asset_item);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
-         * @param param1: Enum<{"0/V0", "1/V1"}>
-         * @param param2: Enum<{"0/V0", "1/V1"}>
-         * @param param3: U32
+         * @param _dest: Enum<{"0/V0", "1/V1"}>
+         * @param _beneficiary: Enum<{"0/V0", "1/V1"}>
+         * @param _assets: Enum<{"0/V0", "1/V1"}>
+         * @param _fee_asset_item: U32
 	 */
-        reserveTransferAssets: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'reserveTransferAssets', false, param0, param1, param2, param3);
+        reserveTransferAssets: async (signer: ethers.Signer, _dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'reserveTransferAssets', false, _dest, _beneficiary, _assets, _fee_asset_item);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1", "2/V2"}>
-         * @param param1: {ref_time: U64}
+         * @param _message: Enum<{"0/V0", "1/V1", "2/V2"}>
+         * @param _max_weight: {ref_time: U64}
 	 */
-        execute: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'execute', false, param0, param1);
+        execute: async (signer: ethers.Signer, _message: unknown, _max_weight: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'execute', false, _message, _max_weight);
         },
 
         /**
-         * @param param0: {parents: U8, interior: Enum<{"0/Here", "1/X1", "2/X2", "3/X3", "4/X4", "5/X5", "6/X6", "7/X7", "8/X8"}>}
-         * @param param1: U32
+         * @param _location: {parents: U8, interior: Enum<{"0/Here", "1/X1", "2/X2", "3/X3", "4/X4", "5/X5", "6/X6", "7/X7", "8/X8"}>}
+         * @param _xcm_version: U32
 	 */
-        forceXcmVersion: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'forceXcmVersion', false, param0, param1);
+        forceXcmVersion: async (signer: ethers.Signer, _location: unknown, _xcm_version: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceXcmVersion', false, _location, _xcm_version);
         },
 
         /**
-         * @param param0: Enum<{"0/None", "1/Some"}>
+         * @param _maybe_xcm_version: Enum<{"0/None", "1/Some"}>
 	 */
-        forceDefaultXcmVersion: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'forceDefaultXcmVersion', false, param0);
+        forceDefaultXcmVersion: async (signer: ethers.Signer, _maybe_xcm_version: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceDefaultXcmVersion', false, _maybe_xcm_version);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
+         * @param _location: Enum<{"0/V0", "1/V1"}>
 	 */
-        forceSubscribeVersionNotify: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'forceSubscribeVersionNotify', false, param0);
+        forceSubscribeVersionNotify: async (signer: ethers.Signer, _location: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceSubscribeVersionNotify', false, _location);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
+         * @param _location: Enum<{"0/V0", "1/V1"}>
 	 */
-        forceUnsubscribeVersionNotify: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', false, param0);
+        forceUnsubscribeVersionNotify: async (signer: ethers.Signer, _location: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', false, _location);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
-         * @param param1: Enum<{"0/V0", "1/V1"}>
-         * @param param2: Enum<{"0/V0", "1/V1"}>
-         * @param param3: U32
-         * @param param4: Enum<{"0/Unlimited", "1/Limited"}>
+         * @param _dest: Enum<{"0/V0", "1/V1"}>
+         * @param _beneficiary: Enum<{"0/V0", "1/V1"}>
+         * @param _assets: Enum<{"0/V0", "1/V1"}>
+         * @param _fee_asset_item: U32
+         * @param _weight_limit: Enum<{"0/Unlimited", "1/Limited"}>
 	 */
-        limitedReserveTransferAssets: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown, param4: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'limitedReserveTransferAssets', false, param0, param1, param2, param3, param4);
+        limitedReserveTransferAssets: async (signer: ethers.Signer, _dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'limitedReserveTransferAssets', false, _dest, _beneficiary, _assets, _fee_asset_item, _weight_limit);
         },
 
         /**
-         * @param param0: Enum<{"0/V0", "1/V1"}>
-         * @param param1: Enum<{"0/V0", "1/V1"}>
-         * @param param2: Enum<{"0/V0", "1/V1"}>
-         * @param param3: U32
-         * @param param4: Enum<{"0/Unlimited", "1/Limited"}>
+         * @param _dest: Enum<{"0/V0", "1/V1"}>
+         * @param _beneficiary: Enum<{"0/V0", "1/V1"}>
+         * @param _assets: Enum<{"0/V0", "1/V1"}>
+         * @param _fee_asset_item: U32
+         * @param _weight_limit: Enum<{"0/Unlimited", "1/Limited"}>
 	 */
-        limitedTeleportAssets: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown, param3: unknown, param4: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PolkadotXcm', 'limitedTeleportAssets', false, param0, param1, param2, param3, param4);
+        limitedTeleportAssets: async (signer: ethers.Signer, _dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'limitedTeleportAssets', false, _dest, _beneficiary, _assets, _fee_asset_item, _weight_limit);
         },
 
 

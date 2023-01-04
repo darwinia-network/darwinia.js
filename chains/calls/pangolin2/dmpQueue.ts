@@ -4,11 +4,11 @@ import { ethers } from "ethers";
 export const getDmpQueue = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U64
-         * @param param1: {ref_time: U64}
+         * @param _index: U64
+         * @param _weight_limit: {ref_time: U64}
 	 */
-        serviceOverweight: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, param0, param1);
+        serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, _index, _weight_limit);
         },
 
 
