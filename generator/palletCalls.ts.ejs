@@ -19,10 +19,10 @@ _%>
 	    const paramName = callParam[0];
 	    const paramType = callParam[1];
 _%>
-         * @param <%- paramName %>: <%- paramType %>
+         * @param <%- `_${paramName}` %>: <%- paramType %>
 <%_
-	    input.push(`${paramName}: unknown`)
-	    input2.push(`${paramName}`)
+	    input.push(`_${paramName}: unknown`)
+	    input2.push(`_${paramName}`)
 	}
 _%>
 	 */

@@ -4,11 +4,11 @@ import { ethers } from "ethers";
 export const getDeposit = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: U128
-         * @param param1: U8
+         * @param _amount: U128
+         * @param _months: U8
 	 */
-        lock: async (signer: ethers.Signer, param0: unknown, param1: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'lock', false, param0, param1);
+        lock: async (signer: ethers.Signer, _amount: unknown, _months: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Deposit', 'lock', false, _amount, _months);
         },
 
         /**
@@ -18,10 +18,10 @@ export const getDeposit = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param param0: U16
+         * @param _id: U16
 	 */
-        claimWithPenalty: async (signer: ethers.Signer, param0: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, param0);
+        claimWithPenalty: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, _id);
         },
 
 

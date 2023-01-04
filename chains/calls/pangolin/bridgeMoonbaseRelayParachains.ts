@@ -4,12 +4,12 @@ import { ethers } from "ethers";
 export const getBridgeMoonbaseRelayParachains = (dispatch: Dispatch) => {
     return {
         /**
-         * @param param0: [U8; 32]
-         * @param param1: Vec<U32>
-         * @param param2: Vec<Vec<U8>>
+         * @param _relay_block_hash: [U8; 32]
+         * @param _parachains: Vec<U32>
+         * @param _parachain_heads_proof: Vec<Vec<U8>>
 	 */
-        submitParachainHeads: async (signer: ethers.Signer, param0: unknown, param1: unknown, param2: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', false, param0, param1, param2);
+        submitParachainHeads: async (signer: ethers.Signer, _relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', false, _relay_block_hash, _parachains, _parachain_heads_proof);
         },
 
 
