@@ -100,7 +100,7 @@ export const getStaking = (getStorage: GetStorage) => {
         * Where the reward payment should be made. Keyed by stash.
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return RewardDestination: Enum<{"0/Staked", "1/Stash", "2/Controller", "3/Account", "4/None"}>
+        * @return RewardDestination: Enum<{Staked: , Stash: , Controller: , Account: [U8; 32], None: }>
         */
         payee: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Staking', 'Payee', param0);
@@ -184,7 +184,7 @@ export const getStaking = (getStorage: GetStorage) => {
         * The active era is the era being currently rewarded. Validator set of this era must be
         * equal to [`SessionInterface::validators`].
         *
-        * @return ActiveEraInfo: {index: U32, start: Enum<{"0/None", "1/Some"}>}
+        * @return ActiveEraInfo: {index: U32, start: Enum<{None: , Some: U64}>}
         */
         activeEra: async (): Promise<string | null> => {
             return await getStorage('Staking', 'ActiveEra');
@@ -292,7 +292,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
         * Mode of era forcing.
         *
-        * @return Forcing: Enum<{"0/NotForcing", "1/ForceNew", "2/ForceNone", "3/ForceAlways"}>
+        * @return Forcing: Enum<{NotForcing: , ForceNew: , ForceNone: , ForceAlways: }>
         */
         forceEra: async (): Promise<string | null> => {
             return await getStorage('Staking', 'ForceEra');
@@ -428,7 +428,7 @@ export const getStaking = (getStorage: GetStorage) => {
         *
         * This is set to v7.0.0 for new networks.
         *
-        * @return Releases: Enum<{"0/V1_0_0Ancient", "1/V2_0_0", "2/V3_0_0", "3/V4_0_0", "4/V5_0_0", "5/V6_0_0", "6/V7_0_0"}>
+        * @return Releases: Enum<{V1_0_0Ancient: , V2_0_0: , V3_0_0: , V4_0_0: , V5_0_0: , V6_0_0: , V7_0_0: }>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('Staking', 'StorageVersion');

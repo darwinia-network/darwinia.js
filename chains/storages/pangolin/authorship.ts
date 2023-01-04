@@ -6,7 +6,7 @@ export const getAuthorship = (getStorage: GetStorage) => {
         /**
         * Uncles
         *
-        * @return Vec<Enum<{"0/InclusionHeight", "1/Uncle"}>>
+        * @return Vec<Enum<{InclusionHeight: U32, Uncle: ([U8; 32], Enum<{None: , Some: [U8; 32]}>)}>>
         */
         uncles: async (): Promise<string | null> => {
             return await getStorage('Authorship', 'Uncles');

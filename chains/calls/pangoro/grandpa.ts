@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 export const getGrandpa = (dispatch: Dispatch) => {
     return {
         /**
-         * @param _equivocation_proof: {set_id: U64, equivocation: Enum<{"0/Prevote", "1/Precommit"}>}
+         * @param _equivocation_proof: {set_id: U64, equivocation: Enum<{Prevote: {round_number: U64, identity: [U8; 32], first: ({target_hash: [U8; 32], target_number: U32}, [U8; 64]), second: ({target_hash: [U8; 32], target_number: U32}, [U8; 64])}, Precommit: {round_number: U64, identity: [U8; 32], first: ({target_hash: [U8; 32], target_number: U32}, [U8; 64]), second: ({target_hash: [U8; 32], target_number: U32}, [U8; 64])}}>}
          * @param _key_owner_proof: Enum<{}>
 	 */
         reportEquivocation: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -12,7 +12,7 @@ export const getGrandpa = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _equivocation_proof: {set_id: U64, equivocation: Enum<{"0/Prevote", "1/Precommit"}>}
+         * @param _equivocation_proof: {set_id: U64, equivocation: Enum<{Prevote: {round_number: U64, identity: [U8; 32], first: ({target_hash: [U8; 32], target_number: U32}, [U8; 64]), second: ({target_hash: [U8; 32], target_number: U32}, [U8; 64])}, Precommit: {round_number: U64, identity: [U8; 32], first: ({target_hash: [U8; 32], target_number: U32}, [U8; 64]), second: ({target_hash: [U8; 32], target_number: U32}, [U8; 64])}}>}
          * @param _key_owner_proof: Enum<{}>
 	 */
         reportEquivocationUnsigned: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {

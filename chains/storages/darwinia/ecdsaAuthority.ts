@@ -33,7 +33,7 @@ export const getEcdsaAuthority = (getStorage: GetStorage) => {
         /**
         * The authorities change waiting for signing.
         *
-        * @return (Enum<{"0/AddMember", "1/RemoveMember", "2/SwapMembers"}>, Enum<{"0/None", "1/Some"}>, [U8; 32], Vec<([U8; 20], [U8; 65])>)
+        * @return (Enum<{AddMember: {new: [U8; 20]}, RemoveMember: {pre: [U8; 20], old: [U8; 20]}, SwapMembers: {pre: [U8; 20], old: [U8; 20], new: [U8; 20]}}>, Enum<{None: , Some: U32}>, [U8; 32], Vec<([U8; 20], [U8; 65])>)
         */
         authoritiesChangeToSign: async (): Promise<string | null> => {
             return await getStorage('EcdsaAuthority', 'AuthoritiesChangeToSign');

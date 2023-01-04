@@ -34,7 +34,7 @@ export const getSociety = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _candidate: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _candidate: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
          * @param _approve: Bool
 	 */
         vote: async (signer: ethers.Signer, _candidate: unknown, _approve: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -79,7 +79,7 @@ export const getSociety = (dispatch: Dispatch) => {
 
         /**
          * @param _who: [U8; 32]
-         * @param _judgement: Enum<{"0/Rebid", "1/Reject", "2/Approve"}>
+         * @param _judgement: Enum<{Rebid: , Reject: , Approve: }>
 	 */
         judgeSuspendedCandidate: async (signer: ethers.Signer, _who: unknown, _judgement: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', false, _who, _judgement);

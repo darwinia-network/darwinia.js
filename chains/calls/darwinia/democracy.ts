@@ -21,7 +21,7 @@ export const getDemocracy = (dispatch: Dispatch) => {
 
         /**
          * @param _ref_index: Compact<U32>
-         * @param _vote: Enum<{"0/Standard", "1/Split"}>
+         * @param _vote: Enum<{Standard: {vote: U8, balance: U128}, Split: {aye: U128, nay: U128}}>
 	 */
         vote: async (signer: ethers.Signer, _ref_index: unknown, _vote: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vote', false, _ref_index, _vote);
@@ -87,7 +87,7 @@ export const getDemocracy = (dispatch: Dispatch) => {
 
         /**
          * @param _to: [U8; 32]
-         * @param _conviction: Enum<{"0/None", "1/Locked1x", "2/Locked2x", "3/Locked3x", "4/Locked4x", "5/Locked5x", "6/Locked6x"}>
+         * @param _conviction: Enum<{None: , Locked1x: , Locked2x: , Locked3x: , Locked4x: , Locked5x: , Locked6x: }>
          * @param _balance: U128
 	 */
         delegate: async (signer: ethers.Signer, _to: unknown, _conviction: unknown, _balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -174,7 +174,7 @@ export const getDemocracy = (dispatch: Dispatch) => {
 
         /**
          * @param _proposal_hash: [U8; 32]
-         * @param _maybe_ref_index: Enum<{"0/None", "1/Some"}>
+         * @param _maybe_ref_index: Enum<{None: , Some: U32}>
 	 */
         blacklist: async (signer: ethers.Signer, _proposal_hash: unknown, _maybe_ref_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'blacklist', false, _proposal_hash, _maybe_ref_index);

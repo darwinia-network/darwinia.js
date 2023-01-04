@@ -5,7 +5,7 @@ export const getDarwiniaParachainFeeMarket = (dispatch: Dispatch) => {
     return {
         /**
          * @param _lock_collateral: U128
-         * @param _relay_fee: Enum<{"0/None", "1/Some"}>
+         * @param _relay_fee: Enum<{None: , Some: U128}>
 	 */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaParachainFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);

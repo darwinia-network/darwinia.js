@@ -25,7 +25,7 @@ export const getSociety = (getStorage: GetStorage) => {
         /**
         * The current set of candidates; bidders that are attempting to become members.
         *
-        * @return Vec<{who: [U8; 32], kind: Enum<{"0/Deposit", "1/Vouch"}>, value: U128}>
+        * @return Vec<{who: [U8; 32], kind: Enum<{Deposit: U128, Vouch: ([U8; 32], U128)}>, value: U128}>
         */
         candidates: async (): Promise<string | null> => {
             return await getStorage('Society', 'Candidates');
@@ -35,7 +35,7 @@ export const getSociety = (getStorage: GetStorage) => {
         * The set of suspended candidates.
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return (U128, Enum<{"0/Deposit", "1/Vouch"}>)
+        * @return (U128, Enum<{Deposit: U128, Vouch: ([U8; 32], U128)}>)
         */
         suspendedCandidates: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'SuspendedCandidates', param0);
@@ -81,7 +81,7 @@ export const getSociety = (getStorage: GetStorage) => {
         /**
         * The current bids, stored ordered by the value of the bid.
         *
-        * @return Vec<{who: [U8; 32], kind: Enum<{"0/Deposit", "1/Vouch"}>, value: U128}>
+        * @return Vec<{who: [U8; 32], kind: Enum<{Deposit: U128, Vouch: ([U8; 32], U128)}>, value: U128}>
         */
         bids: async (): Promise<string | null> => {
             return await getStorage('Society', 'Bids');
@@ -91,7 +91,7 @@ export const getSociety = (getStorage: GetStorage) => {
         * Members currently vouching or banned from vouching again
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return VouchingStatus: Enum<{"0/Vouching", "1/Banned"}>
+        * @return VouchingStatus: Enum<{Vouching: , Banned: }>
         */
         vouching: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Vouching', param0);
@@ -122,7 +122,7 @@ export const getSociety = (getStorage: GetStorage) => {
         *
         * @param param0: AccountId32: [U8; 32]
         * @param param1: AccountId32: [U8; 32]
-        * @return Vote: Enum<{"0/Skeptic", "1/Reject", "2/Approve"}>
+        * @return Vote: Enum<{Skeptic: , Reject: , Approve: }>
         */
         votes: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('Society', 'Votes', param0, param1);
@@ -141,7 +141,7 @@ export const getSociety = (getStorage: GetStorage) => {
         * Votes for the defender.
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return Vote: Enum<{"0/Skeptic", "1/Reject", "2/Approve"}>
+        * @return Vote: Enum<{Skeptic: , Reject: , Approve: }>
         */
         defenderVotes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Society', 'DefenderVotes', param0);

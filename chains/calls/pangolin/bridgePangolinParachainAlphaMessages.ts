@@ -4,21 +4,21 @@ import { ethers } from "ethers";
 export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch) => {
     return {
         /**
-         * @param _new_owner: Enum<{"0/None", "1/Some"}>
+         * @param _new_owner: Enum<{None: , Some: [U8; 32]}>
 	 */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', false, _new_owner);
         },
 
         /**
-         * @param _operating_mode: Enum<{"0/Normal", "1/RejectingOutboundMessages", "2/Halted"}>
+         * @param _operating_mode: Enum<{Normal: , RejectingOutboundMessages: , Halted: }>
 	 */
         setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', false, _operating_mode);
         },
 
         /**
-         * @param _parameter: Enum<{"0/PangolinParachainAlphaToPangolinConversionRate"}>
+         * @param _parameter: Enum<{PangolinParachainAlphaToPangolinConversionRate: U128}>
 	 */
         updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', false, _parameter);
@@ -26,7 +26,7 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch) => {
 
         /**
          * @param _lane_id: [U8; 4]
-         * @param _payload: {spec_version: U32, weight: U64, origin: Enum<{"0/SourceRoot", "1/TargetAccount", "2/SourceAccount"}>, dispatch_fee_payment: Enum<{"0/AtSourceChain", "1/AtTargetChain"}>, call: Vec<U8>}
+         * @param _payload: {spec_version: U32, weight: U64, origin: Enum<{SourceRoot: , TargetAccount: ([U8; 32], Enum<{Ed25519: [U8; 32], Sr25519: [U8; 32], Ecdsa: [U8; 33]}>, Enum<{Ed25519: [U8; 64], Sr25519: [U8; 64], Ecdsa: [U8; 65]}>), SourceAccount: [U8; 32]}>, dispatch_fee_payment: Enum<{AtSourceChain: , AtTargetChain: }>, call: Vec<U8>}
          * @param _delivery_and_dispatch_fee: U128
 	 */
         sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {

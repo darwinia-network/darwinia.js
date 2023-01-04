@@ -18,7 +18,7 @@ export const getVesting = (getStorage: GetStorage) => {
         *
         * New networks start with latest version, as determined by the genesis build.
         *
-        * @return Releases: Enum<{"0/V0", "1/V1"}>
+        * @return Releases: Enum<{V0: , V1: }>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('Vesting', 'StorageVersion');

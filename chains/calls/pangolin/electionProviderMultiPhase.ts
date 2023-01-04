@@ -12,7 +12,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _maybe_next_score: Enum<{"0/None", "1/Some"}>
+         * @param _maybe_next_score: Enum<{None: , Some: [U128; 3]}>
 	 */
         setMinimumUntrustedScore: async (signer: ethers.Signer, _maybe_next_score: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, _maybe_next_score);

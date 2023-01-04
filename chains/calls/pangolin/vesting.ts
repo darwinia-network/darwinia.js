@@ -10,14 +10,14 @@ export const getVesting = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _target: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
 	 */
         vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
         },
 
         /**
-         * @param _target: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
         vestedTransfer: async (signer: ethers.Signer, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -25,8 +25,8 @@ export const getVesting = (dispatch: Dispatch) => {
         },
 
         /**
-         * @param _source: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
-         * @param _target: Enum<{"0/Id", "1/Index", "2/Raw", "3/Address32", "4/Address20"}>
+         * @param _source: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
         forceVestedTransfer: async (signer: ethers.Signer, _source: unknown, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {

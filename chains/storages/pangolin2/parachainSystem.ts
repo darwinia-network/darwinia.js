@@ -68,7 +68,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         * relay-chain. This value is ephemeral which means it doesn&#39;t hit the storage. This value is
         * set after the inherent.
         *
-        * @return Option: Enum<{"0/None", "1/Some"}>
+        * @return Option: Enum<{None: , Some: Enum<{Present: }>}>
         */
         upgradeRestrictionSignal: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'UpgradeRestrictionSignal');
@@ -97,7 +97,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         *
         * This data is also absent from the genesis.
         *
-        * @return MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: (U32, U32), ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{"0/None", "1/Some"}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{"0/None", "1/Some"}>})>}
+        * @return MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: (U32, U32), ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{None: , Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{None: , Some: [U8; 32]}>})>}
         */
         relevantMessagingState: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'RelevantMessagingState');

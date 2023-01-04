@@ -38,7 +38,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
         * The block number is the block at which it was deposited.
         *
         * @param param0: H256: [U8; 32]
-        * @return PreimageStatus: Enum<{"0/Missing", "1/Available"}>
+        * @return PreimageStatus: Enum<{Missing: U32, Available: {data: Vec<U8>, provider: [U8; 20], deposit: U128, since: U32, expiry: Enum<{None: , Some: U32}>}}>
         */
         preimages: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'Preimages', param0);
@@ -69,7 +69,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
         * TWOX-NOTE: SAFE as indexes are not under an attacker’s control.
         *
         * @param param0: U32
-        * @return ReferendumInfo: Enum<{"0/Ongoing", "1/Finished"}>
+        * @return ReferendumInfo: Enum<{Ongoing: {end: U32, proposal_hash: [U8; 32], threshold: Enum<{SuperMajorityApprove: , SuperMajorityAgainst: , SimpleMajority: }>, delay: U32, tally: {ayes: U128, nays: U128, turnout: U128}}, Finished: {approved: Bool, end: U32}}>
         */
         referendumInfoOf: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'ReferendumInfoOf', param0);
@@ -82,7 +82,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
         * TWOX-NOTE: SAFE as `AccountId`s are crypto hashes anyway.
         *
         * @param param0: AccountId20: [U8; 20]
-        * @return Voting: Enum<{"0/Direct", "1/Delegating"}>
+        * @return Voting: Enum<{Direct: {votes: Vec<(U32, Enum<{Standard: {vote: U8, balance: U128}, Split: {aye: U128, nay: U128}}>)>, delegations: {votes: U128, capital: U128}, prior: (U32, U128)}, Delegating: {balance: U128, target: [U8; 20], conviction: Enum<{None: , Locked1x: , Locked2x: , Locked3x: , Locked4x: , Locked5x: , Locked6x: }>, delegations: {votes: U128, capital: U128}, prior: (U32, U128)}}>
         */
         votingOf: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'VotingOf', param0);
@@ -104,7 +104,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
         * - `LastTabledWasExternal` is `false`; or
         * - `PublicProps` is empty.
         *
-        * @return ([U8; 32], Enum<{"0/SuperMajorityApprove", "1/SuperMajorityAgainst", "2/SimpleMajority"}>)
+        * @return ([U8; 32], Enum<{SuperMajorityApprove: , SuperMajorityAgainst: , SimpleMajority: }>)
         */
         nextExternal: async (): Promise<string | null> => {
             return await getStorage('Democracy', 'NextExternal');
@@ -136,7 +136,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
         *
         * New networks start with last version.
         *
-        * @return Releases: Enum<{"0/V1"}>
+        * @return Releases: Enum<{V1: }>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('Democracy', 'StorageVersion');
