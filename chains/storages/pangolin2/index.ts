@@ -1,4 +1,6 @@
-import {GetStorage} from "../../../storage";
+import { getStorage as getStorageFunction } from "../../../storage";
+import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getParachainSystem} from "./parachainSystem";
@@ -35,7 +37,8 @@ import {getEthereum} from "./ethereum";
 import {getEvm} from "./evm";
 import {getBaseFee} from "./baseFee";
 
-export const buildPangolin2StoragesClient = (getStorage: GetStorage) => {
+export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const getStorage = getStorageFunction(provider, metadata);
     return {
         system: getSystem(getStorage),
         parachainSystem: getParachainSystem(getStorage),

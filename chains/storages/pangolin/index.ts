@@ -1,4 +1,6 @@
-import {GetStorage} from "../../../storage";
+import { getStorage as getStorageFunction } from "../../../storage";
+import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -52,7 +54,8 @@ import {getBridgePangolinParachainAlphaMessages} from "./bridgePangolinParachain
 import {getPangolinParachainAlphaFeeMarket} from "./pangolinParachainAlphaFeeMarket";
 import {getToPangolinParachainBacking} from "./toPangolinParachainBacking";
 
-export const buildPangolinStoragesClient = (getStorage: GetStorage) => {
+export const buildPangolinStoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const getStorage = getStorageFunction(provider, metadata);
     return {
         system: getSystem(getStorage),
         babe: getBabe(getStorage),

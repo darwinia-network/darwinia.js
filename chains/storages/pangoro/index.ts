@@ -1,4 +1,6 @@
-import {GetStorage} from "../../../storage";
+import { getStorage as getStorageFunction } from "../../../storage";
+import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -28,7 +30,8 @@ import {getEVM} from "./evm";
 import {getEthereum} from "./ethereum";
 import {getBaseFee} from "./baseFee";
 
-export const buildPangoroStoragesClient = (getStorage: GetStorage) => {
+export const buildPangoroStoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const getStorage = getStorageFunction(provider, metadata);
     return {
         system: getSystem(getStorage),
         babe: getBabe(getStorage),

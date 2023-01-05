@@ -1,10 +1,10 @@
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, getStorage, storagesClientBuilder } from "../index"
+import { buildMetadata, staticMetadata, getStorage, clientBuilder } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
-    const metadata = buildMetadata(metadatas.pangolinMetaStatic);
+    const metadata = buildMetadata(staticMetadata.pangolinMetaStatic);
 
     // a general storage function for a specific chain
     const getPangolinStorage = getStorage(provider, metadata);
@@ -35,30 +35,30 @@ async function main(): Promise<void> {
 
     // Way 2: use predefined functions to fetch storages
     // First, build a chain specific storage client
-    const pangolinStorages = storagesClientBuilder.buildPangolinStoragesClient(getPangolinStorage);
+    const pangolin = clientBuilder.buildPangolinClient(provider, metadata);
 
-    result = await pangolinStorages.bridgePangolinParachainMessages.inboundLanes("0x00000001");
+    result = await pangolin.storages.bridgePangolinParachainMessages.inboundLanes("0x00000001");
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.bridgePangolinParachainMessages.outboundLanes("0x00000000");
+    result = await pangolin.storages.bridgePangolinParachainMessages.outboundLanes("0x00000000");
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.bridgePangolinParachainMessages.outboundMessages({
+    result = await pangolin.storages.bridgePangolinParachainMessages.outboundMessages({
         laneId: "0x00000000",
         nonce: 10
     });
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.bridgePangolinParachainMessages.palletOperatingMode();
+    result = await pangolin.storages.bridgePangolinParachainMessages.palletOperatingMode();
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.bridgePangolinParachainMessages.palletOwner();
+    result = await pangolin.storages.bridgePangolinParachainMessages.palletOwner();
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.pangolinParachainFeeMarket.assignedRelayers();
+    result = await pangolin.storages.pangolinParachainFeeMarket.assignedRelayers();
     console.log(`    decoded: ${result}\n`);
 
-    result = await pangolinStorages.pangolinParachainFeeMarket.orders([[1, 1, 1, 1], 11]); // tuple
+    result = await pangolin.storages.pangolinParachainFeeMarket.orders([[1, 1, 1, 1], 11]); // tuple
     console.log(`    decoded: ${result}\n`);
 }
 
