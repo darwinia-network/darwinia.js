@@ -91,7 +91,7 @@ main();
 
 ```
 
-more examples in [examples.ts](./examples.ts)
+more examples in [examples](./examples)
 
 ### Get the metadata static hex string from darwinia node
 ```shell
