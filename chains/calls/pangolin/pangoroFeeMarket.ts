@@ -6,9 +6,13 @@ import { HexString } from "@polkadot/util/types";
 export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
+         * Any accounts can enroll to be a relayer by lock collateral. The relay fee is optional,
+         * the default value is MinimumRelayFee in runtime. (Update market needed)
+         * Note: One account can enroll only once.
+         *
          * @param _lock_collateral: U128
          * @param _relay_fee: Enum<{0/None: , 1/Some: U128}>
-	 */
+         */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
         },
@@ -25,8 +29,11 @@ export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Update locked collateral for enrolled relayer, only supporting lock more. (Update market
+         * needed)
+         *
          * @param _new_collateral: U128
-	 */
+         */
         updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
@@ -42,8 +49,10 @@ export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Update relay fee for enrolled relayer. (Update market needed)
+         *
          * @param _new_fee: U128
-	 */
+         */
         updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'updateRelayFee', false, _new_fee);
         },
@@ -59,13 +68,15 @@ export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 */
+         * Cancel enrolled relayer(Update market needed)
+         *
+         */
         cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'cancelEnrollment', false);
         },
 
-        cancelEnrollmentD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangoroFeeMarket', 'cancelEnrollment', true, data);
+        cancelEnrollmentD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangoroFeeMarket', 'cancelEnrollment', true);
         },
 
         cancelEnrollmentCall: () => {
@@ -74,8 +85,9 @@ export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         *
          * @param _slash_protect: U128
-	 */
+         */
         setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'setSlashProtect', false, _slash_protect);
         },
@@ -91,8 +103,9 @@ export const getPangoroFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         *
          * @param _number: U32
-	 */
+         */
         setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangoroFeeMarket', 'setAssignedRelayersNumber', false, _number);
         },

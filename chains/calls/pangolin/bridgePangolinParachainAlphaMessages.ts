@@ -6,8 +6,12 @@ import { HexString } from "@polkadot/util/types";
 export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
+         * Change `PalletOwner`.
+         * 
+         * May only be called either by root, or by `PalletOwner`.
+         *
          * @param _new_owner: Enum<{0/None: , 1/Some: [U8; 32]}>
-	 */
+         */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', false, _new_owner);
         },
@@ -23,8 +27,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Halt or resume all/some pallet operations.
+         * 
+         * May only be called either by root, or by `PalletOwner`.
+         *
          * @param _operating_mode: Enum<{0/Normal: , 1/RejectingOutboundMessages: , 2/Halted: }>
-	 */
+         */
         setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', false, _operating_mode);
         },
@@ -40,8 +48,15 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Update pallet parameter.
+         * 
+         * May only be called either by root, or by `PalletOwner`.
+         * 
+         * The weight is: single read for permissions check + 2 writes for parameter value and
+         * event.
+         *
          * @param _parameter: Enum<{0/PangolinParachainAlphaToPangolinConversionRate: U128}>
-	 */
+         */
         updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', false, _parameter);
         },
@@ -57,10 +72,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Send message over lane.
+         *
          * @param _lane_id: [U8; 4]
          * @param _payload: {spec_version: U32, weight: U64, origin: Enum<{0/SourceRoot: , 1/TargetAccount: ([U8; 32], Enum<{0/Ed25519: [U8; 32], 1/Sr25519: [U8; 32], 2/Ecdsa: [U8; 33]}>, Enum<{0/Ed25519: [U8; 64], 1/Sr25519: [U8; 64], 2/Ecdsa: [U8; 65]}>), 2/SourceAccount: [U8; 32]}>, dispatch_fee_payment: Enum<{0/AtSourceChain: , 1/AtTargetChain: }>, call: Vec<U8>}
          * @param _delivery_and_dispatch_fee: U128
-	 */
+         */
         sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'sendMessage', false, _lane_id, _payload, _delivery_and_dispatch_fee);
         },
@@ -78,10 +95,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Pay additional fee for the message.
+         *
          * @param _lane_id: [U8; 4]
          * @param _nonce: U64
          * @param _additional_fee: U128
-	 */
+         */
         increaseMessageFee: async (signer: ethers.Signer, _lane_id: unknown, _nonce: unknown, _additional_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', false, _lane_id, _nonce, _additional_fee);
         },
@@ -99,11 +118,17 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Receive messages proof from bridged chain.
+         * 
+         * The weight of the call assumes that the transaction always brings outbound lane
+         * state update. Because of that, the submitter (relayer) has no benefit of not including
+         * this data in the transaction, so reward confirmations lags should be minimal.
+         *
          * @param _relayer_id_at_bridged_chain: [U8; 32]
          * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4], nonces_start: U64, nonces_end: U64}
          * @param _messages_count: U32
          * @param _dispatch_weight: U64
-	 */
+         */
         receiveMessagesProof: async (signer: ethers.Signer, _relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', false, _relayer_id_at_bridged_chain, _proof, _messages_count, _dispatch_weight);
         },
@@ -122,9 +147,11 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         },
 
         /**
+         * Receive messages delivery proof from bridged chain.
+         *
          * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4]}
          * @param _relayers_state: {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64}
-	 */
+         */
         receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', false, _proof, _relayers_state);
         },

@@ -6,8 +6,13 @@ import { HexString } from "@polkadot/util/types";
 export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
+         * Add a authority and trigger `on_authorities_change`.
+         * 
+         * Not allow to call while authorities is changing.
+         * This will insert new authority into the index 0 of authorities.
+         *
          * @param _new: [U8; 20]
-	 */
+         */
         addAuthority: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', false, _new);
         },
@@ -23,8 +28,12 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Remove a authority and trigger `on_authorities_change`.
+         * 
+         * Not allow to call while authorities is changing.
+         *
          * @param _old: [U8; 20]
-	 */
+         */
         removeAuthority: async (signer: ethers.Signer, _old: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', false, _old);
         },
@@ -40,9 +49,13 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Swap the old authority with the new authority and trigger `on_authorities_change`.
+         * 
+         * Not allow to call while authorities is changing.
+         *
          * @param _old: [U8; 20]
          * @param _new: [U8; 20]
-	 */
+         */
         swapAuthority: async (signer: ethers.Signer, _old: unknown, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', false, _old, _new);
         },
@@ -59,9 +72,13 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Submit the authorities change signature.
+         * 
+         * Free to submit the first-correct signature.
+         *
          * @param _address: [U8; 20]
          * @param _signature: [U8; 65]
-	 */
+         */
         submitAuthoritiesChangeSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', false, _address, _signature);
         },
@@ -78,9 +95,13 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Submit the new message root signature.
+         * 
+         * Free to submit the first-correct signature.
+         *
          * @param _address: [U8; 20]
          * @param _signature: [U8; 65]
-	 */
+         */
         submitNewMessageRootSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', false, _address, _signature);
         },
