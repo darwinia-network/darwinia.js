@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
 	 */
         submitUnsigned: async (signer: ethers.Signer, _raw_solution: unknown, _witness: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, _raw_solution, _witness);
+        },
+
+        submitUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, data);
         },
 
         submitUnsignedCall: (_raw_solution: unknown, _witness: unknown) => {
@@ -26,6 +31,10 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, _maybe_next_score);
         },
 
+        setMinimumUntrustedScoreD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, data);
+        },
+
         setMinimumUntrustedScoreCall: (_maybe_next_score: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', {
                 maybe_next_score: _maybe_next_score,
@@ -37,6 +46,10 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
 	 */
         setEmergencyElectionResult: async (signer: ethers.Signer, _supports: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, _supports);
+        },
+
+        setEmergencyElectionResultD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, data);
         },
 
         setEmergencyElectionResultCall: (_supports: unknown) => {
@@ -51,6 +64,10 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
 	 */
         submit: async (signer: ethers.Signer, _raw_solution: unknown, _num_signed_submissions: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, _raw_solution, _num_signed_submissions);
+        },
+
+        submitD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, data);
         },
 
         submitCall: (_raw_solution: unknown, _num_signed_submissions: unknown) => {

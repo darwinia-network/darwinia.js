@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
 	 */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
+        },
+
+        enrollAndLockCollateralD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'enrollAndLockCollateral', true, data);
         },
 
         enrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
@@ -26,6 +31,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'PangolinFeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
 
+        updateLockedCollateralD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'updateLockedCollateral', true, data);
+        },
+
         updateLockedCollateralCall: (_new_collateral: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinFeeMarket', 'updateLockedCollateral', {
                 new_collateral: _new_collateral,
@@ -37,6 +46,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
 	 */
         updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinFeeMarket', 'updateRelayFee', false, _new_fee);
+        },
+
+        updateRelayFeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'updateRelayFee', true, data);
         },
 
         updateRelayFeeCall: (_new_fee: unknown) => {
@@ -51,6 +64,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'PangolinFeeMarket', 'cancelEnrollment', false);
         },
 
+        cancelEnrollmentD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'cancelEnrollment', true, data);
+        },
+
         cancelEnrollmentCall: () => {
             return buildRuntimeCall(metadata, 'PangolinFeeMarket', 'cancelEnrollment', {
             });
@@ -61,6 +78,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
 	 */
         setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinFeeMarket', 'setSlashProtect', false, _slash_protect);
+        },
+
+        setSlashProtectD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'setSlashProtect', true, data);
         },
 
         setSlashProtectCall: (_slash_protect: unknown) => {
@@ -74,6 +95,10 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
 	 */
         setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinFeeMarket', 'setAssignedRelayersNumber', false, _number);
+        },
+
+        setAssignedRelayersNumberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinFeeMarket', 'setAssignedRelayersNumber', true, data);
         },
 
         setAssignedRelayersNumberCall: (_number: unknown) => {

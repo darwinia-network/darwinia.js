@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         heartbeat: async (signer: ethers.Signer, _heartbeat: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ImOnline', 'heartbeat', false, _heartbeat, _signature);
+        },
+
+        heartbeatD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ImOnline', 'heartbeat', true, data);
         },
 
         heartbeatCall: (_heartbeat: unknown, _signature: unknown) => {

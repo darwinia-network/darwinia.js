@@ -58,33 +58,28 @@ main();
 
 ```
 
-### set session keys
-
-This is a customized method added for client convenience
+### dispatch call with encoded input
 
 ```typescript
 import { ethers } from "ethers";
-import { buildMetadata, staticMetadata, dispatch, setSessionKeys } from "darwinia-js-sdk"
+import { clientBuilder } from "../index"
 
 async function main(): Promise<void> {
-    // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
 
-    // build a metadata from static metadata hex
-    const metadata = buildMetadata(staticMetadata.pangolin2MetaStatic);
-  
-    // prepare signer. it can be ethers.Wallet or ethers.Signer
     const signer = provider.getSigner();
 
-    const dispatchPangolin2Call = dispatch(provider, metadata);
-    await setSessionKeys(
-        dispatchPangolin2Call,
-        signer,
-        "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
-    );
+    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+
+    // call ended with `D` is the version that accept params encoded in scale codec  
+    await pangolin2.calls.session.setKeysD(
+      signer,
+      "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded (keys, proof)
+    )
 }
 
 main();
+
 ```
 
 more examples in [examples](./examples)

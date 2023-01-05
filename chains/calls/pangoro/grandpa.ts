@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         reportEquivocation: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
+        },
+
+        reportEquivocationD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Grandpa', 'reportEquivocation', true, data);
         },
 
         reportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
@@ -27,6 +32,10 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
+        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', true, data);
+        },
+
         reportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Grandpa', 'reportEquivocationUnsigned', {
                 equivocation_proof: _equivocation_proof,
@@ -40,6 +49,10 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         noteStalled: async (signer: ethers.Signer, _delay: unknown, _best_finalized_block_number: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'noteStalled', false, _delay, _best_finalized_block_number);
+        },
+
+        noteStalledD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Grandpa', 'noteStalled', true, data);
         },
 
         noteStalledCall: (_delay: unknown, _best_finalized_block_number: unknown) => {

@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -11,6 +12,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         stake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'stake', false, _ring_amount, _kton_amount, _deposits);
+        },
+
+        stakeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'stake', true, data);
         },
 
         stakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
@@ -30,6 +35,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'unstake', false, _ring_amount, _kton_amount, _deposits);
         },
 
+        unstakeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'unstake', true, data);
+        },
+
         unstakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'unstake', {
                 ring_amount: _ring_amount,
@@ -44,6 +53,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'claim', false);
         },
 
+        claimD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'claim', true, data);
+        },
+
         claimCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'claim', {
             });
@@ -54,6 +67,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         collect: async (signer: ethers.Signer, _commission: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'collect', false, _commission);
+        },
+
+        collectD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'collect', true, data);
         },
 
         collectCall: (_commission: unknown) => {
@@ -69,6 +86,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'nominate', false, _target);
         },
 
+        nominateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'nominate', true, data);
+        },
+
         nominateCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'nominate', {
                 target: _target,
@@ -79,6 +100,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         chill: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chill', false);
+        },
+
+        chillD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'chill', true, data);
         },
 
         chillCall: () => {

@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -17,6 +18,10 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'call', false, _source, _target, _input, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
+        },
+
+        callD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'call', true, data);
         },
 
         callCall: (_source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
@@ -47,6 +52,10 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EVM', 'create', false, _source, _init, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
+        createD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'create', true, data);
+        },
+
         createCall: (_source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'EVM', 'create', {
                 source: _source,
@@ -73,6 +82,10 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'create2', false, _source, _init, _salt, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
+        },
+
+        create2D: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'create2', true, data);
         },
 
         create2Call: (_source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {

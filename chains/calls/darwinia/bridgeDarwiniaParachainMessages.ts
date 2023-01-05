@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
 	 */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'setOwner', false, _new_owner);
+        },
+
+        setOwnerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'setOwner', true, data);
         },
 
         setOwnerCall: (_new_owner: unknown) => {
@@ -24,6 +29,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'setOperatingMode', false, _operating_mode);
         },
 
+        setOperatingModeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'setOperatingMode', true, data);
+        },
+
         setOperatingModeCall: (_operating_mode: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeDarwiniaParachainMessages', 'setOperatingMode', {
                 operating_mode: _operating_mode,
@@ -35,6 +44,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
 	 */
         updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'updatePalletParameter', false, _parameter);
+        },
+
+        updatePalletParameterD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'updatePalletParameter', true, data);
         },
 
         updatePalletParameterCall: (_parameter: unknown) => {
@@ -52,6 +65,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'sendMessage', false, _lane_id, _payload, _delivery_and_dispatch_fee);
         },
 
+        sendMessageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'sendMessage', true, data);
+        },
+
         sendMessageCall: (_lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeDarwiniaParachainMessages', 'sendMessage', {
                 lane_id: _lane_id,
@@ -67,6 +84,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
 	 */
         increaseMessageFee: async (signer: ethers.Signer, _lane_id: unknown, _nonce: unknown, _additional_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'increaseMessageFee', false, _lane_id, _nonce, _additional_fee);
+        },
+
+        increaseMessageFeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'increaseMessageFee', true, data);
         },
 
         increaseMessageFeeCall: (_lane_id: unknown, _nonce: unknown, _additional_fee: unknown) => {
@@ -87,6 +108,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'receiveMessagesProof', false, _relayer_id_at_bridged_chain, _proof, _messages_count, _dispatch_weight);
         },
 
+        receiveMessagesProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'receiveMessagesProof', true, data);
+        },
+
         receiveMessagesProofCall: (_relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeDarwiniaParachainMessages', 'receiveMessagesProof', {
                 relayer_id_at_bridged_chain: _relayer_id_at_bridged_chain,
@@ -102,6 +127,10 @@ export const getBridgeDarwiniaParachainMessages = (dispatch: Dispatch, metadata:
 	 */
         receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'receiveMessagesDeliveryProof', false, _proof, _relayers_state);
+        },
+
+        receiveMessagesDeliveryProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeDarwiniaParachainMessages', 'receiveMessagesDeliveryProof', true, data);
         },
 
         receiveMessagesDeliveryProofCall: (_proof: unknown, _relayers_state: unknown) => {

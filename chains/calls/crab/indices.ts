@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         claim: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'claim', false, _index);
+        },
+
+        claimD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'claim', true, data);
         },
 
         claimCall: (_index: unknown) => {
@@ -25,6 +30,10 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'transfer', false, _new, _index);
         },
 
+        transferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'transfer', true, data);
+        },
+
         transferCall: (_new: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'transfer', {
                 new: _new,
@@ -37,6 +46,10 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         free: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'free', false, _index);
+        },
+
+        freeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'free', true, data);
         },
 
         freeCall: (_index: unknown) => {
@@ -54,6 +67,10 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'forceTransfer', false, _new, _index, _freeze);
         },
 
+        forceTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'forceTransfer', true, data);
+        },
+
         forceTransferCall: (_new: unknown, _index: unknown, _freeze: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'forceTransfer', {
                 new: _new,
@@ -67,6 +84,10 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         freeze: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'freeze', false, _index);
+        },
+
+        freezeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Indices', 'freeze', true, data);
         },
 
         freezeCall: (_index: unknown) => {

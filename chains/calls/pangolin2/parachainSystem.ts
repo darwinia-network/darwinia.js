@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setValidationData: async (signer: ethers.Signer, _data: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'setValidationData', false, _data);
+        },
+
+        setValidationDataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ParachainSystem', 'setValidationData', true, data);
         },
 
         setValidationDataCall: (_data: unknown) => {
@@ -24,6 +29,10 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', false, _message);
         },
 
+        sudoSendUpwardMessageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', true, data);
+        },
+
         sudoSendUpwardMessageCall: (_message: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'sudoSendUpwardMessage', {
                 message: _message,
@@ -37,6 +46,10 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', false, _code_hash);
         },
 
+        authorizeUpgradeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', true, data);
+        },
+
         authorizeUpgradeCall: (_code_hash: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'authorizeUpgrade', {
                 code_hash: _code_hash,
@@ -48,6 +61,10 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         enactAuthorizedUpgrade: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', false, _code);
+        },
+
+        enactAuthorizedUpgradeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', true, data);
         },
 
         enactAuthorizedUpgradeCall: (_code: unknown) => {

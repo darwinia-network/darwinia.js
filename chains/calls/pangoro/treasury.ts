@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         proposeSpend: async (signer: ethers.Signer, _value: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'proposeSpend', false, _value, _beneficiary);
+        },
+
+        proposeSpendD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Treasury', 'proposeSpend', true, data);
         },
 
         proposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
@@ -26,6 +31,10 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'rejectProposal', false, _proposal_id);
         },
 
+        rejectProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Treasury', 'rejectProposal', true, data);
+        },
+
         rejectProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'rejectProposal', {
                 proposal_id: _proposal_id,
@@ -37,6 +46,10 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         approveProposal: async (signer: ethers.Signer, _proposal_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'approveProposal', false, _proposal_id);
+        },
+
+        approveProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Treasury', 'approveProposal', true, data);
         },
 
         approveProposalCall: (_proposal_id: unknown) => {

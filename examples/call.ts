@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { buildMetadata, staticMetadata, dispatch, clientBuilder, setSessionKeys } from "../index"
+import { buildMetadata, staticMetadata, dispatch, clientBuilder } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -26,13 +26,6 @@ async function main(): Promise<void> {
       false, 
       { aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d" }, // keys
       "0x" // proof
-    );
-  
-    // Way 3: this is a customized method added for client convenience
-    await setSessionKeys(
-        dispatchPangolin2Call,
-        signer,
-        "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
     );
 }
 

@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         vote: async (signer: ethers.Signer, _votes: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, _votes, _value);
+        },
+
+        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'vote', true, data);
         },
 
         voteCall: (_votes: unknown, _value: unknown) => {
@@ -25,6 +30,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', false);
         },
 
+        removeVoterD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'removeVoter', true, data);
+        },
+
         removeVoterCall: () => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeVoter', {
             });
@@ -35,6 +44,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         submitCandidacy: async (signer: ethers.Signer, _candidate_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, _candidate_count);
+        },
+
+        submitCandidacyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', true, data);
         },
 
         submitCandidacyCall: (_candidate_count: unknown) => {
@@ -48,6 +61,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);
+        },
+
+        renounceCandidacyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', true, data);
         },
 
         renounceCandidacyCall: (_renouncing: unknown) => {
@@ -64,6 +81,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, _who, _has_replacement);
         },
 
+        removeMemberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'removeMember', true, data);
+        },
+
         removeMemberCall: (_who: unknown, _has_replacement: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeMember', {
                 who: _who,
@@ -77,6 +98,10 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         cleanDefunctVoters: async (signer: ethers.Signer, _num_voters: unknown, _num_defunct: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, _num_voters, _num_defunct);
+        },
+
+        cleanDefunctVotersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', true, data);
         },
 
         cleanDefunctVotersCall: (_num_voters: unknown, _num_defunct: unknown) => {

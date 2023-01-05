@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         addRegistrar: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'addRegistrar', false, _account);
+        },
+
+        addRegistrarD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'addRegistrar', true, data);
         },
 
         addRegistrarCall: (_account: unknown) => {
@@ -24,6 +29,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'setIdentity', false, _info);
         },
 
+        setIdentityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'setIdentity', true, data);
+        },
+
         setIdentityCall: (_info: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'setIdentity', {
                 info: _info,
@@ -35,6 +44,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setSubs: async (signer: ethers.Signer, _subs: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'setSubs', false, _subs);
+        },
+
+        setSubsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'setSubs', true, data);
         },
 
         setSubsCall: (_subs: unknown) => {
@@ -49,6 +62,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'clearIdentity', false);
         },
 
+        clearIdentityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'clearIdentity', true, data);
+        },
+
         clearIdentityCall: () => {
             return buildRuntimeCall(metadata, 'Identity', 'clearIdentity', {
             });
@@ -60,6 +77,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         requestJudgement: async (signer: ethers.Signer, _reg_index: unknown, _max_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'requestJudgement', false, _reg_index, _max_fee);
+        },
+
+        requestJudgementD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'requestJudgement', true, data);
         },
 
         requestJudgementCall: (_reg_index: unknown, _max_fee: unknown) => {
@@ -76,6 +97,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'cancelRequest', false, _reg_index);
         },
 
+        cancelRequestD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'cancelRequest', true, data);
+        },
+
         cancelRequestCall: (_reg_index: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'cancelRequest', {
                 reg_index: _reg_index,
@@ -88,6 +113,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setFee: async (signer: ethers.Signer, _index: unknown, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'setFee', false, _index, _fee);
+        },
+
+        setFeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'setFee', true, data);
         },
 
         setFeeCall: (_index: unknown, _fee: unknown) => {
@@ -105,6 +134,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'setAccountId', false, _index, _new);
         },
 
+        setAccountIdD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'setAccountId', true, data);
+        },
+
         setAccountIdCall: (_index: unknown, _new: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'setAccountId', {
                 index: _index,
@@ -118,6 +151,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setFields: async (signer: ethers.Signer, _index: unknown, _fields: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'setFields', false, _index, _fields);
+        },
+
+        setFieldsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'setFields', true, data);
         },
 
         setFieldsCall: (_index: unknown, _fields: unknown) => {
@@ -137,6 +174,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'provideJudgement', false, _reg_index, _target, _judgement, _identity);
         },
 
+        provideJudgementD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'provideJudgement', true, data);
+        },
+
         provideJudgementCall: (_reg_index: unknown, _target: unknown, _judgement: unknown, _identity: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'provideJudgement', {
                 reg_index: _reg_index,
@@ -153,6 +194,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'killIdentity', false, _target);
         },
 
+        killIdentityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'killIdentity', true, data);
+        },
+
         killIdentityCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'killIdentity', {
                 target: _target,
@@ -165,6 +210,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         addSub: async (signer: ethers.Signer, _sub: unknown, _data: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'addSub', false, _sub, _data);
+        },
+
+        addSubD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'addSub', true, data);
         },
 
         addSubCall: (_sub: unknown, _data: unknown) => {
@@ -182,6 +231,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'renameSub', false, _sub, _data);
         },
 
+        renameSubD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'renameSub', true, data);
+        },
+
         renameSubCall: (_sub: unknown, _data: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'renameSub', {
                 sub: _sub,
@@ -196,6 +249,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Identity', 'removeSub', false, _sub);
         },
 
+        removeSubD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'removeSub', true, data);
+        },
+
         removeSubCall: (_sub: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'removeSub', {
                 sub: _sub,
@@ -206,6 +263,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         quitSub: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'quitSub', false);
+        },
+
+        quitSubD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Identity', 'quitSub', true, data);
         },
 
         quitSubCall: () => {

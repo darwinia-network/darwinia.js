@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         proposeSpend: async (signer: ethers.Signer, _value: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'proposeSpend', false, _value, _beneficiary);
+        },
+
+        proposeSpendD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'proposeSpend', true, data);
         },
 
         proposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
@@ -26,6 +31,10 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'rejectProposal', false, _proposal_id);
         },
 
+        rejectProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'rejectProposal', true, data);
+        },
+
         rejectProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'KtonTreasury', 'rejectProposal', {
                 proposal_id: _proposal_id,
@@ -37,6 +46,10 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         approveProposal: async (signer: ethers.Signer, _proposal_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'approveProposal', false, _proposal_id);
+        },
+
+        approveProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'approveProposal', true, data);
         },
 
         approveProposalCall: (_proposal_id: unknown) => {

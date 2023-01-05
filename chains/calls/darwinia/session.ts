@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setKeys: async (signer: ethers.Signer, _keys: unknown, _proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'setKeys', false, _keys, _proof);
+        },
+
+        setKeysD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Session', 'setKeys', true, data);
         },
 
         setKeysCall: (_keys: unknown, _proof: unknown) => {
@@ -23,6 +28,10 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         purgeKeys: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'purgeKeys', false);
+        },
+
+        purgeKeysD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Session', 'purgeKeys', true, data);
         },
 
         purgeKeysCall: () => {

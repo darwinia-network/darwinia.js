@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         batch: async (signer: ethers.Signer, _calls: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'batch', false, _calls);
+        },
+
+        batchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Utility', 'batch', true, data);
         },
 
         batchCall: (_calls: unknown) => {
@@ -25,6 +30,10 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'asDerivative', false, _index, _call);
         },
 
+        asDerivativeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Utility', 'asDerivative', true, data);
+        },
+
         asDerivativeCall: (_index: unknown, _call: unknown) => {
             return buildRuntimeCall(metadata, 'Utility', 'asDerivative', {
                 index: _index,
@@ -37,6 +46,10 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         batchAll: async (signer: ethers.Signer, _calls: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'batchAll', false, _calls);
+        },
+
+        batchAllD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Utility', 'batchAll', true, data);
         },
 
         batchAllCall: (_calls: unknown) => {
@@ -53,6 +66,10 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'dispatchAs', false, _as_origin, _call);
         },
 
+        dispatchAsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Utility', 'dispatchAs', true, data);
+        },
+
         dispatchAsCall: (_as_origin: unknown, _call: unknown) => {
             return buildRuntimeCall(metadata, 'Utility', 'dispatchAs', {
                 as_origin: _as_origin,
@@ -65,6 +82,10 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         forceBatch: async (signer: ethers.Signer, _calls: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'forceBatch', false, _calls);
+        },
+
+        forceBatchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Utility', 'forceBatch', true, data);
         },
 
         forceBatchCall: (_calls: unknown) => {
