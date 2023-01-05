@@ -20,7 +20,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
         /**
         * Current phase.
         *
-        * @return Phase: Enum<{Off: , Signed: , Unsigned: (Bool, U32), Emergency: }>
+        * @return Phase: Enum<{0/Off: , 1/Signed: , 2/Unsigned: (Bool, U32), 3/Emergency: }>
         */
         currentPhase: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'CurrentPhase');
@@ -29,7 +29,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
         /**
         * Current best solution, signed or unsigned, queued to be returned upon `elect`.
         *
-        * @return ReadySolution: {supports: Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>, score: [U128; 3], compute: Enum<{OnChain: , Signed: , Unsigned: , Fallback: , Emergency: }>}
+        * @return ReadySolution: {supports: Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>, score: [U128; 3], compute: Enum<{0/OnChain: , 1/Signed: , 2/Unsigned: , 3/Fallback: , 4/Emergency: }>}
         */
         queuedSolution: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'QueuedSolution');

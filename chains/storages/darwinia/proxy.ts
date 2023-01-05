@@ -8,7 +8,7 @@ export const getProxy = (getStorage: GetStorage) => {
         * which are being delegated to, together with the amount held on deposit.
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return (Vec<{delegate: [U8; 32], proxy_type: Enum<{Any: , NonTransfer: , Governance: , Staking: , IdentityJudgement: , EthereumBridge: }>, delay: U32}>, U128)
+        * @return (Vec<{delegate: [U8; 32], proxy_type: Enum<{0/Any: , 1/NonTransfer: , 2/Governance: , 3/Staking: , 4/IdentityJudgement: , 5/EthereumBridge: }>, delay: U32}>, U128)
         */
         proxies: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Proxy', 'Proxies', param0);

@@ -9,7 +9,7 @@ export const getTips = (getStorage: GetStorage) => {
         * guaranteed to be a secure hash.
         *
         * @param param0: H256: [U8; 32]
-        * @return OpenTip: {reason: [U8; 32], who: [U8; 32], finder: [U8; 32], deposit: U128, closes: Enum<{None: , Some: U32}>, tips: Vec<([U8; 32], U128)>, finders_fee: Bool}
+        * @return OpenTip: {reason: [U8; 32], who: [U8; 32], finder: [U8; 32], deposit: U128, closes: Enum<{0/None: , 1/Some: U32}>, tips: Vec<([U8; 32], U128)>, finders_fee: Bool}
         */
         tips: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Tips', 'Tips', param0);

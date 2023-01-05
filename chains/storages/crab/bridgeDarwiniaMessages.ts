@@ -22,7 +22,7 @@ export const getBridgeDarwiniaMessages = (getStorage: GetStorage) => {
         *
         * Depending on the mode either all, some, or no transactions will be allowed.
         *
-        * @return OperatingMode: Enum<{Normal: , RejectingOutboundMessages: , Halted: }>
+        * @return OperatingMode: Enum<{0/Normal: , 1/RejectingOutboundMessages: , 2/Halted: }>
         */
         palletOperatingMode: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaMessages', 'PalletOperatingMode');

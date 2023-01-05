@@ -59,7 +59,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         * Headers which have been imported into the pallet.
         *
         * @param param0: H256: [U8; 32]
-        * @return Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{PreRuntime: ([U8; 4], Vec<U8>), Consensus: ([U8; 4], Vec<U8>), Seal: ([U8; 4], Vec<U8>), Other: Vec<U8>, RuntimeEnvironmentUpdated: }>>}}
+        * @return Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
         */
         importedHeaders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'ImportedHeaders', param0);

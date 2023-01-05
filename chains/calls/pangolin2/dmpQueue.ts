@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getDmpQueue = (dispatch: Dispatch) => {
+export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _index: U64
@@ -11,6 +12,12 @@ export const getDmpQueue = (dispatch: Dispatch) => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, _index, _weight_limit);
         },
 
+        serviceOverweightCall: (_index: unknown, _weight_limit: unknown) => {
+            return buildRuntimeCall(metadata, 'DmpQueue', 'serviceOverweight', {
+                index: _index,
+                weight_limit: _weight_limit,
+            });
+        },
 
     }
 }

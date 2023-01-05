@@ -59,6 +59,29 @@ const camelToSnakeCase = (str: string) => {
     }
 }
 
+        // {
+        //     callIndex: [9, 0],
+        //     args: {
+        //         keys: {
+        //             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+        //         },
+        //         proof: "0x"
+        //     }
+        // },
+export type CallAsParam = {
+    callIndex: [number, number],
+    args: object
+}
+
+export function buildRuntimeCall(metadata: Metadata, palletName: string, callName: string, args: object): CallAsParam {
+    callName = camelToSnakeCase(callName);
+    const call = getCall(metadata, palletName, callName);
+    return {
+        callIndex: [call.callIndex[0], call.callIndex[1]],
+        args: args
+    }
+}
+
 type Call = {
     call: SiVariant,
     callIndex: Uint8Array
@@ -116,6 +139,8 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
             for (let i = 0; i < paramLookupTypes.length; i++) {
                 const paramType = paramLookupTypes[i];
                 const param = params[i];
+                // console.log(paramType);
+                // metadata.registry.lookup.getSiType(paramType as string);
                 const encodedParam = metadata.registry.createType(paramType, param).toU8a();
                 paramsData = u8aConcat(paramsData, encodedParam);
             }

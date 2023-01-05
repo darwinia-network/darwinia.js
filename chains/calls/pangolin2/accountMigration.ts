@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getAccountMigration = (dispatch: Dispatch) => {
+export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _from: [U8; 32]
@@ -12,6 +13,13 @@ export const getAccountMigration = (dispatch: Dispatch) => {
             return await dispatch(signer, 'AccountMigration', 'migrate', false, _from, _to, _signature);
         },
 
+        migrateCall: (_from: unknown, _to: unknown, _signature: unknown) => {
+            return buildRuntimeCall(metadata, 'AccountMigration', 'migrate', {
+                from: _from,
+                to: _to,
+                signature: _signature,
+            });
+        },
 
     }
 }

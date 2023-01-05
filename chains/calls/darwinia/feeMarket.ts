@@ -1,14 +1,22 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getFeeMarket = (dispatch: Dispatch) => {
+export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _lock_collateral: U128
-         * @param _relay_fee: Enum<{None: , Some: U128}>
+         * @param _relay_fee: Enum<{0/None: , 1/Some: U128}>
 	 */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'FeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
+        },
+
+        enrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'enrollAndLockCollateral', {
+                lock_collateral: _lock_collateral,
+                relay_fee: _relay_fee,
+            });
         },
 
         /**
@@ -18,6 +26,12 @@ export const getFeeMarket = (dispatch: Dispatch) => {
             return await dispatch(signer, 'FeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
 
+        updateLockedCollateralCall: (_new_collateral: unknown) => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'updateLockedCollateral', {
+                new_collateral: _new_collateral,
+            });
+        },
+
         /**
          * @param _new_fee: U128
 	 */
@@ -25,10 +39,21 @@ export const getFeeMarket = (dispatch: Dispatch) => {
             return await dispatch(signer, 'FeeMarket', 'updateRelayFee', false, _new_fee);
         },
 
+        updateRelayFeeCall: (_new_fee: unknown) => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'updateRelayFee', {
+                new_fee: _new_fee,
+            });
+        },
+
         /**
 	 */
         cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'FeeMarket', 'cancelEnrollment', false);
+        },
+
+        cancelEnrollmentCall: () => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'cancelEnrollment', {
+            });
         },
 
         /**
@@ -38,6 +63,12 @@ export const getFeeMarket = (dispatch: Dispatch) => {
             return await dispatch(signer, 'FeeMarket', 'setSlashProtect', false, _slash_protect);
         },
 
+        setSlashProtectCall: (_slash_protect: unknown) => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'setSlashProtect', {
+                slash_protect: _slash_protect,
+            });
+        },
+
         /**
          * @param _number: U32
 	 */
@@ -45,6 +76,11 @@ export const getFeeMarket = (dispatch: Dispatch) => {
             return await dispatch(signer, 'FeeMarket', 'setAssignedRelayersNumber', false, _number);
         },
 
+        setAssignedRelayersNumberCall: (_number: unknown) => {
+            return buildRuntimeCall(metadata, 'FeeMarket', 'setAssignedRelayersNumber', {
+                number: _number,
+            });
+        },
 
     }
 }

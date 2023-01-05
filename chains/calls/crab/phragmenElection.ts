@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getPhragmenElection = (dispatch: Dispatch) => {
+export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _votes: Vec<[U8; 32]>
@@ -11,10 +12,22 @@ export const getPhragmenElection = (dispatch: Dispatch) => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, _votes, _value);
         },
 
+        voteCall: (_votes: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'vote', {
+                votes: _votes,
+                value: _value,
+            });
+        },
+
         /**
 	 */
         removeVoter: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', false);
+        },
+
+        removeVoterCall: () => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'removeVoter', {
+            });
         },
 
         /**
@@ -24,19 +37,38 @@ export const getPhragmenElection = (dispatch: Dispatch) => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, _candidate_count);
         },
 
+        submitCandidacyCall: (_candidate_count: unknown) => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'submitCandidacy', {
+                candidate_count: _candidate_count,
+            });
+        },
+
         /**
-         * @param _renouncing: Enum<{Member: , RunnerUp: , Candidate: Compact<U32>}>
+         * @param _renouncing: Enum<{0/Member: , 1/RunnerUp: , 2/Candidate: Compact<U32>}>
 	 */
         renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);
         },
 
+        renounceCandidacyCall: (_renouncing: unknown) => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'renounceCandidacy', {
+                renouncing: _renouncing,
+            });
+        },
+
         /**
-         * @param _who: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _who: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          * @param _has_replacement: Bool
 	 */
         removeMember: async (signer: ethers.Signer, _who: unknown, _has_replacement: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, _who, _has_replacement);
+        },
+
+        removeMemberCall: (_who: unknown, _has_replacement: unknown) => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'removeMember', {
+                who: _who,
+                has_replacement: _has_replacement,
+            });
         },
 
         /**
@@ -47,6 +79,12 @@ export const getPhragmenElection = (dispatch: Dispatch) => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, _num_voters, _num_defunct);
         },
 
+        cleanDefunctVotersCall: (_num_voters: unknown, _num_defunct: unknown) => {
+            return buildRuntimeCall(metadata, 'PhragmenElection', 'cleanDefunctVoters', {
+                num_voters: _num_voters,
+                num_defunct: _num_defunct,
+            });
+        },
 
     }
 }
