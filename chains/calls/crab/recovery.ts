@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         asRecovered: async (signer: ethers.Signer, _account: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'asRecovered', false, _account, _call);
+        },
+
+        asRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'asRecovered', true, data);
         },
 
         asRecoveredCall: (_account: unknown, _call: unknown) => {
@@ -25,6 +30,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setRecovered: async (signer: ethers.Signer, _lost: unknown, _rescuer: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'setRecovered', false, _lost, _rescuer);
+        },
+
+        setRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'setRecovered', true, data);
         },
 
         setRecoveredCall: (_lost: unknown, _rescuer: unknown) => {
@@ -43,6 +52,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'createRecovery', false, _friends, _threshold, _delay_period);
         },
 
+        createRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'createRecovery', true, data);
+        },
+
         createRecoveryCall: (_friends: unknown, _threshold: unknown, _delay_period: unknown) => {
             return buildRuntimeCall(metadata, 'Recovery', 'createRecovery', {
                 friends: _friends,
@@ -56,6 +69,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         initiateRecovery: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'initiateRecovery', false, _account);
+        },
+
+        initiateRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'initiateRecovery', true, data);
         },
 
         initiateRecoveryCall: (_account: unknown) => {
@@ -72,6 +89,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'vouchRecovery', false, _lost, _rescuer);
         },
 
+        vouchRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'vouchRecovery', true, data);
+        },
+
         vouchRecoveryCall: (_lost: unknown, _rescuer: unknown) => {
             return buildRuntimeCall(metadata, 'Recovery', 'vouchRecovery', {
                 lost: _lost,
@@ -84,6 +105,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         claimRecovery: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'claimRecovery', false, _account);
+        },
+
+        claimRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'claimRecovery', true, data);
         },
 
         claimRecoveryCall: (_account: unknown) => {
@@ -99,6 +124,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'closeRecovery', false, _rescuer);
         },
 
+        closeRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'closeRecovery', true, data);
+        },
+
         closeRecoveryCall: (_rescuer: unknown) => {
             return buildRuntimeCall(metadata, 'Recovery', 'closeRecovery', {
                 rescuer: _rescuer,
@@ -111,6 +140,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'removeRecovery', false);
         },
 
+        removeRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'removeRecovery', true, data);
+        },
+
         removeRecoveryCall: () => {
             return buildRuntimeCall(metadata, 'Recovery', 'removeRecovery', {
             });
@@ -121,6 +154,10 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         cancelRecovered: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'cancelRecovered', false, _account);
+        },
+
+        cancelRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Recovery', 'cancelRecovered', true, data);
         },
 
         cancelRecoveredCall: (_account: unknown) => {

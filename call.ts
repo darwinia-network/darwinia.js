@@ -153,7 +153,3 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
 }
 
 export type Dispatch = (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>) => Promise<ethers.providers.TransactionReceipt>;
-
-export async function setSessionKeys(dispatch: Dispatch, signer: ethers.Signer, keys: HexString): Promise<ethers.providers.TransactionReceipt> {
-    return await dispatch(signer, "Session", "set_keys", true, hexToU8a(keys), hexToU8a("0x00"));
-}

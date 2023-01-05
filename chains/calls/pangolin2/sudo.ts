@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         sudo: async (signer: ethers.Signer, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Sudo', 'sudo', false, _call);
+        },
+
+        sudoD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Sudo', 'sudo', true, data);
         },
 
         sudoCall: (_call: unknown) => {
@@ -25,6 +30,10 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Sudo', 'sudoUncheckedWeight', false, _call, _weight);
         },
 
+        sudoUncheckedWeightD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Sudo', 'sudoUncheckedWeight', true, data);
+        },
+
         sudoUncheckedWeightCall: (_call: unknown, _weight: unknown) => {
             return buildRuntimeCall(metadata, 'Sudo', 'sudoUncheckedWeight', {
                 call: _call,
@@ -39,6 +48,10 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Sudo', 'setKey', false, _new);
         },
 
+        setKeyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Sudo', 'setKey', true, data);
+        },
+
         setKeyCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'Sudo', 'setKey', {
                 new: _new,
@@ -51,6 +64,10 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         sudoAs: async (signer: ethers.Signer, _who: unknown, _call: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Sudo', 'sudoAs', false, _who, _call);
+        },
+
+        sudoAsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Sudo', 'sudoAs', true, data);
         },
 
         sudoAsCall: (_who: unknown, _call: unknown) => {

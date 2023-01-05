@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -12,6 +13,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         bond: async (signer: ethers.Signer, _controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bond', false, _controller, _value, _payee, _promise_month);
+        },
+
+        bondD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'bond', true, data);
         },
 
         bondCall: (_controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown) => {
@@ -31,6 +36,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'bondExtra', false, _max_additional, _promise_month);
         },
 
+        bondExtraD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'bondExtra', true, data);
+        },
+
         bondExtraCall: (_max_additional: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'bondExtra', {
                 max_additional: _max_additional,
@@ -44,6 +53,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         depositExtra: async (signer: ethers.Signer, _value: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'depositExtra', false, _value, _promise_month);
+        },
+
+        depositExtraD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'depositExtra', true, data);
         },
 
         depositExtraCall: (_value: unknown, _promise_month: unknown) => {
@@ -60,6 +73,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'unbond', false, _value);
         },
 
+        unbondD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'unbond', true, data);
+        },
+
         unbondCall: (_value: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'unbond', {
                 value: _value,
@@ -71,6 +88,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         withdrawUnbonded: async (signer: ethers.Signer, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'withdrawUnbonded', false, _num_slashing_spans);
+        },
+
+        withdrawUnbondedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'withdrawUnbonded', true, data);
         },
 
         withdrawUnbondedCall: (_num_slashing_spans: unknown) => {
@@ -85,6 +106,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'claimMatureDeposits', false);
         },
 
+        claimMatureDepositsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'claimMatureDeposits', true, data);
+        },
+
         claimMatureDepositsCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'claimMatureDeposits', {
             });
@@ -95,6 +120,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         tryClaimDepositsWithPunish: async (signer: ethers.Signer, _expire_time: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', false, _expire_time);
+        },
+
+        tryClaimDepositsWithPunishD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', true, data);
         },
 
         tryClaimDepositsWithPunishCall: (_expire_time: unknown) => {
@@ -110,6 +139,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'validate', false, _prefs);
         },
 
+        validateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'validate', true, data);
+        },
+
         validateCall: (_prefs: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'validate', {
                 prefs: _prefs,
@@ -121,6 +154,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         nominate: async (signer: ethers.Signer, _targets: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', false, _targets);
+        },
+
+        nominateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'nominate', true, data);
         },
 
         nominateCall: (_targets: unknown) => {
@@ -135,6 +172,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'chill', false);
         },
 
+        chillD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'chill', true, data);
+        },
+
         chillCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'chill', {
             });
@@ -145,6 +186,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setPayee: async (signer: ethers.Signer, _payee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', false, _payee);
+        },
+
+        setPayeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setPayee', true, data);
         },
 
         setPayeeCall: (_payee: unknown) => {
@@ -160,6 +205,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'setController', false, _controller);
         },
 
+        setControllerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setController', true, data);
+        },
+
         setControllerCall: (_controller: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setController', {
                 controller: _controller,
@@ -171,6 +220,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setValidatorCount: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setValidatorCount', false, _new);
+        },
+
+        setValidatorCountD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setValidatorCount', true, data);
         },
 
         setValidatorCountCall: (_new: unknown) => {
@@ -186,6 +239,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'increaseValidatorCount', false, _additional);
         },
 
+        increaseValidatorCountD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'increaseValidatorCount', true, data);
+        },
+
         increaseValidatorCountCall: (_additional: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'increaseValidatorCount', {
                 additional: _additional,
@@ -197,6 +254,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         scaleValidatorCount: async (signer: ethers.Signer, _factor: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'scaleValidatorCount', false, _factor);
+        },
+
+        scaleValidatorCountD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'scaleValidatorCount', true, data);
         },
 
         scaleValidatorCountCall: (_factor: unknown) => {
@@ -211,6 +272,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'forceNoEras', false);
         },
 
+        forceNoErasD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'forceNoEras', true, data);
+        },
+
         forceNoErasCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNoEras', {
             });
@@ -220,6 +285,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         forceNewEra: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEra', false);
+        },
+
+        forceNewEraD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'forceNewEra', true, data);
         },
 
         forceNewEraCall: () => {
@@ -232,6 +301,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setInvulnerables: async (signer: ethers.Signer, _invulnerables: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setInvulnerables', false, _invulnerables);
+        },
+
+        setInvulnerablesD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setInvulnerables', true, data);
         },
 
         setInvulnerablesCall: (_invulnerables: unknown) => {
@@ -248,6 +321,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'forceUnstake', false, _stash, _num_slashing_spans);
         },
 
+        forceUnstakeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'forceUnstake', true, data);
+        },
+
         forceUnstakeCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'forceUnstake', {
                 stash: _stash,
@@ -261,6 +338,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'forceNewEraAlways', false);
         },
 
+        forceNewEraAlwaysD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'forceNewEraAlways', true, data);
+        },
+
         forceNewEraAlwaysCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNewEraAlways', {
             });
@@ -272,6 +353,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         cancelDeferredSlash: async (signer: ethers.Signer, _era: unknown, _slash_indices: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'cancelDeferredSlash', false, _era, _slash_indices);
+        },
+
+        cancelDeferredSlashD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'cancelDeferredSlash', true, data);
         },
 
         cancelDeferredSlashCall: (_era: unknown, _slash_indices: unknown) => {
@@ -289,6 +374,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'payoutStakers', false, _validator_stash, _era);
         },
 
+        payoutStakersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'payoutStakers', true, data);
+        },
+
         payoutStakersCall: (_validator_stash: unknown, _era: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'payoutStakers', {
                 validator_stash: _validator_stash,
@@ -302,6 +391,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         rebond: async (signer: ethers.Signer, _plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'rebond', false, _plan_to_rebond_ring, _plan_to_rebond_kton);
+        },
+
+        rebondD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'rebond', true, data);
         },
 
         rebondCall: (_plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown) => {
@@ -319,6 +412,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'setHistoryDepth', false, _new_history_depth, _era_items_deleted);
         },
 
+        setHistoryDepthD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setHistoryDepth', true, data);
+        },
+
         setHistoryDepthCall: (_new_history_depth: unknown, _era_items_deleted: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setHistoryDepth', {
                 new_history_depth: _new_history_depth,
@@ -334,6 +431,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'reapStash', false, _stash, _num_slashing_spans);
         },
 
+        reapStashD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'reapStash', true, data);
+        },
+
         reapStashCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'reapStash', {
                 stash: _stash,
@@ -346,6 +447,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         kick: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', false, _who);
+        },
+
+        kickD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'kick', true, data);
         },
 
         kickCall: (_who: unknown) => {
@@ -366,6 +471,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'setStakingConfigs', false, _min_nominator_bond, _min_validator_bond, _max_nominator_count, _max_validator_count, _chill_threshold, _min_commission);
         },
 
+        setStakingConfigsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'setStakingConfigs', true, data);
+        },
+
         setStakingConfigsCall: (_min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setStakingConfigs', {
                 min_nominator_bond: _min_nominator_bond,
@@ -382,6 +491,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         chillOther: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chillOther', false, _controller);
+        },
+
+        chillOtherD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'chillOther', true, data);
         },
 
         chillOtherCall: (_controller: unknown) => {

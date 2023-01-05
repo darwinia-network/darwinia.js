@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -13,6 +14,10 @@ export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Meta
 	 */
         lockAndRemoteIssue: async (signer: ethers.Signer, _spec_version: unknown, _weight: unknown, _value: unknown, _fee: unknown, _recipient: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ToPangolinParachainBacking', 'lockAndRemoteIssue', false, _spec_version, _weight, _value, _fee, _recipient);
+        },
+
+        lockAndRemoteIssueD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'lockAndRemoteIssue', true, data);
         },
 
         lockAndRemoteIssueCall: (_spec_version: unknown, _weight: unknown, _value: unknown, _fee: unknown, _recipient: unknown) => {
@@ -33,6 +38,10 @@ export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ToPangolinParachainBacking', 'unlockFromRemote', false, _amount, _recipient);
         },
 
+        unlockFromRemoteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'unlockFromRemote', true, data);
+        },
+
         unlockFromRemoteCall: (_amount: unknown, _recipient: unknown) => {
             return buildRuntimeCall(metadata, 'ToPangolinParachainBacking', 'unlockFromRemote', {
                 amount: _amount,
@@ -45,6 +54,10 @@ export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Meta
 	 */
         setSecureLimitedPeriod: async (signer: ethers.Signer, _period: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecureLimitedPeriod', false, _period);
+        },
+
+        setSecureLimitedPeriodD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecureLimitedPeriod', true, data);
         },
 
         setSecureLimitedPeriodCall: (_period: unknown) => {
@@ -60,6 +73,10 @@ export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecurityLimitationRingAmount', false, _limitation);
         },
 
+        setSecurityLimitationRingAmountD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setSecurityLimitationRingAmount', true, data);
+        },
+
         setSecurityLimitationRingAmountCall: (_limitation: unknown) => {
             return buildRuntimeCall(metadata, 'ToPangolinParachainBacking', 'setSecurityLimitationRingAmount', {
                 limitation: _limitation,
@@ -71,6 +88,10 @@ export const getToPangolinParachainBacking = (dispatch: Dispatch, metadata: Meta
 	 */
         setRemoteMappingTokenFactoryAccount: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ToPangolinParachainBacking', 'setRemoteMappingTokenFactoryAccount', false, _account);
+        },
+
+        setRemoteMappingTokenFactoryAccountD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ToPangolinParachainBacking', 'setRemoteMappingTokenFactoryAccount', true, data);
         },
 
         setRemoteMappingTokenFactoryAccountCall: (_account: unknown) => {

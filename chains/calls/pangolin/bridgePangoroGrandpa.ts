@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
 	 */
         submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
+        },
+
+        submitFinalityProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', true, data);
         },
 
         submitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
@@ -26,6 +31,10 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', false, _init_data);
         },
 
+        initializeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', true, data);
+        },
+
         initializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'initialize', {
                 init_data: _init_data,
@@ -39,6 +48,10 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', false, _new_owner);
         },
 
+        setOwnerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', true, data);
+        },
+
         setOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'setOwner', {
                 new_owner: _new_owner,
@@ -50,6 +63,10 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
 	 */
         setOperational: async (signer: ethers.Signer, _operational: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperational', false, _operational);
+        },
+
+        setOperationalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperational', true, data);
         },
 
         setOperationalCall: (_operational: unknown) => {

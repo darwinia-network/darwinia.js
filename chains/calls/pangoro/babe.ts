@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         reportEquivocation: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
+        },
+
+        reportEquivocationD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'reportEquivocation', true, data);
         },
 
         reportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
@@ -27,6 +32,10 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
+        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', true, data);
+        },
+
         reportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Babe', 'reportEquivocationUnsigned', {
                 equivocation_proof: _equivocation_proof,
@@ -39,6 +48,10 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         planConfigChange: async (signer: ethers.Signer, _config: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'planConfigChange', false, _config);
+        },
+
+        planConfigChangeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'planConfigChange', true, data);
         },
 
         planConfigChangeCall: (_config: unknown) => {

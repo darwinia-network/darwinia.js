@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         notePreimage: async (signer: ethers.Signer, _bytes: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', false, _bytes);
+        },
+
+        notePreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Preimage', 'notePreimage', true, data);
         },
 
         notePreimageCall: (_bytes: unknown) => {
@@ -24,6 +29,10 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', false, _hash);
         },
 
+        unnotePreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Preimage', 'unnotePreimage', true, data);
+        },
+
         unnotePreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'unnotePreimage', {
                 hash: _hash,
@@ -37,6 +46,10 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', false, _hash);
         },
 
+        requestPreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Preimage', 'requestPreimage', true, data);
+        },
+
         requestPreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'requestPreimage', {
                 hash: _hash,
@@ -48,6 +61,10 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         unrequestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', false, _hash);
+        },
+
+        unrequestPreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Preimage', 'unrequestPreimage', true, data);
         },
 
         unrequestPreimageCall: (_hash: unknown) => {

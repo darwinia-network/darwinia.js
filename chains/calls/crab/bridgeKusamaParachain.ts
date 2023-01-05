@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -11,6 +12,10 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
 	 */
         submitParachainHeads: async (signer: ethers.Signer, _relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', false, _relay_block_hash, _parachains, _parachain_heads_proof);
+        },
+
+        submitParachainHeadsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', true, data);
         },
 
         submitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {

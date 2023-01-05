@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
 	 */
         submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
+        },
+
+        submitFinalityProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', true, data);
         },
 
         submitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
@@ -26,6 +31,10 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'initialize', false, _init_data);
         },
 
+        initializeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'initialize', true, data);
+        },
+
         initializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'initialize', {
                 init_data: _init_data,
@@ -39,6 +48,10 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOwner', false, _new_owner);
         },
 
+        setOwnerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOwner', true, data);
+        },
+
         setOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'setOwner', {
                 new_owner: _new_owner,
@@ -50,6 +63,10 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
 	 */
         setOperational: async (signer: ethers.Signer, _operational: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOperational', false, _operational);
+        },
+
+        setOperationalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOperational', true, data);
         },
 
         setOperationalCall: (_operational: unknown) => {

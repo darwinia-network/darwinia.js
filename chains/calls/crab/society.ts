@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -9,6 +10,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         bid: async (signer: ethers.Signer, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'bid', false, _value);
+        },
+
+        bidD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'bid', true, data);
         },
 
         bidCall: (_value: unknown) => {
@@ -22,6 +27,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         unbid: async (signer: ethers.Signer, _pos: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unbid', false, _pos);
+        },
+
+        unbidD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'unbid', true, data);
         },
 
         unbidCall: (_pos: unknown) => {
@@ -39,6 +48,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vouch', false, _who, _value, _tip);
         },
 
+        vouchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'vouch', true, data);
+        },
+
         vouchCall: (_who: unknown, _value: unknown, _tip: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vouch', {
                 who: _who,
@@ -52,6 +65,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         unvouch: async (signer: ethers.Signer, _pos: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unvouch', false, _pos);
+        },
+
+        unvouchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'unvouch', true, data);
         },
 
         unvouchCall: (_pos: unknown) => {
@@ -68,6 +85,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vote', false, _candidate, _approve);
         },
 
+        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'vote', true, data);
+        },
+
         voteCall: (_candidate: unknown, _approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vote', {
                 candidate: _candidate,
@@ -82,6 +103,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'defenderVote', false, _approve);
         },
 
+        defenderVoteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'defenderVote', true, data);
+        },
+
         defenderVoteCall: (_approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'defenderVote', {
                 approve: _approve,
@@ -92,6 +117,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         payout: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'payout', false);
+        },
+
+        payoutD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'payout', true, data);
         },
 
         payoutCall: () => {
@@ -108,6 +137,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'found', false, _founder, _max_members, _rules);
         },
 
+        foundD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'found', true, data);
+        },
+
         foundCall: (_founder: unknown, _max_members: unknown, _rules: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'found', {
                 founder: _founder,
@@ -122,6 +155,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unfound', false);
         },
 
+        unfoundD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'unfound', true, data);
+        },
+
         unfoundCall: () => {
             return buildRuntimeCall(metadata, 'Society', 'unfound', {
             });
@@ -133,6 +170,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         judgeSuspendedMember: async (signer: ethers.Signer, _who: unknown, _forgive: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', false, _who, _forgive);
+        },
+
+        judgeSuspendedMemberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'judgeSuspendedMember', true, data);
         },
 
         judgeSuspendedMemberCall: (_who: unknown, _forgive: unknown) => {
@@ -150,6 +191,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', false, _who, _judgement);
         },
 
+        judgeSuspendedCandidateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', true, data);
+        },
+
         judgeSuspendedCandidateCall: (_who: unknown, _judgement: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'judgeSuspendedCandidate', {
                 who: _who,
@@ -162,6 +207,10 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setMaxMembers: async (signer: ethers.Signer, _max: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'setMaxMembers', false, _max);
+        },
+
+        setMaxMembersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Society', 'setMaxMembers', true, data);
         },
 
         setMaxMembersCall: (_max: unknown) => {

@@ -1,6 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
 import { Metadata } from "@polkadot/types";
+import { HexString } from "@polkadot/util/types";
 
 export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -10,6 +11,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transfer', false, _dest, _value);
+        },
+
+        transferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'transfer', true, data);
         },
 
         transferCall: (_dest: unknown, _value: unknown) => {
@@ -26,6 +31,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         setBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _new_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'setBalance', false, _who, _new_free, _new_reserved);
+        },
+
+        setBalanceD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'setBalance', true, data);
         },
 
         setBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
@@ -45,6 +54,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Kton', 'forceTransfer', false, _source, _dest, _value);
         },
 
+        forceTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'forceTransfer', true, data);
+        },
+
         forceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'forceTransfer', {
                 source: _source,
@@ -59,6 +72,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         transferKeepAlive: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transferKeepAlive', false, _dest, _value);
+        },
+
+        transferKeepAliveD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'transferKeepAlive', true, data);
         },
 
         transferKeepAliveCall: (_dest: unknown, _value: unknown) => {
@@ -76,6 +93,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Kton', 'transferAll', false, _dest, _keep_alive);
         },
 
+        transferAllD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'transferAll', true, data);
+        },
+
         transferAllCall: (_dest: unknown, _keep_alive: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'transferAll', {
                 dest: _dest,
@@ -89,6 +110,10 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	 */
         forceUnreserve: async (signer: ethers.Signer, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'forceUnreserve', false, _who, _amount);
+        },
+
+        forceUnreserveD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Kton', 'forceUnreserve', true, data);
         },
 
         forceUnreserveCall: (_who: unknown, _amount: unknown) => {
