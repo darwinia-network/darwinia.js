@@ -76,7 +76,7 @@ async function main(): Promise<void> {
     await dispatchPangolin2Call(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Method 2
-    const pangolin2Calls = calls.buildPangolin2CallsClient(dispatchPangolin2Call);
+    const pangolin2Calls = calls.buildPangolin2CallsClient(dispatchPangolin2Call, metadata);
     await pangolin2Calls.session.setKeys(wallet, keys, "0x")
 
     // Method 3
