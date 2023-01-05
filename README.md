@@ -22,7 +22,7 @@ import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
     // web3 provider(eth compatible api endpoint)
-    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
+    const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
 
     const pangolin = clientBuilder.buildPangolinClient(provider);
   
