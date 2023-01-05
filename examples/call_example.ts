@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, dispatch, calls, setSessionKeys } from "../index"
+import { buildMetadata, metadatas, dispatch, callsClientBuilder, setSessionKeys } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -17,8 +17,8 @@ async function main(): Promise<void> {
     await dispatchPangolin2Call(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Way 2
-    const pangolin2Calls = calls.buildPangolin2CallsClient(dispatchPangolin2Call, metadata);
-    await pangolin2Calls.session.setKeys(wallet, keys, "0x")
+    const pangolin2 = callsClientBuilder.buildPangolin2CallsClient(provider, metadata);
+    await pangolin2.session.setKeys(wallet, keys, "0x")
 
     // Way 3
     await setSessionKeys(

@@ -18,7 +18,7 @@ The returns of this lib's functions are all json string or null.
 
 ```typescript
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, getStorage, storages } from "darwinia-js-sdk"
+import { buildMetadata, metadatas, getStorage, storagesClientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
     // web3 provider(eth compatible api endpoint)
@@ -42,7 +42,7 @@ async function main(): Promise<void> {
     console.log(`${result}\n`);
   
     // Method 2
-    const pangolin2Storages = storages.buildPangolinStoragesClient(getPangolin2Storage);
+    const pangolin2Storages = storagesClientBuilder.buildPangolinStoragesClient(getPangolin2Storage);
     result = await pangolin2Storages.system.account('0x794BF0B66926D84CB735283D849f454A2A8d9a44');
     console.log(`${result}\n`);
 
@@ -55,7 +55,7 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, dispatch, calls, setSessionKeys } from "darwinia-js-sdk"
+import { buildMetadata, metadatas, dispatch, callsClientBuilder, setSessionKeys } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -76,7 +76,7 @@ async function main(): Promise<void> {
     await dispatchPangolin2Call(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Method 2
-    const pangolin2Calls = calls.buildPangolin2CallsClient(dispatchPangolin2Call, metadata);
+    const pangolin2Calls = callsClientBuilder.buildPangolin2CallsClient(provider, metadata);
     await pangolin2Calls.session.setKeys(wallet, keys, "0x")
 
     // Method 3

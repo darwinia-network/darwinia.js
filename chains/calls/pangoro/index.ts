@@ -1,5 +1,6 @@
-import { Dispatch } from "../../../call";
+import { dispatch as dispatchCall } from "../../../call";
 import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -26,7 +27,8 @@ import {getEVM} from "./evm";
 import {getEthereum} from "./ethereum";
 import {getBaseFee} from "./baseFee";
 
-export const buildPangoroCallsClient = (dispatch: Dispatch, metadata: Metadata) => {
+export const buildPangoroCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const dispatch = dispatchCall(provider, metadata);
     return {
         system: getSystem(dispatch, metadata),
         babe: getBabe(dispatch, metadata),

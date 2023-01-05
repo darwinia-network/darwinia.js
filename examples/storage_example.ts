@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, getStorage, storages } from "../index"
+import { buildMetadata, metadatas, getStorage, storagesClientBuilder } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -35,7 +35,7 @@ async function main(): Promise<void> {
 
     // Way 2: use predefined functions to fetch storages
     // First, build a chain specific storage client
-    const pangolinStorages = storages.buildPangolinStoragesClient(getPangolinStorage);
+    const pangolinStorages = storagesClientBuilder.buildPangolinStoragesClient(getPangolinStorage);
 
     result = await pangolinStorages.bridgePangolinParachainMessages.inboundLanes("0x00000001");
     console.log(`    decoded: ${result}\n`);
