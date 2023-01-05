@@ -1,5 +1,6 @@
-import { Dispatch } from "../../../call";
+import { dispatch as dispatchCall } from "../../../call";
 import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -41,7 +42,8 @@ import {getBridgeCrabParachainMessages} from "./bridgeCrabParachainMessages";
 import {getDarwiniaFeeMarket} from "./darwiniaFeeMarket";
 import {getCrabParachainFeeMarket} from "./crabParachainFeeMarket";
 
-export const buildCrabCallsClient = (dispatch: Dispatch, metadata: Metadata) => {
+export const buildCrabCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const dispatch = dispatchCall(provider, metadata);
     return {
         system: getSystem(dispatch, metadata),
         babe: getBabe(dispatch, metadata),

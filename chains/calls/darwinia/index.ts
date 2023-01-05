@@ -1,5 +1,6 @@
-import { Dispatch } from "../../../call";
+import { dispatch as dispatchCall } from "../../../call";
 import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -43,7 +44,8 @@ import {getBridgeDarwiniaParachainMessages} from "./bridgeDarwiniaParachainMessa
 import {getFeeMarket} from "./feeMarket";
 import {getDarwiniaParachainFeeMarket} from "./darwiniaParachainFeeMarket";
 
-export const buildDarwiniaCallsClient = (dispatch: Dispatch, metadata: Metadata) => {
+export const buildDarwiniaCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const dispatch = dispatchCall(provider, metadata);
     return {
         system: getSystem(dispatch, metadata),
         babe: getBabe(dispatch, metadata),

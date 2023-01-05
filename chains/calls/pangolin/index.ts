@@ -1,5 +1,6 @@
-import { Dispatch } from "../../../call";
+import { dispatch as dispatchCall } from "../../../call";
 import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -50,7 +51,8 @@ import {getBridgePangolinParachainAlphaMessages} from "./bridgePangolinParachain
 import {getPangolinParachainAlphaFeeMarket} from "./pangolinParachainAlphaFeeMarket";
 import {getToPangolinParachainBacking} from "./toPangolinParachainBacking";
 
-export const buildPangolinCallsClient = (dispatch: Dispatch, metadata: Metadata) => {
+export const buildPangolinCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const dispatch = dispatchCall(provider, metadata);
     return {
         system: getSystem(dispatch, metadata),
         babe: getBabe(dispatch, metadata),

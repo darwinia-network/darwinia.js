@@ -1,5 +1,6 @@
-import { Dispatch } from "../../../call";
+import { dispatch as dispatchCall } from "../../../call";
 import { Metadata } from "@polkadot/types";
+import { providers } from "ethers";
 
 <%_ 
 for(let i = 0; i < moduleNames.length; i++) { 
@@ -8,7 +9,8 @@ _%>
 import {get<%= prefix %>} from "./<%= moduleNames[i] %>";
 <%_ } _%>
 
-export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>CallsClient = (dispatch: Dispatch, metadata: Metadata) => {
+export const build<%= chainName.charAt(0).toUpperCase() + chainName.slice(1); %>CallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
+    const dispatch = dispatchCall(provider, metadata);
     return {
 <%_ 
 for(let i = 0; i < moduleNames.length; i++) { 
