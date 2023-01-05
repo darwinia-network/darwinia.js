@@ -234,8 +234,8 @@ async function generateCalls(chainName: string, metadata: Metadata) {
         const prefix = pallet.name.toString();
         const moduleName = getModuleName(prefix);
 
-        // palletCalls: [callName, [paramName, paramType]]
-        const palletCalls: [string, [string, string][]][] = [];
+        // palletCalls: [callName, [paramName, paramType], docs]
+        const palletCalls: [string, [string, string][], string[]][] = [];
         const calls = pallet.calls.unwrap();
         const callsType = metadata.registry.lookup.getSiType(calls.type);
         callsType.def.asVariant.variants.forEach(call => {
@@ -248,7 +248,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
                 callParams.push([paramName, paramTypeString]);
             });
 
-            palletCalls.push([callName, callParams])
+            palletCalls.push([callName, callParams, call.docs.map(d => d.toString())])
         });
 
         const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls });

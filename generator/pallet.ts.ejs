@@ -14,23 +14,23 @@ _%>
 <%_
         entry.docs.forEach((doc) => {
 _%>
-        *<%= doc %>
+         *<%- doc %>
 <%_
         })
 _%>
-        *
+         *
 <%_
         if(inputTypeNames) {
             for(let j = 0; j < inputTypeNames.length; j++) {
                 const inputTypeName = inputTypeNames[j];
 _%>
-        * @param param<%= j %>: <%- inputTypeName %>
+         * @param param<%= j %>: <%- inputTypeName %>
 <%_
             }
         }
 _%>
-        * @return <%- outputTypeName %>
-        */
+         * @return <%- outputTypeName %>
+         */
 <%_
         if(entry.type.isPlain) {
 _%>

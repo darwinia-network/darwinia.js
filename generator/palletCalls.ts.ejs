@@ -6,14 +6,23 @@ import { HexString } from "@polkadot/util/types";
 export const get<%= prefix %> = (dispatch: Dispatch, metadata: Metadata) => {
     return {
 <%_ for(let i = 0; i < palletCalls.length; i++) {
-        // [callName, [paramName, paramType]]
+        // [callName, [paramName, paramType], docs]
         const call = palletCalls[i];
         const callName = call[0];
 	const callParams = call[1];
+	const callDocs = call[2];
 	const input = [];
 	const input2 = [];
 _%>
         /**
+<%_
+	for(let k = 0; k < callDocs.length; k++) {
+_%>
+         * <%- callDocs[k] %>
+<%_
+	}
+_%>
+         *
 <%_
         for(let j = 0; j < callParams.length; j++) {
 	    // [paramName, paramType]
@@ -27,13 +36,13 @@ _%>
 	    input2.push(`_${paramName}`)
 	}
 _%>
-	 */
+         */
         <%= callName %>: async (signer: ethers.Signer<%= input.length > 0 ? `, ${input.join(", ")}` : '' %>): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
         },
 
-        <%= `${callName}D` %>: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true, data);
+        <%= `${callName}D` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: HexString' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', data' : '' %>);
         },
 
         <%= `${callName}Call` %>: (<%= input.join(", ") %>) => {
