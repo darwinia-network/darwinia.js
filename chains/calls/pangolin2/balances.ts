@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getBalances = (dispatch: Dispatch) => {
+export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _dest: [U8; 20]
@@ -9,6 +10,13 @@ export const getBalances = (dispatch: Dispatch) => {
 	 */
         transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transfer', false, _dest, _value);
+        },
+
+        transferCall: (_dest: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'transfer', {
+                dest: _dest,
+                value: _value,
+            });
         },
 
         /**
@@ -20,6 +28,14 @@ export const getBalances = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Balances', 'setBalance', false, _who, _new_free, _new_reserved);
         },
 
+        setBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'setBalance', {
+                who: _who,
+                new_free: _new_free,
+                new_reserved: _new_reserved,
+            });
+        },
+
         /**
          * @param _source: [U8; 20]
          * @param _dest: [U8; 20]
@@ -27,6 +43,14 @@ export const getBalances = (dispatch: Dispatch) => {
 	 */
         forceTransfer: async (signer: ethers.Signer, _source: unknown, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', false, _source, _dest, _value);
+        },
+
+        forceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'forceTransfer', {
+                source: _source,
+                dest: _dest,
+                value: _value,
+            });
         },
 
         /**
@@ -37,12 +61,26 @@ export const getBalances = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', false, _dest, _value);
         },
 
+        transferKeepAliveCall: (_dest: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'transferKeepAlive', {
+                dest: _dest,
+                value: _value,
+            });
+        },
+
         /**
          * @param _dest: [U8; 20]
          * @param _keep_alive: Bool
 	 */
         transferAll: async (signer: ethers.Signer, _dest: unknown, _keep_alive: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferAll', false, _dest, _keep_alive);
+        },
+
+        transferAllCall: (_dest: unknown, _keep_alive: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'transferAll', {
+                dest: _dest,
+                keep_alive: _keep_alive,
+            });
         },
 
         /**
@@ -53,6 +91,12 @@ export const getBalances = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', false, _who, _amount);
         },
 
+        forceUnreserveCall: (_who: unknown, _amount: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'forceUnreserve', {
+                who: _who,
+                amount: _amount,
+            });
+        },
 
     }
 }

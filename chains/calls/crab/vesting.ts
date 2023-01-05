@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getVesting = (dispatch: Dispatch) => {
+export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
 	 */
@@ -9,28 +10,54 @@ export const getVesting = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Vesting', 'vest', false);
         },
 
+        vestCall: () => {
+            return buildRuntimeCall(metadata, 'Vesting', 'vest', {
+            });
+        },
+
         /**
-         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
 	 */
         vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
         },
 
+        vestOtherCall: (_target: unknown) => {
+            return buildRuntimeCall(metadata, 'Vesting', 'vestOther', {
+                target: _target,
+            });
+        },
+
         /**
-         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
         vestedTransfer: async (signer: ethers.Signer, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', false, _target, _schedule);
         },
 
+        vestedTransferCall: (_target: unknown, _schedule: unknown) => {
+            return buildRuntimeCall(metadata, 'Vesting', 'vestedTransfer', {
+                target: _target,
+                schedule: _schedule,
+            });
+        },
+
         /**
-         * @param _source: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
-         * @param _target: Enum<{Id: [U8; 32], Index: Compact<()>, Raw: Vec<U8>, Address32: [U8; 32], Address20: [U8; 20]}>
+         * @param _source: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
 	 */
         forceVestedTransfer: async (signer: ethers.Signer, _source: unknown, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, _source, _target, _schedule);
+        },
+
+        forceVestedTransferCall: (_source: unknown, _target: unknown, _schedule: unknown) => {
+            return buildRuntimeCall(metadata, 'Vesting', 'forceVestedTransfer', {
+                source: _source,
+                target: _target,
+                schedule: _schedule,
+            });
         },
 
         /**
@@ -41,6 +68,12 @@ export const getVesting = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', false, _schedule1_index, _schedule2_index);
         },
 
+        mergeSchedulesCall: (_schedule1_index: unknown, _schedule2_index: unknown) => {
+            return buildRuntimeCall(metadata, 'Vesting', 'mergeSchedules', {
+                schedule1_index: _schedule1_index,
+                schedule2_index: _schedule2_index,
+            });
+        },
 
     }
 }

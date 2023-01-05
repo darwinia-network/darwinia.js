@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getBridgePolkadotParachain = (dispatch: Dispatch) => {
+export const getBridgePolkadotParachain = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _relay_block_hash: [U8; 32]
@@ -12,6 +13,13 @@ export const getBridgePolkadotParachain = (dispatch: Dispatch) => {
             return await dispatch(signer, 'BridgePolkadotParachain', 'submitParachainHeads', false, _relay_block_hash, _parachains, _parachain_heads_proof);
         },
 
+        submitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
+            return buildRuntimeCall(metadata, 'BridgePolkadotParachain', 'submitParachainHeads', {
+                relay_block_hash: _relay_block_hash,
+                parachains: _parachains,
+                parachain_heads_proof: _parachain_heads_proof,
+            });
+        },
 
     }
 }

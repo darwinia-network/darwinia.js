@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getMessageGadget = (dispatch: Dispatch) => {
+export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _commitment_contract: [U8; 20]
@@ -10,6 +11,11 @@ export const getMessageGadget = (dispatch: Dispatch) => {
             return await dispatch(signer, 'MessageGadget', 'setCommitmentContract', false, _commitment_contract);
         },
 
+        setCommitmentContractCall: (_commitment_contract: unknown) => {
+            return buildRuntimeCall(metadata, 'MessageGadget', 'setCommitmentContract', {
+                commitment_contract: _commitment_contract,
+            });
+        },
 
     }
 }

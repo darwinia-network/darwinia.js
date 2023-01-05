@@ -1,4 +1,5 @@
 import { Dispatch } from "../../../call";
+import { Metadata } from "@polkadot/types";
 
 import {getSystem} from "./system";
 import {getBabe} from "./babe";
@@ -25,31 +26,31 @@ import {getEVM} from "./evm";
 import {getEthereum} from "./ethereum";
 import {getBaseFee} from "./baseFee";
 
-export const buildPangoroCallsClient = (dispatch: Dispatch) => {
+export const buildPangoroCallsClient = (dispatch: Dispatch, metadata: Metadata) => {
     return {
-        system: getSystem(dispatch),
-        babe: getBabe(dispatch),
-        timestamp: getTimestamp(dispatch),
-        balances: getBalances(dispatch),
-        kton: getKton(dispatch),
-        authorship: getAuthorship(dispatch),
-        electionProviderMultiPhase: getElectionProviderMultiPhase(dispatch),
-        staking: getStaking(dispatch),
-        session: getSession(dispatch),
-        grandpa: getGrandpa(dispatch),
-        messageGadget: getMessageGadget(dispatch),
-        ecdsaAuthority: getEcdsaAuthority(dispatch),
-        imOnline: getImOnline(dispatch),
-        treasury: getTreasury(dispatch),
-        sudo: getSudo(dispatch),
-        scheduler: getScheduler(dispatch),
-        preimage: getPreimage(dispatch),
-        bridgePangolinGrandpa: getBridgePangolinGrandpa(dispatch),
-        bridgePangolinMessages: getBridgePangolinMessages(dispatch),
-        pangolinFeeMarket: getPangolinFeeMarket(dispatch),
-        transactionPause: getTransactionPause(dispatch),
-        evm: getEVM(dispatch),
-        ethereum: getEthereum(dispatch),
-        baseFee: getBaseFee(dispatch),
+        system: getSystem(dispatch, metadata),
+        babe: getBabe(dispatch, metadata),
+        timestamp: getTimestamp(dispatch, metadata),
+        balances: getBalances(dispatch, metadata),
+        kton: getKton(dispatch, metadata),
+        authorship: getAuthorship(dispatch, metadata),
+        electionProviderMultiPhase: getElectionProviderMultiPhase(dispatch, metadata),
+        staking: getStaking(dispatch, metadata),
+        session: getSession(dispatch, metadata),
+        grandpa: getGrandpa(dispatch, metadata),
+        messageGadget: getMessageGadget(dispatch, metadata),
+        ecdsaAuthority: getEcdsaAuthority(dispatch, metadata),
+        imOnline: getImOnline(dispatch, metadata),
+        treasury: getTreasury(dispatch, metadata),
+        sudo: getSudo(dispatch, metadata),
+        scheduler: getScheduler(dispatch, metadata),
+        preimage: getPreimage(dispatch, metadata),
+        bridgePangolinGrandpa: getBridgePangolinGrandpa(dispatch, metadata),
+        bridgePangolinMessages: getBridgePangolinMessages(dispatch, metadata),
+        pangolinFeeMarket: getPangolinFeeMarket(dispatch, metadata),
+        transactionPause: getTransactionPause(dispatch, metadata),
+        evm: getEVM(dispatch, metadata),
+        ethereum: getEthereum(dispatch, metadata),
+        baseFee: getBaseFee(dispatch, metadata),
     };
 }

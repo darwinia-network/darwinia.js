@@ -21,7 +21,7 @@ export const getAccountMigration = (getStorage: GetStorage) => {
         * https://github.dev/paritytech/substrate/blob/polkadot-v0.9.30/frame/assets/src/types.rs#L115
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return AssetAccount: {balance: U128, is_frozen: Bool, reason: Enum<{Consumer: , Sufficient: , DepositHeld: U128, DepositRefunded: }>, extra: ()}
+        * @return [U8; 18]
         */
         ktonAccounts: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'KtonAccounts', param0);
@@ -47,18 +47,6 @@ export const getAccountMigration = (getStorage: GetStorage) => {
         */
         deposits: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'Deposits', param0);
-        },
-
-        /**
-        * [`darwinia_staking::Bonded`] data.
-        *
-        * &lt;https://github.dev/darwinia-network/darwinia-common/blob/6a9392cfb9fe2c99b1c2b47d0c36125d61991bb7/frame/staking/src/lib.rs#L592&gt;
-        *
-        * @param param0: AccountId32: [U8; 32]
-        * @return AccountId32: [U8; 32]
-        */
-        bonded: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('AccountMigration', 'Bonded', param0);
         },
 
         /**

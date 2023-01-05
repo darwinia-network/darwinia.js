@@ -134,6 +134,17 @@ function buildFields(level: number, fields: IterableIterator<Si1Field>, metadata
     }
 }
 
+function getFullTypeName(typeId: SiLookupTypeId, metadata: Metadata) {
+    const type = metadata.registry.lookup.getSiType(typeId);
+    if(type.path.length > 0 ) {
+        const typeName = type.path.map(p => p.toString()).join("::");
+        return typeName;
+    } else {
+        console.log(`---${typeId.toNumber()}---`);
+        return `---${typeId.toNumber()}---`
+    }
+}
+
 function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     // console.log("START------------------------....................");
     let level = 0;
@@ -145,6 +156,10 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
 function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): string {
     const type = metadata.registry.lookup.getSiType(typeId);
 
+    // const fullParamTypeName = getFullTypeName(typeId, metadata);
+    // if(fullParamTypeName.includes("::RuntimeCall")) {
+    //
+    // }
 
     if (type.def.isPrimitive) {
         return type.def.asPrimitive.toString();
@@ -177,10 +192,12 @@ function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): s
 
             str = str + type.def.asVariant.variants.map(v => {
                 if(level > 2) {
-                    return v.name;
+                    return `"${v.index}/${v.name}"`
+                    // return v.name;
                 } else {
                     const itemStr = buildFields(level, v.fields.values(), metadata);
-                    return `${v.name}: ${itemStr}`
+                    return `${v.index}/${v.name}: ${itemStr}`
+                    // return `${v.name}: ${itemStr}`
                 }
                 // return `"${v.index}/${v.name}": "${itemStr}"`
                 // return `"${v.index}/${v.name}"`
@@ -217,7 +234,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
         const prefix = pallet.name.toString();
         const moduleName = getModuleName(prefix);
 
-        // [callName, [paramName, paramType]]
+        // palletCalls: [callName, [paramName, paramType]]
         const palletCalls: [string, [string, string][]][] = [];
         const calls = pallet.calls.unwrap();
         const callsType = metadata.registry.lookup.getSiType(calls.type);

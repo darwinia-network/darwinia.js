@@ -31,7 +31,7 @@ export const getDarwiniaFeeMarket = (getStorage: GetStorage) => {
         /**
         *
         * @param param0: ([U8; 4], U64)
-        * @return Order: {lane: [U8; 4], message: U64, sent_time: U32, confirm_time: Enum<{None: , Some: U32}>, locked_collateral: U128, assigned_relayers: Vec<{id: [U8; 32], fee: U128, valid_range: {start: U32, end: U32}}>}
+        * @return Order: {lane: [U8; 4], message: U64, sent_time: U32, confirm_time: Enum<{0/None: , 1/Some: U32}>, locked_collateral: U128, assigned_relayers: Vec<{id: [U8; 32], fee: U128, valid_range: {start: U32, end: U32}}>}
         */
         orders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('DarwiniaFeeMarket', 'Orders', param0);

@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const get<%= prefix %> = (dispatch: Dispatch) => {
+export const get<%= prefix %> = (dispatch: Dispatch, metadata: Metadata) => {
     return {
 <%_ for(let i = 0; i < palletCalls.length; i++) {
         // [callName, [paramName, paramType]]
@@ -30,8 +31,23 @@ _%>
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
         },
 
+        <%= `${callName}Call` %>: (<%= input.join(", ") %>) => {
+            return buildRuntimeCall(metadata, '<%= prefix %>', '<%= callName %>', {
+	    <%_
+		for(let j = 0; j < callParams.length; j++) {
+		    // [paramName, paramType]
+		    const callParam = callParams[j];
+		    const paramName = callParam[0];
+	    _%>
+                <%= paramName %>: _<%= paramName %>,
+	    <%_ 
+	        }
+	    _%>
+            });
+        },
+
 <%_ 
     }
-%>
+_%>
     }
 }

@@ -1,7 +1,8 @@
-import { Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers } from "ethers";
+import { Metadata } from "@polkadot/types";
 
-export const getTimestamp = (dispatch: Dispatch) => {
+export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * @param _now: Compact<U64>
@@ -10,6 +11,11 @@ export const getTimestamp = (dispatch: Dispatch) => {
             return await dispatch(signer, 'Timestamp', 'set', false, _now);
         },
 
+        setCall: (_now: unknown) => {
+            return buildRuntimeCall(metadata, 'Timestamp', 'set', {
+                now: _now,
+            });
+        },
 
     }
 }

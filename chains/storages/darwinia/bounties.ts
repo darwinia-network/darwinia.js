@@ -16,7 +16,7 @@ export const getBounties = (getStorage: GetStorage) => {
         * Bounties that have been made.
         *
         * @param param0: U32
-        * @return Bounty: {proposer: [U8; 32], value: U128, fee: U128, curator_deposit: U128, bond: U128, status: Enum<{Proposed: , Approved: , Funded: , CuratorProposed: {curator: [U8; 32]}, Active: {curator: [U8; 32], update_due: U32}, PendingPayout: {curator: [U8; 32], beneficiary: [U8; 32], unlock_at: U32}}>}
+        * @return Bounty: {proposer: [U8; 32], value: U128, fee: U128, curator_deposit: U128, bond: U128, status: Enum<{0/Proposed: , 1/Approved: , 2/Funded: , 3/CuratorProposed: {curator: [U8; 32]}, 4/Active: {curator: [U8; 32], update_due: U32}, 5/PendingPayout: {curator: [U8; 32], beneficiary: [U8; 32], unlock_at: U32}}>}
         */
         bounties: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Bounties', 'Bounties', param0);

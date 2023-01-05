@@ -29,7 +29,7 @@ export const getKton = (getStorage: GetStorage) => {
         * NOTE: Should only be accessed when setting, changing and freeing a lock.
         *
         * @param param0: AccountId32: [U8; 32]
-        * @return WeakBoundedVec: Vec<{id: [U8; 8], amount: U128, reasons: Enum<{Fee: , Misc: , All: }>}>
+        * @return WeakBoundedVec: Vec<{id: [U8; 8], amount: U128, reasons: Enum<{0/Fee: , 1/Misc: , 2/All: }>}>
         */
         locks: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Kton', 'Locks', param0);
@@ -50,7 +50,7 @@ export const getKton = (getStorage: GetStorage) => {
         *
         * This is set to v2.0.0 for new networks.
         *
-        * @return Releases: Enum<{V1_0_0: , V2_0_0: }>
+        * @return Releases: Enum<{0/V1_0_0: , 1/V2_0_0: }>
         */
         storageVersion: async (): Promise<string | null> => {
             return await getStorage('Kton', 'StorageVersion');
