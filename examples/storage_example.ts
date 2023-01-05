@@ -4,12 +4,10 @@ import { buildMetadata, staticMetadata, getStorage, clientBuilder } from "../ind
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
+
+    // Way 1
     const metadata = buildMetadata(staticMetadata.pangolinMetaStatic);
-
-    // a general storage function for a specific chain
     const getPangolinStorage = getStorage(provider, metadata);
-
-    // Way 1: use pallet name and storage name to fetch storages
     let result = await getPangolinStorage(
         "BridgePangolinParachainMessages",
         "OutboundMessages",
@@ -32,10 +30,8 @@ async function main(): Promise<void> {
     );
     console.log(`    decoded: ${result}\n`);
 
-
-    // Way 2: use predefined functions to fetch storages
-    // First, build a chain specific storage client
-    const pangolin = clientBuilder.buildPangolinClient(provider, metadata);
+    // Way 2
+    const pangolin = clientBuilder.buildPangolinClient(provider);
 
     result = await pangolin.storages.bridgePangolinParachainMessages.inboundLanes("0x00000001");
     console.log(`    decoded: ${result}\n`);
