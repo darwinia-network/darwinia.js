@@ -1,10 +1,10 @@
 import { ethers } from "ethers";
-import { buildMetadata, metadatas, dispatch, callsClientBuilder, setSessionKeys } from "../index"
+import { buildMetadata, staticMetadata, dispatch, clientBuilder, setSessionKeys } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
-    const metadata = buildMetadata(metadatas.pangolin2MetaStatic);
+    const metadata = buildMetadata(staticMetadata.pangolin2MetaStatic);
 
     const dispatchPangolin2Call = dispatch(provider, metadata);
     // const wallet = provider.getSigner();
@@ -17,8 +17,8 @@ async function main(): Promise<void> {
     await dispatchPangolin2Call(wallet, "Session", "setKeys", false, keys, "0x");
 
     // Way 2
-    const pangolin2 = callsClientBuilder.buildPangolin2CallsClient(provider, metadata);
-    await pangolin2.session.setKeys(wallet, keys, "0x")
+    const pangolin2 = clientBuilder.buildPangolin2Client(provider, metadata);
+    await pangolin2.calls.session.setKeys(wallet, keys, "0x")
 
     // Way 3
     await setSessionKeys(
