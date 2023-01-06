@@ -1,17 +1,17 @@
-import { BytesLike, ethers, providers } from "ethers";
+import { ethers, providers } from "ethers";
 import { Metadata } from '@polkadot/types';
 import { HexString } from "@polkadot/util/types";
 import { SiVariant } from "@polkadot/types/interfaces";
-import { u8aConcat, hexToU8a, u8aToHex } from "@polkadot/util";
+import { u8aConcat, u8aToHex } from "@polkadot/util";
 
 type BaseProvider = providers.BaseProvider;
 
-async function dryRun(provider: BaseProvider, contractAddress: string, data: BytesLike, gasLimit: number) {
-    await provider.call({
-        to: contractAddress,
-        data: data,
-        gasLimit: gasLimit
-    });
+interface Tx {
+  [key: string]: any;
+}
+
+async function dryRun(provider: BaseProvider, tx: Tx) {
+    await provider.call(tx);
 }
 
 type EthersError = {
@@ -27,20 +27,17 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: H
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
-        const gasLimit = 800000; // (await provider.estimateGas(tx)).toNumber();
-
-        let tx = {
+        let tx: Tx = {
             to: contractAddress,
             value: "0x0",
             data: data,
-            gasLimit: gasLimit,
-            gasPrice: ethers.utils.parseUnits("1", "gwei"),
             nonce: await provider.getTransactionCount(signer.getAddress())
         };
 
-        // const gasLimit = (await provider.estimateGas(tx)).toNumber();
-        await dryRun(provider, contractAddress, data, gasLimit);
-        // tx.gasLimit = gasLimit;
+        await dryRun(provider, tx);
+
+        tx.gasPrice = ethers.utils.parseUnits("1", "gwei"),
+        tx.gasLimit = (await provider.estimateGas(tx)).toNumber();
 
         let signedTx = await signer.signTransaction(tx);
         let sentTx = await provider.sendTransaction(signedTx);
