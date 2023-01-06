@@ -23,19 +23,25 @@ type EthersError = {
     };
 }
 
-async function doDispatch(provider: BaseProvider, signer: ethers.Signer, callData: HexString | Uint8Array, gasLimit: number): Promise<ethers.providers.TransactionReceipt> {
+async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: HexString | Uint8Array): Promise<ethers.providers.TransactionReceipt> {
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
-        await dryRun(provider, contractAddress, callData, gasLimit);
+
+        const gasLimit = 800000; // (await provider.estimateGas(tx)).toNumber();
 
         let tx = {
             to: contractAddress,
             value: "0x0",
-            data: callData,
+            data: data,
             gasLimit: gasLimit,
             gasPrice: ethers.utils.parseUnits("1", "gwei"),
             nonce: await provider.getTransactionCount(signer.getAddress())
         };
+
+        // const gasLimit = (await provider.estimateGas(tx)).toNumber();
+        await dryRun(provider, contractAddress, data, gasLimit);
+        // tx.gasLimit = gasLimit;
+
         let signedTx = await signer.signTransaction(tx);
         let sentTx = await provider.sendTransaction(signedTx);
         return sentTx.wait();
@@ -148,7 +154,11 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
 
         let callData = u8aConcat(callIndex, paramsData);
         console.debug(`call data: ${u8aToHex(callData)}`);
-        return doDispatch(provider, signer, callData, 800000);
+
+        let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
+        const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
+
+        return doDispatch(provider, signer, data);
     };
 }
 
