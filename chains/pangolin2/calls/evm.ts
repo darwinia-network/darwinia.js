@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -15,7 +15,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'withdraw', false, _address, _value);
         },
 
-        withdrawD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        withdrawD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'withdraw', true, data);
         },
 
@@ -43,7 +43,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'call', false, _source, _target, _input, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        callD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        callD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'call', true, data);
         },
 
@@ -78,7 +78,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'create', false, _source, _init, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        createD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        createD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'create', true, data);
         },
 
@@ -112,7 +112,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'create2', false, _source, _init, _salt, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        create2D: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        create2D: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'create2', true, data);
         },
 

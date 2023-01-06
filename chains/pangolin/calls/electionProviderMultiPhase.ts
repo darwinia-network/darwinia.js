@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -28,7 +28,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, _raw_solution, _witness);
         },
 
-        submitUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, data);
         },
 
@@ -52,7 +52,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, _maybe_next_score);
         },
 
-        setMinimumUntrustedScoreD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setMinimumUntrustedScoreD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, data);
         },
 
@@ -78,7 +78,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, _supports);
         },
 
-        setEmergencyElectionResultD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setEmergencyElectionResultD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, data);
         },
 
@@ -110,7 +110,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, _raw_solution, _num_signed_submissions);
         },
 
-        submitD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, data);
         },
 

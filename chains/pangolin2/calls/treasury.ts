@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -23,7 +23,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'proposeSpend', false, _value, _beneficiary);
         },
 
-        proposeSpendD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        proposeSpendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'proposeSpend', true, data);
         },
 
@@ -51,7 +51,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'rejectProposal', false, _proposal_id);
         },
 
-        rejectProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        rejectProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'rejectProposal', true, data);
         },
 
@@ -79,7 +79,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'approveProposal', false, _proposal_id);
         },
 
-        approveProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        approveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'approveProposal', true, data);
         },
 
@@ -106,7 +106,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'spend', false, _amount, _beneficiary);
         },
 
-        spendD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        spendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'spend', true, data);
         },
 
@@ -140,7 +140,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'removeApproval', false, _proposal_id);
         },
 
-        removeApprovalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        removeApprovalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'removeApproval', true, data);
         },
 

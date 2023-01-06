@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -47,7 +47,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'setMembers', false, _new_members, _prime, _old_count);
         },
 
-        setMembersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setMembersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'setMembers', true, data);
         },
 
@@ -79,7 +79,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'execute', false, _proposal, _length_bound);
         },
 
-        executeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        executeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'execute', true, data);
         },
 
@@ -127,7 +127,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'propose', false, _threshold, _proposal, _length_bound);
         },
 
-        proposeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        proposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'propose', true, data);
         },
 
@@ -164,7 +164,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'vote', false, _proposal, _index, _approve);
         },
 
-        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'vote', true, data);
         },
 
@@ -219,7 +219,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'close', false, _proposal_hash, _index, _proposal_weight_bound, _length_bound);
         },
 
-        closeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        closeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'close', true, data);
         },
 
@@ -254,7 +254,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', false, _proposal_hash);
         },
 
-        disapproveProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        disapproveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', true, data);
         },
 

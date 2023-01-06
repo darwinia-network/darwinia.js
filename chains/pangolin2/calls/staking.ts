@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -18,7 +18,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'stake', false, _ring_amount, _kton_amount, _deposits);
         },
 
-        stakeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        stakeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'stake', true, data);
         },
 
@@ -41,7 +41,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'unstake', false, _ring_amount, _kton_amount, _deposits);
         },
 
-        unstakeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        unstakeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unstake', true, data);
         },
 
@@ -81,7 +81,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'collect', false, _commission);
         },
 
-        collectD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        collectD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'collect', true, data);
         },
 
@@ -102,7 +102,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Staking', 'nominate', false, _target);
         },
 
-        nominateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        nominateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', true, data);
         },
 

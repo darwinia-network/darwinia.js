@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -16,7 +16,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'setOwner', true, data);
         },
 
@@ -37,7 +37,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'setOperatingMode', false, _operating_mode);
         },
 
-        setOperatingModeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingModeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'setOperatingMode', true, data);
         },
 
@@ -61,7 +61,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'updatePalletParameter', false, _parameter);
         },
 
-        updatePalletParameterD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updatePalletParameterD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'updatePalletParameter', true, data);
         },
 
@@ -82,7 +82,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'sendMessage', false, _lane_id, _payload, _delivery_and_dispatch_fee);
         },
 
-        sendMessageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        sendMessageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'sendMessage', true, data);
         },
 
@@ -105,7 +105,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'increaseMessageFee', false, _lane_id, _nonce, _additional_fee);
         },
 
-        increaseMessageFeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        increaseMessageFeeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'increaseMessageFee', true, data);
         },
 
@@ -133,7 +133,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'receiveMessagesProof', false, _relayer_id_at_bridged_chain, _proof, _messages_count, _dispatch_weight);
         },
 
-        receiveMessagesProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'receiveMessagesProof', true, data);
         },
 
@@ -156,7 +156,7 @@ export const getBridgeCrabMessages = (dispatch: Dispatch, metadata: Metadata) =>
             return await dispatch(signer, 'BridgeCrabMessages', 'receiveMessagesDeliveryProof', false, _proof, _relayers_state);
         },
 
-        receiveMessagesDeliveryProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesDeliveryProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabMessages', 'receiveMessagesDeliveryProof', true, data);
         },
 

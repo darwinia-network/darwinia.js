@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -27,7 +27,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', false, _index, _weight_limit);
         },
 
-        serviceOverweightD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        serviceOverweightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', true, data);
         },
 
@@ -91,7 +91,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', false, _new);
         },
 
-        updateSuspendThresholdD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateSuspendThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', true, data);
         },
 
@@ -114,7 +114,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', false, _new);
         },
 
-        updateDropThresholdD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateDropThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', true, data);
         },
 
@@ -137,7 +137,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', false, _new);
         },
 
-        updateResumeThresholdD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateResumeThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', true, data);
         },
 
@@ -159,7 +159,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', false, _new);
         },
 
-        updateThresholdWeightD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateThresholdWeightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', true, data);
         },
 
@@ -182,7 +182,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', false, _new);
         },
 
-        updateWeightRestrictDecayD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateWeightRestrictDecayD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', true, data);
         },
 
@@ -205,7 +205,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', false, _new);
         },
 
-        updateXcmpMaxIndividualWeightD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateXcmpMaxIndividualWeightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', true, data);
         },
 

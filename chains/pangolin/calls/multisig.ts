@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -30,7 +30,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'asMultiThreshold_1', false, _other_signatories, _call);
         },
 
-        asMultiThreshold_1D: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        asMultiThreshold_1D: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'asMultiThreshold_1', true, data);
         },
 
@@ -99,7 +99,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'asMulti', false, _threshold, _other_signatories, _maybe_timepoint, _call, _store_call, _max_weight);
         },
 
-        asMultiD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        asMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'asMulti', true, data);
         },
 
@@ -161,7 +161,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'approveAsMulti', false, _threshold, _other_signatories, _maybe_timepoint, _call_hash, _max_weight);
         },
 
-        approveAsMultiD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        approveAsMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'approveAsMulti', true, data);
         },
 
@@ -212,7 +212,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'cancelAsMulti', false, _threshold, _other_signatories, _timepoint, _call_hash);
         },
 
-        cancelAsMultiD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelAsMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'cancelAsMulti', true, data);
         },
 

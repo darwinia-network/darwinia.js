@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -47,7 +47,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'bid', false, _value);
         },
 
-        bidD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        bidD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'bid', true, data);
         },
 
@@ -84,7 +84,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unbid', false, _pos);
         },
 
-        unbidD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        unbidD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unbid', true, data);
         },
 
@@ -149,7 +149,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vouch', false, _who, _value, _tip);
         },
 
-        vouchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        vouchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vouch', true, data);
         },
 
@@ -186,7 +186,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unvouch', false, _pos);
         },
 
-        unvouchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        unvouchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unvouch', true, data);
         },
 
@@ -224,7 +224,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vote', false, _candidate, _approve);
         },
 
-        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vote', true, data);
         },
 
@@ -259,7 +259,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'defenderVote', false, _approve);
         },
 
-        defenderVoteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        defenderVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'defenderVote', true, data);
         },
 
@@ -335,7 +335,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'found', false, _founder, _max_members, _rules);
         },
 
-        foundD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        foundD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'found', true, data);
         },
 
@@ -413,7 +413,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', false, _who, _forgive);
         },
 
-        judgeSuspendedMemberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        judgeSuspendedMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', true, data);
         },
 
@@ -473,7 +473,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', false, _who, _judgement);
         },
 
-        judgeSuspendedCandidateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        judgeSuspendedCandidateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', true, data);
         },
 
@@ -506,7 +506,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'setMaxMembers', false, _max);
         },
 
-        setMaxMembersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setMaxMembersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'setMaxMembers', true, data);
         },
 

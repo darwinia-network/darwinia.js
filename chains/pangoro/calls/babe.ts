@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -18,7 +18,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'reportEquivocation', true, data);
         },
 
@@ -46,7 +46,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', true, data);
         },
 
@@ -69,7 +69,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'planConfigChange', false, _config);
         },
 
-        planConfigChangeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        planConfigChangeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'planConfigChange', true, data);
         },
 

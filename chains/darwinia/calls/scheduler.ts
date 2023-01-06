@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -17,7 +17,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'schedule', false, _when, _maybe_periodic, _priority, _call);
         },
 
-        scheduleD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        scheduleD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'schedule', true, data);
         },
 
@@ -40,7 +40,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'cancel', false, _when, _index);
         },
 
-        cancelD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'cancel', true, data);
         },
 
@@ -64,7 +64,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'scheduleNamed', false, _id, _when, _maybe_periodic, _priority, _call);
         },
 
-        scheduleNamedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        scheduleNamedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'scheduleNamed', true, data);
         },
 
@@ -87,7 +87,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'cancelNamed', false, _id);
         },
 
-        cancelNamedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelNamedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'cancelNamed', true, data);
         },
 
@@ -113,7 +113,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'scheduleAfter', false, _after, _maybe_periodic, _priority, _call);
         },
 
-        scheduleAfterD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        scheduleAfterD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'scheduleAfter', true, data);
         },
 
@@ -143,7 +143,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Scheduler', 'scheduleNamedAfter', false, _id, _after, _maybe_periodic, _priority, _call);
         },
 
-        scheduleNamedAfterD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        scheduleNamedAfterD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Scheduler', 'scheduleNamedAfter', true, data);
         },
 

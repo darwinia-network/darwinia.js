@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -34,7 +34,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'create', false, _id, _admin, _min_balance);
         },
 
-        createD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        createD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'create', true, data);
         },
 
@@ -76,7 +76,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceCreate', false, _id, _owner, _is_sufficient, _min_balance);
         },
 
-        forceCreateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceCreateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCreate', true, data);
         },
 
@@ -116,7 +116,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'destroy', false, _id, _witness);
         },
 
-        destroyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        destroyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'destroy', true, data);
         },
 
@@ -149,7 +149,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'mint', false, _id, _beneficiary, _amount);
         },
 
-        mintD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        mintD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'mint', true, data);
         },
 
@@ -186,7 +186,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'burn', false, _id, _who, _amount);
         },
 
-        burnD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        burnD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'burn', true, data);
         },
 
@@ -226,7 +226,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'transfer', false, _id, _target, _amount);
         },
 
-        transferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        transferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transfer', true, data);
         },
 
@@ -266,7 +266,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'transferKeepAlive', false, _id, _target, _amount);
         },
 
-        transferKeepAliveD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        transferKeepAliveD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferKeepAlive', true, data);
         },
 
@@ -308,7 +308,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceTransfer', false, _id, _source, _dest, _amount);
         },
 
-        forceTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceTransfer', true, data);
         },
 
@@ -340,7 +340,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'freeze', false, _id, _who);
         },
 
-        freezeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        freezeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freeze', true, data);
         },
 
@@ -370,7 +370,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'thaw', false, _id, _who);
         },
 
-        thawD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        thawD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thaw', true, data);
         },
 
@@ -398,7 +398,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'freezeAsset', false, _id);
         },
 
-        freezeAssetD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        freezeAssetD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freezeAsset', true, data);
         },
 
@@ -425,7 +425,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'thawAsset', false, _id);
         },
 
-        thawAssetD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        thawAssetD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thawAsset', true, data);
         },
 
@@ -454,7 +454,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'transferOwnership', false, _id, _owner);
         },
 
-        transferOwnershipD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        transferOwnershipD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferOwnership', true, data);
         },
 
@@ -488,7 +488,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'setTeam', false, _id, _issuer, _admin, _freezer);
         },
 
-        setTeamD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setTeamD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setTeam', true, data);
         },
 
@@ -528,7 +528,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'setMetadata', false, _id, _name, _symbol, _decimals);
         },
 
-        setMetadataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setMetadataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setMetadata', true, data);
         },
 
@@ -560,7 +560,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'clearMetadata', false, _id);
         },
 
-        clearMetadataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        clearMetadataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'clearMetadata', true, data);
         },
 
@@ -596,7 +596,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceSetMetadata', false, _id, _name, _symbol, _decimals, _is_frozen);
         },
 
-        forceSetMetadataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceSetMetadataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceSetMetadata', true, data);
         },
 
@@ -629,7 +629,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceClearMetadata', false, _id);
         },
 
-        forceClearMetadataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceClearMetadataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceClearMetadata', true, data);
         },
 
@@ -676,7 +676,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceAssetStatus', false, _id, _owner, _issuer, _admin, _freezer, _min_balance, _is_sufficient, _is_frozen);
         },
 
-        forceAssetStatusD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceAssetStatusD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceAssetStatus', true, data);
         },
 
@@ -723,7 +723,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'approveTransfer', false, _id, _delegate, _amount);
         },
 
-        approveTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        approveTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'approveTransfer', true, data);
         },
 
@@ -757,7 +757,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'cancelApproval', false, _id, _delegate);
         },
 
-        cancelApprovalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelApprovalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'cancelApproval', true, data);
         },
 
@@ -791,7 +791,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'forceCancelApproval', false, _id, _owner, _delegate);
         },
 
-        forceCancelApprovalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceCancelApprovalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCancelApproval', true, data);
         },
 
@@ -832,7 +832,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'transferApproved', false, _id, _owner, _destination, _amount);
         },
 
-        transferApprovedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        transferApprovedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferApproved', true, data);
         },
 
@@ -862,7 +862,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'touch', false, _id);
         },
 
-        touchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        touchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'touch', true, data);
         },
 
@@ -889,7 +889,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Assets', 'refund', false, _id, _allow_burn);
         },
 
-        refundD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        refundD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'refund', true, data);
         },
 

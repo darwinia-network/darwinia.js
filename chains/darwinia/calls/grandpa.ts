@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -18,7 +18,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocation', true, data);
         },
 
@@ -47,7 +47,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', true, data);
         },
 
@@ -74,7 +74,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'noteStalled', false, _delay, _best_finalized_block_number);
         },
 
-        noteStalledD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        noteStalledD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'noteStalled', true, data);
         },
 

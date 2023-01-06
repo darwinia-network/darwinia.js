@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -13,7 +13,7 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, _fee);
         },
 
-        setBaseFeePerGasD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setBaseFeePerGasD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', true, data);
         },
 
@@ -31,7 +31,7 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'BaseFee', 'setElasticity', false, _elasticity);
         },
 
-        setElasticityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setElasticityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BaseFee', 'setElasticity', true, data);
         },
 

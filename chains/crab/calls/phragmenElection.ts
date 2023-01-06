@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -37,7 +37,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, _votes, _value);
         },
 
-        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', true, data);
         },
 
@@ -92,7 +92,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, _candidate_count);
         },
 
-        submitCandidacyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitCandidacyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', true, data);
         },
 
@@ -128,7 +128,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);
         },
 
-        renounceCandidacyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        renounceCandidacyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', true, data);
         },
 
@@ -161,7 +161,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, _who, _has_replacement);
         },
 
-        removeMemberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        removeMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', true, data);
         },
 
@@ -191,7 +191,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, _num_voters, _num_defunct);
         },
 
-        cleanDefunctVotersD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cleanDefunctVotersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', true, data);
         },
 

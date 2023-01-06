@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -26,7 +26,7 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, _index, _weight_limit);
         },
 
-        serviceOverweightD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        serviceOverweightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', true, data);
         },
 

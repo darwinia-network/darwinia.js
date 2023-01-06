@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -27,7 +27,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'asRecovered', false, _account, _call);
         },
 
-        asRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        asRecoveredD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'asRecovered', true, data);
         },
 
@@ -60,7 +60,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'setRecovered', false, _lost, _rescuer);
         },
 
-        setRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setRecoveredD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'setRecovered', true, data);
         },
 
@@ -108,7 +108,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'createRecovery', false, _friends, _threshold, _delay_period);
         },
 
-        createRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        createRecoveryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'createRecovery', true, data);
         },
 
@@ -150,7 +150,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'initiateRecovery', false, _account);
         },
 
-        initiateRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        initiateRecoveryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'initiateRecovery', true, data);
         },
 
@@ -193,7 +193,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'vouchRecovery', false, _lost, _rescuer);
         },
 
-        vouchRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        vouchRecoveryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'vouchRecovery', true, data);
         },
 
@@ -232,7 +232,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'claimRecovery', false, _account);
         },
 
-        claimRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        claimRecoveryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'claimRecovery', true, data);
         },
 
@@ -270,7 +270,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'closeRecovery', false, _rescuer);
         },
 
-        closeRecoveryD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        closeRecoveryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'closeRecovery', true, data);
         },
 
@@ -336,7 +336,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Recovery', 'cancelRecovered', false, _account);
         },
 
-        cancelRecoveredD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelRecoveredD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Recovery', 'cancelRecovered', true, data);
         },
 

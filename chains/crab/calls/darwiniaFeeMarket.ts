@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -17,7 +17,7 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'DarwiniaFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
         },
 
-        enrollAndLockCollateralD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        enrollAndLockCollateralD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaFeeMarket', 'enrollAndLockCollateral', true, data);
         },
 
@@ -38,7 +38,7 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'DarwiniaFeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
 
-        updateLockedCollateralD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateLockedCollateralD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaFeeMarket', 'updateLockedCollateral', true, data);
         },
 
@@ -57,7 +57,7 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'DarwiniaFeeMarket', 'updateRelayFee', false, _new_fee);
         },
 
-        updateRelayFeeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        updateRelayFeeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaFeeMarket', 'updateRelayFee', true, data);
         },
 
@@ -92,7 +92,7 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'DarwiniaFeeMarket', 'setSlashProtect', false, _slash_protect);
         },
 
-        setSlashProtectD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setSlashProtectD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaFeeMarket', 'setSlashProtect', true, data);
         },
 
@@ -110,7 +110,7 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'DarwiniaFeeMarket', 'setAssignedRelayersNumber', false, _number);
         },
 
-        setAssignedRelayersNumberD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setAssignedRelayersNumberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DarwiniaFeeMarket', 'setAssignedRelayersNumber', true, data);
         },
 

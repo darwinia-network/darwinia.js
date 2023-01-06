@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -25,7 +25,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'propose', false, _proposal_hash, _value);
         },
 
-        proposeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        proposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'propose', true, data);
         },
 
@@ -55,7 +55,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'second', false, _proposal, _seconds_upper_bound);
         },
 
-        secondD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        secondD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'second', true, data);
         },
 
@@ -84,7 +84,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'vote', false, _ref_index, _vote);
         },
 
-        voteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vote', true, data);
         },
 
@@ -111,7 +111,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', false, _ref_index);
         },
 
-        emergencyCancelD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        emergencyCancelD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', true, data);
         },
 
@@ -138,7 +138,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalPropose', false, _proposal_hash);
         },
 
-        externalProposeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalPropose', true, data);
         },
 
@@ -167,7 +167,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', false, _proposal_hash);
         },
 
-        externalProposeMajorityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeMajorityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', true, data);
         },
 
@@ -196,7 +196,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', false, _proposal_hash);
         },
 
-        externalProposeDefaultD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeDefaultD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', true, data);
         },
 
@@ -232,7 +232,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'fastTrack', false, _proposal_hash, _voting_period, _delay);
         },
 
-        fastTrackD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        fastTrackD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'fastTrack', true, data);
         },
 
@@ -261,7 +261,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', false, _proposal_hash);
         },
 
-        vetoExternalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        vetoExternalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', true, data);
         },
 
@@ -286,7 +286,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', false, _ref_index);
         },
 
-        cancelReferendumD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelReferendumD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', true, data);
         },
 
@@ -311,7 +311,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', false, _which);
         },
 
-        cancelQueuedD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelQueuedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', true, data);
         },
 
@@ -351,7 +351,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'delegate', false, _to, _conviction, _balance);
         },
 
-        delegateD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        delegateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'delegate', true, data);
         },
 
@@ -430,7 +430,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'notePreimage', false, _encoded_proposal);
         },
 
-        notePreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimage', true, data);
         },
 
@@ -449,7 +449,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', false, _encoded_proposal);
         },
 
-        notePreimageOperationalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', true, data);
         },
 
@@ -479,7 +479,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', false, _encoded_proposal);
         },
 
-        noteImminentPreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        noteImminentPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', true, data);
         },
 
@@ -498,7 +498,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', false, _encoded_proposal);
         },
 
-        noteImminentPreimageOperationalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        noteImminentPreimageOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', true, data);
         },
 
@@ -532,7 +532,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', false, _proposal_hash, _proposal_len_upper_bound);
         },
 
-        reapPreimageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        reapPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', true, data);
         },
 
@@ -558,7 +558,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'unlock', false, _target);
         },
 
-        unlockD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        unlockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'unlock', true, data);
         },
 
@@ -603,7 +603,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'removeVote', false, _index);
         },
 
-        removeVoteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        removeVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeVote', true, data);
         },
 
@@ -637,7 +637,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', false, _target, _index);
         },
 
-        removeOtherVoteD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        removeOtherVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', true, data);
         },
 
@@ -658,7 +658,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'enactProposal', false, _proposal_hash, _index);
         },
 
-        enactProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        enactProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'enactProposal', true, data);
         },
 
@@ -693,7 +693,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'blacklist', false, _proposal_hash, _maybe_ref_index);
         },
 
-        blacklistD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        blacklistD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'blacklist', true, data);
         },
 
@@ -719,7 +719,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', false, _prop_index);
         },
 
-        cancelProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        cancelProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', true, data);
         },
 

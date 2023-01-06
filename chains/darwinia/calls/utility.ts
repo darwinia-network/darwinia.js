@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -32,7 +32,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'batch', false, _calls);
         },
 
-        batchD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        batchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'batch', true, data);
         },
 
@@ -64,7 +64,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'asDerivative', false, _index, _call);
         },
 
-        asDerivativeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        asDerivativeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'asDerivative', true, data);
         },
 
@@ -97,7 +97,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'batchAll', false, _calls);
         },
 
-        batchAllD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        batchAllD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'batchAll', true, data);
         },
 
@@ -126,7 +126,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Utility', 'dispatchAs', false, _as_origin, _call);
         },
 
-        dispatchAsD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        dispatchAsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Utility', 'dispatchAs', true, data);
         },
 

@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -57,7 +57,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
         },
 
-        vestOtherD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        vestOtherD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', true, data);
         },
 
@@ -93,7 +93,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', false, _target, _schedule);
         },
 
-        vestedTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        vestedTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', true, data);
         },
 
@@ -132,7 +132,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, _source, _target, _schedule);
         },
 
-        forceVestedTransferD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        forceVestedTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', true, data);
         },
 
@@ -174,7 +174,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', false, _schedule1_index, _schedule2_index);
         },
 
-        mergeSchedulesD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        mergeSchedulesD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', true, data);
         },
 

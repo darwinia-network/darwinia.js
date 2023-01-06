@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -14,7 +14,7 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'TransactionPause', 'pauseTransaction', false, _pallet_name, _function_name);
         },
 
-        pauseTransactionD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        pauseTransactionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TransactionPause', 'pauseTransaction', true, data);
         },
 
@@ -34,7 +34,7 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', false, _pallet_name, _function_name);
         },
 
-        unpauseTransactionD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        unpauseTransactionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', true, data);
         },
 

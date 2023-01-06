@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -17,7 +17,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', false, _new);
         },
 
-        addAuthorityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        addAuthorityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', true, data);
         },
 
@@ -38,7 +38,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', false, _old);
         },
 
-        removeAuthorityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        removeAuthorityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', true, data);
         },
 
@@ -60,7 +60,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', false, _old, _new);
         },
 
-        swapAuthorityD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        swapAuthorityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', true, data);
         },
 
@@ -83,7 +83,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', false, _address, _signature);
         },
 
-        submitAuthoritiesChangeSignatureD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitAuthoritiesChangeSignatureD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', true, data);
         },
 
@@ -106,7 +106,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', false, _address, _signature);
         },
 
-        submitNewMessageRootSignatureD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitNewMessageRootSignatureD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', true, data);
         },
 

@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -14,7 +14,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'fillBlock', false, _ratio);
         },
 
-        fillBlockD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        fillBlockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'fillBlock', true, data);
         },
 
@@ -37,7 +37,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'remark', false, _remark);
         },
 
-        remarkD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        remarkD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remark', true, data);
         },
 
@@ -56,7 +56,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setHeapPages', false, _pages);
         },
 
-        setHeapPagesD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setHeapPagesD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setHeapPages', true, data);
         },
 
@@ -86,7 +86,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setCode', false, _code);
         },
 
-        setCodeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCode', true, data);
         },
 
@@ -113,7 +113,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', false, _code);
         },
 
-        setCodeWithoutChecksD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeWithoutChecksD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', true, data);
         },
 
@@ -132,7 +132,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setStorage', false, _items);
         },
 
-        setStorageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setStorageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setStorage', true, data);
         },
 
@@ -151,7 +151,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'killStorage', false, _keys);
         },
 
-        killStorageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        killStorageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killStorage', true, data);
         },
 
@@ -174,7 +174,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'killPrefix', false, _prefix, _subkeys);
         },
 
-        killPrefixD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        killPrefixD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killPrefix', true, data);
         },
 
@@ -194,7 +194,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'remarkWithEvent', false, _remark);
         },
 
-        remarkWithEventD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        remarkWithEventD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', true, data);
         },
 

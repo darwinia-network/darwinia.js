@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -21,7 +21,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
         },
 
-        submitFinalityProofD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'submitFinalityProof', true, data);
         },
 
@@ -49,7 +49,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'initialize', false, _init_data);
         },
 
-        initializeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        initializeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'initialize', true, data);
         },
 
@@ -70,7 +70,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'setOwner', true, data);
         },
 
@@ -91,7 +91,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'setOperational', false, _operational);
         },
 
-        setOperationalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeDarwiniaGrandpa', 'setOperational', true, data);
         },
 

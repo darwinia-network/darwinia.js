@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getAuthorship = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -14,7 +14,7 @@ export const getAuthorship = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Authorship', 'setUncles', false, _new_uncles);
         },
 
-        setUnclesD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setUnclesD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Authorship', 'setUncles', true, data);
         },
 

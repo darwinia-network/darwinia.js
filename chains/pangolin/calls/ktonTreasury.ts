@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -23,7 +23,7 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'proposeSpend', false, _value, _beneficiary);
         },
 
-        proposeSpendD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        proposeSpendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'proposeSpend', true, data);
         },
 
@@ -51,7 +51,7 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'rejectProposal', false, _proposal_id);
         },
 
-        rejectProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        rejectProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'rejectProposal', true, data);
         },
 
@@ -79,7 +79,7 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'approveProposal', false, _proposal_id);
         },
 
-        approveProposalD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        approveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'approveProposal', true, data);
         },
 

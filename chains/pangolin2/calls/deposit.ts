@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -15,7 +15,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Deposit', 'lock', false, _amount, _months);
         },
 
-        lockD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        lockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Deposit', 'lock', true, data);
         },
 
@@ -52,7 +52,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, _id);
         },
 
-        claimWithPenaltyD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        claimWithPenaltyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', true, data);
         },
 

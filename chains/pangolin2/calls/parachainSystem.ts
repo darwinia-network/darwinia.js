@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -22,7 +22,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'setValidationData', false, _data);
         },
 
-        setValidationDataD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setValidationDataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'setValidationData', true, data);
         },
 
@@ -40,7 +40,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', false, _message);
         },
 
-        sudoSendUpwardMessageD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        sudoSendUpwardMessageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', true, data);
         },
 
@@ -58,7 +58,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', false, _code_hash);
         },
 
-        authorizeUpgradeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        authorizeUpgradeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', true, data);
         },
 
@@ -76,7 +76,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', false, _code);
         },
 
-        enactAuthorizedUpgradeD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        enactAuthorizedUpgradeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', true, data);
         },
 

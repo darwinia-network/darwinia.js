@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -29,7 +29,7 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Timestamp', 'set', false, _now);
         },
 
-        setD: async (signer: ethers.Signer, data: HexString): Promise<ethers.providers.TransactionReceipt> => {
+        setD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Timestamp', 'set', true, data);
         },
 

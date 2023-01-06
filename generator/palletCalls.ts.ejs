@@ -1,7 +1,7 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
-import { ethers } from "ethers";
+import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import { HexString } from "@polkadot/util/types";
+import {  } from "ethers";
 
 export const get<%= prefix %> = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -41,7 +41,7 @@ _%>
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
         },
 
-        <%= `${callName}D` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: HexString' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+        <%= `${callName}D` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', data' : '' %>);
         },
 

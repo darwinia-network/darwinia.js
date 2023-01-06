@@ -1,6 +1,5 @@
-import { ethers, providers } from "ethers";
+import { BytesLike, ethers, providers } from "ethers";
 import { Metadata } from '@polkadot/types';
-import { HexString } from "@polkadot/util/types";
 import { SiVariant } from "@polkadot/types/interfaces";
 import { u8aConcat, u8aToHex } from "@polkadot/util";
 
@@ -23,7 +22,7 @@ type EthersError = {
     };
 }
 
-async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: HexString | Uint8Array): Promise<ethers.providers.TransactionReceipt> {
+async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> {
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
