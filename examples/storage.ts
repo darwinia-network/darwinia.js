@@ -1,12 +1,12 @@
 import { ethers } from "ethers";
-import { buildMetadata, staticMetadata, getStorage, clientBuilder } from "../index"
+import { buildMetadata, pangolinStaticMetadata, getStorage, clientBuilder } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
 
     // Way 1
-    const metadata = buildMetadata(staticMetadata.pangolinMetaStatic);
+    const metadata = buildMetadata(pangolinStaticMetadata);
     const getPangolinStorage = getStorage(provider, metadata);
     let result = await getPangolinStorage(
         "BridgePangolinParachainMessages",

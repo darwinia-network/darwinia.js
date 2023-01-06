@@ -134,17 +134,6 @@ function buildFields(level: number, fields: IterableIterator<Si1Field>, metadata
     }
 }
 
-function getFullTypeName(typeId: SiLookupTypeId, metadata: Metadata) {
-    const type = metadata.registry.lookup.getSiType(typeId);
-    if(type.path.length > 0 ) {
-        const typeName = type.path.map(p => p.toString()).join("::");
-        return typeName;
-    } else {
-        console.log(`---${typeId.toNumber()}---`);
-        return `---${typeId.toNumber()}---`
-    }
-}
-
 function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
     // console.log("START------------------------....................");
     let level = 0;
@@ -155,11 +144,6 @@ function getType(typeId: SiLookupTypeId, metadata: Metadata): string {
 
 function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): string {
     const type = metadata.registry.lookup.getSiType(typeId);
-
-    // const fullParamTypeName = getFullTypeName(typeId, metadata);
-    // if(fullParamTypeName.includes("::RuntimeCall")) {
-    //
-    // }
 
     if (type.def.isPrimitive) {
         return type.def.asPrimitive.toString();
@@ -217,9 +201,14 @@ function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): s
 }
 
 async function generateCalls(chainName: string, metadata: Metadata) {
-    const callsRoot = "./chains/calls";
-    fs.rmSync(`${callsRoot}/${chainName}`, { recursive: true, force: true });
-    fs.mkdirSync(`${callsRoot}/${chainName}`);
+    const chainRoot = `./chains/${chainName}`;
+    if (!fs.existsSync(chainRoot)){
+        fs.mkdirSync(chainRoot);
+    }
+
+    const callDir = `${chainRoot}/calls`;
+    fs.rmSync(callDir, { recursive: true, force: true });
+    fs.mkdirSync(callDir);
 
     const palletCallsTemplate = fs.readFileSync('./generator/palletCalls.ts.ejs', 'utf8');
     const callsIndexTemplate = fs.readFileSync('./generator/callsIndex.ts.ejs', 'utf8');
@@ -252,7 +241,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
         });
 
         const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls });
-        fs.writeFileSync(`${callsRoot}/${chainName}/${moduleName}.ts`, result);
+        fs.writeFileSync(`${callDir}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
         prefixs.push(prefix);
@@ -260,17 +249,18 @@ async function generateCalls(chainName: string, metadata: Metadata) {
 
     // Generate the index.ts
     const result = ejs.render(callsIndexTemplate, { chainName, moduleNames, prefixs });
-    fs.writeFileSync(`${callsRoot}/${chainName}/index.ts`, result);
+    fs.writeFileSync(`${callDir}/index.ts`, result);
 }
 
 function generateStorages(chainName: string, metadata: Metadata) {
-    const storagesRoot = "./chains/storages";
+    const chainRoot = `./chains/${chainName}`;
+    if (!fs.existsSync(chainRoot)){
+        fs.mkdirSync(chainRoot);
+    }
 
-    // Remove old files
-    fs.rmSync(`${storagesRoot}/${chainName}`, { recursive: true, force: true });
-
-    // Create dir
-    fs.mkdirSync(`${storagesRoot}/${chainName}`);
+    const storagesDir = `${chainRoot}/storages`;
+    fs.rmSync(storagesDir, { recursive: true, force: true });
+    fs.mkdirSync(storagesDir);
 
     // Prepare templates
     const template = fs.readFileSync('./generator/pallet.ts.ejs', 'utf8');
@@ -279,7 +269,7 @@ function generateStorages(chainName: string, metadata: Metadata) {
     // Generate files according to the pallet name
     const moduleNames: String[] = [];
     const prefixs: String[] = [];
-    metadata.asV14.pallets.forEach((pallet) => {
+    metadata.asLatest.pallets.forEach((pallet) => {
         if (!pallet.storage.isSome) {
             return;
         }
@@ -295,7 +285,7 @@ function generateStorages(chainName: string, metadata: Metadata) {
 
         // Generate file for a pallet
         const result = ejs.render(template, { prefix, moduleName, entries, entryInputTypes, outputTypes });
-        fs.writeFileSync(`${storagesRoot}/${chainName}/${moduleName}.ts`, result);
+        fs.writeFileSync(`${storagesDir}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
         prefixs.push(prefix);
@@ -303,14 +293,29 @@ function generateStorages(chainName: string, metadata: Metadata) {
 
     // Generate the index.ts
     const result = ejs.render(indexTemplate, { chainName, moduleNames, prefixs });
-    fs.writeFileSync(`${storagesRoot}/${chainName}/index.ts`, result);
+    fs.writeFileSync(`${storagesDir}/index.ts`, result);
 }
 
 function generateMetadatas(chainName: string, metaStatic: string) {
-    const metadatasRoot = "./chains/metadatas";
+    const chainRoot = `./chains/${chainName}`;
+    if (!fs.existsSync(chainRoot)){
+        fs.mkdirSync(chainRoot);
+    }
+
     const metadataTemplate = fs.readFileSync('./generator/metadata.ts.ejs', 'utf8');
-    const metaResult = ejs.render(metadataTemplate, { metaStatic });
-    fs.writeFileSync(`${metadatasRoot}/${chainName}Metadata.ts`, metaResult);
+    const metaResult = ejs.render(metadataTemplate, { chainName, metaStatic });
+    fs.writeFileSync(`${chainRoot}/staticMetadata.ts`, metaResult);
+}
+
+function generateChainIndex(chainName: string) {
+    const chainRoot = `./chains/${chainName}`;
+    if (!fs.existsSync(chainRoot)){
+        fs.mkdirSync(chainRoot);
+    }
+
+    const template = fs.readFileSync('./generator/chainIndex.ts.ejs', 'utf8');
+    const result = ejs.render(template, { });
+    fs.writeFileSync(`${chainRoot}/index.ts`, result);
 }
 
 async function main() {
@@ -324,6 +329,8 @@ async function main() {
     generateStorages(chainName, metadata);
     generateCalls(chainName, metadata);
     generateMetadatas(chainName, metaStatic);
+    generateChainIndex(chainName);
+    
 }
 
 main();
