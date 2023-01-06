@@ -37,7 +37,7 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: H
         await dryRun(provider, tx);
 
         tx.gasPrice = ethers.utils.parseUnits("1", "gwei"),
-        tx.gasLimit = (await provider.estimateGas(tx)).toNumber();
+        tx.gasLimit = await provider.estimateGas(tx);
 
         let signedTx = await signer.signTransaction(tx);
         let sentTx = await provider.sendTransaction(signedTx);
