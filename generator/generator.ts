@@ -176,7 +176,7 @@ function doGetType(level: number, typeId: SiLookupTypeId, metadata: Metadata): s
 
             str = str + type.def.asVariant.variants.map(v => {
                 if(level > 2) {
-                    return `"${v.index}/${v.name}"`
+                    return `${v.index}/${v.name}`
                     // return v.name;
                 } else {
                     const itemStr = buildFields(level, v.fields.values(), metadata);
