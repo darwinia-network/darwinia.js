@@ -58,6 +58,43 @@ main();
 
 ```
 
+### dispatch multiple calls in a single transaction
+
+```typescript
+import { ethers } from "ethers";
+import { clientBuilder } from "darwinia-js-sdk"
+
+async function main(): Promise<void> {
+    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
+    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+
+    const signer = provider.getSigner();
+
+    // prepare calls
+    const setKeysCall = pangolin2.calls.session.setKeysCall(
+        // keys
+        { 
+            aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
+        }, 
+        // proof
+        "0x"
+    );
+
+    const collectCall = pangolin2.calls.staking.collectCall({ commission: 12345 });
+
+    // dispatch
+    await pangolin2.calls.utility.batchAll(
+        signer, 
+        [
+            setKeysCall,
+            collectCall
+        ]
+    );
+}
+
+main();
+
+```
 ### dispatch call with encoded input
 
 ```typescript
