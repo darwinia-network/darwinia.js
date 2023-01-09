@@ -1,6 +1,6 @@
 {
   "name": "darwinia-js-sdk",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
   "main": "dist/index.js",
   "scripts": {

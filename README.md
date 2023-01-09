@@ -6,7 +6,7 @@ A library to help
 
 ## Install
 ```shell
-npm install darwinia-js-sdk --save
+npm install darwinia-js-sdk
 ```
 
 ## Usage
@@ -62,7 +62,7 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { clientBuilder } from "../index"
+import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");

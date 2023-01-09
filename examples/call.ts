@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { buildMetadata, staticMetadata, dispatch, clientBuilder } from "../index"
+import { buildMetadata, pangolin2StaticMetadata, dispatch, clientBuilder } from "../index"
 
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
@@ -17,7 +17,7 @@ async function main(): Promise<void> {
     )
   
     // Way 2
-    const metadata = buildMetadata(staticMetadata.pangolin2MetaStatic);
+    const metadata = buildMetadata(pangolin2StaticMetadata);
     const dispatchPangolin2Call = dispatch(provider, metadata);
     await dispatchPangolin2Call(
       signer, 
