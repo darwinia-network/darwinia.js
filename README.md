@@ -121,6 +121,10 @@ main();
 
 more examples in [examples](./examples)
 
+### TODO
+
+- [ ] metadata check. automatically check whether the metadata carried by lib is outdated, prompting to upgrade
+
 ### Get the metadata static hex string from darwinia node
 ```shell
 curl -X POST \
