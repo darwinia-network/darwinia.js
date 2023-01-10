@@ -21,8 +21,9 @@ import { ethers } from "ethers";
 import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
-    // web3 provider(eth compatible api endpoint)
     const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
+    // or
+    // const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const pangolin = clientBuilder.buildPangolinClient(provider);
   
@@ -39,10 +40,8 @@ import { ethers } from "ethers";
 import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
-    // web3 provider, provided by sdk users
-    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-    // prepare signer. it can be ethers.Wallet or ethers.Signer
     const signer = provider.getSigner();
 
     const pangolin2 = clientBuilder.buildPangolin2Client(provider);
@@ -65,10 +64,11 @@ import { ethers } from "ethers";
 import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
-    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
-    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const signer = provider.getSigner();
+
+    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
 
     // prepare calls
     const setKeysCall = pangolin2.calls.session.setKeysCall(
@@ -102,7 +102,7 @@ import { ethers } from "ethers";
 import { clientBuilder } from "darwinia-js-sdk"
 
 async function main(): Promise<void> {
-    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
 
     const signer = provider.getSigner();
 

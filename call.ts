@@ -35,11 +35,10 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: B
 
         await dryRun(provider, tx);
 
-        tx.gasPrice = ethers.utils.parseUnits("1", "gwei"),
         tx.gasLimit = await provider.estimateGas(tx);
+        tx.gasPrice = ethers.utils.parseUnits("1", "gwei");
 
-        let signedTx = await signer.signTransaction(tx);
-        let sentTx = await provider.sendTransaction(signedTx);
+        const sentTx = await signer.sendTransaction(tx);
         return sentTx.wait();
     } catch (ex: any) {
         // TODO: better error handling
@@ -141,8 +140,6 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
             for (let i = 0; i < paramLookupTypes.length; i++) {
                 const paramType = paramLookupTypes[i];
                 const param = params[i];
-                // console.log(paramType);
-                // metadata.registry.lookup.getSiType(paramType as string);
                 const encodedParam = metadata.registry.createType(paramType, param).toU8a();
                 paramsData = u8aConcat(paramsData, encodedParam);
             }
@@ -150,9 +147,6 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
 
         let callData = u8aConcat(callIndex, paramsData);
         console.debug(`call data: ${u8aToHex(callData)}`);
-
-        // let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
-        // const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
 
         return doDispatch(provider, signer, callData);
     };
