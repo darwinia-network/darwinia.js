@@ -151,10 +151,10 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
         let callData = u8aConcat(callIndex, paramsData);
         console.debug(`call data: ${u8aToHex(callData)}`);
 
-        let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
-        const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
+        // let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
+        // const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
 
-        return doDispatch(provider, signer, data);
+        return doDispatch(provider, signer, callData);
     };
 }
 
