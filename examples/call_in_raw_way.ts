@@ -1,6 +1,7 @@
 import { ethers } from "ethers";
 import { buildMetadata, pangolin2StaticMetadata, dispatch } from "../index"
 
+// The raw way to dipatch call
 async function main(): Promise<void> {
     // web3 provider, provided by sdk users
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
@@ -9,7 +10,6 @@ async function main(): Promise<void> {
     // or
     // const signer = provider.getSigner();
 
-    // Way 2
     const metadata = buildMetadata(pangolin2StaticMetadata);
     const dispatchPangolin2Call = dispatch(provider, metadata);
     await dispatchPangolin2Call(
