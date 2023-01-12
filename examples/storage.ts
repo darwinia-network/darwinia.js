@@ -58,4 +58,4 @@ async function main(): Promise<void> {
     console.log(`    decoded: ${result}\n`);
 }
 
-main();
+main().catch(err => console.log(err));

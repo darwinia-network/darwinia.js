@@ -12,7 +12,7 @@ async function main(): Promise<void> {
 
     const metadata = buildMetadata(pangolin2StaticMetadata);
     const dispatchPangolin2Call = dispatch(provider, metadata);
-    await dispatchPangolin2Call(
+    const receipt = await dispatchPangolin2Call(
         signer,
         "Session",
         "setKeys",
@@ -22,6 +22,8 @@ async function main(): Promise<void> {
         }, // keys
         "0x" // proof
     );
+
+    console.log(`tx hash: ${receipt.transactionHash}`);
 }
 
-main();
+main().catch(err => console.log(err));
