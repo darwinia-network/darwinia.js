@@ -8,11 +8,14 @@ import {getTimestamp} from "./timestamp";
 import {getParachainInfo} from "./parachainInfo";
 import {getBalances} from "./balances";
 import {getAssets} from "./assets";
+import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
 import {getAuthorship} from "./authorship";
 import {getStaking} from "./staking";
 import {getSession} from "./session";
+import {getMessageGadget} from "./messageGadget";
+import {getEcdsaAuthority} from "./ecdsaAuthority";
 import {getDemocracy} from "./democracy";
 import {getCouncil} from "./council";
 import {getTechnicalCommittee} from "./technicalCommittee";
@@ -21,7 +24,6 @@ import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
 import {getTips} from "./tips";
 import {getSudo} from "./sudo";
-import {getVesting} from "./vesting";
 import {getUtility} from "./utility";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
@@ -46,11 +48,14 @@ export const buildPangolin2CallsClient = (provider: providers.BaseProvider, meta
         parachainInfo: getParachainInfo(dispatch, metadata),
         balances: getBalances(dispatch, metadata),
         assets: getAssets(dispatch, metadata),
+        vesting: getVesting(dispatch, metadata),
         deposit: getDeposit(dispatch, metadata),
         accountMigration: getAccountMigration(dispatch, metadata),
         authorship: getAuthorship(dispatch, metadata),
         staking: getStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
+        messageGadget: getMessageGadget(dispatch, metadata),
+        ecdsaAuthority: getEcdsaAuthority(dispatch, metadata),
         democracy: getDemocracy(dispatch, metadata),
         council: getCouncil(dispatch, metadata),
         technicalCommittee: getTechnicalCommittee(dispatch, metadata),
@@ -59,7 +64,6 @@ export const buildPangolin2CallsClient = (provider: providers.BaseProvider, meta
         treasury: getTreasury(dispatch, metadata),
         tips: getTips(dispatch, metadata),
         sudo: getSudo(dispatch, metadata),
-        vesting: getVesting(dispatch, metadata),
         utility: getUtility(dispatch, metadata),
         identity: getIdentity(dispatch, metadata),
         scheduler: getScheduler(dispatch, metadata),

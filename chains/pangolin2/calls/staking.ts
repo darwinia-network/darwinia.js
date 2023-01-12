@@ -1,7 +1,6 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -47,6 +46,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 
         unstakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'unstake', {
+                ring_amount: _ring_amount,
+                kton_amount: _kton_amount,
+                deposits: _deposits,
+            });
+        },
+
+        /**
+         * Cancel the `unstake` operation.
+         * 
+         * Re-stake the unstaking assets immediately.
+         *
+         * @param _ring_amount: U128
+         * @param _kton_amount: U128
+         * @param _deposits: Vec<U16>
+         */
+        restake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'restake', false, _ring_amount, _kton_amount, _deposits);
+        },
+
+        restakeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'restake', true, data);
+        },
+
+        restakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
+            return buildRuntimeCall(metadata, 'Staking', 'restake', {
                 ring_amount: _ring_amount,
                 kton_amount: _kton_amount,
                 deposits: _deposits,

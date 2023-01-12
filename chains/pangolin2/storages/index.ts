@@ -9,6 +9,7 @@ import {getParachainInfo} from "./parachainInfo";
 import {getBalances} from "./balances";
 import {getTransactionPayment} from "./transactionPayment";
 import {getAssets} from "./assets";
+import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
 import {getAuthorship} from "./authorship";
@@ -16,6 +17,8 @@ import {getStaking} from "./staking";
 import {getSession} from "./session";
 import {getAura} from "./aura";
 import {getAuraExt} from "./auraExt";
+import {getMessageGadget} from "./messageGadget";
+import {getEcdsaAuthority} from "./ecdsaAuthority";
 import {getDemocracy} from "./democracy";
 import {getCouncil} from "./council";
 import {getTechnicalCommittee} from "./technicalCommittee";
@@ -24,7 +27,6 @@ import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
 import {getTips} from "./tips";
 import {getSudo} from "./sudo";
-import {getVesting} from "./vesting";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
@@ -47,6 +49,7 @@ export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, m
         balances: getBalances(getStorage),
         transactionPayment: getTransactionPayment(getStorage),
         assets: getAssets(getStorage),
+        vesting: getVesting(getStorage),
         deposit: getDeposit(getStorage),
         accountMigration: getAccountMigration(getStorage),
         authorship: getAuthorship(getStorage),
@@ -54,6 +57,8 @@ export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, m
         session: getSession(getStorage),
         aura: getAura(getStorage),
         auraExt: getAuraExt(getStorage),
+        messageGadget: getMessageGadget(getStorage),
+        ecdsaAuthority: getEcdsaAuthority(getStorage),
         democracy: getDemocracy(getStorage),
         council: getCouncil(getStorage),
         technicalCommittee: getTechnicalCommittee(getStorage),
@@ -62,7 +67,6 @@ export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, m
         treasury: getTreasury(getStorage),
         tips: getTips(getStorage),
         sudo: getSudo(getStorage),
-        vesting: getVesting(getStorage),
         identity: getIdentity(getStorage),
         scheduler: getScheduler(getStorage),
         preimage: getPreimage(getStorage),

@@ -1,7 +1,6 @@
 import { buildRuntimeCall, Dispatch } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
     return {
