@@ -27,10 +27,9 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: B
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
         let tx: Tx = {
+            from: signer.getAddress(),
             to: contractAddress,
-            value: "0x0",
-            data: data,
-            nonce: await provider.getTransactionCount(signer.getAddress())
+            data: data
         };
 
         await dryRun(provider, tx);
@@ -60,15 +59,16 @@ const camelToSnakeCase = (str: string) => {
     }
 }
 
-        // {
-        //     callIndex: [9, 0],
-        //     args: {
-        //         keys: {
-        //             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
-        //         },
-        //         proof: "0x"
-        //     }
-        // },
+// example: 
+// {
+//     callIndex: [9, 0],
+//     args: {
+//         keys: {
+//             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+//         },
+//         proof: "0x"
+//     }
+// },
 export type CallAsParam = {
     callIndex: [number, number],
     args: object
@@ -148,7 +148,10 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
         let callData = u8aConcat(callIndex, paramsData);
         console.debug(`call data: ${u8aToHex(callData)}`);
 
-        return doDispatch(provider, signer, callData);
+        let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
+        const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
+
+        return doDispatch(provider, signer, data);
     };
 }
 
