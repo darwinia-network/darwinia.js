@@ -27,7 +27,7 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: B
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
         let tx: Tx = {
-            from: signer.getAddress(),
+            from: await signer.getAddress(),
             to: contractAddress,
             data: data
         };
