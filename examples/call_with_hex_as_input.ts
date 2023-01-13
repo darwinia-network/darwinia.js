@@ -13,7 +13,7 @@ async function main(): Promise<void> {
     // call ended with `D` is the version that accept params encoded in scale codec  
     const receipt = await pangolin2.calls.session.setKeysD(
       signer,
-      "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded keys and proof
+      "0xd42593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded keys and proof
     );
 
     console.log(`tx hash: ${receipt.transactionHash}`);

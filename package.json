@@ -1,10 +1,10 @@
 {
   "name": "darwinia-js-sdk",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "tsc",
+    "prepublish": "rm -rf dist && tsc",
     "genpangolin2": "CHAIN=pangolin2 ENDPOINT=https://cors.kahub.in/http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
     "gencrab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
