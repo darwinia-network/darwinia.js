@@ -8,8 +8,8 @@ async function main(): Promise<void> {
     const wallet = new ethers.Wallet("d5dd1909b74029eb3164b10ce84abaf9b0ea379b3ea0d4e2a96241806b8f8175", provider);
 
     // prepare batch calls
-    const call1 = pangolin2.calls.session.setKeysCall({ aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d" }, "0x");
-    const call2 = pangolin2.calls.staking.collectCall({ commission: 12345 });
+    const call1 = pangolin2.calls.session.buildSetKeysCall({ aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d" }, "0x");
+    const call2 = pangolin2.calls.staking.buildCollectCall({ commission: 12345 });
 
     // run batch calls
     // expect call data: 0x1502080900d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00080339300000

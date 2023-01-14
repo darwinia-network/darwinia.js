@@ -10,8 +10,8 @@ async function main(): Promise<void> {
 
     const pangolin2 = clientBuilder.buildPangolin2Client(provider);
 
-    // call ended with `D` is the version that accept params encoded in scale codec  
-    const receipt = await pangolin2.calls.session.setKeysD(
+    // call ended with `H` is the version that accept params encoded in scale codec  
+    const receipt = await pangolin2.calls.session.setKeysH(
       signer,
       "0xd42593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded keys and proof
     );
