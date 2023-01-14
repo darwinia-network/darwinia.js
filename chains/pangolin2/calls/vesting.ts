@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -24,13 +24,17 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'vest', false);
         },
 
-        vestD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        vestH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vest', true);
         },
 
-        vestCall: () => {
+        buildVestCall: () => {
             return buildRuntimeCall(metadata, 'Vesting', 'vest', {
             });
+        },
+
+        buildVestCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Vesting', 'vest', argsBytes)
         },
 
         /**
@@ -56,14 +60,18 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
         },
 
-        vestOtherD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        vestOtherH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', true, data);
         },
 
-        vestOtherCall: (_target: unknown) => {
+        buildVestOtherCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'vestOther', {
                 target: _target,
             });
+        },
+
+        buildVestOtherCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Vesting', 'vestOther', argsBytes)
         },
 
         /**
@@ -92,15 +100,19 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', false, _target, _schedule);
         },
 
-        vestedTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        vestedTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', true, data);
         },
 
-        vestedTransferCall: (_target: unknown, _schedule: unknown) => {
+        buildVestedTransferCall: (_target: unknown, _schedule: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'vestedTransfer', {
                 target: _target,
                 schedule: _schedule,
             });
+        },
+
+        buildVestedTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Vesting', 'vestedTransfer', argsBytes)
         },
 
         /**
@@ -131,16 +143,20 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, _source, _target, _schedule);
         },
 
-        forceVestedTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceVestedTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', true, data);
         },
 
-        forceVestedTransferCall: (_source: unknown, _target: unknown, _schedule: unknown) => {
+        buildForceVestedTransferCall: (_source: unknown, _target: unknown, _schedule: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'forceVestedTransfer', {
                 source: _source,
                 target: _target,
                 schedule: _schedule,
             });
+        },
+
+        buildForceVestedTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Vesting', 'forceVestedTransfer', argsBytes)
         },
 
         /**
@@ -173,15 +189,19 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', false, _schedule1_index, _schedule2_index);
         },
 
-        mergeSchedulesD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        mergeSchedulesH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', true, data);
         },
 
-        mergeSchedulesCall: (_schedule1_index: unknown, _schedule2_index: unknown) => {
+        buildMergeSchedulesCall: (_schedule1_index: unknown, _schedule2_index: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'mergeSchedules', {
                 schedule1_index: _schedule1_index,
                 schedule2_index: _schedule2_index,
             });
+        },
+
+        buildMergeSchedulesCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Vesting', 'mergeSchedules', argsBytes)
         },
 
     }

@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -16,14 +15,18 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', true, data);
         },
 
-        setOwnerCall: (_new_owner: unknown) => {
+        buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOwner', {
                 new_owner: _new_owner,
             });
+        },
+
+        buildSetOwnerCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOwner', argsBytes)
         },
 
         /**
@@ -37,14 +40,18 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', false, _operating_mode);
         },
 
-        setOperatingModeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingModeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', true, data);
         },
 
-        setOperatingModeCall: (_operating_mode: unknown) => {
+        buildSetOperatingModeCall: (_operating_mode: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', {
                 operating_mode: _operating_mode,
             });
+        },
+
+        buildSetOperatingModeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', argsBytes)
         },
 
         /**
@@ -61,14 +68,18 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', false, _parameter);
         },
 
-        updatePalletParameterD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updatePalletParameterH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', true, data);
         },
 
-        updatePalletParameterCall: (_parameter: unknown) => {
+        buildUpdatePalletParameterCall: (_parameter: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', {
                 parameter: _parameter,
             });
+        },
+
+        buildUpdatePalletParameterCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', argsBytes)
         },
 
         /**
@@ -82,16 +93,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'sendMessage', false, _lane_id, _payload, _delivery_and_dispatch_fee);
         },
 
-        sendMessageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        sendMessageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'sendMessage', true, data);
         },
 
-        sendMessageCall: (_lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown) => {
+        buildSendMessageCall: (_lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'sendMessage', {
                 lane_id: _lane_id,
                 payload: _payload,
                 delivery_and_dispatch_fee: _delivery_and_dispatch_fee,
             });
+        },
+
+        buildSendMessageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'sendMessage', argsBytes)
         },
 
         /**
@@ -105,16 +120,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', false, _lane_id, _nonce, _additional_fee);
         },
 
-        increaseMessageFeeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        increaseMessageFeeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', true, data);
         },
 
-        increaseMessageFeeCall: (_lane_id: unknown, _nonce: unknown, _additional_fee: unknown) => {
+        buildIncreaseMessageFeeCall: (_lane_id: unknown, _nonce: unknown, _additional_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', {
                 lane_id: _lane_id,
                 nonce: _nonce,
                 additional_fee: _additional_fee,
             });
+        },
+
+        buildIncreaseMessageFeeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', argsBytes)
         },
 
         /**
@@ -133,17 +152,21 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', false, _relayer_id_at_bridged_chain, _proof, _messages_count, _dispatch_weight);
         },
 
-        receiveMessagesProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', true, data);
         },
 
-        receiveMessagesProofCall: (_relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown) => {
+        buildReceiveMessagesProofCall: (_relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', {
                 relayer_id_at_bridged_chain: _relayer_id_at_bridged_chain,
                 proof: _proof,
                 messages_count: _messages_count,
                 dispatch_weight: _dispatch_weight,
             });
+        },
+
+        buildReceiveMessagesProofCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', argsBytes)
         },
 
         /**
@@ -156,15 +179,19 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', false, _proof, _relayers_state);
         },
 
-        receiveMessagesDeliveryProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesDeliveryProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', true, data);
         },
 
-        receiveMessagesDeliveryProofCall: (_proof: unknown, _relayers_state: unknown) => {
+        buildReceiveMessagesDeliveryProofCall: (_proof: unknown, _relayers_state: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', {
                 proof: _proof,
                 relayers_state: _relayers_state,
             });
+        },
+
+        buildReceiveMessagesDeliveryProofCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', argsBytes)
         },
 
     }

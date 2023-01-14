@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -13,14 +12,18 @@ export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'MessageGadget', 'setCommitmentContract', false, _commitment_contract);
         },
 
-        setCommitmentContractD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCommitmentContractH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'MessageGadget', 'setCommitmentContract', true, data);
         },
 
-        setCommitmentContractCall: (_commitment_contract: unknown) => {
+        buildSetCommitmentContractCall: (_commitment_contract: unknown) => {
             return buildRuntimeCall(metadata, 'MessageGadget', 'setCommitmentContract', {
                 commitment_contract: _commitment_contract,
             });
+        },
+
+        buildSetCommitmentContractCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'MessageGadget', 'setCommitmentContract', argsBytes)
         },
 
     }

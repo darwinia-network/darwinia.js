@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -23,15 +22,19 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'proposeSpend', false, _value, _beneficiary);
         },
 
-        proposeSpendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeSpendH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'proposeSpend', true, data);
         },
 
-        proposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
+        buildProposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
             return buildRuntimeCall(metadata, 'KtonTreasury', 'proposeSpend', {
                 value: _value,
                 beneficiary: _beneficiary,
             });
+        },
+
+        buildProposeSpendCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'KtonTreasury', 'proposeSpend', argsBytes)
         },
 
         /**
@@ -51,14 +54,18 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'rejectProposal', false, _proposal_id);
         },
 
-        rejectProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        rejectProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'rejectProposal', true, data);
         },
 
-        rejectProposalCall: (_proposal_id: unknown) => {
+        buildRejectProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'KtonTreasury', 'rejectProposal', {
                 proposal_id: _proposal_id,
             });
+        },
+
+        buildRejectProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'KtonTreasury', 'rejectProposal', argsBytes)
         },
 
         /**
@@ -79,14 +86,18 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'KtonTreasury', 'approveProposal', false, _proposal_id);
         },
 
-        approveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        approveProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'KtonTreasury', 'approveProposal', true, data);
         },
 
-        approveProposalCall: (_proposal_id: unknown) => {
+        buildApproveProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'KtonTreasury', 'approveProposal', {
                 proposal_id: _proposal_id,
             });
+        },
+
+        buildApproveProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'KtonTreasury', 'approveProposal', argsBytes)
         },
 
     }

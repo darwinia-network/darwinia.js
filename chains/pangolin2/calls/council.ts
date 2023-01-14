@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -46,16 +46,20 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'setMembers', false, _new_members, _prime, _old_count);
         },
 
-        setMembersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setMembersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'setMembers', true, data);
         },
 
-        setMembersCall: (_new_members: unknown, _prime: unknown, _old_count: unknown) => {
+        buildSetMembersCall: (_new_members: unknown, _prime: unknown, _old_count: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'setMembers', {
                 new_members: _new_members,
                 prime: _prime,
                 old_count: _old_count,
             });
+        },
+
+        buildSetMembersCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'setMembers', argsBytes)
         },
 
         /**
@@ -78,15 +82,19 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'execute', false, _proposal, _length_bound);
         },
 
-        executeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        executeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'execute', true, data);
         },
 
-        executeCall: (_proposal: unknown, _length_bound: unknown) => {
+        buildExecuteCall: (_proposal: unknown, _length_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'execute', {
                 proposal: _proposal,
                 length_bound: _length_bound,
             });
+        },
+
+        buildExecuteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'execute', argsBytes)
         },
 
         /**
@@ -126,16 +134,20 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'propose', false, _threshold, _proposal, _length_bound);
         },
 
-        proposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'propose', true, data);
         },
 
-        proposeCall: (_threshold: unknown, _proposal: unknown, _length_bound: unknown) => {
+        buildProposeCall: (_threshold: unknown, _proposal: unknown, _length_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'propose', {
                 threshold: _threshold,
                 proposal: _proposal,
                 length_bound: _length_bound,
             });
+        },
+
+        buildProposeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'propose', argsBytes)
         },
 
         /**
@@ -163,16 +175,20 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'vote', false, _proposal, _index, _approve);
         },
 
-        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'vote', true, data);
         },
 
-        voteCall: (_proposal: unknown, _index: unknown, _approve: unknown) => {
+        buildVoteCall: (_proposal: unknown, _index: unknown, _approve: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'vote', {
                 proposal: _proposal,
                 index: _index,
                 approve: _approve,
             });
+        },
+
+        buildVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'vote', argsBytes)
         },
 
         /**
@@ -218,17 +234,21 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'close', false, _proposal_hash, _index, _proposal_weight_bound, _length_bound);
         },
 
-        closeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        closeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'close', true, data);
         },
 
-        closeCall: (_proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown) => {
+        buildCloseCall: (_proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'close', {
                 proposal_hash: _proposal_hash,
                 index: _index,
                 proposal_weight_bound: _proposal_weight_bound,
                 length_bound: _length_bound,
             });
+        },
+
+        buildCloseCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'close', argsBytes)
         },
 
         /**
@@ -253,14 +273,18 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Council', 'disapproveProposal', false, _proposal_hash);
         },
 
-        disapproveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        disapproveProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Council', 'disapproveProposal', true, data);
         },
 
-        disapproveProposalCall: (_proposal_hash: unknown) => {
+        buildDisapproveProposalCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Council', 'disapproveProposal', {
                 proposal_hash: _proposal_hash,
             });
+        },
+
+        buildDisapproveProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Council', 'disapproveProposal', argsBytes)
         },
 
     }

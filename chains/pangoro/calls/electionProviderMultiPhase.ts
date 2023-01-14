@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -28,15 +27,19 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, _raw_solution, _witness);
         },
 
-        submitUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitUnsignedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, data);
         },
 
-        submitUnsignedCall: (_raw_solution: unknown, _witness: unknown) => {
+        buildSubmitUnsignedCall: (_raw_solution: unknown, _witness: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'submitUnsigned', {
                 raw_solution: _raw_solution,
                 witness: _witness,
             });
+        },
+
+        buildSubmitUnsignedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ElectionProviderMultiPhase', 'submitUnsigned', argsBytes)
         },
 
         /**
@@ -52,14 +55,18 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, _maybe_next_score);
         },
 
-        setMinimumUntrustedScoreD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setMinimumUntrustedScoreH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, data);
         },
 
-        setMinimumUntrustedScoreCall: (_maybe_next_score: unknown) => {
+        buildSetMinimumUntrustedScoreCall: (_maybe_next_score: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', {
                 maybe_next_score: _maybe_next_score,
             });
+        },
+
+        buildSetMinimumUntrustedScoreCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', argsBytes)
         },
 
         /**
@@ -78,14 +85,18 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, _supports);
         },
 
-        setEmergencyElectionResultD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setEmergencyElectionResultH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, data);
         },
 
-        setEmergencyElectionResultCall: (_supports: unknown) => {
+        buildSetEmergencyElectionResultCall: (_supports: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', {
                 supports: _supports,
             });
+        },
+
+        buildSetEmergencyElectionResultCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', argsBytes)
         },
 
         /**
@@ -110,15 +121,19 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, _raw_solution, _num_signed_submissions);
         },
 
-        submitD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, data);
         },
 
-        submitCall: (_raw_solution: unknown, _num_signed_submissions: unknown) => {
+        buildSubmitCall: (_raw_solution: unknown, _num_signed_submissions: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'submit', {
                 raw_solution: _raw_solution,
                 num_signed_submissions: _num_signed_submissions,
             });
+        },
+
+        buildSubmitCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ElectionProviderMultiPhase', 'submit', argsBytes)
         },
 
     }

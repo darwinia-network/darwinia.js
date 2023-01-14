@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -47,14 +46,18 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'bid', false, _value);
         },
 
-        bidD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        bidH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'bid', true, data);
         },
 
-        bidCall: (_value: unknown) => {
+        buildBidCall: (_value: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'bid', {
                 value: _value,
             });
+        },
+
+        buildBidCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'bid', argsBytes)
         },
 
         /**
@@ -84,14 +87,18 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unbid', false, _pos);
         },
 
-        unbidD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unbidH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unbid', true, data);
         },
 
-        unbidCall: (_pos: unknown) => {
+        buildUnbidCall: (_pos: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'unbid', {
                 pos: _pos,
             });
+        },
+
+        buildUnbidCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'unbid', argsBytes)
         },
 
         /**
@@ -149,16 +156,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vouch', false, _who, _value, _tip);
         },
 
-        vouchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        vouchH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vouch', true, data);
         },
 
-        vouchCall: (_who: unknown, _value: unknown, _tip: unknown) => {
+        buildVouchCall: (_who: unknown, _value: unknown, _tip: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vouch', {
                 who: _who,
                 value: _value,
                 tip: _tip,
             });
+        },
+
+        buildVouchCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'vouch', argsBytes)
         },
 
         /**
@@ -186,14 +197,18 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unvouch', false, _pos);
         },
 
-        unvouchD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unvouchH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unvouch', true, data);
         },
 
-        unvouchCall: (_pos: unknown) => {
+        buildUnvouchCall: (_pos: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'unvouch', {
                 pos: _pos,
             });
+        },
+
+        buildUnvouchCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'unvouch', argsBytes)
         },
 
         /**
@@ -224,15 +239,19 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'vote', false, _candidate, _approve);
         },
 
-        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vote', true, data);
         },
 
-        voteCall: (_candidate: unknown, _approve: unknown) => {
+        buildVoteCall: (_candidate: unknown, _approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vote', {
                 candidate: _candidate,
                 approve: _approve,
             });
+        },
+
+        buildVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'vote', argsBytes)
         },
 
         /**
@@ -259,14 +278,18 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'defenderVote', false, _approve);
         },
 
-        defenderVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        defenderVoteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'defenderVote', true, data);
         },
 
-        defenderVoteCall: (_approve: unknown) => {
+        buildDefenderVoteCall: (_approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'defenderVote', {
                 approve: _approve,
             });
+        },
+
+        buildDefenderVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'defenderVote', argsBytes)
         },
 
         /**
@@ -297,13 +320,17 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'payout', false);
         },
 
-        payoutD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        payoutH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'payout', true);
         },
 
-        payoutCall: () => {
+        buildPayoutCall: () => {
             return buildRuntimeCall(metadata, 'Society', 'payout', {
             });
+        },
+
+        buildPayoutCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'payout', argsBytes)
         },
 
         /**
@@ -335,16 +362,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'found', false, _founder, _max_members, _rules);
         },
 
-        foundD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        foundH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'found', true, data);
         },
 
-        foundCall: (_founder: unknown, _max_members: unknown, _rules: unknown) => {
+        buildFoundCall: (_founder: unknown, _max_members: unknown, _rules: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'found', {
                 founder: _founder,
                 max_members: _max_members,
                 rules: _rules,
             });
+        },
+
+        buildFoundCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'found', argsBytes)
         },
 
         /**
@@ -367,13 +398,17 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'unfound', false);
         },
 
-        unfoundD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        unfoundH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unfound', true);
         },
 
-        unfoundCall: () => {
+        buildUnfoundCall: () => {
             return buildRuntimeCall(metadata, 'Society', 'unfound', {
             });
+        },
+
+        buildUnfoundCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'unfound', argsBytes)
         },
 
         /**
@@ -413,15 +448,19 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', false, _who, _forgive);
         },
 
-        judgeSuspendedMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        judgeSuspendedMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', true, data);
         },
 
-        judgeSuspendedMemberCall: (_who: unknown, _forgive: unknown) => {
+        buildJudgeSuspendedMemberCall: (_who: unknown, _forgive: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'judgeSuspendedMember', {
                 who: _who,
                 forgive: _forgive,
             });
+        },
+
+        buildJudgeSuspendedMemberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'judgeSuspendedMember', argsBytes)
         },
 
         /**
@@ -473,15 +512,19 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', false, _who, _judgement);
         },
 
-        judgeSuspendedCandidateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        judgeSuspendedCandidateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', true, data);
         },
 
-        judgeSuspendedCandidateCall: (_who: unknown, _judgement: unknown) => {
+        buildJudgeSuspendedCandidateCall: (_who: unknown, _judgement: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'judgeSuspendedCandidate', {
                 who: _who,
                 judgement: _judgement,
             });
+        },
+
+        buildJudgeSuspendedCandidateCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'judgeSuspendedCandidate', argsBytes)
         },
 
         /**
@@ -506,14 +549,18 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Society', 'setMaxMembers', false, _max);
         },
 
-        setMaxMembersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setMaxMembersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'setMaxMembers', true, data);
         },
 
-        setMaxMembersCall: (_max: unknown) => {
+        buildSetMaxMembersCall: (_max: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'setMaxMembers', {
                 max: _max,
             });
+        },
+
+        buildSetMaxMembersCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Society', 'setMaxMembers', argsBytes)
         },
 
     }

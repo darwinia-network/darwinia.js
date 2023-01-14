@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -13,14 +13,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'fillBlock', false, _ratio);
         },
 
-        fillBlockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        fillBlockH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'fillBlock', true, data);
         },
 
-        fillBlockCall: (_ratio: unknown) => {
+        buildFillBlockCall: (_ratio: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'fillBlock', {
                 ratio: _ratio,
             });
+        },
+
+        buildFillBlockCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'fillBlock', argsBytes)
         },
 
         /**
@@ -36,14 +40,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'remark', false, _remark);
         },
 
-        remarkD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        remarkH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remark', true, data);
         },
 
-        remarkCall: (_remark: unknown) => {
+        buildRemarkCall: (_remark: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'remark', {
                 remark: _remark,
             });
+        },
+
+        buildRemarkCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'remark', argsBytes)
         },
 
         /**
@@ -55,14 +63,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setHeapPages', false, _pages);
         },
 
-        setHeapPagesD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setHeapPagesH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setHeapPages', true, data);
         },
 
-        setHeapPagesCall: (_pages: unknown) => {
+        buildSetHeapPagesCall: (_pages: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setHeapPages', {
                 pages: _pages,
             });
+        },
+
+        buildSetHeapPagesCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'setHeapPages', argsBytes)
         },
 
         /**
@@ -85,14 +97,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setCode', false, _code);
         },
 
-        setCodeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCode', true, data);
         },
 
-        setCodeCall: (_code: unknown) => {
+        buildSetCodeCall: (_code: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setCode', {
                 code: _code,
             });
+        },
+
+        buildSetCodeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'setCode', argsBytes)
         },
 
         /**
@@ -112,14 +128,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', false, _code);
         },
 
-        setCodeWithoutChecksD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeWithoutChecksH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', true, data);
         },
 
-        setCodeWithoutChecksCall: (_code: unknown) => {
+        buildSetCodeWithoutChecksCall: (_code: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setCodeWithoutChecks', {
                 code: _code,
             });
+        },
+
+        buildSetCodeWithoutChecksCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'setCodeWithoutChecks', argsBytes)
         },
 
         /**
@@ -131,14 +151,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'setStorage', false, _items);
         },
 
-        setStorageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setStorageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setStorage', true, data);
         },
 
-        setStorageCall: (_items: unknown) => {
+        buildSetStorageCall: (_items: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setStorage', {
                 items: _items,
             });
+        },
+
+        buildSetStorageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'setStorage', argsBytes)
         },
 
         /**
@@ -150,14 +174,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'killStorage', false, _keys);
         },
 
-        killStorageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killStorageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killStorage', true, data);
         },
 
-        killStorageCall: (_keys: unknown) => {
+        buildKillStorageCall: (_keys: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'killStorage', {
                 keys: _keys,
             });
+        },
+
+        buildKillStorageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'killStorage', argsBytes)
         },
 
         /**
@@ -173,15 +201,19 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'killPrefix', false, _prefix, _subkeys);
         },
 
-        killPrefixD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killPrefixH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killPrefix', true, data);
         },
 
-        killPrefixCall: (_prefix: unknown, _subkeys: unknown) => {
+        buildKillPrefixCall: (_prefix: unknown, _subkeys: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'killPrefix', {
                 prefix: _prefix,
                 subkeys: _subkeys,
             });
+        },
+
+        buildKillPrefixCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'killPrefix', argsBytes)
         },
 
         /**
@@ -193,14 +225,18 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'System', 'remarkWithEvent', false, _remark);
         },
 
-        remarkWithEventD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        remarkWithEventH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', true, data);
         },
 
-        remarkWithEventCall: (_remark: unknown) => {
+        buildRemarkWithEventCall: (_remark: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'remarkWithEvent', {
                 remark: _remark,
             });
+        },
+
+        buildRemarkWithEventCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'System', 'remarkWithEvent', argsBytes)
         },
 
     }

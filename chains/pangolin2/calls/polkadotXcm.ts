@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -13,15 +13,19 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'send', false, _dest, _message);
         },
 
-        sendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        sendH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'send', true, data);
         },
 
-        sendCall: (_dest: unknown, _message: unknown) => {
+        buildSendCall: (_dest: unknown, _message: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'send', {
                 dest: _dest,
                 message: _message,
             });
+        },
+
+        buildSendCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'send', argsBytes)
         },
 
         /**
@@ -50,17 +54,21 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'teleportAssets', false, _dest, _beneficiary, _assets, _fee_asset_item);
         },
 
-        teleportAssetsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        teleportAssetsH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'teleportAssets', true, data);
         },
 
-        teleportAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown) => {
+        buildTeleportAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'teleportAssets', {
                 dest: _dest,
                 beneficiary: _beneficiary,
                 assets: _assets,
                 fee_asset_item: _fee_asset_item,
             });
+        },
+
+        buildTeleportAssetsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'teleportAssets', argsBytes)
         },
 
         /**
@@ -90,17 +98,21 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'reserveTransferAssets', false, _dest, _beneficiary, _assets, _fee_asset_item);
         },
 
-        reserveTransferAssetsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reserveTransferAssetsH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'reserveTransferAssets', true, data);
         },
 
-        reserveTransferAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown) => {
+        buildReserveTransferAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'reserveTransferAssets', {
                 dest: _dest,
                 beneficiary: _beneficiary,
                 assets: _assets,
                 fee_asset_item: _fee_asset_item,
             });
+        },
+
+        buildReserveTransferAssetsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'reserveTransferAssets', argsBytes)
         },
 
         /**
@@ -123,15 +135,19 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'execute', false, _message, _max_weight);
         },
 
-        executeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        executeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'execute', true, data);
         },
 
-        executeCall: (_message: unknown, _max_weight: unknown) => {
+        buildExecuteCall: (_message: unknown, _max_weight: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'execute', {
                 message: _message,
                 max_weight: _max_weight,
             });
+        },
+
+        buildExecuteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'execute', argsBytes)
         },
 
         /**
@@ -149,15 +165,19 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'forceXcmVersion', false, _location, _xcm_version);
         },
 
-        forceXcmVersionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceXcmVersionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'forceXcmVersion', true, data);
         },
 
-        forceXcmVersionCall: (_location: unknown, _xcm_version: unknown) => {
+        buildForceXcmVersionCall: (_location: unknown, _xcm_version: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'forceXcmVersion', {
                 location: _location,
                 xcm_version: _xcm_version,
             });
+        },
+
+        buildForceXcmVersionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'forceXcmVersion', argsBytes)
         },
 
         /**
@@ -173,14 +193,18 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'forceDefaultXcmVersion', false, _maybe_xcm_version);
         },
 
-        forceDefaultXcmVersionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceDefaultXcmVersionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'forceDefaultXcmVersion', true, data);
         },
 
-        forceDefaultXcmVersionCall: (_maybe_xcm_version: unknown) => {
+        buildForceDefaultXcmVersionCall: (_maybe_xcm_version: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'forceDefaultXcmVersion', {
                 maybe_xcm_version: _maybe_xcm_version,
             });
+        },
+
+        buildForceDefaultXcmVersionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'forceDefaultXcmVersion', argsBytes)
         },
 
         /**
@@ -195,14 +219,18 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'forceSubscribeVersionNotify', false, _location);
         },
 
-        forceSubscribeVersionNotifyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceSubscribeVersionNotifyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'forceSubscribeVersionNotify', true, data);
         },
 
-        forceSubscribeVersionNotifyCall: (_location: unknown) => {
+        buildForceSubscribeVersionNotifyCall: (_location: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'forceSubscribeVersionNotify', {
                 location: _location,
             });
+        },
+
+        buildForceSubscribeVersionNotifyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'forceSubscribeVersionNotify', argsBytes)
         },
 
         /**
@@ -219,14 +247,18 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', false, _location);
         },
 
-        forceUnsubscribeVersionNotifyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceUnsubscribeVersionNotifyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', true, data);
         },
 
-        forceUnsubscribeVersionNotifyCall: (_location: unknown) => {
+        buildForceUnsubscribeVersionNotifyCall: (_location: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', {
                 location: _location,
             });
+        },
+
+        buildForceUnsubscribeVersionNotifyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'forceUnsubscribeVersionNotify', argsBytes)
         },
 
         /**
@@ -259,11 +291,11 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'limitedReserveTransferAssets', false, _dest, _beneficiary, _assets, _fee_asset_item, _weight_limit);
         },
 
-        limitedReserveTransferAssetsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        limitedReserveTransferAssetsH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'limitedReserveTransferAssets', true, data);
         },
 
-        limitedReserveTransferAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown) => {
+        buildLimitedReserveTransferAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'limitedReserveTransferAssets', {
                 dest: _dest,
                 beneficiary: _beneficiary,
@@ -271,6 +303,10 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
                 fee_asset_item: _fee_asset_item,
                 weight_limit: _weight_limit,
             });
+        },
+
+        buildLimitedReserveTransferAssetsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'limitedReserveTransferAssets', argsBytes)
         },
 
         /**
@@ -302,11 +338,11 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PolkadotXcm', 'limitedTeleportAssets', false, _dest, _beneficiary, _assets, _fee_asset_item, _weight_limit);
         },
 
-        limitedTeleportAssetsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        limitedTeleportAssetsH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PolkadotXcm', 'limitedTeleportAssets', true, data);
         },
 
-        limitedTeleportAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown) => {
+        buildLimitedTeleportAssetsCall: (_dest: unknown, _beneficiary: unknown, _assets: unknown, _fee_asset_item: unknown, _weight_limit: unknown) => {
             return buildRuntimeCall(metadata, 'PolkadotXcm', 'limitedTeleportAssets', {
                 dest: _dest,
                 beneficiary: _beneficiary,
@@ -314,6 +350,10 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
                 fee_asset_item: _fee_asset_item,
                 weight_limit: _weight_limit,
             });
+        },
+
+        buildLimitedTeleportAssetsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'limitedTeleportAssets', argsBytes)
         },
 
     }

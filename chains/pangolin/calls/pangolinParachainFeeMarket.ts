@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -17,15 +16,19 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
         },
 
-        enrollAndLockCollateralD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        enrollAndLockCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'enrollAndLockCollateral', true, data);
         },
 
-        enrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
+        buildEnrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'enrollAndLockCollateral', {
                 lock_collateral: _lock_collateral,
                 relay_fee: _relay_fee,
             });
+        },
+
+        buildEnrollAndLockCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'enrollAndLockCollateral', argsBytes)
         },
 
         /**
@@ -38,14 +41,18 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'updateLockedCollateral', false, _new_collateral);
         },
 
-        updateLockedCollateralD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateLockedCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'updateLockedCollateral', true, data);
         },
 
-        updateLockedCollateralCall: (_new_collateral: unknown) => {
+        buildUpdateLockedCollateralCall: (_new_collateral: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'updateLockedCollateral', {
                 new_collateral: _new_collateral,
             });
+        },
+
+        buildUpdateLockedCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'updateLockedCollateral', argsBytes)
         },
 
         /**
@@ -57,14 +64,18 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'updateRelayFee', false, _new_fee);
         },
 
-        updateRelayFeeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateRelayFeeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'updateRelayFee', true, data);
         },
 
-        updateRelayFeeCall: (_new_fee: unknown) => {
+        buildUpdateRelayFeeCall: (_new_fee: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'updateRelayFee', {
                 new_fee: _new_fee,
             });
+        },
+
+        buildUpdateRelayFeeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'updateRelayFee', argsBytes)
         },
 
         /**
@@ -75,13 +86,17 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'cancelEnrollment', false);
         },
 
-        cancelEnrollmentD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'cancelEnrollment', true);
         },
 
-        cancelEnrollmentCall: () => {
+        buildCancelEnrollmentCall: () => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'cancelEnrollment', {
             });
+        },
+
+        buildCancelEnrollmentCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'cancelEnrollment', argsBytes)
         },
 
         /**
@@ -92,14 +107,18 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'setSlashProtect', false, _slash_protect);
         },
 
-        setSlashProtectD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setSlashProtectH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'setSlashProtect', true, data);
         },
 
-        setSlashProtectCall: (_slash_protect: unknown) => {
+        buildSetSlashProtectCall: (_slash_protect: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'setSlashProtect', {
                 slash_protect: _slash_protect,
             });
+        },
+
+        buildSetSlashProtectCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'setSlashProtect', argsBytes)
         },
 
         /**
@@ -110,14 +129,18 @@ export const getPangolinParachainFeeMarket = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'setAssignedRelayersNumber', false, _number);
         },
 
-        setAssignedRelayersNumberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setAssignedRelayersNumberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainFeeMarket', 'setAssignedRelayersNumber', true, data);
         },
 
-        setAssignedRelayersNumberCall: (_number: unknown) => {
+        buildSetAssignedRelayersNumberCall: (_number: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainFeeMarket', 'setAssignedRelayersNumber', {
                 number: _number,
             });
+        },
+
+        buildSetAssignedRelayersNumberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainFeeMarket', 'setAssignedRelayersNumber', argsBytes)
         },
 
     }

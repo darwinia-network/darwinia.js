@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -21,15 +20,19 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
         },
 
-        submitFinalityProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', true, data);
         },
 
-        submitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
+        buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'submitFinalityProof', {
                 finality_target: _finality_target,
                 justification: _justification,
             });
+        },
+
+        buildSubmitFinalityProofCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangoroGrandpa', 'submitFinalityProof', argsBytes)
         },
 
         /**
@@ -49,14 +52,18 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', false, _init_data);
         },
 
-        initializeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        initializeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', true, data);
         },
 
-        initializeCall: (_init_data: unknown) => {
+        buildInitializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'initialize', {
                 init_data: _init_data,
             });
+        },
+
+        buildInitializeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangoroGrandpa', 'initialize', argsBytes)
         },
 
         /**
@@ -70,14 +77,18 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', true, data);
         },
 
-        setOwnerCall: (_new_owner: unknown) => {
+        buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'setOwner', {
                 new_owner: _new_owner,
             });
+        },
+
+        buildSetOwnerCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangoroGrandpa', 'setOwner', argsBytes)
         },
 
         /**
@@ -91,14 +102,18 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperational', false, _operational);
         },
 
-        setOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperational', true, data);
         },
 
-        setOperationalCall: (_operational: unknown) => {
+        buildSetOperationalCall: (_operational: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'setOperational', {
                 operational: _operational,
             });
+        },
+
+        buildSetOperationalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgePangoroGrandpa', 'setOperational', argsBytes)
         },
 
     }

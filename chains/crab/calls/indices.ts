@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -31,14 +30,18 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'claim', false, _index);
         },
 
-        claimD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        claimH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'claim', true, data);
         },
 
-        claimCall: (_index: unknown) => {
+        buildClaimCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'claim', {
                 index: _index,
             });
+        },
+
+        buildClaimCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Indices', 'claim', argsBytes)
         },
 
         /**
@@ -70,15 +73,19 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'transfer', false, _new, _index);
         },
 
-        transferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'transfer', true, data);
         },
 
-        transferCall: (_new: unknown, _index: unknown) => {
+        buildTransferCall: (_new: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'transfer', {
                 new: _new,
                 index: _index,
             });
+        },
+
+        buildTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Indices', 'transfer', argsBytes)
         },
 
         /**
@@ -107,14 +114,18 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'free', false, _index);
         },
 
-        freeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        freeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'free', true, data);
         },
 
-        freeCall: (_index: unknown) => {
+        buildFreeCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'free', {
                 index: _index,
             });
+        },
+
+        buildFreeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Indices', 'free', argsBytes)
         },
 
         /**
@@ -148,16 +159,20 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'forceTransfer', false, _new, _index, _freeze);
         },
 
-        forceTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'forceTransfer', true, data);
         },
 
-        forceTransferCall: (_new: unknown, _index: unknown, _freeze: unknown) => {
+        buildForceTransferCall: (_new: unknown, _index: unknown, _freeze: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'forceTransfer', {
                 new: _new,
                 index: _index,
                 freeze: _freeze,
             });
+        },
+
+        buildForceTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Indices', 'forceTransfer', argsBytes)
         },
 
         /**
@@ -186,14 +201,18 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Indices', 'freeze', false, _index);
         },
 
-        freezeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        freezeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'freeze', true, data);
         },
 
-        freezeCall: (_index: unknown) => {
+        buildFreezeCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'freeze', {
                 index: _index,
             });
+        },
+
+        buildFreezeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Indices', 'freeze', argsBytes)
         },
 
     }

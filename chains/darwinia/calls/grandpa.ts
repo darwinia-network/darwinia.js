@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -18,15 +17,19 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocation', true, data);
         },
 
-        reportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
+        buildReportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Grandpa', 'reportEquivocation', {
                 equivocation_proof: _equivocation_proof,
                 key_owner_proof: _key_owner_proof,
             });
+        },
+
+        buildReportEquivocationCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Grandpa', 'reportEquivocation', argsBytes)
         },
 
         /**
@@ -47,15 +50,19 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationUnsignedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'reportEquivocationUnsigned', true, data);
         },
 
-        reportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
+        buildReportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Grandpa', 'reportEquivocationUnsigned', {
                 equivocation_proof: _equivocation_proof,
                 key_owner_proof: _key_owner_proof,
             });
+        },
+
+        buildReportEquivocationUnsignedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Grandpa', 'reportEquivocationUnsigned', argsBytes)
         },
 
         /**
@@ -74,15 +81,19 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Grandpa', 'noteStalled', false, _delay, _best_finalized_block_number);
         },
 
-        noteStalledD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        noteStalledH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Grandpa', 'noteStalled', true, data);
         },
 
-        noteStalledCall: (_delay: unknown, _best_finalized_block_number: unknown) => {
+        buildNoteStalledCall: (_delay: unknown, _best_finalized_block_number: unknown) => {
             return buildRuntimeCall(metadata, 'Grandpa', 'noteStalled', {
                 delay: _delay,
                 best_finalized_block_number: _best_finalized_block_number,
             });
+        },
+
+        buildNoteStalledCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Grandpa', 'noteStalled', argsBytes)
         },
 
     }

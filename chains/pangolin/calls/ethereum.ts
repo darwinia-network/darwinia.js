@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getEthereum = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -14,14 +13,18 @@ export const getEthereum = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Ethereum', 'transact', false, _transaction);
         },
 
-        transactD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transactH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Ethereum', 'transact', true, data);
         },
 
-        transactCall: (_transaction: unknown) => {
+        buildTransactCall: (_transaction: unknown) => {
             return buildRuntimeCall(metadata, 'Ethereum', 'transact', {
                 transaction: _transaction,
             });
+        },
+
+        buildTransactCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Ethereum', 'transact', argsBytes)
         },
 
         /**
@@ -33,14 +36,18 @@ export const getEthereum = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Ethereum', 'messageTransact', false, _transaction);
         },
 
-        messageTransactD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        messageTransactH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Ethereum', 'messageTransact', true, data);
         },
 
-        messageTransactCall: (_transaction: unknown) => {
+        buildMessageTransactCall: (_transaction: unknown) => {
             return buildRuntimeCall(metadata, 'Ethereum', 'messageTransact', {
                 transaction: _transaction,
             });
+        },
+
+        buildMessageTransactCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Ethereum', 'messageTransact', argsBytes)
         },
 
     }

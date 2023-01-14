@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -26,15 +26,19 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', false, _index, _weight_limit);
         },
 
-        serviceOverweightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        serviceOverweightH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', true, data);
         },
 
-        serviceOverweightCall: (_index: unknown, _weight_limit: unknown) => {
+        buildServiceOverweightCall: (_index: unknown, _weight_limit: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'serviceOverweight', {
                 index: _index,
                 weight_limit: _weight_limit,
             });
+        },
+
+        buildServiceOverweightCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'serviceOverweight', argsBytes)
         },
 
         /**
@@ -47,13 +51,17 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'suspendXcmExecution', false);
         },
 
-        suspendXcmExecutionD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        suspendXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'suspendXcmExecution', true);
         },
 
-        suspendXcmExecutionCall: () => {
+        buildSuspendXcmExecutionCall: () => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'suspendXcmExecution', {
             });
+        },
+
+        buildSuspendXcmExecutionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'suspendXcmExecution', argsBytes)
         },
 
         /**
@@ -68,13 +76,17 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'resumeXcmExecution', false);
         },
 
-        resumeXcmExecutionD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        resumeXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'resumeXcmExecution', true);
         },
 
-        resumeXcmExecutionCall: () => {
+        buildResumeXcmExecutionCall: () => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'resumeXcmExecution', {
             });
+        },
+
+        buildResumeXcmExecutionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'resumeXcmExecution', argsBytes)
         },
 
         /**
@@ -90,14 +102,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', false, _new);
         },
 
-        updateSuspendThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateSuspendThresholdH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', true, data);
         },
 
-        updateSuspendThresholdCall: (_new: unknown) => {
+        buildUpdateSuspendThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateSuspendThreshold', {
                 new: _new,
             });
+        },
+
+        buildUpdateSuspendThresholdCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateSuspendThreshold', argsBytes)
         },
 
         /**
@@ -113,14 +129,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', false, _new);
         },
 
-        updateDropThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateDropThresholdH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', true, data);
         },
 
-        updateDropThresholdCall: (_new: unknown) => {
+        buildUpdateDropThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateDropThreshold', {
                 new: _new,
             });
+        },
+
+        buildUpdateDropThresholdCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateDropThreshold', argsBytes)
         },
 
         /**
@@ -136,14 +156,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', false, _new);
         },
 
-        updateResumeThresholdD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateResumeThresholdH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', true, data);
         },
 
-        updateResumeThresholdCall: (_new: unknown) => {
+        buildUpdateResumeThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateResumeThreshold', {
                 new: _new,
             });
+        },
+
+        buildUpdateResumeThresholdCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateResumeThreshold', argsBytes)
         },
 
         /**
@@ -158,14 +182,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', false, _new);
         },
 
-        updateThresholdWeightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateThresholdWeightH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', true, data);
         },
 
-        updateThresholdWeightCall: (_new: unknown) => {
+        buildUpdateThresholdWeightCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateThresholdWeight', {
                 new: _new,
             });
+        },
+
+        buildUpdateThresholdWeightCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateThresholdWeight', argsBytes)
         },
 
         /**
@@ -181,14 +209,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', false, _new);
         },
 
-        updateWeightRestrictDecayD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateWeightRestrictDecayH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', true, data);
         },
 
-        updateWeightRestrictDecayCall: (_new: unknown) => {
+        buildUpdateWeightRestrictDecayCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateWeightRestrictDecay', {
                 new: _new,
             });
+        },
+
+        buildUpdateWeightRestrictDecayCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateWeightRestrictDecay', argsBytes)
         },
 
         /**
@@ -204,14 +236,18 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', false, _new);
         },
 
-        updateXcmpMaxIndividualWeightD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateXcmpMaxIndividualWeightH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', true, data);
         },
 
-        updateXcmpMaxIndividualWeightCall: (_new: unknown) => {
+        buildUpdateXcmpMaxIndividualWeightCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', {
                 new: _new,
             });
+        },
+
+        buildUpdateXcmpMaxIndividualWeightCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', argsBytes)
         },
 
     }

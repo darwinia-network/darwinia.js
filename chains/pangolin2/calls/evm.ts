@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -14,15 +14,19 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'withdraw', false, _address, _value);
         },
 
-        withdrawD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        withdrawH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'withdraw', true, data);
         },
 
-        withdrawCall: (_address: unknown, _value: unknown) => {
+        buildWithdrawCall: (_address: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Evm', 'withdraw', {
                 address: _address,
                 value: _value,
             });
+        },
+
+        buildWithdrawCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Evm', 'withdraw', argsBytes)
         },
 
         /**
@@ -42,11 +46,11 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'call', false, _source, _target, _input, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        callD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        callH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'call', true, data);
         },
 
-        callCall: (_source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
+        buildCallCall: (_source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'Evm', 'call', {
                 source: _source,
                 target: _target,
@@ -58,6 +62,10 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
                 nonce: _nonce,
                 access_list: _access_list,
             });
+        },
+
+        buildCallCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Evm', 'call', argsBytes)
         },
 
         /**
@@ -77,11 +85,11 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'create', false, _source, _init, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        createD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        createH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'create', true, data);
         },
 
-        createCall: (_source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
+        buildCreateCall: (_source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'Evm', 'create', {
                 source: _source,
                 init: _init,
@@ -92,6 +100,10 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
                 nonce: _nonce,
                 access_list: _access_list,
             });
+        },
+
+        buildCreateCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Evm', 'create', argsBytes)
         },
 
         /**
@@ -111,11 +123,11 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Evm', 'create2', false, _source, _init, _salt, _value, _gas_limit, _max_fee_per_gas, _max_priority_fee_per_gas, _nonce, _access_list);
         },
 
-        create2D: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        create2H: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Evm', 'create2', true, data);
         },
 
-        create2Call: (_source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
+        buildCreate2Call: (_source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'Evm', 'create2', {
                 source: _source,
                 init: _init,
@@ -127,6 +139,10 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
                 nonce: _nonce,
                 access_list: _access_list,
             });
+        },
+
+        buildCreate2CallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Evm', 'create2', argsBytes)
         },
 
     }

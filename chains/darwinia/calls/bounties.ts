@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -26,15 +25,19 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'proposeBounty', false, _value, _description);
         },
 
-        proposeBountyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeBounty', true, data);
         },
 
-        proposeBountyCall: (_value: unknown, _description: unknown) => {
+        buildProposeBountyCall: (_value: unknown, _description: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'proposeBounty', {
                 value: _value,
                 description: _description,
             });
+        },
+
+        buildProposeBountyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'proposeBounty', argsBytes)
         },
 
         /**
@@ -53,14 +56,18 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'approveBounty', false, _bounty_id);
         },
 
-        approveBountyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        approveBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'approveBounty', true, data);
         },
 
-        approveBountyCall: (_bounty_id: unknown) => {
+        buildApproveBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'approveBounty', {
                 bounty_id: _bounty_id,
             });
+        },
+
+        buildApproveBountyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'approveBounty', argsBytes)
         },
 
         /**
@@ -80,16 +87,20 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'proposeCurator', false, _bounty_id, _curator, _fee);
         },
 
-        proposeCuratorD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeCurator', true, data);
         },
 
-        proposeCuratorCall: (_bounty_id: unknown, _curator: unknown, _fee: unknown) => {
+        buildProposeCuratorCall: (_bounty_id: unknown, _curator: unknown, _fee: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'proposeCurator', {
                 bounty_id: _bounty_id,
                 curator: _curator,
                 fee: _fee,
             });
+        },
+
+        buildProposeCuratorCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'proposeCurator', argsBytes)
         },
 
         /**
@@ -118,14 +129,18 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'unassignCurator', false, _bounty_id);
         },
 
-        unassignCuratorD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unassignCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'unassignCurator', true, data);
         },
 
-        unassignCuratorCall: (_bounty_id: unknown) => {
+        buildUnassignCuratorCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'unassignCurator', {
                 bounty_id: _bounty_id,
             });
+        },
+
+        buildUnassignCuratorCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'unassignCurator', argsBytes)
         },
 
         /**
@@ -144,14 +159,18 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'acceptCurator', false, _bounty_id);
         },
 
-        acceptCuratorD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        acceptCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'acceptCurator', true, data);
         },
 
-        acceptCuratorCall: (_bounty_id: unknown) => {
+        buildAcceptCuratorCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'acceptCurator', {
                 bounty_id: _bounty_id,
             });
+        },
+
+        buildAcceptCuratorCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'acceptCurator', argsBytes)
         },
 
         /**
@@ -174,15 +193,19 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'awardBounty', false, _bounty_id, _beneficiary);
         },
 
-        awardBountyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        awardBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'awardBounty', true, data);
         },
 
-        awardBountyCall: (_bounty_id: unknown, _beneficiary: unknown) => {
+        buildAwardBountyCall: (_bounty_id: unknown, _beneficiary: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'awardBounty', {
                 bounty_id: _bounty_id,
                 beneficiary: _beneficiary,
             });
+        },
+
+        buildAwardBountyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'awardBounty', argsBytes)
         },
 
         /**
@@ -202,14 +225,18 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'claimBounty', false, _bounty_id);
         },
 
-        claimBountyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        claimBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'claimBounty', true, data);
         },
 
-        claimBountyCall: (_bounty_id: unknown) => {
+        buildClaimBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'claimBounty', {
                 bounty_id: _bounty_id,
             });
+        },
+
+        buildClaimBountyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'claimBounty', argsBytes)
         },
 
         /**
@@ -230,14 +257,18 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'closeBounty', false, _bounty_id);
         },
 
-        closeBountyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        closeBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'closeBounty', true, data);
         },
 
-        closeBountyCall: (_bounty_id: unknown) => {
+        buildCloseBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'closeBounty', {
                 bounty_id: _bounty_id,
             });
+        },
+
+        buildCloseBountyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'closeBounty', argsBytes)
         },
 
         /**
@@ -259,15 +290,19 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Bounties', 'extendBountyExpiry', false, _bounty_id, _remark);
         },
 
-        extendBountyExpiryD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        extendBountyExpiryH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'extendBountyExpiry', true, data);
         },
 
-        extendBountyExpiryCall: (_bounty_id: unknown, _remark: unknown) => {
+        buildExtendBountyExpiryCall: (_bounty_id: unknown, _remark: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'extendBountyExpiry', {
                 bounty_id: _bounty_id,
                 remark: _remark,
             });
+        },
+
+        buildExtendBountyExpiryCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Bounties', 'extendBountyExpiry', argsBytes)
         },
 
     }

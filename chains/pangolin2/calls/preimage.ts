@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -16,14 +16,18 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'notePreimage', false, _bytes);
         },
 
-        notePreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', true, data);
         },
 
-        notePreimageCall: (_bytes: unknown) => {
+        buildNotePreimageCall: (_bytes: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'notePreimage', {
                 bytes: _bytes,
             });
+        },
+
+        buildNotePreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Preimage', 'notePreimage', argsBytes)
         },
 
         /**
@@ -35,14 +39,18 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', false, _hash);
         },
 
-        unnotePreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unnotePreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', true, data);
         },
 
-        unnotePreimageCall: (_hash: unknown) => {
+        buildUnnotePreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'unnotePreimage', {
                 hash: _hash,
             });
+        },
+
+        buildUnnotePreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Preimage', 'unnotePreimage', argsBytes)
         },
 
         /**
@@ -57,14 +65,18 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', false, _hash);
         },
 
-        requestPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        requestPreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', true, data);
         },
 
-        requestPreimageCall: (_hash: unknown) => {
+        buildRequestPreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'requestPreimage', {
                 hash: _hash,
             });
+        },
+
+        buildRequestPreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Preimage', 'requestPreimage', argsBytes)
         },
 
         /**
@@ -78,14 +90,18 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', false, _hash);
         },
 
-        unrequestPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unrequestPreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', true, data);
         },
 
-        unrequestPreimageCall: (_hash: unknown) => {
+        buildUnrequestPreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'unrequestPreimage', {
                 hash: _hash,
             });
+        },
+
+        buildUnrequestPreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Preimage', 'unrequestPreimage', argsBytes)
         },
 
     }

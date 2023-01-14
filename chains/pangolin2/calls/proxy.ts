@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -25,16 +25,20 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'proxy', false, _real, _force_proxy_type, _call);
         },
 
-        proxyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proxyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'proxy', true, data);
         },
 
-        proxyCall: (_real: unknown, _force_proxy_type: unknown, _call: unknown) => {
+        buildProxyCall: (_real: unknown, _force_proxy_type: unknown, _call: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'proxy', {
                 real: _real,
                 force_proxy_type: _force_proxy_type,
                 call: _call,
             });
+        },
+
+        buildProxyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'proxy', argsBytes)
         },
 
         /**
@@ -56,16 +60,20 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'addProxy', false, _delegate, _proxy_type, _delay);
         },
 
-        addProxyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        addProxyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'addProxy', true, data);
         },
 
-        addProxyCall: (_delegate: unknown, _proxy_type: unknown, _delay: unknown) => {
+        buildAddProxyCall: (_delegate: unknown, _proxy_type: unknown, _delay: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'addProxy', {
                 delegate: _delegate,
                 proxy_type: _proxy_type,
                 delay: _delay,
             });
+        },
+
+        buildAddProxyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'addProxy', argsBytes)
         },
 
         /**
@@ -85,16 +93,20 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'removeProxy', false, _delegate, _proxy_type, _delay);
         },
 
-        removeProxyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeProxyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'removeProxy', true, data);
         },
 
-        removeProxyCall: (_delegate: unknown, _proxy_type: unknown, _delay: unknown) => {
+        buildRemoveProxyCall: (_delegate: unknown, _proxy_type: unknown, _delay: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'removeProxy', {
                 delegate: _delegate,
                 proxy_type: _proxy_type,
                 delay: _delay,
             });
+        },
+
+        buildRemoveProxyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'removeProxy', argsBytes)
         },
 
         /**
@@ -110,13 +122,17 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'removeProxies', false);
         },
 
-        removeProxiesD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        removeProxiesH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'removeProxies', true);
         },
 
-        removeProxiesCall: () => {
+        buildRemoveProxiesCall: () => {
             return buildRuntimeCall(metadata, 'Proxy', 'removeProxies', {
             });
+        },
+
+        buildRemoveProxiesCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'removeProxies', argsBytes)
         },
 
         /**
@@ -147,16 +163,20 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'createPure', false, _proxy_type, _delay, _index);
         },
 
-        createPureD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        createPureH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'createPure', true, data);
         },
 
-        createPureCall: (_proxy_type: unknown, _delay: unknown, _index: unknown) => {
+        buildCreatePureCall: (_proxy_type: unknown, _delay: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'createPure', {
                 proxy_type: _proxy_type,
                 delay: _delay,
                 index: _index,
             });
+        },
+
+        buildCreatePureCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'createPure', argsBytes)
         },
 
         /**
@@ -187,11 +207,11 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'killPure', false, _spawner, _proxy_type, _index, _height, _ext_index);
         },
 
-        killPureD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killPureH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'killPure', true, data);
         },
 
-        killPureCall: (_spawner: unknown, _proxy_type: unknown, _index: unknown, _height: unknown, _ext_index: unknown) => {
+        buildKillPureCall: (_spawner: unknown, _proxy_type: unknown, _index: unknown, _height: unknown, _ext_index: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'killPure', {
                 spawner: _spawner,
                 proxy_type: _proxy_type,
@@ -199,6 +219,10 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
                 height: _height,
                 ext_index: _ext_index,
             });
+        },
+
+        buildKillPureCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'killPure', argsBytes)
         },
 
         /**
@@ -225,15 +249,19 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'announce', false, _real, _call_hash);
         },
 
-        announceD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        announceH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'announce', true, data);
         },
 
-        announceCall: (_real: unknown, _call_hash: unknown) => {
+        buildAnnounceCall: (_real: unknown, _call_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'announce', {
                 real: _real,
                 call_hash: _call_hash,
             });
+        },
+
+        buildAnnounceCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'announce', argsBytes)
         },
 
         /**
@@ -255,15 +283,19 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'removeAnnouncement', false, _real, _call_hash);
         },
 
-        removeAnnouncementD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeAnnouncementH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'removeAnnouncement', true, data);
         },
 
-        removeAnnouncementCall: (_real: unknown, _call_hash: unknown) => {
+        buildRemoveAnnouncementCall: (_real: unknown, _call_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'removeAnnouncement', {
                 real: _real,
                 call_hash: _call_hash,
             });
+        },
+
+        buildRemoveAnnouncementCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'removeAnnouncement', argsBytes)
         },
 
         /**
@@ -285,15 +317,19 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'rejectAnnouncement', false, _delegate, _call_hash);
         },
 
-        rejectAnnouncementD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        rejectAnnouncementH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'rejectAnnouncement', true, data);
         },
 
-        rejectAnnouncementCall: (_delegate: unknown, _call_hash: unknown) => {
+        buildRejectAnnouncementCall: (_delegate: unknown, _call_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'rejectAnnouncement', {
                 delegate: _delegate,
                 call_hash: _call_hash,
             });
+        },
+
+        buildRejectAnnouncementCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'rejectAnnouncement', argsBytes)
         },
 
         /**
@@ -318,17 +354,21 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Proxy', 'proxyAnnounced', false, _delegate, _real, _force_proxy_type, _call);
         },
 
-        proxyAnnouncedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proxyAnnouncedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Proxy', 'proxyAnnounced', true, data);
         },
 
-        proxyAnnouncedCall: (_delegate: unknown, _real: unknown, _force_proxy_type: unknown, _call: unknown) => {
+        buildProxyAnnouncedCall: (_delegate: unknown, _real: unknown, _force_proxy_type: unknown, _call: unknown) => {
             return buildRuntimeCall(metadata, 'Proxy', 'proxyAnnounced', {
                 delegate: _delegate,
                 real: _real,
                 force_proxy_type: _force_proxy_type,
                 call: _call,
             });
+        },
+
+        buildProxyAnnouncedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Proxy', 'proxyAnnounced', argsBytes)
         },
 
     }

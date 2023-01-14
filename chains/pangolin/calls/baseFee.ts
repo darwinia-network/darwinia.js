@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -13,14 +12,18 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, _fee);
         },
 
-        setBaseFeePerGasD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setBaseFeePerGasH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', true, data);
         },
 
-        setBaseFeePerGasCall: (_fee: unknown) => {
+        buildSetBaseFeePerGasCall: (_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BaseFee', 'setBaseFeePerGas', {
                 fee: _fee,
             });
+        },
+
+        buildSetBaseFeePerGasCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BaseFee', 'setBaseFeePerGas', argsBytes)
         },
 
         /**
@@ -31,14 +34,18 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'BaseFee', 'setIsActive', false, _is_active);
         },
 
-        setIsActiveD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setIsActiveH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BaseFee', 'setIsActive', true, data);
         },
 
-        setIsActiveCall: (_is_active: unknown) => {
+        buildSetIsActiveCall: (_is_active: unknown) => {
             return buildRuntimeCall(metadata, 'BaseFee', 'setIsActive', {
                 is_active: _is_active,
             });
+        },
+
+        buildSetIsActiveCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BaseFee', 'setIsActive', argsBytes)
         },
 
         /**
@@ -49,14 +56,18 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'BaseFee', 'setElasticity', false, _elasticity);
         },
 
-        setElasticityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setElasticityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BaseFee', 'setElasticity', true, data);
         },
 
-        setElasticityCall: (_elasticity: unknown) => {
+        buildSetElasticityCall: (_elasticity: unknown) => {
             return buildRuntimeCall(metadata, 'BaseFee', 'setElasticity', {
                 elasticity: _elasticity,
             });
+        },
+
+        buildSetElasticityCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BaseFee', 'setElasticity', argsBytes)
         },
 
     }

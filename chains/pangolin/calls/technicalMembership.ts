@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -16,14 +15,18 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'addMember', false, _who);
         },
 
-        addMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        addMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'addMember', true, data);
         },
 
-        addMemberCall: (_who: unknown) => {
+        buildAddMemberCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'addMember', {
                 who: _who,
             });
+        },
+
+        buildAddMemberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'addMember', argsBytes)
         },
 
         /**
@@ -37,14 +40,18 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, _who);
         },
 
-        removeMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'removeMember', true, data);
         },
 
-        removeMemberCall: (_who: unknown) => {
+        buildRemoveMemberCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'removeMember', {
                 who: _who,
             });
+        },
+
+        buildRemoveMemberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'removeMember', argsBytes)
         },
 
         /**
@@ -61,15 +68,19 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, _remove, _add);
         },
 
-        swapMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        swapMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'swapMember', true, data);
         },
 
-        swapMemberCall: (_remove: unknown, _add: unknown) => {
+        buildSwapMemberCall: (_remove: unknown, _add: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'swapMember', {
                 remove: _remove,
                 add: _add,
             });
+        },
+
+        buildSwapMemberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'swapMember', argsBytes)
         },
 
         /**
@@ -84,14 +95,18 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, _members);
         },
 
-        resetMembersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        resetMembersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'resetMembers', true, data);
         },
 
-        resetMembersCall: (_members: unknown) => {
+        buildResetMembersCall: (_members: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'resetMembers', {
                 members: _members,
             });
+        },
+
+        buildResetMembersCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'resetMembers', argsBytes)
         },
 
         /**
@@ -107,14 +122,18 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, _new);
         },
 
-        changeKeyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        changeKeyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'changeKey', true, data);
         },
 
-        changeKeyCall: (_new: unknown) => {
+        buildChangeKeyCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'changeKey', {
                 new: _new,
             });
+        },
+
+        buildChangeKeyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'changeKey', argsBytes)
         },
 
         /**
@@ -128,14 +147,18 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, _who);
         },
 
-        setPrimeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setPrimeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'setPrime', true, data);
         },
 
-        setPrimeCall: (_who: unknown) => {
+        buildSetPrimeCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'setPrime', {
                 who: _who,
             });
+        },
+
+        buildSetPrimeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'setPrime', argsBytes)
         },
 
         /**
@@ -148,13 +171,17 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             return await dispatch(signer, 'TechnicalMembership', 'clearPrime', false);
         },
 
-        clearPrimeD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        clearPrimeH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'clearPrime', true);
         },
 
-        clearPrimeCall: () => {
+        buildClearPrimeCall: () => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'clearPrime', {
             });
+        },
+
+        buildClearPrimeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TechnicalMembership', 'clearPrime', argsBytes)
         },
 
     }

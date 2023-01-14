@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -18,15 +17,19 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'reportEquivocation', true, data);
         },
 
-        reportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
+        buildReportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Babe', 'reportEquivocation', {
                 equivocation_proof: _equivocation_proof,
                 key_owner_proof: _key_owner_proof,
             });
+        },
+
+        buildReportEquivocationCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Babe', 'reportEquivocation', argsBytes)
         },
 
         /**
@@ -46,15 +49,19 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
         },
 
-        reportEquivocationUnsignedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reportEquivocationUnsignedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', true, data);
         },
 
-        reportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
+        buildReportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
             return buildRuntimeCall(metadata, 'Babe', 'reportEquivocationUnsigned', {
                 equivocation_proof: _equivocation_proof,
                 key_owner_proof: _key_owner_proof,
             });
+        },
+
+        buildReportEquivocationUnsignedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Babe', 'reportEquivocationUnsigned', argsBytes)
         },
 
         /**
@@ -69,14 +76,18 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Babe', 'planConfigChange', false, _config);
         },
 
-        planConfigChangeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        planConfigChangeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Babe', 'planConfigChange', true, data);
         },
 
-        planConfigChangeCall: (_config: unknown) => {
+        buildPlanConfigChangeCall: (_config: unknown) => {
             return buildRuntimeCall(metadata, 'Babe', 'planConfigChange', {
                 config: _config,
             });
+        },
+
+        buildPlanConfigChangeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Babe', 'planConfigChange', argsBytes)
         },
 
     }

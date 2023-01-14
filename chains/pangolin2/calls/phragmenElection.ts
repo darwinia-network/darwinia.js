@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -36,15 +36,19 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, _votes, _value);
         },
 
-        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', true, data);
         },
 
-        voteCall: (_votes: unknown, _value: unknown) => {
+        buildVoteCall: (_votes: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'vote', {
                 votes: _votes,
                 value: _value,
             });
+        },
+
+        buildVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'vote', argsBytes)
         },
 
         /**
@@ -59,13 +63,17 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', false);
         },
 
-        removeVoterD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        removeVoterH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', true);
         },
 
-        removeVoterCall: () => {
+        buildRemoveVoterCall: () => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeVoter', {
             });
+        },
+
+        buildRemoveVoterCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'removeVoter', argsBytes)
         },
 
         /**
@@ -91,14 +99,18 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, _candidate_count);
         },
 
-        submitCandidacyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitCandidacyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', true, data);
         },
 
-        submitCandidacyCall: (_candidate_count: unknown) => {
+        buildSubmitCandidacyCall: (_candidate_count: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'submitCandidacy', {
                 candidate_count: _candidate_count,
             });
+        },
+
+        buildSubmitCandidacyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'submitCandidacy', argsBytes)
         },
 
         /**
@@ -127,14 +139,18 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, _renouncing);
         },
 
-        renounceCandidacyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        renounceCandidacyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', true, data);
         },
 
-        renounceCandidacyCall: (_renouncing: unknown) => {
+        buildRenounceCandidacyCall: (_renouncing: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'renounceCandidacy', {
                 renouncing: _renouncing,
             });
+        },
+
+        buildRenounceCandidacyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'renounceCandidacy', argsBytes)
         },
 
         /**
@@ -165,16 +181,20 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, _who, _slash_bond, _rerun_election);
         },
 
-        removeMemberD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', true, data);
         },
 
-        removeMemberCall: (_who: unknown, _slash_bond: unknown, _rerun_election: unknown) => {
+        buildRemoveMemberCall: (_who: unknown, _slash_bond: unknown, _rerun_election: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeMember', {
                 who: _who,
                 slash_bond: _slash_bond,
                 rerun_election: _rerun_election,
             });
+        },
+
+        buildRemoveMemberCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'removeMember', argsBytes)
         },
 
         /**
@@ -196,15 +216,19 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, _num_voters, _num_defunct);
         },
 
-        cleanDefunctVotersD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cleanDefunctVotersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', true, data);
         },
 
-        cleanDefunctVotersCall: (_num_voters: unknown, _num_defunct: unknown) => {
+        buildCleanDefunctVotersCall: (_num_voters: unknown, _num_defunct: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'cleanDefunctVoters', {
                 num_voters: _num_voters,
                 num_defunct: _num_defunct,
             });
+        },
+
+        buildCleanDefunctVotersCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PhragmenElection', 'cleanDefunctVoters', argsBytes)
         },
 
     }

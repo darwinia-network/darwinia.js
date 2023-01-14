@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -14,15 +14,19 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Deposit', 'lock', false, _amount, _months);
         },
 
-        lockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        lockH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Deposit', 'lock', true, data);
         },
 
-        lockCall: (_amount: unknown, _months: unknown) => {
+        buildLockCall: (_amount: unknown, _months: unknown) => {
             return buildRuntimeCall(metadata, 'Deposit', 'lock', {
                 amount: _amount,
                 months: _months,
             });
+        },
+
+        buildLockCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Deposit', 'lock', argsBytes)
         },
 
         /**
@@ -33,13 +37,17 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Deposit', 'claim', false);
         },
 
-        claimD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Deposit', 'claim', true);
         },
 
-        claimCall: () => {
+        buildClaimCall: () => {
             return buildRuntimeCall(metadata, 'Deposit', 'claim', {
             });
+        },
+
+        buildClaimCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Deposit', 'claim', argsBytes)
         },
 
         /**
@@ -51,14 +59,18 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, _id);
         },
 
-        claimWithPenaltyD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        claimWithPenaltyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', true, data);
         },
 
-        claimWithPenaltyCall: (_id: unknown) => {
+        buildClaimWithPenaltyCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Deposit', 'claimWithPenalty', {
                 id: _id,
             });
+        },
+
+        buildClaimWithPenaltyCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Deposit', 'claimWithPenalty', argsBytes)
         },
 
     }

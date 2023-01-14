@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -14,15 +13,19 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'TransactionPause', 'pauseTransaction', false, _pallet_name, _function_name);
         },
 
-        pauseTransactionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        pauseTransactionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TransactionPause', 'pauseTransaction', true, data);
         },
 
-        pauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {
+        buildPauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {
             return buildRuntimeCall(metadata, 'TransactionPause', 'pauseTransaction', {
                 pallet_name: _pallet_name,
                 function_name: _function_name,
             });
+        },
+
+        buildPauseTransactionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TransactionPause', 'pauseTransaction', argsBytes)
         },
 
         /**
@@ -34,15 +37,19 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', false, _pallet_name, _function_name);
         },
 
-        unpauseTransactionD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unpauseTransactionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', true, data);
         },
 
-        unpauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {
+        buildUnpauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {
             return buildRuntimeCall(metadata, 'TransactionPause', 'unpauseTransaction', {
                 pallet_name: _pallet_name,
                 function_name: _function_name,
             });
+        },
+
+        buildUnpauseTransactionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'TransactionPause', 'unpauseTransaction', argsBytes)
         },
 
     }

@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -32,15 +32,19 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'reportAwesome', false, _reason, _who);
         },
 
-        reportAwesomeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reportAwesomeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'reportAwesome', true, data);
         },
 
-        reportAwesomeCall: (_reason: unknown, _who: unknown) => {
+        buildReportAwesomeCall: (_reason: unknown, _who: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'reportAwesome', {
                 reason: _reason,
                 who: _who,
             });
+        },
+
+        buildReportAwesomeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'reportAwesome', argsBytes)
         },
 
         /**
@@ -70,14 +74,18 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'retractTip', false, _hash);
         },
 
-        retractTipD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        retractTipH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'retractTip', true, data);
         },
 
-        retractTipCall: (_hash: unknown) => {
+        buildRetractTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'retractTip', {
                 hash: _hash,
             });
+        },
+
+        buildRetractTipCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'retractTip', argsBytes)
         },
 
         /**
@@ -112,16 +120,20 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'tipNew', false, _reason, _who, _tip_value);
         },
 
-        tipNewD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        tipNewH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tipNew', true, data);
         },
 
-        tipNewCall: (_reason: unknown, _who: unknown, _tip_value: unknown) => {
+        buildTipNewCall: (_reason: unknown, _who: unknown, _tip_value: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'tipNew', {
                 reason: _reason,
                 who: _who,
                 tip_value: _tip_value,
             });
+        },
+
+        buildTipNewCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'tipNew', argsBytes)
         },
 
         /**
@@ -157,15 +169,19 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'tip', false, _hash, _tip_value);
         },
 
-        tipD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        tipH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tip', true, data);
         },
 
-        tipCall: (_hash: unknown, _tip_value: unknown) => {
+        buildTipCall: (_hash: unknown, _tip_value: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'tip', {
                 hash: _hash,
                 tip_value: _tip_value,
             });
+        },
+
+        buildTipCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'tip', argsBytes)
         },
 
         /**
@@ -192,14 +208,18 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'closeTip', false, _hash);
         },
 
-        closeTipD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        closeTipH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'closeTip', true, data);
         },
 
-        closeTipCall: (_hash: unknown) => {
+        buildCloseTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'closeTip', {
                 hash: _hash,
             });
+        },
+
+        buildCloseTipCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'closeTip', argsBytes)
         },
 
         /**
@@ -222,14 +242,18 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Tips', 'slashTip', false, _hash);
         },
 
-        slashTipD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        slashTipH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'slashTip', true, data);
         },
 
-        slashTipCall: (_hash: unknown) => {
+        buildSlashTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'slashTip', {
                 hash: _hash,
             });
+        },
+
+        buildSlashTipCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Tips', 'slashTip', argsBytes)
         },
 
     }

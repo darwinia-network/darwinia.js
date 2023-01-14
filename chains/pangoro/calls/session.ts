@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -28,15 +27,19 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Session', 'setKeys', false, _keys, _proof);
         },
 
-        setKeysD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setKeysH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'setKeys', true, data);
         },
 
-        setKeysCall: (_keys: unknown, _proof: unknown) => {
+        buildSetKeysCall: (_keys: unknown, _proof: unknown) => {
             return buildRuntimeCall(metadata, 'Session', 'setKeys', {
                 keys: _keys,
                 proof: _proof,
             });
+        },
+
+        buildSetKeysCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Session', 'setKeys', argsBytes)
         },
 
         /**
@@ -62,13 +65,17 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Session', 'purgeKeys', false);
         },
 
-        purgeKeysD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        purgeKeysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'purgeKeys', true);
         },
 
-        purgeKeysCall: () => {
+        buildPurgeKeysCall: () => {
             return buildRuntimeCall(metadata, 'Session', 'purgeKeys', {
             });
+        },
+
+        buildPurgeKeysCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Session', 'purgeKeys', argsBytes)
         },
 
     }

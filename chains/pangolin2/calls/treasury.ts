@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -22,15 +22,19 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'proposeSpend', false, _value, _beneficiary);
         },
 
-        proposeSpendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeSpendH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'proposeSpend', true, data);
         },
 
-        proposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
+        buildProposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'proposeSpend', {
                 value: _value,
                 beneficiary: _beneficiary,
             });
+        },
+
+        buildProposeSpendCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Treasury', 'proposeSpend', argsBytes)
         },
 
         /**
@@ -50,14 +54,18 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'rejectProposal', false, _proposal_id);
         },
 
-        rejectProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        rejectProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'rejectProposal', true, data);
         },
 
-        rejectProposalCall: (_proposal_id: unknown) => {
+        buildRejectProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'rejectProposal', {
                 proposal_id: _proposal_id,
             });
+        },
+
+        buildRejectProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Treasury', 'rejectProposal', argsBytes)
         },
 
         /**
@@ -78,14 +86,18 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'approveProposal', false, _proposal_id);
         },
 
-        approveProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        approveProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'approveProposal', true, data);
         },
 
-        approveProposalCall: (_proposal_id: unknown) => {
+        buildApproveProposalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'approveProposal', {
                 proposal_id: _proposal_id,
             });
+        },
+
+        buildApproveProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Treasury', 'approveProposal', argsBytes)
         },
 
         /**
@@ -105,15 +117,19 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'spend', false, _amount, _beneficiary);
         },
 
-        spendD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        spendH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'spend', true, data);
         },
 
-        spendCall: (_amount: unknown, _beneficiary: unknown) => {
+        buildSpendCall: (_amount: unknown, _beneficiary: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'spend', {
                 amount: _amount,
                 beneficiary: _beneficiary,
             });
+        },
+
+        buildSpendCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Treasury', 'spend', argsBytes)
         },
 
         /**
@@ -139,14 +155,18 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Treasury', 'removeApproval', false, _proposal_id);
         },
 
-        removeApprovalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeApprovalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Treasury', 'removeApproval', true, data);
         },
 
-        removeApprovalCall: (_proposal_id: unknown) => {
+        buildRemoveApprovalCall: (_proposal_id: unknown) => {
             return buildRuntimeCall(metadata, 'Treasury', 'removeApproval', {
                 proposal_id: _proposal_id,
             });
+        },
+
+        buildRemoveApprovalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Treasury', 'removeApproval', argsBytes)
         },
 
     }

@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -15,16 +15,20 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'AccountMigration', 'migrate', false, _from, _to, _signature);
         },
 
-        migrateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        migrateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'AccountMigration', 'migrate', true, data);
         },
 
-        migrateCall: (_from: unknown, _to: unknown, _signature: unknown) => {
+        buildMigrateCall: (_from: unknown, _to: unknown, _signature: unknown) => {
             return buildRuntimeCall(metadata, 'AccountMigration', 'migrate', {
                 from: _from,
                 to: _to,
                 signature: _signature,
             });
+        },
+
+        buildMigrateCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'AccountMigration', 'migrate', argsBytes)
         },
 
     }

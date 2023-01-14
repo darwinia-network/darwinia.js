@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -38,15 +37,19 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'transfer', false, _dest, _value);
         },
 
-        transferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transfer', true, data);
         },
 
-        transferCall: (_dest: unknown, _value: unknown) => {
+        buildTransferCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transfer', {
                 dest: _dest,
                 value: _value,
             });
+        },
+
+        buildTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'transfer', argsBytes)
         },
 
         /**
@@ -67,16 +70,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'setBalance', false, _who, _new_free, _new_reserved);
         },
 
-        setBalanceD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setBalanceH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'setBalance', true, data);
         },
 
-        setBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
+        buildSetBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'setBalance', {
                 who: _who,
                 new_free: _new_free,
                 new_reserved: _new_reserved,
             });
+        },
+
+        buildSetBalanceCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'setBalance', argsBytes)
         },
 
         /**
@@ -95,16 +102,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'forceTransfer', false, _source, _dest, _value);
         },
 
-        forceTransferD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', true, data);
         },
 
-        forceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
+        buildForceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'forceTransfer', {
                 source: _source,
                 dest: _dest,
                 value: _value,
             });
+        },
+
+        buildForceTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'forceTransfer', argsBytes)
         },
 
         /**
@@ -122,15 +133,19 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', false, _dest, _value);
         },
 
-        transferKeepAliveD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferKeepAliveH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', true, data);
         },
 
-        transferKeepAliveCall: (_dest: unknown, _value: unknown) => {
+        buildTransferKeepAliveCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transferKeepAlive', {
                 dest: _dest,
                 value: _value,
             });
+        },
+
+        buildTransferKeepAliveCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'transferKeepAlive', argsBytes)
         },
 
         /**
@@ -159,15 +174,19 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'transferAll', false, _dest, _keep_alive);
         },
 
-        transferAllD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferAllH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferAll', true, data);
         },
 
-        transferAllCall: (_dest: unknown, _keep_alive: unknown) => {
+        buildTransferAllCall: (_dest: unknown, _keep_alive: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transferAll', {
                 dest: _dest,
                 keep_alive: _keep_alive,
             });
+        },
+
+        buildTransferAllCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'transferAll', argsBytes)
         },
 
         /**
@@ -182,15 +201,19 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', false, _who, _amount);
         },
 
-        forceUnreserveD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceUnreserveH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', true, data);
         },
 
-        forceUnreserveCall: (_who: unknown, _amount: unknown) => {
+        buildForceUnreserveCall: (_who: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'forceUnreserve', {
                 who: _who,
                 amount: _amount,
             });
+        },
+
+        buildForceUnreserveCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'forceUnreserve', argsBytes)
         },
 
     }

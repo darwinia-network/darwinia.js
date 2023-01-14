@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBridgeMoonbaseRelayParachains = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -21,16 +20,20 @@ export const getBridgeMoonbaseRelayParachains = (dispatch: Dispatch, metadata: M
             return await dispatch(signer, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', false, _relay_block_hash, _parachains, _parachain_heads_proof);
         },
 
-        submitParachainHeadsD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitParachainHeadsH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', true, data);
         },
 
-        submitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
+        buildSubmitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', {
                 relay_block_hash: _relay_block_hash,
                 parachains: _parachains,
                 parachain_heads_proof: _parachain_heads_proof,
             });
+        },
+
+        buildSubmitParachainHeadsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeMoonbaseRelayParachains', 'submitParachainHeads', argsBytes)
         },
 
     }

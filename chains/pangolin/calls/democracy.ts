@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -25,15 +24,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'propose', false, _proposal_hash, _value);
         },
 
-        proposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'propose', true, data);
         },
 
-        proposeCall: (_proposal_hash: unknown, _value: unknown) => {
+        buildProposeCall: (_proposal_hash: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'propose', {
                 proposal_hash: _proposal_hash,
                 value: _value,
             });
+        },
+
+        buildProposeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'propose', argsBytes)
         },
 
         /**
@@ -55,15 +58,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'second', false, _proposal, _seconds_upper_bound);
         },
 
-        secondD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        secondH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'second', true, data);
         },
 
-        secondCall: (_proposal: unknown, _seconds_upper_bound: unknown) => {
+        buildSecondCall: (_proposal: unknown, _seconds_upper_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'second', {
                 proposal: _proposal,
                 seconds_upper_bound: _seconds_upper_bound,
             });
+        },
+
+        buildSecondCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'second', argsBytes)
         },
 
         /**
@@ -84,15 +91,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'vote', false, _ref_index, _vote);
         },
 
-        voteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vote', true, data);
         },
 
-        voteCall: (_ref_index: unknown, _vote: unknown) => {
+        buildVoteCall: (_ref_index: unknown, _vote: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'vote', {
                 ref_index: _ref_index,
                 vote: _vote,
             });
+        },
+
+        buildVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'vote', argsBytes)
         },
 
         /**
@@ -111,14 +122,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', false, _ref_index);
         },
 
-        emergencyCancelD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        emergencyCancelH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', true, data);
         },
 
-        emergencyCancelCall: (_ref_index: unknown) => {
+        buildEmergencyCancelCall: (_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'emergencyCancel', {
                 ref_index: _ref_index,
             });
+        },
+
+        buildEmergencyCancelCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'emergencyCancel', argsBytes)
         },
 
         /**
@@ -138,14 +153,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalPropose', false, _proposal_hash);
         },
 
-        externalProposeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalPropose', true, data);
         },
 
-        externalProposeCall: (_proposal_hash: unknown) => {
+        buildExternalProposeCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalPropose', {
                 proposal_hash: _proposal_hash,
             });
+        },
+
+        buildExternalProposeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'externalPropose', argsBytes)
         },
 
         /**
@@ -167,14 +186,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', false, _proposal_hash);
         },
 
-        externalProposeMajorityD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeMajorityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', true, data);
         },
 
-        externalProposeMajorityCall: (_proposal_hash: unknown) => {
+        buildExternalProposeMajorityCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeMajority', {
                 proposal_hash: _proposal_hash,
             });
+        },
+
+        buildExternalProposeMajorityCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'externalProposeMajority', argsBytes)
         },
 
         /**
@@ -196,14 +219,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', false, _proposal_hash);
         },
 
-        externalProposeDefaultD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeDefaultH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', true, data);
         },
 
-        externalProposeDefaultCall: (_proposal_hash: unknown) => {
+        buildExternalProposeDefaultCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeDefault', {
                 proposal_hash: _proposal_hash,
             });
+        },
+
+        buildExternalProposeDefaultCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'externalProposeDefault', argsBytes)
         },
 
         /**
@@ -231,16 +258,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'fastTrack', false, _proposal_hash, _voting_period, _delay);
         },
 
-        fastTrackD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        fastTrackH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'fastTrack', true, data);
         },
 
-        fastTrackCall: (_proposal_hash: unknown, _voting_period: unknown, _delay: unknown) => {
+        buildFastTrackCall: (_proposal_hash: unknown, _voting_period: unknown, _delay: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'fastTrack', {
                 proposal_hash: _proposal_hash,
                 voting_period: _voting_period,
                 delay: _delay,
             });
+        },
+
+        buildFastTrackCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'fastTrack', argsBytes)
         },
 
         /**
@@ -260,14 +291,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', false, _proposal_hash);
         },
 
-        vetoExternalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        vetoExternalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', true, data);
         },
 
-        vetoExternalCall: (_proposal_hash: unknown) => {
+        buildVetoExternalCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'vetoExternal', {
                 proposal_hash: _proposal_hash,
             });
+        },
+
+        buildVetoExternalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'vetoExternal', argsBytes)
         },
 
         /**
@@ -285,14 +320,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', false, _ref_index);
         },
 
-        cancelReferendumD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cancelReferendumH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', true, data);
         },
 
-        cancelReferendumCall: (_ref_index: unknown) => {
+        buildCancelReferendumCall: (_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelReferendum', {
                 ref_index: _ref_index,
             });
+        },
+
+        buildCancelReferendumCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'cancelReferendum', argsBytes)
         },
 
         /**
@@ -310,14 +349,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', false, _which);
         },
 
-        cancelQueuedD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cancelQueuedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', true, data);
         },
 
-        cancelQueuedCall: (_which: unknown) => {
+        buildCancelQueuedCall: (_which: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelQueued', {
                 which: _which,
             });
+        },
+
+        buildCancelQueuedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'cancelQueued', argsBytes)
         },
 
         /**
@@ -350,16 +393,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'delegate', false, _to, _conviction, _balance);
         },
 
-        delegateD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        delegateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'delegate', true, data);
         },
 
-        delegateCall: (_to: unknown, _conviction: unknown, _balance: unknown) => {
+        buildDelegateCall: (_to: unknown, _conviction: unknown, _balance: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'delegate', {
                 to: _to,
                 conviction: _conviction,
                 balance: _balance,
             });
+        },
+
+        buildDelegateCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'delegate', argsBytes)
         },
 
         /**
@@ -381,13 +428,17 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'undelegate', false);
         },
 
-        undelegateD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        undelegateH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'undelegate', true);
         },
 
-        undelegateCall: () => {
+        buildUndelegateCall: () => {
             return buildRuntimeCall(metadata, 'Democracy', 'undelegate', {
             });
+        },
+
+        buildUndelegateCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'undelegate', argsBytes)
         },
 
         /**
@@ -402,13 +453,17 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'clearPublicProposals', false);
         },
 
-        clearPublicProposalsD: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        clearPublicProposalsH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'clearPublicProposals', true);
         },
 
-        clearPublicProposalsCall: () => {
+        buildClearPublicProposalsCall: () => {
             return buildRuntimeCall(metadata, 'Democracy', 'clearPublicProposals', {
             });
+        },
+
+        buildClearPublicProposalsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'clearPublicProposals', argsBytes)
         },
 
         /**
@@ -429,14 +484,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'notePreimage', false, _encoded_proposal);
         },
 
-        notePreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimage', true, data);
         },
 
-        notePreimageCall: (_encoded_proposal: unknown) => {
+        buildNotePreimageCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'notePreimage', {
                 encoded_proposal: _encoded_proposal,
             });
+        },
+
+        buildNotePreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'notePreimage', argsBytes)
         },
 
         /**
@@ -448,14 +507,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', false, _encoded_proposal);
         },
 
-        notePreimageOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', true, data);
         },
 
-        notePreimageOperationalCall: (_encoded_proposal: unknown) => {
+        buildNotePreimageOperationalCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'notePreimageOperational', {
                 encoded_proposal: _encoded_proposal,
             });
+        },
+
+        buildNotePreimageOperationalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'notePreimageOperational', argsBytes)
         },
 
         /**
@@ -478,14 +541,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', false, _encoded_proposal);
         },
 
-        noteImminentPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        noteImminentPreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', true, data);
         },
 
-        noteImminentPreimageCall: (_encoded_proposal: unknown) => {
+        buildNoteImminentPreimageCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimage', {
                 encoded_proposal: _encoded_proposal,
             });
+        },
+
+        buildNoteImminentPreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'noteImminentPreimage', argsBytes)
         },
 
         /**
@@ -497,14 +564,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', false, _encoded_proposal);
         },
 
-        noteImminentPreimageOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        noteImminentPreimageOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', true, data);
         },
 
-        noteImminentPreimageOperationalCall: (_encoded_proposal: unknown) => {
+        buildNoteImminentPreimageOperationalCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', {
                 encoded_proposal: _encoded_proposal,
             });
+        },
+
+        buildNoteImminentPreimageOperationalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', argsBytes)
         },
 
         /**
@@ -531,15 +602,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', false, _proposal_hash, _proposal_len_upper_bound);
         },
 
-        reapPreimageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        reapPreimageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', true, data);
         },
 
-        reapPreimageCall: (_proposal_hash: unknown, _proposal_len_upper_bound: unknown) => {
+        buildReapPreimageCall: (_proposal_hash: unknown, _proposal_len_upper_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'reapPreimage', {
                 proposal_hash: _proposal_hash,
                 proposal_len_upper_bound: _proposal_len_upper_bound,
             });
+        },
+
+        buildReapPreimageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'reapPreimage', argsBytes)
         },
 
         /**
@@ -557,14 +632,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'unlock', false, _target);
         },
 
-        unlockD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unlockH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'unlock', true, data);
         },
 
-        unlockCall: (_target: unknown) => {
+        buildUnlockCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'unlock', {
                 target: _target,
             });
+        },
+
+        buildUnlockCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'unlock', argsBytes)
         },
 
         /**
@@ -602,14 +681,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'removeVote', false, _index);
         },
 
-        removeVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeVoteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeVote', true, data);
         },
 
-        removeVoteCall: (_index: unknown) => {
+        buildRemoveVoteCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'removeVote', {
                 index: _index,
             });
+        },
+
+        buildRemoveVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'removeVote', argsBytes)
         },
 
         /**
@@ -636,15 +719,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', false, _target, _index);
         },
 
-        removeOtherVoteD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeOtherVoteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', true, data);
         },
 
-        removeOtherVoteCall: (_target: unknown, _index: unknown) => {
+        buildRemoveOtherVoteCall: (_target: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'removeOtherVote', {
                 target: _target,
                 index: _index,
             });
+        },
+
+        buildRemoveOtherVoteCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'removeOtherVote', argsBytes)
         },
 
         /**
@@ -657,15 +744,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'enactProposal', false, _proposal_hash, _index);
         },
 
-        enactProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        enactProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'enactProposal', true, data);
         },
 
-        enactProposalCall: (_proposal_hash: unknown, _index: unknown) => {
+        buildEnactProposalCall: (_proposal_hash: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'enactProposal', {
                 proposal_hash: _proposal_hash,
                 index: _index,
             });
+        },
+
+        buildEnactProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'enactProposal', argsBytes)
         },
 
         /**
@@ -692,15 +783,19 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'blacklist', false, _proposal_hash, _maybe_ref_index);
         },
 
-        blacklistD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        blacklistH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'blacklist', true, data);
         },
 
-        blacklistCall: (_proposal_hash: unknown, _maybe_ref_index: unknown) => {
+        buildBlacklistCall: (_proposal_hash: unknown, _maybe_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'blacklist', {
                 proposal_hash: _proposal_hash,
                 maybe_ref_index: _maybe_ref_index,
             });
+        },
+
+        buildBlacklistCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'blacklist', argsBytes)
         },
 
         /**
@@ -718,14 +813,18 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', false, _prop_index);
         },
 
-        cancelProposalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cancelProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', true, data);
         },
 
-        cancelProposalCall: (_prop_index: unknown) => {
+        buildCancelProposalCall: (_prop_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelProposal', {
                 prop_index: _prop_index,
             });
+        },
+
+        buildCancelProposalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'cancelProposal', argsBytes)
         },
 
     }

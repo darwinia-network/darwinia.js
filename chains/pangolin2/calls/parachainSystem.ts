@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -21,14 +21,18 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'setValidationData', false, _data);
         },
 
-        setValidationDataD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setValidationDataH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'setValidationData', true, data);
         },
 
-        setValidationDataCall: (_data: unknown) => {
+        buildSetValidationDataCall: (_data: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'setValidationData', {
                 data: _data,
             });
+        },
+
+        buildSetValidationDataCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ParachainSystem', 'setValidationData', argsBytes)
         },
 
         /**
@@ -39,14 +43,18 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', false, _message);
         },
 
-        sudoSendUpwardMessageD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        sudoSendUpwardMessageH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'sudoSendUpwardMessage', true, data);
         },
 
-        sudoSendUpwardMessageCall: (_message: unknown) => {
+        buildSudoSendUpwardMessageCall: (_message: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'sudoSendUpwardMessage', {
                 message: _message,
             });
+        },
+
+        buildSudoSendUpwardMessageCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ParachainSystem', 'sudoSendUpwardMessage', argsBytes)
         },
 
         /**
@@ -57,14 +65,18 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', false, _code_hash);
         },
 
-        authorizeUpgradeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        authorizeUpgradeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', true, data);
         },
 
-        authorizeUpgradeCall: (_code_hash: unknown) => {
+        buildAuthorizeUpgradeCall: (_code_hash: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'authorizeUpgrade', {
                 code_hash: _code_hash,
             });
+        },
+
+        buildAuthorizeUpgradeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ParachainSystem', 'authorizeUpgrade', argsBytes)
         },
 
         /**
@@ -75,14 +87,18 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', false, _code);
         },
 
-        enactAuthorizedUpgradeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        enactAuthorizedUpgradeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'enactAuthorizedUpgrade', true, data);
         },
 
-        enactAuthorizedUpgradeCall: (_code: unknown) => {
+        buildEnactAuthorizedUpgradeCall: (_code: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'enactAuthorizedUpgrade', {
                 code: _code,
             });
+        },
+
+        buildEnactAuthorizedUpgradeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'ParachainSystem', 'enactAuthorizedUpgrade', argsBytes)
         },
 
     }

@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -21,15 +20,19 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
         },
 
-        submitFinalityProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', true, data);
         },
 
-        submitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
+        buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', {
                 finality_target: _finality_target,
                 justification: _justification,
             });
+        },
+
+        buildSubmitFinalityProofCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'submitFinalityProof', argsBytes)
         },
 
         /**
@@ -49,14 +52,18 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'initialize', false, _init_data);
         },
 
-        initializeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        initializeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'initialize', true, data);
         },
 
-        initializeCall: (_init_data: unknown) => {
+        buildInitializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'initialize', {
                 init_data: _init_data,
             });
+        },
+
+        buildInitializeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'initialize', argsBytes)
         },
 
         /**
@@ -70,14 +77,18 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOwner', true, data);
         },
 
-        setOwnerCall: (_new_owner: unknown) => {
+        buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'setOwner', {
                 new_owner: _new_owner,
             });
+        },
+
+        buildSetOwnerCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'setOwner', argsBytes)
         },
 
         /**
@@ -91,14 +102,18 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOperational', false, _operational);
         },
 
-        setOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayGrandpa', 'setOperational', true, data);
         },
 
-        setOperationalCall: (_operational: unknown) => {
+        buildSetOperationalCall: (_operational: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'setOperational', {
                 operational: _operational,
             });
+        },
+
+        buildSetOperationalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeMoonbaseRelayGrandpa', 'setOperational', argsBytes)
         },
 
     }

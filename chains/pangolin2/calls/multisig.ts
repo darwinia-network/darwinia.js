@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -29,15 +29,19 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'asMultiThreshold_1', false, _other_signatories, _call);
         },
 
-        asMultiThreshold_1D: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        asMultiThreshold_1H: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'asMultiThreshold_1', true, data);
         },
 
-        asMultiThreshold_1Call: (_other_signatories: unknown, _call: unknown) => {
+        buildAsMultiThreshold_1Call: (_other_signatories: unknown, _call: unknown) => {
             return buildRuntimeCall(metadata, 'Multisig', 'asMultiThreshold_1', {
                 other_signatories: _other_signatories,
                 call: _call,
             });
+        },
+
+        buildAsMultiThreshold_1CallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Multisig', 'asMultiThreshold_1', argsBytes)
         },
 
         /**
@@ -98,11 +102,11 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'asMulti', false, _threshold, _other_signatories, _maybe_timepoint, _call, _store_call, _max_weight);
         },
 
-        asMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        asMultiH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'asMulti', true, data);
         },
 
-        asMultiCall: (_threshold: unknown, _other_signatories: unknown, _maybe_timepoint: unknown, _call: unknown, _store_call: unknown, _max_weight: unknown) => {
+        buildAsMultiCall: (_threshold: unknown, _other_signatories: unknown, _maybe_timepoint: unknown, _call: unknown, _store_call: unknown, _max_weight: unknown) => {
             return buildRuntimeCall(metadata, 'Multisig', 'asMulti', {
                 threshold: _threshold,
                 other_signatories: _other_signatories,
@@ -111,6 +115,10 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
                 store_call: _store_call,
                 max_weight: _max_weight,
             });
+        },
+
+        buildAsMultiCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Multisig', 'asMulti', argsBytes)
         },
 
         /**
@@ -160,11 +168,11 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'approveAsMulti', false, _threshold, _other_signatories, _maybe_timepoint, _call_hash, _max_weight);
         },
 
-        approveAsMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        approveAsMultiH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'approveAsMulti', true, data);
         },
 
-        approveAsMultiCall: (_threshold: unknown, _other_signatories: unknown, _maybe_timepoint: unknown, _call_hash: unknown, _max_weight: unknown) => {
+        buildApproveAsMultiCall: (_threshold: unknown, _other_signatories: unknown, _maybe_timepoint: unknown, _call_hash: unknown, _max_weight: unknown) => {
             return buildRuntimeCall(metadata, 'Multisig', 'approveAsMulti', {
                 threshold: _threshold,
                 other_signatories: _other_signatories,
@@ -172,6 +180,10 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
                 call_hash: _call_hash,
                 max_weight: _max_weight,
             });
+        },
+
+        buildApproveAsMultiCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Multisig', 'approveAsMulti', argsBytes)
         },
 
         /**
@@ -211,17 +223,21 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Multisig', 'cancelAsMulti', false, _threshold, _other_signatories, _timepoint, _call_hash);
         },
 
-        cancelAsMultiD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cancelAsMultiH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Multisig', 'cancelAsMulti', true, data);
         },
 
-        cancelAsMultiCall: (_threshold: unknown, _other_signatories: unknown, _timepoint: unknown, _call_hash: unknown) => {
+        buildCancelAsMultiCall: (_threshold: unknown, _other_signatories: unknown, _timepoint: unknown, _call_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Multisig', 'cancelAsMulti', {
                 threshold: _threshold,
                 other_signatories: _other_signatories,
                 timepoint: _timepoint,
                 call_hash: _call_hash,
             });
+        },
+
+        buildCancelAsMultiCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Multisig', 'cancelAsMulti', argsBytes)
         },
 
     }

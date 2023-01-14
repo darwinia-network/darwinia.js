@@ -1,7 +1,6 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
-import {  } from "ethers";
 
 export const getBridgeCrabGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
     return {
@@ -21,15 +20,19 @@ export const getBridgeCrabGrandpa = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'BridgeCrabGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
         },
 
-        submitFinalityProofD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabGrandpa', 'submitFinalityProof', true, data);
         },
 
-        submitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
+        buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeCrabGrandpa', 'submitFinalityProof', {
                 finality_target: _finality_target,
                 justification: _justification,
             });
+        },
+
+        buildSubmitFinalityProofCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeCrabGrandpa', 'submitFinalityProof', argsBytes)
         },
 
         /**
@@ -49,14 +52,18 @@ export const getBridgeCrabGrandpa = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'BridgeCrabGrandpa', 'initialize', false, _init_data);
         },
 
-        initializeD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        initializeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabGrandpa', 'initialize', true, data);
         },
 
-        initializeCall: (_init_data: unknown) => {
+        buildInitializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeCrabGrandpa', 'initialize', {
                 init_data: _init_data,
             });
+        },
+
+        buildInitializeCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeCrabGrandpa', 'initialize', argsBytes)
         },
 
         /**
@@ -70,14 +77,18 @@ export const getBridgeCrabGrandpa = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'BridgeCrabGrandpa', 'setOwner', false, _new_owner);
         },
 
-        setOwnerD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabGrandpa', 'setOwner', true, data);
         },
 
-        setOwnerCall: (_new_owner: unknown) => {
+        buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeCrabGrandpa', 'setOwner', {
                 new_owner: _new_owner,
             });
+        },
+
+        buildSetOwnerCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeCrabGrandpa', 'setOwner', argsBytes)
         },
 
         /**
@@ -91,14 +102,18 @@ export const getBridgeCrabGrandpa = (dispatch: Dispatch, metadata: Metadata) => 
             return await dispatch(signer, 'BridgeCrabGrandpa', 'setOperational', false, _operational);
         },
 
-        setOperationalD: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeCrabGrandpa', 'setOperational', true, data);
         },
 
-        setOperationalCall: (_operational: unknown) => {
+        buildSetOperationalCall: (_operational: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeCrabGrandpa', 'setOperational', {
                 operational: _operational,
             });
+        },
+
+        buildSetOperationalCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'BridgeCrabGrandpa', 'setOperational', argsBytes)
         },
 
     }
