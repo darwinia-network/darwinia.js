@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
@@ -40,11 +40,11 @@ _%>
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
         },
 
-        <%= `${callName}D` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+        <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', data' : '' %>);
         },
 
-        <%= `${callName}Call` %>: (<%= input.join(", ") %>) => {
+        <%= `build${capitalize(callName)}Call` %>: (<%= input.join(", ") %>) => {
             return buildRuntimeCall(metadata, '<%= prefix %>', '<%= callName %>', {
 	    <%_
 		for(let j = 0; j < callParams.length; j++) {
@@ -57,6 +57,10 @@ _%>
 	        }
 	    _%>
             });
+        },
+
+        <%= `build${capitalize(callName)}CallH` %>: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, '<%= prefix %>', '<%= callName %>', argsBytes)
         },
 
 <%_ 

@@ -30,6 +30,10 @@ const snakeCaseToCamel = (str: string) => {
     });
 }
 
+const capitalize = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function isFullUppercaseWord(str: string) {
     const str1 = str.replace(/ /g, "")
     return /^[A-Z]*$/.test(str1)
@@ -240,7 +244,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
             palletCalls.push([callName, callParams, call.docs.map(d => d.toString())])
         });
 
-        const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls });
+        const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls, capitalize });
         fs.writeFileSync(`${callDir}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);

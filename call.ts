@@ -1,5 +1,6 @@
 import { BytesLike, ethers, providers } from "ethers";
 import { Metadata } from '@polkadot/types';
+import { AnyJson } from '@polkadot/types-codec/types';
 import { SiVariant } from "@polkadot/types/interfaces";
 import { u8aConcat, u8aToHex } from "@polkadot/util";
 
@@ -71,7 +72,7 @@ const camelToSnakeCase = (str: string) => {
 // },
 export type CallAsParam = {
     callIndex: [number, number],
-    args: object
+    args: any
 }
 
 export function buildRuntimeCall(metadata: Metadata, palletName: string, callName: string, args: object): CallAsParam {
@@ -83,12 +84,60 @@ export function buildRuntimeCall(metadata: Metadata, palletName: string, callNam
     }
 }
 
+interface Map {
+  [key: string]: any;
+}
+
+export function decodeCall(metadata: Metadata, palletName: string, callName: string, args: BytesLike): CallAsParam {
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.name.toString() == palletName;
+    });
+
+    if (!pallet) {
+        throw `Can not find pallet ${palletName} in metadata`;
+    }
+
+    const calls = pallet.calls.unwrap();
+    const callsType = metadata.registry.lookup.getSiType(calls.type);
+    const callIndex = callsType.def.asVariant.variants.findIndex(v => {
+        return v.name.toString() == camelToSnakeCase(callName);
+    });
+
+    const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex), args]);
+
+    const callLookupType = metadata.registry.createLookupType(calls.type);
+    const a = metadata.registry.createType(callLookupType, callBytes).toJSON() as { [index: string]: AnyJson; };
+
+    return {
+        callIndex: [pallet.index.toNumber(), callIndex],
+        args: a[callName]
+    }
+}
+
+export function encodeCall(metadata: Metadata, palletName: string, callName: string, args: object): string {
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.name.toString() == palletName;
+    });
+
+    if (!pallet) {
+        throw `Can not find pallet ${palletName} in metadata`;
+    }
+
+    const calls = pallet.calls.unwrap();
+    const callLookupType = metadata.registry.createLookupType(calls.type);
+
+    const callObj: Map = {};
+    callObj[callName] = args;
+
+    return metadata.registry.createType(callLookupType, callObj).toHex();
+}
+
 type Call = {
     call: SiVariant,
     callIndex: Uint8Array
 };
 
-function getCall(metadata: Metadata, palletName: string, callName: string): Call {
+export function getCall(metadata: Metadata, palletName: string, callName: string): Call {
     const pallet = metadata.asLatest.pallets.find(pallet => {
         return pallet.name.toString() == palletName;
     });
