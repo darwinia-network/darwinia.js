@@ -10,7 +10,7 @@ import { darwiniaStaticMetadata, buildDarwiniaCallsClient, buildDarwiniaStorages
 export { darwiniaStaticMetadata } from "./darwinia";
 
 import { providers } from "ethers";
-import { buildMetadata } from "../helpers";
+import { buildMetadata } from "../index";
 
 export const clientBuilder = {
     buildPangolin2Client: (provider: providers.BaseProvider) => {

@@ -1,4 +1,4 @@
-import { buildRuntimeCall, Dispatch, decodeCall } from "../../../call";
+import { buildRuntimeCall, Dispatch, decodeCall } from "../../../src/call";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 

@@ -1,4 +1,4 @@
-import {GetStorage} from "../../../storage";
+import {GetStorage} from "../../../src/storage";
 
 export const getRecovery = (getStorage: GetStorage) => {
     return {

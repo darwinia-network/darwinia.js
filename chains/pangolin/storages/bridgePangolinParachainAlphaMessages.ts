@@ -1,4 +1,4 @@
-import {GetStorage} from "../../../storage";
+import {GetStorage} from "../../../src/storage";
 
 export const getBridgePangolinParachainAlphaMessages = (getStorage: GetStorage) => {
     return {

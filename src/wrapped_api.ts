@@ -26,6 +26,12 @@ export async function nominateAndStake(client: Client, signer: ethers.Signer, ta
     ]);
 }
 
+/**
+ * @param client: client from clientBuilder
+ * @param signer: a signer with a provider inside
+ * @param keys: session keys bytes
+ * @param commission: commission
+ */
 export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: number) {
     const call1 = client.calls.session.buildSetKeysCallH(
         ethers.utils.concat([keys, "0x00"])

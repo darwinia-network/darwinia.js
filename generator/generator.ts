@@ -2,7 +2,7 @@ import ejs from 'ejs';
 import fs from 'fs';
 import type { HexString } from '@polkadot/util/types';
 import axios from 'axios';
-import { buildMetadata } from '../helpers';
+import { buildMetadata } from '../index';
 import { StorageEntryMetadataV14, StorageHasherV14 } from "@polkadot/types/interfaces/metadata/types";
 import { Si1Field, SiLookupTypeId } from "@polkadot/types/interfaces";
 import { Metadata, Vec } from "@polkadot/types";

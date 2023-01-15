@@ -1,6 +1,5 @@
 import { ethers } from "ethers";
-import { clientBuilder } from "../index"
-import { setSessionKeysAndCommission } from "../wrapped_api";
+import { clientBuilder, setSessionKeysAndCommission } from "../index"
 
 async function main(): Promise<void> {
     const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");

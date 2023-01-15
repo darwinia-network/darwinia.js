@@ -1,6 +1,6 @@
-import {u8aToHex} from '@polkadot/util';
-import {ethers, providers} from "ethers";
-import {buildMetadata, buildStorageKey, getStorageEntry} from "./helpers";
+import { u8aToHex } from '@polkadot/util';
+import { ethers, providers } from "ethers";
+import { buildStorageKey, getStorageEntry } from "./helpers";
 import { Metadata } from '@polkadot/types';
 
 type BaseProvider = providers.BaseProvider;
@@ -32,7 +32,7 @@ export function getStorage(provider: BaseProvider, metadata: Metadata) {
             storageKey = buildStorageKey(metadata, prefix, method);
             valueType = metadata.registry.createLookupType(storageEntry.type.asPlain);
         } else if (storageEntry.type.isMap) {
-            const {hashers, key, value} = storageEntry.type.asMap;
+            const { hashers, key, value } = storageEntry.type.asMap;
             if (input.length != hashers.length) {
                 throw new Error("The `input` param is not correct");
             }

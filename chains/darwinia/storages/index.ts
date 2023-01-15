@@ -1,4 +1,4 @@
-import { getStorage as getStorageFunction } from "../../../storage";
+import { getStorage as getStorageFunction } from "../../../src/storage";
 import { Metadata } from "@polkadot/types";
 import { providers } from "ethers";
 
