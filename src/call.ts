@@ -1,16 +1,16 @@
 import { BytesLike, ethers, providers } from "ethers";
 import { Metadata } from '@polkadot/types';
-import { AnyJson } from '@polkadot/types-codec/types';
-import { SiVariant } from "@polkadot/types/interfaces";
 import { u8aConcat, u8aToHex } from "@polkadot/util";
+import { camelToSnakeCase } from "./utils";
+import { getCallMeta } from "./helpers";
 
-type BaseProvider = providers.BaseProvider;
+type Provider = providers.BaseProvider;
 
 interface Tx {
-  [key: string]: any;
+    [key: string]: any;
 }
 
-async function dryRun(provider: BaseProvider, tx: Tx) {
+async function dryRun(provider: Provider, tx: Tx) {
     await provider.call(tx);
 }
 
@@ -23,7 +23,7 @@ type EthersError = {
     };
 }
 
-async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> {
+async function doDispatch(provider: Provider, signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> {
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
@@ -51,132 +51,11 @@ async function doDispatch(provider: BaseProvider, signer: ethers.Signer, data: B
     }
 }
 
-const camelToSnakeCase = (str: string) => {
-    const t = str.replace(/[A-Z]/g, (letter: string) => `_${letter.toLowerCase()}`);
-    if (t.startsWith("_")) {
-        return t.slice(1);
-    } else {
-        return t;
-    }
-}
-
-// example: 
-// {
-//     callIndex: [9, 0],
-//     args: {
-//         keys: {
-//             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
-//         },
-//         proof: "0x"
-//     }
-// },
-export type CallAsParam = {
-    callIndex: [number, number],
-    args: any
-}
-
-export function buildRuntimeCall(metadata: Metadata, palletName: string, callName: string, args: object): CallAsParam {
-    callName = camelToSnakeCase(callName);
-    const call = getCall(metadata, palletName, callName);
-    return {
-        callIndex: [call.callIndex[0], call.callIndex[1]],
-        args: args
-    }
-}
-
-interface Map {
-  [key: string]: any;
-}
-
-export function decodeCall(metadata: Metadata, palletName: string, callName: string, args: BytesLike): CallAsParam {
-    const pallet = metadata.asLatest.pallets.find(pallet => {
-        return pallet.name.toString() == palletName;
-    });
-
-    if (!pallet) {
-        throw `Can not find pallet ${palletName} in metadata`;
-    }
-
-    const calls = pallet.calls.unwrap();
-    const callsType = metadata.registry.lookup.getSiType(calls.type);
-    const callIndex = callsType.def.asVariant.variants.findIndex(v => {
-        return v.name.toString() == camelToSnakeCase(callName);
-    });
-
-    const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex), args]);
-
-    const callLookupType = metadata.registry.createLookupType(calls.type);
-    const a = metadata.registry.createType(callLookupType, callBytes).toJSON() as { [index: string]: AnyJson; };
-
-    return {
-        callIndex: [pallet.index.toNumber(), callIndex],
-        args: a[callName]
-    }
-}
-
-export function encodeCall(metadata: Metadata, palletName: string, callName: string, args: object): string {
-    const pallet = metadata.asLatest.pallets.find(pallet => {
-        return pallet.name.toString() == palletName;
-    });
-
-    if (!pallet) {
-        throw `Can not find pallet ${palletName} in metadata`;
-    }
-
-    const calls = pallet.calls.unwrap();
-    const callLookupType = metadata.registry.createLookupType(calls.type);
-
-    const callObj: Map = {};
-    callObj[callName] = args;
-
-    return metadata.registry.createType(callLookupType, callObj).toHex();
-}
-
-type Call = {
-    call: SiVariant,
-    callIndex: Uint8Array
-};
-
-export function getCall(metadata: Metadata, palletName: string, callName: string): Call {
-    const pallet = metadata.asLatest.pallets.find(pallet => {
-        return pallet.name.toString() == palletName;
-    });
-
-    if (!pallet) {
-        throw `Can not find pallet ${palletName} in metadata`;
-    }
-
-    const calls = pallet.calls.unwrap();
-    const callsType = metadata.registry.lookup.getSiType(calls.type);
-    const call = callsType.def.asVariant.variants.find(v => {
-        return v.name.toString() == callName;
-    });
-    if (!call) {
-        throw `Can not find ${callName} dispatch call in ${palletName} pallet`;
-    }
-    const callIndex = callsType.def.asVariant.variants.findIndex(v => {
-        return v.name.toString() == callName;
-    });
-
-    return {
-        call: call,
-        callIndex: new Uint8Array([pallet.index.toNumber(), callIndex])
-    };
-
-}
-
-function getCallParamLookupTypes(metadata: Metadata, call: SiVariant): string[] {
-    const types = call.fields.map(field => {
-        return metadata.registry.createLookupType(field.type);
-    });
-    return types;
-}
-
-export function dispatch(provider: BaseProvider, metadata: Metadata) {
+export function dispatch(provider: Provider, metadata: Metadata) {
     return async (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>): Promise<ethers.providers.TransactionReceipt> => {
         // palletName = camelToSnakeCase(palletName);
         callName = camelToSnakeCase(callName);
-        const { call, callIndex } = getCall(metadata, palletName, callName);
+        const { callIndex, argLookupTypes } = getCallMeta(metadata, palletName, callName);
 
         let paramsData = new Uint8Array([]);
         if (paramsEncoded) {
@@ -185,9 +64,8 @@ export function dispatch(provider: BaseProvider, metadata: Metadata) {
                 paramsData = u8aConcat(paramsData, param as Uint8Array);
             }
         } else {
-            const paramLookupTypes = getCallParamLookupTypes(metadata, call);
-            for (let i = 0; i < paramLookupTypes.length; i++) {
-                const paramType = paramLookupTypes[i];
+            for (let i = 0; i < argLookupTypes.length; i++) {
+                const paramType = argLookupTypes[i];
                 const param = params[i];
                 const encodedParam = metadata.registry.createType(paramType, param).toU8a();
                 paramsData = u8aConcat(paramsData, encodedParam);

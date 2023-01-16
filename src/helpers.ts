@@ -1,10 +1,13 @@
-import {Metadata, TypeRegistry} from '@polkadot/types';
-import {StorageEntryMetadataV14, StorageHasherV14} from "@polkadot/types/interfaces/metadata/types";
-import {SiLookupTypeId} from "@polkadot/types/interfaces";
-import {u8aConcat} from "@polkadot/util";
-import {xxhashAsU8a} from "@polkadot/util-crypto";
-import {blake2128Concat, identity, twox64Concat} from "./hashers";
-import {HexString} from "@polkadot/util/types";
+import { Metadata, TypeRegistry } from '@polkadot/types';
+import { StorageEntryMetadataV14, StorageHasherV14 } from "@polkadot/types/interfaces/metadata/types";
+import { SiLookupTypeId } from "@polkadot/types/interfaces";
+import { u8aConcat } from "@polkadot/util";
+import { xxhashAsU8a } from "@polkadot/util-crypto";
+import { blake2128Concat, identity, twox64Concat } from "./hashers";
+import { HexString } from "@polkadot/util/types";
+import { camelToSnakeCase } from './utils';
+import { AnyJson } from '@polkadot/types-codec/types';
+import { BytesLike, ethers } from "ethers";
 
 export function buildMetadata(metaStatic: Uint8Array | HexString) {
     const registry = new TypeRegistry();
@@ -60,4 +63,75 @@ export function buildStorageKey(metadata: Metadata, prefix: string, method: stri
         }
     }
     return storageKey;
+}
+
+export type CallMeta = {
+    callIndex: [number, number],
+    argLookupTypes: string[],
+    callsVariantLookupType: string,
+};
+
+export function getCallMeta(metadata: Metadata, palletName: string, callName: string): CallMeta {
+    // get pallet
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.name.toString() == palletName;
+    });
+    if (!pallet) {
+        throw `Can not find pallet ${palletName} in metadata`;
+    }
+
+    // get call which is a variant item from pallet
+    const calls = pallet.calls.unwrap();
+    const callsType = metadata.registry.lookup.getSiType(calls.type);
+    const call = callsType.def.asVariant.variants.find(v => {
+        return v.name.toString() == callName;
+    });
+    if (!call) {
+        throw `Can not find ${callName} dispatch call in ${palletName} pallet`;
+    }
+
+    return {
+        callIndex: [pallet.index.toNumber(), call.index.toNumber()],
+        argLookupTypes: call.fields.map(field => {
+            return metadata.registry.createLookupType(field.type);
+        }),
+        callsVariantLookupType: metadata.registry.createLookupType(calls.type)
+    };
+}
+
+// example: 
+// {
+//     callIndex: [9, 0],
+//     args: {
+//         keys: {
+//             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+//         },
+//         proof: "0x"
+//     }
+// },
+export type CallAsParam = {
+    callIndex: [number, number],
+    args: any
+}
+
+export function buildRuntimeCall(metadata: Metadata, palletName: string, callName: string, args: object): CallAsParam {
+    callName = camelToSnakeCase(callName);
+    const { callIndex, } = getCallMeta(metadata, palletName, callName);
+    return {
+        callIndex: [callIndex[0], callIndex[1]],
+        args: args
+    }
+}
+
+export function decodeCall(metadata: Metadata, palletName: string, callName: string, args: BytesLike): CallAsParam {
+    const { callIndex, argLookupTypes, callsVariantLookupType }
+        = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
+
+    const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex[1]), args]);
+    const decoded = metadata.registry.createType(callsVariantLookupType, callBytes).toJSON();
+
+    return {
+        callIndex: callIndex,
+        args: (decoded as { [index: string]: AnyJson; })[callName]
+    }
 }

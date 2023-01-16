@@ -1,4 +1,4 @@
-import {GetStorage} from "../../../src/storage";
+import { GetStorage } from "../../../src/storage";
 
 export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
     return {

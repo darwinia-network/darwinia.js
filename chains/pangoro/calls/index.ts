@@ -1,4 +1,4 @@
-import { dispatch as dispatchCall } from "../../../src/call";
+import { dispatch as dispatchCall } from "../../../index";
 import { Metadata } from "@polkadot/types";
 import { providers } from "ethers";
 
