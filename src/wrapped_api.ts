@@ -16,13 +16,13 @@ type Client = {
  * @param ktonAmount: KTONs to stake
  * @param deposits: deposit ids to stake
  */
-export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: string, ktonAmount: string, deposits: number[]) {
+export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: string, ktonAmount: string, deposits: string[]) {
     const nominateCall = client.calls.staking.buildNominateCall(target);
     const stakeCall = client.calls.staking.buildStakeCall(ringAmount, ktonAmount, deposits);
 
     return await client.calls.utility.batchAll(signer, [
-        nominateCall,
-        stakeCall
+        stakeCall,
+        nominateCall
     ]);
 }
 
