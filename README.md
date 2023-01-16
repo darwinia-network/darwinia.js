@@ -3,13 +3,26 @@
 A library to help 
 1. fetch internal substrate storages, and
 2. dispatch calls
+3. Easy-to-use wrapped functions(Wrapped API) which are build from 1 and 2. 
 
 ## Install
 ```shell
 npm install darwinia-js-sdk
 ```
 
-## Usage
+## Wrapped APIs
+
+* nominateAndStake
+
+  Stake and nominate collator.
+
+* setSessionKeysAndCommission
+
+  Set session keys and commission. 
+
+see [src/wrapped_api.ts](src/wrapped_api.ts).
+
+## API Usage
 
 ### fetch storage
 
@@ -71,16 +84,16 @@ async function main(): Promise<void> {
     const pangolin2 = clientBuilder.buildPangolin2Client(provider);
 
     // prepare calls
-    const setKeysCall = pangolin2.calls.session.setKeysCall(
+    const setKeysCall = pangolin2.calls.session.buildSetKeysCall(
         // keys
         { 
             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
         }, 
         // proof
-        "0x"
+        "px"
     );
 
-    const collectCall = pangolin2.calls.staking.collectCall({ commission: 12345 });
+    const collectCall = pangolin2.calls.staking.buildCollectCall(120000000);
 
     // dispatch
     await pangolin2.calls.utility.batchAll(
@@ -109,7 +122,7 @@ async function main(): Promise<void> {
     const pangolin2 = clientBuilder.buildPangolin2Client(provider);
 
     // call ended with `D` is the version that accept params encoded in scale codec  
-    await pangolin2.calls.session.setKeysD(
+    await pangolin2.calls.session.setKeysH(
       signer,
       "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded (keys, proof)
     )
