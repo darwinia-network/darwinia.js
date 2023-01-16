@@ -16,7 +16,7 @@ type Client = {
  * @param ktonAmount: KTONs to stake
  * @param deposits: deposit ids to stake
  */
-export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: number, ktonAmount: number, deposits: number[]) {
+export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: string, ktonAmount: string, deposits: number[]) {
     const nominateCall = client.calls.staking.buildNominateCall(target);
     const stakeCall = client.calls.staking.buildStakeCall(ringAmount, ktonAmount, deposits);
 
@@ -32,7 +32,7 @@ export async function nominateAndStake(client: Client, signer: ethers.Signer, ta
  * @param keys: session keys bytes
  * @param commission: commission
  */
-export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: number) {
+export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: string) {
     const call1 = client.calls.session.buildSetKeysCallH(
         ethers.utils.concat([keys, "0x00"])
     );
