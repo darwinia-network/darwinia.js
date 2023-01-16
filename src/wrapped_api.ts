@@ -16,9 +16,17 @@ type Client = {
  * @param ktonAmount: KTONs to stake
  * @param deposits: deposit ids to stake
  */
-export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: string, ktonAmount: string, deposits: string[]) {
+export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: number, ktonAmount: number, deposits: number[]) {
+    const weisOfRingAmount = (ringAmount * 10**18).toString();
+    const weisOfKtonAmount = (ktonAmount * 10**18).toString();
+    const depositIds = deposits.map((d) => d.toString());
+
     const nominateCall = client.calls.staking.buildNominateCall(target);
-    const stakeCall = client.calls.staking.buildStakeCall(ringAmount, ktonAmount, deposits);
+    const stakeCall = client.calls.staking.buildStakeCall(
+        weisOfRingAmount, 
+        weisOfKtonAmount, 
+        depositIds
+    );
 
     return await client.calls.utility.batchAll(signer, [
         stakeCall,
@@ -33,13 +41,13 @@ export async function nominateAndStake(client: Client, signer: ethers.Signer, ta
  * @param commission: commission
  */
 export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: string) {
-    const call1 = client.calls.session.buildSetKeysCallH(
+    const setKeysCall = client.calls.session.buildSetKeysCallH(
         ethers.utils.concat([keys, "0x00"])
     );
-    const call2 = client.calls.staking.buildCollectCall(commission);
+    const collectCall = client.calls.staking.buildCollectCall(commission);
 
     return await client.calls.utility.batchAll(signer, [
-        call1,
-        call2
+        setKeysCall,
+        collectCall
     ]);
 }
