@@ -38,13 +38,18 @@ export async function nominateAndStake(client: Client, signer: ethers.Signer, ta
  * @param client: client from clientBuilder
  * @param signer: a signer with a provider inside
  * @param keys: session keys bytes
- * @param commission: commission
+ * @param commission: integer >= 0 and <= 100
  */
-export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: string) {
+export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: number) {
+    if (!(Number.isInteger(commission) && commission >=0 && commission <= 100)) {
+        throw "Wrong commission value, it should be an integer between 0 and 100(inclusive).";
+    }
+
     const setKeysCall = client.calls.session.buildSetKeysCallH(
         ethers.utils.concat([keys, "0x00"])
     );
-    const collectCall = client.calls.staking.buildCollectCall(commission);
+
+    const collectCall = client.calls.staking.buildCollectCall((commission * 10_000_000).toString());
 
     return await client.calls.utility.batchAll(signer, [
         setKeysCall,

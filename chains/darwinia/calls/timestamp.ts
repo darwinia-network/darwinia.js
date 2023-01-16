@@ -25,11 +25,13 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _now: Compact<U64>
          */
         set: async (signer: ethers.Signer, _now: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Timestamp', 'set', false, _now);
+            return await dispatch(signer, 'Timestamp', 'set', false, {
+                now: _now,
+	    });
         },
 
-        setH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Timestamp', 'set', true, data);
+        setH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Timestamp', 'set', true, argsBytes);
         },
 
         buildSetCall: (_now: unknown) => {

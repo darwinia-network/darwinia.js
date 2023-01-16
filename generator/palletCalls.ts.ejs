@@ -11,7 +11,6 @@ export const get<%= prefix %> = (dispatch: Dispatch, metadata: Metadata) => {
 	const callParams = call[1];
 	const callDocs = call[2];
 	const input = [];
-	const input2 = [];
 _%>
         /**
 <%_
@@ -32,16 +31,26 @@ _%>
          * @param <%- `_${paramName}` %>: <%- paramType %>
 <%_
 	    input.push(`_${paramName}: unknown`)
-	    input2.push(`_${paramName}`)
 	}
 _%>
          */
         <%= callName %>: async (signer: ethers.Signer<%= input.length > 0 ? `, ${input.join(", ")}` : '' %>): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false<%= input2.length > 0 ? `, ${input2.join(", ")}` : '' %>);
+            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false, {
+	    <%_
+		for(let j = 0; j < callParams.length; j++) {
+		    // [paramName, paramType]
+		    const callParam = callParams[j];
+		    const paramName = callParam[0];
+	    _%>
+                <%= paramName %>: _<%= paramName %>,
+	    <%_ 
+	        }
+	    _%>
+	    });
         },
 
-        <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', data: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', data' : '' %>);
+        <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', argsBytes: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', argsBytes' : '' %>);
         },
 
         <%= `build${capitalize(callName)}Call` %>: (<%= input.join(", ") %>) => {

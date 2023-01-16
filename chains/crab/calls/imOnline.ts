@@ -19,11 +19,14 @@ export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _signature: [U8; 64]
          */
         heartbeat: async (signer: ethers.Signer, _heartbeat: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ImOnline', 'heartbeat', false, _heartbeat, _signature);
+            return await dispatch(signer, 'ImOnline', 'heartbeat', false, {
+                heartbeat: _heartbeat,
+                signature: _signature,
+	    });
         },
 
-        heartbeatH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ImOnline', 'heartbeat', true, data);
+        heartbeatH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ImOnline', 'heartbeat', true, argsBytes);
         },
 
         buildHeartbeatCall: (_heartbeat: unknown, _signature: unknown) => {

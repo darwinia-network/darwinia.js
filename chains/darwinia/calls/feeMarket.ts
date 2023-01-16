@@ -13,11 +13,14 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _relay_fee: Enum<{0/None: , 1/Some: U128}>
          */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
+            return await dispatch(signer, 'FeeMarket', 'enrollAndLockCollateral', false, {
+                lock_collateral: _lock_collateral,
+                relay_fee: _relay_fee,
+	    });
         },
 
-        enrollAndLockCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'enrollAndLockCollateral', true, data);
+        enrollAndLockCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'FeeMarket', 'enrollAndLockCollateral', true, argsBytes);
         },
 
         buildEnrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
@@ -38,11 +41,13 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _new_collateral: U128
          */
         updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'updateLockedCollateral', false, _new_collateral);
+            return await dispatch(signer, 'FeeMarket', 'updateLockedCollateral', false, {
+                new_collateral: _new_collateral,
+	    });
         },
 
-        updateLockedCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'updateLockedCollateral', true, data);
+        updateLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'FeeMarket', 'updateLockedCollateral', true, argsBytes);
         },
 
         buildUpdateLockedCollateralCall: (_new_collateral: unknown) => {
@@ -61,11 +66,13 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _new_fee: U128
          */
         updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'updateRelayFee', false, _new_fee);
+            return await dispatch(signer, 'FeeMarket', 'updateRelayFee', false, {
+                new_fee: _new_fee,
+	    });
         },
 
-        updateRelayFeeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'updateRelayFee', true, data);
+        updateRelayFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'FeeMarket', 'updateRelayFee', true, argsBytes);
         },
 
         buildUpdateRelayFeeCall: (_new_fee: unknown) => {
@@ -83,7 +90,8 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          *
          */
         cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'cancelEnrollment', false);
+            return await dispatch(signer, 'FeeMarket', 'cancelEnrollment', false, {
+	    });
         },
 
         cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
@@ -104,11 +112,13 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _slash_protect: U128
          */
         setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'setSlashProtect', false, _slash_protect);
+            return await dispatch(signer, 'FeeMarket', 'setSlashProtect', false, {
+                slash_protect: _slash_protect,
+	    });
         },
 
-        setSlashProtectH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'setSlashProtect', true, data);
+        setSlashProtectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'FeeMarket', 'setSlashProtect', true, argsBytes);
         },
 
         buildSetSlashProtectCall: (_slash_protect: unknown) => {
@@ -126,11 +136,13 @@ export const getFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _number: U32
          */
         setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'setAssignedRelayersNumber', false, _number);
+            return await dispatch(signer, 'FeeMarket', 'setAssignedRelayersNumber', false, {
+                number: _number,
+	    });
         },
 
-        setAssignedRelayersNumberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'FeeMarket', 'setAssignedRelayersNumber', true, data);
+        setAssignedRelayersNumberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'FeeMarket', 'setAssignedRelayersNumber', true, argsBytes);
         },
 
         buildSetAssignedRelayersNumberCall: (_number: unknown) => {

@@ -13,7 +13,7 @@ async function main(): Promise<void> {
         pangolin2, 
         signer, 
         "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d", 
-        12345
+        12
     );
 
     console.log(`tx hash: ${receipt.transactionHash}`);

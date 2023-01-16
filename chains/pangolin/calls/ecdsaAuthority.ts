@@ -13,11 +13,13 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _new: [U8; 20]
          */
         addAuthority: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', false, _new);
+            return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', false, {
+                new: _new,
+	    });
         },
 
-        addAuthorityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', true, data);
+        addAuthorityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EcdsaAuthority', 'addAuthority', true, argsBytes);
         },
 
         buildAddAuthorityCall: (_new: unknown) => {
@@ -38,11 +40,13 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _old: [U8; 20]
          */
         removeAuthority: async (signer: ethers.Signer, _old: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', false, _old);
+            return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', false, {
+                old: _old,
+	    });
         },
 
-        removeAuthorityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', true, data);
+        removeAuthorityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EcdsaAuthority', 'removeAuthority', true, argsBytes);
         },
 
         buildRemoveAuthorityCall: (_old: unknown) => {
@@ -64,11 +68,14 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _new: [U8; 20]
          */
         swapAuthority: async (signer: ethers.Signer, _old: unknown, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', false, _old, _new);
+            return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', false, {
+                old: _old,
+                new: _new,
+	    });
         },
 
-        swapAuthorityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', true, data);
+        swapAuthorityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EcdsaAuthority', 'swapAuthority', true, argsBytes);
         },
 
         buildSwapAuthorityCall: (_old: unknown, _new: unknown) => {
@@ -91,11 +98,14 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _signature: [U8; 65]
          */
         submitAuthoritiesChangeSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', false, _address, _signature);
+            return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', false, {
+                address: _address,
+                signature: _signature,
+	    });
         },
 
-        submitAuthoritiesChangeSignatureH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', true, data);
+        submitAuthoritiesChangeSignatureH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', true, argsBytes);
         },
 
         buildSubmitAuthoritiesChangeSignatureCall: (_address: unknown, _signature: unknown) => {
@@ -118,11 +128,14 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _signature: [U8; 65]
          */
         submitNewMessageRootSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', false, _address, _signature);
+            return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', false, {
+                address: _address,
+                signature: _signature,
+	    });
         },
 
-        submitNewMessageRootSignatureH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', true, data);
+        submitNewMessageRootSignatureH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', true, argsBytes);
         },
 
         buildSubmitNewMessageRootSignatureCall: (_address: unknown, _signature: unknown) => {

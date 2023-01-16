@@ -14,11 +14,15 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _deposits: Vec<U16>
          */
         stake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'stake', false, _ring_amount, _kton_amount, _deposits);
+            return await dispatch(signer, 'Staking', 'stake', false, {
+                ring_amount: _ring_amount,
+                kton_amount: _kton_amount,
+                deposits: _deposits,
+	    });
         },
 
-        stakeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'stake', true, data);
+        stakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'stake', true, argsBytes);
         },
 
         buildStakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
@@ -41,11 +45,15 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _deposits: Vec<U16>
          */
         unstake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'unstake', false, _ring_amount, _kton_amount, _deposits);
+            return await dispatch(signer, 'Staking', 'unstake', false, {
+                ring_amount: _ring_amount,
+                kton_amount: _kton_amount,
+                deposits: _deposits,
+	    });
         },
 
-        unstakeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'unstake', true, data);
+        unstakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'unstake', true, argsBytes);
         },
 
         buildUnstakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
@@ -70,11 +78,15 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _deposits: Vec<U16>
          */
         restake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'restake', false, _ring_amount, _kton_amount, _deposits);
+            return await dispatch(signer, 'Staking', 'restake', false, {
+                ring_amount: _ring_amount,
+                kton_amount: _kton_amount,
+                deposits: _deposits,
+	    });
         },
 
-        restakeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'restake', true, data);
+        restakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'restake', true, argsBytes);
         },
 
         buildRestakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
@@ -94,7 +106,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          */
         claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'claim', false);
+            return await dispatch(signer, 'Staking', 'claim', false, {
+	    });
         },
 
         claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
@@ -118,11 +131,13 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _commission: U32
          */
         collect: async (signer: ethers.Signer, _commission: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'collect', false, _commission);
+            return await dispatch(signer, 'Staking', 'collect', false, {
+                commission: _commission,
+	    });
         },
 
-        collectH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'collect', true, data);
+        collectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'collect', true, argsBytes);
         },
 
         buildCollectCall: (_commission: unknown) => {
@@ -143,11 +158,13 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _target: [U8; 20]
          */
         nominate: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'nominate', false, _target);
+            return await dispatch(signer, 'Staking', 'nominate', false, {
+                target: _target,
+	    });
         },
 
-        nominateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'nominate', true, data);
+        nominateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Staking', 'nominate', true, argsBytes);
         },
 
         buildNominateCall: (_target: unknown) => {
@@ -169,7 +186,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          */
         chill: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Staking', 'chill', false);
+            return await dispatch(signer, 'Staking', 'chill', false, {
+	    });
         },
 
         chillH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {

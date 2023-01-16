@@ -22,11 +22,14 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _description: Vec<U8>
          */
         proposeBounty: async (signer: ethers.Signer, _value: unknown, _description: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'proposeBounty', false, _value, _description);
+            return await dispatch(signer, 'Bounties', 'proposeBounty', false, {
+                value: _value,
+                description: _description,
+	    });
         },
 
-        proposeBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'proposeBounty', true, data);
+        proposeBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'proposeBounty', true, argsBytes);
         },
 
         buildProposeBountyCall: (_value: unknown, _description: unknown) => {
@@ -53,11 +56,13 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _bounty_id: Compact<U32>
          */
         approveBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'approveBounty', false, _bounty_id);
+            return await dispatch(signer, 'Bounties', 'approveBounty', false, {
+                bounty_id: _bounty_id,
+	    });
         },
 
-        approveBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'approveBounty', true, data);
+        approveBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'approveBounty', true, argsBytes);
         },
 
         buildApproveBountyCall: (_bounty_id: unknown) => {
@@ -84,11 +89,15 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _fee: Compact<U128>
          */
         proposeCurator: async (signer: ethers.Signer, _bounty_id: unknown, _curator: unknown, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'proposeCurator', false, _bounty_id, _curator, _fee);
+            return await dispatch(signer, 'Bounties', 'proposeCurator', false, {
+                bounty_id: _bounty_id,
+                curator: _curator,
+                fee: _fee,
+	    });
         },
 
-        proposeCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'proposeCurator', true, data);
+        proposeCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'proposeCurator', true, argsBytes);
         },
 
         buildProposeCuratorCall: (_bounty_id: unknown, _curator: unknown, _fee: unknown) => {
@@ -126,11 +135,13 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _bounty_id: Compact<U32>
          */
         unassignCurator: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'unassignCurator', false, _bounty_id);
+            return await dispatch(signer, 'Bounties', 'unassignCurator', false, {
+                bounty_id: _bounty_id,
+	    });
         },
 
-        unassignCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'unassignCurator', true, data);
+        unassignCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'unassignCurator', true, argsBytes);
         },
 
         buildUnassignCuratorCall: (_bounty_id: unknown) => {
@@ -156,11 +167,13 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _bounty_id: Compact<U32>
          */
         acceptCurator: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'acceptCurator', false, _bounty_id);
+            return await dispatch(signer, 'Bounties', 'acceptCurator', false, {
+                bounty_id: _bounty_id,
+	    });
         },
 
-        acceptCuratorH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'acceptCurator', true, data);
+        acceptCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'acceptCurator', true, argsBytes);
         },
 
         buildAcceptCuratorCall: (_bounty_id: unknown) => {
@@ -190,11 +203,14 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _beneficiary: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         awardBounty: async (signer: ethers.Signer, _bounty_id: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'awardBounty', false, _bounty_id, _beneficiary);
+            return await dispatch(signer, 'Bounties', 'awardBounty', false, {
+                bounty_id: _bounty_id,
+                beneficiary: _beneficiary,
+	    });
         },
 
-        awardBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'awardBounty', true, data);
+        awardBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'awardBounty', true, argsBytes);
         },
 
         buildAwardBountyCall: (_bounty_id: unknown, _beneficiary: unknown) => {
@@ -222,11 +238,13 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _bounty_id: Compact<U32>
          */
         claimBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'claimBounty', false, _bounty_id);
+            return await dispatch(signer, 'Bounties', 'claimBounty', false, {
+                bounty_id: _bounty_id,
+	    });
         },
 
-        claimBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'claimBounty', true, data);
+        claimBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'claimBounty', true, argsBytes);
         },
 
         buildClaimBountyCall: (_bounty_id: unknown) => {
@@ -254,11 +272,13 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _bounty_id: Compact<U32>
          */
         closeBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'closeBounty', false, _bounty_id);
+            return await dispatch(signer, 'Bounties', 'closeBounty', false, {
+                bounty_id: _bounty_id,
+	    });
         },
 
-        closeBountyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'closeBounty', true, data);
+        closeBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'closeBounty', true, argsBytes);
         },
 
         buildCloseBountyCall: (_bounty_id: unknown) => {
@@ -287,11 +307,14 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _remark: Vec<U8>
          */
         extendBountyExpiry: async (signer: ethers.Signer, _bounty_id: unknown, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'extendBountyExpiry', false, _bounty_id, _remark);
+            return await dispatch(signer, 'Bounties', 'extendBountyExpiry', false, {
+                bounty_id: _bounty_id,
+                remark: _remark,
+	    });
         },
 
-        extendBountyExpiryH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Bounties', 'extendBountyExpiry', true, data);
+        extendBountyExpiryH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Bounties', 'extendBountyExpiry', true, argsBytes);
         },
 
         buildExtendBountyExpiryCall: (_bounty_id: unknown, _remark: unknown) => {

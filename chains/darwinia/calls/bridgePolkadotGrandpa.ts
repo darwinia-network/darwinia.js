@@ -17,11 +17,14 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * @param _justification: {round: U64, commit: {target_hash: [U8; 32], target_number: U32, precommits: Vec<{precommit: {target_hash: [U8; 32], target_number: U32}, signature: [U8; 64], id: [U8; 32]}>}, votes_ancestries: Vec<{parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}>}
          */
         submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', false, _finality_target, _justification);
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', false, {
+                finality_target: _finality_target,
+                justification: _justification,
+	    });
         },
 
-        submitFinalityProofH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', true, data);
+        submitFinalityProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', true, argsBytes);
         },
 
         buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
@@ -49,11 +52,13 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * @param _init_data: {header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}, authority_list: Vec<([U8; 32], U64)>, set_id: U64, is_halted: Bool}
          */
         initialize: async (signer: ethers.Signer, _init_data: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', false, _init_data);
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', false, {
+                init_data: _init_data,
+	    });
         },
 
-        initializeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', true, data);
+        initializeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', true, argsBytes);
         },
 
         buildInitializeCall: (_init_data: unknown) => {
@@ -74,11 +79,13 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * @param _new_owner: Enum<{0/None: , 1/Some: [U8; 32]}>
          */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', false, _new_owner);
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', false, {
+                new_owner: _new_owner,
+	    });
         },
 
-        setOwnerH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', true, data);
+        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', true, argsBytes);
         },
 
         buildSetOwnerCall: (_new_owner: unknown) => {
@@ -99,11 +106,13 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * @param _operational: Bool
          */
         setOperational: async (signer: ethers.Signer, _operational: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', false, _operational);
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', false, {
+                operational: _operational,
+	    });
         },
 
-        setOperationalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', true, data);
+        setOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', true, argsBytes);
         },
 
         buildSetOperationalCall: (_operational: unknown) => {

@@ -18,9 +18,11 @@ async function main(): Promise<void> {
         "setKeys",
         false,
         {
-            aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
-        }, // keys
-        "0x" // proof
+            keys: {
+                aura: "0xd42593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
+            },
+            proof: "0x"
+        }
     );
 
     console.log(`tx hash: ${receipt.transactionHash}`);

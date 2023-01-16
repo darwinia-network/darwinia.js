@@ -19,11 +19,14 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _beneficiary: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         proposeSpend: async (signer: ethers.Signer, _value: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'proposeSpend', false, _value, _beneficiary);
+            return await dispatch(signer, 'KtonTreasury', 'proposeSpend', false, {
+                value: _value,
+                beneficiary: _beneficiary,
+	    });
         },
 
-        proposeSpendH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'proposeSpend', true, data);
+        proposeSpendH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'proposeSpend', true, argsBytes);
         },
 
         buildProposeSpendCall: (_value: unknown, _beneficiary: unknown) => {
@@ -51,11 +54,13 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _proposal_id: Compact<U32>
          */
         rejectProposal: async (signer: ethers.Signer, _proposal_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'rejectProposal', false, _proposal_id);
+            return await dispatch(signer, 'KtonTreasury', 'rejectProposal', false, {
+                proposal_id: _proposal_id,
+	    });
         },
 
-        rejectProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'rejectProposal', true, data);
+        rejectProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'rejectProposal', true, argsBytes);
         },
 
         buildRejectProposalCall: (_proposal_id: unknown) => {
@@ -83,11 +88,13 @@ export const getKtonTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _proposal_id: Compact<U32>
          */
         approveProposal: async (signer: ethers.Signer, _proposal_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'approveProposal', false, _proposal_id);
+            return await dispatch(signer, 'KtonTreasury', 'approveProposal', false, {
+                proposal_id: _proposal_id,
+	    });
         },
 
-        approveProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'KtonTreasury', 'approveProposal', true, data);
+        approveProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'KtonTreasury', 'approveProposal', true, argsBytes);
         },
 
         buildApproveProposalCall: (_proposal_id: unknown) => {

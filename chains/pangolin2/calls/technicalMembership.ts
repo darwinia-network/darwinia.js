@@ -12,11 +12,13 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _who: [U8; 20]
          */
         addMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'addMember', false, _who);
+            return await dispatch(signer, 'TechnicalMembership', 'addMember', false, {
+                who: _who,
+	    });
         },
 
-        addMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'addMember', true, data);
+        addMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'addMember', true, argsBytes);
         },
 
         buildAddMemberCall: (_who: unknown) => {
@@ -37,11 +39,13 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _who: [U8; 20]
          */
         removeMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, _who);
+            return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, {
+                who: _who,
+	    });
         },
 
-        removeMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'removeMember', true, data);
+        removeMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'removeMember', true, argsBytes);
         },
 
         buildRemoveMemberCall: (_who: unknown) => {
@@ -65,11 +69,14 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _add: [U8; 20]
          */
         swapMember: async (signer: ethers.Signer, _remove: unknown, _add: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, _remove, _add);
+            return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, {
+                remove: _remove,
+                add: _add,
+	    });
         },
 
-        swapMemberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'swapMember', true, data);
+        swapMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'swapMember', true, argsBytes);
         },
 
         buildSwapMemberCall: (_remove: unknown, _add: unknown) => {
@@ -92,11 +99,13 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _members: Vec<[U8; 20]>
          */
         resetMembers: async (signer: ethers.Signer, _members: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, _members);
+            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, {
+                members: _members,
+	    });
         },
 
-        resetMembersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', true, data);
+        resetMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'resetMembers', true, argsBytes);
         },
 
         buildResetMembersCall: (_members: unknown) => {
@@ -119,11 +128,13 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _new: [U8; 20]
          */
         changeKey: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, _new);
+            return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, {
+                new: _new,
+	    });
         },
 
-        changeKeyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'changeKey', true, data);
+        changeKeyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'changeKey', true, argsBytes);
         },
 
         buildChangeKeyCall: (_new: unknown) => {
@@ -144,11 +155,13 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * @param _who: [U8; 20]
          */
         setPrime: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, _who);
+            return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, {
+                who: _who,
+	    });
         },
 
-        setPrimeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'setPrime', true, data);
+        setPrimeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalMembership', 'setPrime', true, argsBytes);
         },
 
         buildSetPrimeCall: (_who: unknown) => {
@@ -168,7 +181,8 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          *
          */
         clearPrime: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalMembership', 'clearPrime', false);
+            return await dispatch(signer, 'TechnicalMembership', 'clearPrime', false, {
+	    });
         },
 
         clearPrimeH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {

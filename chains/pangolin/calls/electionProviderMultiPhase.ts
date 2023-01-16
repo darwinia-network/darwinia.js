@@ -24,11 +24,14 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * @param _witness: {voters: Compact<U32>, targets: Compact<U32>}
          */
         submitUnsigned: async (signer: ethers.Signer, _raw_solution: unknown, _witness: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, _raw_solution, _witness);
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, {
+                raw_solution: _raw_solution,
+                witness: _witness,
+	    });
         },
 
-        submitUnsignedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, data);
+        submitUnsignedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, argsBytes);
         },
 
         buildSubmitUnsignedCall: (_raw_solution: unknown, _witness: unknown) => {
@@ -52,11 +55,13 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * @param _maybe_next_score: Enum<{0/None: , 1/Some: [U128; 3]}>
          */
         setMinimumUntrustedScore: async (signer: ethers.Signer, _maybe_next_score: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, _maybe_next_score);
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, {
+                maybe_next_score: _maybe_next_score,
+	    });
         },
 
-        setMinimumUntrustedScoreH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, data);
+        setMinimumUntrustedScoreH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, argsBytes);
         },
 
         buildSetMinimumUntrustedScoreCall: (_maybe_next_score: unknown) => {
@@ -82,11 +87,13 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * @param _supports: Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>
          */
         setEmergencyElectionResult: async (signer: ethers.Signer, _supports: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, _supports);
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, {
+                supports: _supports,
+	    });
         },
 
-        setEmergencyElectionResultH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, data);
+        setEmergencyElectionResultH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, argsBytes);
         },
 
         buildSetEmergencyElectionResultCall: (_supports: unknown) => {
@@ -118,11 +125,14 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * @param _num_signed_submissions: U32
          */
         submit: async (signer: ethers.Signer, _raw_solution: unknown, _num_signed_submissions: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, _raw_solution, _num_signed_submissions);
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, {
+                raw_solution: _raw_solution,
+                num_signed_submissions: _num_signed_submissions,
+	    });
         },
 
-        submitH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, data);
+        submitH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, argsBytes);
         },
 
         buildSubmitCall: (_raw_solution: unknown, _num_signed_submissions: unknown) => {

@@ -11,11 +11,14 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _months: U8
          */
         lock: async (signer: ethers.Signer, _amount: unknown, _months: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'lock', false, _amount, _months);
+            return await dispatch(signer, 'Deposit', 'lock', false, {
+                amount: _amount,
+                months: _months,
+	    });
         },
 
-        lockH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'lock', true, data);
+        lockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Deposit', 'lock', true, argsBytes);
         },
 
         buildLockCall: (_amount: unknown, _months: unknown) => {
@@ -34,7 +37,8 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          *
          */
         claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'claim', false);
+            return await dispatch(signer, 'Deposit', 'claim', false, {
+	    });
         },
 
         claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
@@ -56,11 +60,13 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: U16
          */
         claimWithPenalty: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, _id);
+            return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, {
+                id: _id,
+	    });
         },
 
-        claimWithPenaltyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Deposit', 'claimWithPenalty', true, data);
+        claimWithPenaltyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Deposit', 'claimWithPenalty', true, argsBytes);
         },
 
         buildClaimWithPenaltyCall: (_id: unknown) => {

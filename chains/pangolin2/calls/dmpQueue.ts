@@ -22,11 +22,14 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _weight_limit: {ref_time: U64}
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, _index, _weight_limit);
+            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, {
+                index: _index,
+                weight_limit: _weight_limit,
+	    });
         },
 
-        serviceOverweightH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', true, data);
+        serviceOverweightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DmpQueue', 'serviceOverweight', true, argsBytes);
         },
 
         buildServiceOverweightCall: (_index: unknown, _weight_limit: unknown) => {

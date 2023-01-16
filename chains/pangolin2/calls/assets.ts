@@ -30,11 +30,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _min_balance: U128
          */
         create: async (signer: ethers.Signer, _id: unknown, _admin: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'create', false, _id, _admin, _min_balance);
+            return await dispatch(signer, 'Assets', 'create', false, {
+                id: _id,
+                admin: _admin,
+                min_balance: _min_balance,
+	    });
         },
 
-        createH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'create', true, data);
+        createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'create', true, argsBytes);
         },
 
         buildCreateCall: (_id: unknown, _admin: unknown, _min_balance: unknown) => {
@@ -76,11 +80,16 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _min_balance: Compact<U128>
          */
         forceCreate: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceCreate', false, _id, _owner, _is_sufficient, _min_balance);
+            return await dispatch(signer, 'Assets', 'forceCreate', false, {
+                id: _id,
+                owner: _owner,
+                is_sufficient: _is_sufficient,
+                min_balance: _min_balance,
+	    });
         },
 
-        forceCreateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceCreate', true, data);
+        forceCreateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceCreate', true, argsBytes);
         },
 
         buildForceCreateCall: (_id: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown) => {
@@ -120,11 +129,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _witness: {accounts: Compact<U32>, sufficients: Compact<U32>, approvals: Compact<U32>}
          */
         destroy: async (signer: ethers.Signer, _id: unknown, _witness: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'destroy', false, _id, _witness);
+            return await dispatch(signer, 'Assets', 'destroy', false, {
+                id: _id,
+                witness: _witness,
+	    });
         },
 
-        destroyH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'destroy', true, data);
+        destroyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'destroy', true, argsBytes);
         },
 
         buildDestroyCall: (_id: unknown, _witness: unknown) => {
@@ -157,11 +169,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         mint: async (signer: ethers.Signer, _id: unknown, _beneficiary: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'mint', false, _id, _beneficiary, _amount);
+            return await dispatch(signer, 'Assets', 'mint', false, {
+                id: _id,
+                beneficiary: _beneficiary,
+                amount: _amount,
+	    });
         },
 
-        mintH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'mint', true, data);
+        mintH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'mint', true, argsBytes);
         },
 
         buildMintCall: (_id: unknown, _beneficiary: unknown, _amount: unknown) => {
@@ -198,11 +214,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         burn: async (signer: ethers.Signer, _id: unknown, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'burn', false, _id, _who, _amount);
+            return await dispatch(signer, 'Assets', 'burn', false, {
+                id: _id,
+                who: _who,
+                amount: _amount,
+	    });
         },
 
-        burnH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'burn', true, data);
+        burnH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'burn', true, argsBytes);
         },
 
         buildBurnCall: (_id: unknown, _who: unknown, _amount: unknown) => {
@@ -242,11 +262,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         transfer: async (signer: ethers.Signer, _id: unknown, _target: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transfer', false, _id, _target, _amount);
+            return await dispatch(signer, 'Assets', 'transfer', false, {
+                id: _id,
+                target: _target,
+                amount: _amount,
+	    });
         },
 
-        transferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transfer', true, data);
+        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'transfer', true, argsBytes);
         },
 
         buildTransferCall: (_id: unknown, _target: unknown, _amount: unknown) => {
@@ -286,11 +310,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         transferKeepAlive: async (signer: ethers.Signer, _id: unknown, _target: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferKeepAlive', false, _id, _target, _amount);
+            return await dispatch(signer, 'Assets', 'transferKeepAlive', false, {
+                id: _id,
+                target: _target,
+                amount: _amount,
+	    });
         },
 
-        transferKeepAliveH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferKeepAlive', true, data);
+        transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'transferKeepAlive', true, argsBytes);
         },
 
         buildTransferKeepAliveCall: (_id: unknown, _target: unknown, _amount: unknown) => {
@@ -332,11 +360,16 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         forceTransfer: async (signer: ethers.Signer, _id: unknown, _source: unknown, _dest: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceTransfer', false, _id, _source, _dest, _amount);
+            return await dispatch(signer, 'Assets', 'forceTransfer', false, {
+                id: _id,
+                source: _source,
+                dest: _dest,
+                amount: _amount,
+	    });
         },
 
-        forceTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceTransfer', true, data);
+        forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceTransfer', true, argsBytes);
         },
 
         buildForceTransferCall: (_id: unknown, _source: unknown, _dest: unknown, _amount: unknown) => {
@@ -368,11 +401,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _who: [U8; 20]
          */
         freeze: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'freeze', false, _id, _who);
+            return await dispatch(signer, 'Assets', 'freeze', false, {
+                id: _id,
+                who: _who,
+	    });
         },
 
-        freezeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'freeze', true, data);
+        freezeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'freeze', true, argsBytes);
         },
 
         buildFreezeCall: (_id: unknown, _who: unknown) => {
@@ -402,11 +438,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _who: [U8; 20]
          */
         thaw: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'thaw', false, _id, _who);
+            return await dispatch(signer, 'Assets', 'thaw', false, {
+                id: _id,
+                who: _who,
+	    });
         },
 
-        thawH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'thaw', true, data);
+        thawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'thaw', true, argsBytes);
         },
 
         buildThawCall: (_id: unknown, _who: unknown) => {
@@ -434,11 +473,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: Compact<U64>
          */
         freezeAsset: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'freezeAsset', false, _id);
+            return await dispatch(signer, 'Assets', 'freezeAsset', false, {
+                id: _id,
+	    });
         },
 
-        freezeAssetH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'freezeAsset', true, data);
+        freezeAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'freezeAsset', true, argsBytes);
         },
 
         buildFreezeAssetCall: (_id: unknown) => {
@@ -465,11 +506,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: Compact<U64>
          */
         thawAsset: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'thawAsset', false, _id);
+            return await dispatch(signer, 'Assets', 'thawAsset', false, {
+                id: _id,
+	    });
         },
 
-        thawAssetH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'thawAsset', true, data);
+        thawAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'thawAsset', true, argsBytes);
         },
 
         buildThawAssetCall: (_id: unknown) => {
@@ -498,11 +541,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _owner: [U8; 20]
          */
         transferOwnership: async (signer: ethers.Signer, _id: unknown, _owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferOwnership', false, _id, _owner);
+            return await dispatch(signer, 'Assets', 'transferOwnership', false, {
+                id: _id,
+                owner: _owner,
+	    });
         },
 
-        transferOwnershipH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferOwnership', true, data);
+        transferOwnershipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'transferOwnership', true, argsBytes);
         },
 
         buildTransferOwnershipCall: (_id: unknown, _owner: unknown) => {
@@ -536,11 +582,16 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _freezer: [U8; 20]
          */
         setTeam: async (signer: ethers.Signer, _id: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'setTeam', false, _id, _issuer, _admin, _freezer);
+            return await dispatch(signer, 'Assets', 'setTeam', false, {
+                id: _id,
+                issuer: _issuer,
+                admin: _admin,
+                freezer: _freezer,
+	    });
         },
 
-        setTeamH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'setTeam', true, data);
+        setTeamH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'setTeam', true, argsBytes);
         },
 
         buildSetTeamCall: (_id: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown) => {
@@ -580,11 +631,16 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _decimals: U8
          */
         setMetadata: async (signer: ethers.Signer, _id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'setMetadata', false, _id, _name, _symbol, _decimals);
+            return await dispatch(signer, 'Assets', 'setMetadata', false, {
+                id: _id,
+                name: _name,
+                symbol: _symbol,
+                decimals: _decimals,
+	    });
         },
 
-        setMetadataH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'setMetadata', true, data);
+        setMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'setMetadata', true, argsBytes);
         },
 
         buildSetMetadataCall: (_id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown) => {
@@ -616,11 +672,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: Compact<U64>
          */
         clearMetadata: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'clearMetadata', false, _id);
+            return await dispatch(signer, 'Assets', 'clearMetadata', false, {
+                id: _id,
+	    });
         },
 
-        clearMetadataH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'clearMetadata', true, data);
+        clearMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'clearMetadata', true, argsBytes);
         },
 
         buildClearMetadataCall: (_id: unknown) => {
@@ -656,11 +714,17 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _is_frozen: Bool
          */
         forceSetMetadata: async (signer: ethers.Signer, _id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown, _is_frozen: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceSetMetadata', false, _id, _name, _symbol, _decimals, _is_frozen);
+            return await dispatch(signer, 'Assets', 'forceSetMetadata', false, {
+                id: _id,
+                name: _name,
+                symbol: _symbol,
+                decimals: _decimals,
+                is_frozen: _is_frozen,
+	    });
         },
 
-        forceSetMetadataH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceSetMetadata', true, data);
+        forceSetMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceSetMetadata', true, argsBytes);
         },
 
         buildForceSetMetadataCall: (_id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown, _is_frozen: unknown) => {
@@ -693,11 +757,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: Compact<U64>
          */
         forceClearMetadata: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceClearMetadata', false, _id);
+            return await dispatch(signer, 'Assets', 'forceClearMetadata', false, {
+                id: _id,
+	    });
         },
 
-        forceClearMetadataH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceClearMetadata', true, data);
+        forceClearMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceClearMetadata', true, argsBytes);
         },
 
         buildForceClearMetadataCall: (_id: unknown) => {
@@ -744,11 +810,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _is_frozen: Bool
          */
         forceAssetStatus: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown, _min_balance: unknown, _is_sufficient: unknown, _is_frozen: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceAssetStatus', false, _id, _owner, _issuer, _admin, _freezer, _min_balance, _is_sufficient, _is_frozen);
+            return await dispatch(signer, 'Assets', 'forceAssetStatus', false, {
+                id: _id,
+                owner: _owner,
+                issuer: _issuer,
+                admin: _admin,
+                freezer: _freezer,
+                min_balance: _min_balance,
+                is_sufficient: _is_sufficient,
+                is_frozen: _is_frozen,
+	    });
         },
 
-        forceAssetStatusH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceAssetStatus', true, data);
+        forceAssetStatusH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceAssetStatus', true, argsBytes);
         },
 
         buildForceAssetStatusCall: (_id: unknown, _owner: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown, _min_balance: unknown, _is_sufficient: unknown, _is_frozen: unknown) => {
@@ -795,11 +870,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         approveTransfer: async (signer: ethers.Signer, _id: unknown, _delegate: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'approveTransfer', false, _id, _delegate, _amount);
+            return await dispatch(signer, 'Assets', 'approveTransfer', false, {
+                id: _id,
+                delegate: _delegate,
+                amount: _amount,
+	    });
         },
 
-        approveTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'approveTransfer', true, data);
+        approveTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'approveTransfer', true, argsBytes);
         },
 
         buildApproveTransferCall: (_id: unknown, _delegate: unknown, _amount: unknown) => {
@@ -833,11 +912,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _delegate: [U8; 20]
          */
         cancelApproval: async (signer: ethers.Signer, _id: unknown, _delegate: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'cancelApproval', false, _id, _delegate);
+            return await dispatch(signer, 'Assets', 'cancelApproval', false, {
+                id: _id,
+                delegate: _delegate,
+	    });
         },
 
-        cancelApprovalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'cancelApproval', true, data);
+        cancelApprovalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'cancelApproval', true, argsBytes);
         },
 
         buildCancelApprovalCall: (_id: unknown, _delegate: unknown) => {
@@ -871,11 +953,15 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _delegate: [U8; 20]
          */
         forceCancelApproval: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _delegate: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceCancelApproval', false, _id, _owner, _delegate);
+            return await dispatch(signer, 'Assets', 'forceCancelApproval', false, {
+                id: _id,
+                owner: _owner,
+                delegate: _delegate,
+	    });
         },
 
-        forceCancelApprovalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'forceCancelApproval', true, data);
+        forceCancelApprovalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'forceCancelApproval', true, argsBytes);
         },
 
         buildForceCancelApprovalCall: (_id: unknown, _owner: unknown, _delegate: unknown) => {
@@ -916,11 +1002,16 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _amount: Compact<U128>
          */
         transferApproved: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _destination: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferApproved', false, _id, _owner, _destination, _amount);
+            return await dispatch(signer, 'Assets', 'transferApproved', false, {
+                id: _id,
+                owner: _owner,
+                destination: _destination,
+                amount: _amount,
+	    });
         },
 
-        transferApprovedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'transferApproved', true, data);
+        transferApprovedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'transferApproved', true, argsBytes);
         },
 
         buildTransferApprovedCall: (_id: unknown, _owner: unknown, _destination: unknown, _amount: unknown) => {
@@ -950,11 +1041,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _id: Compact<U64>
          */
         touch: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'touch', false, _id);
+            return await dispatch(signer, 'Assets', 'touch', false, {
+                id: _id,
+	    });
         },
 
-        touchH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'touch', true, data);
+        touchH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'touch', true, argsBytes);
         },
 
         buildTouchCall: (_id: unknown) => {
@@ -981,11 +1074,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _allow_burn: Bool
          */
         refund: async (signer: ethers.Signer, _id: unknown, _allow_burn: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'refund', false, _id, _allow_burn);
+            return await dispatch(signer, 'Assets', 'refund', false, {
+                id: _id,
+                allow_burn: _allow_burn,
+	    });
         },
 
-        refundH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Assets', 'refund', true, data);
+        refundH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'refund', true, argsBytes);
         },
 
         buildRefundCall: (_id: unknown, _allow_burn: unknown) => {

@@ -10,11 +10,14 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _function_name: Vec<U8>
          */
         pauseTransaction: async (signer: ethers.Signer, _pallet_name: unknown, _function_name: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TransactionPause', 'pauseTransaction', false, _pallet_name, _function_name);
+            return await dispatch(signer, 'TransactionPause', 'pauseTransaction', false, {
+                pallet_name: _pallet_name,
+                function_name: _function_name,
+	    });
         },
 
-        pauseTransactionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TransactionPause', 'pauseTransaction', true, data);
+        pauseTransactionH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TransactionPause', 'pauseTransaction', true, argsBytes);
         },
 
         buildPauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {
@@ -34,11 +37,14 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _function_name: Vec<U8>
          */
         unpauseTransaction: async (signer: ethers.Signer, _pallet_name: unknown, _function_name: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', false, _pallet_name, _function_name);
+            return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', false, {
+                pallet_name: _pallet_name,
+                function_name: _function_name,
+	    });
         },
 
-        unpauseTransactionH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', true, data);
+        unpauseTransactionH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TransactionPause', 'unpauseTransaction', true, argsBytes);
         },
 
         buildUnpauseTransactionCall: (_pallet_name: unknown, _function_name: unknown) => {

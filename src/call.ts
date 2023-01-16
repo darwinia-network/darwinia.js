@@ -1,8 +1,8 @@
-import { BytesLike, ethers, providers } from "ethers";
+import { Bytes, BytesLike, ethers, providers } from "ethers";
 import { Metadata } from '@polkadot/types';
-import { u8aConcat, u8aToHex } from "@polkadot/util";
 import { camelToSnakeCase } from "./utils";
-import { getCallMeta } from "./helpers";
+import { encodeCall, getCallMeta } from "./helpers";
+import { hexlify } from "ethers/lib/utils";
 
 type Provider = providers.BaseProvider;
 
@@ -27,8 +27,10 @@ async function doDispatch(provider: Provider, signer: ethers.Signer, data: Bytes
     try {
         const contractAddress = "0x0000000000000000000000000000000000000401";
 
+        const from = await signer.getAddress();
+        console.debug(`sender: ${from}`);
         let tx: Tx = {
-            from: await signer.getAddress(),
+            from: from,
             to: contractAddress,
             data: data
         };
@@ -52,31 +54,21 @@ async function doDispatch(provider: Provider, signer: ethers.Signer, data: Bytes
 }
 
 export function dispatch(provider: Provider, metadata: Metadata) {
-    return async (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, ...params: Array<unknown>): Promise<ethers.providers.TransactionReceipt> => {
-        // palletName = camelToSnakeCase(palletName);
-        callName = camelToSnakeCase(callName);
-        const { callIndex, argLookupTypes } = getCallMeta(metadata, palletName, callName);
-
-        let paramsData = new Uint8Array([]);
-        if (paramsEncoded) {
-            for (let i = 0; i < params.length; i++) {
-                const param = params[i];
-                paramsData = u8aConcat(paramsData, param as Uint8Array);
-            }
+    return async (signer: ethers.Signer, palletName: string, callName: string, argsEncoded: boolean, args: any): Promise<ethers.providers.TransactionReceipt> => {
+        // prepare call data
+        let callData: Bytes = [];
+        if (argsEncoded) {
+            const { callIndex } = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
+            callData = ethers.utils.concat([callIndex, args]);
         } else {
-            for (let i = 0; i < argLookupTypes.length; i++) {
-                const paramType = argLookupTypes[i];
-                const param = params[i];
-                const encodedParam = metadata.registry.createType(paramType, param).toU8a();
-                paramsData = u8aConcat(paramsData, encodedParam);
-            }
+            callData = encodeCall(metadata, palletName, callName, args) as Bytes;
         }
+        console.debug(`call data: ${hexlify(callData)}`);
 
-        let callData = u8aConcat(callIndex, paramsData);
-        console.debug(`call data: ${u8aToHex(callData)}`);
-
+        // selector of execute(bytes) + abi encode the calldata
         let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
-        const data = u8aConcat("0x09c5eabe", callDataAbiEncoded);
+        const data = ethers.utils.concat(["0x09c5eabe", callDataAbiEncoded]);
+        console.debug(`selector appended: ${hexlify(data)}`);
 
         return doDispatch(provider, signer, data);
     };

@@ -13,11 +13,14 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * @param _relay_fee: Enum<{0/None: , 1/Some: U128}>
          */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', false, _lock_collateral, _relay_fee);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', false, {
+                lock_collateral: _lock_collateral,
+                relay_fee: _relay_fee,
+	    });
         },
 
-        enrollAndLockCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', true, data);
+        enrollAndLockCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', true, argsBytes);
         },
 
         buildEnrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
@@ -38,11 +41,13 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * @param _new_collateral: U128
          */
         updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', false, _new_collateral);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', false, {
+                new_collateral: _new_collateral,
+	    });
         },
 
-        updateLockedCollateralH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', true, data);
+        updateLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', true, argsBytes);
         },
 
         buildUpdateLockedCollateralCall: (_new_collateral: unknown) => {
@@ -61,11 +66,13 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * @param _new_fee: U128
          */
         updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', false, _new_fee);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', false, {
+                new_fee: _new_fee,
+	    });
         },
 
-        updateRelayFeeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', true, data);
+        updateRelayFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', true, argsBytes);
         },
 
         buildUpdateRelayFeeCall: (_new_fee: unknown) => {
@@ -83,7 +90,8 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          *
          */
         cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'cancelEnrollment', false);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'cancelEnrollment', false, {
+	    });
         },
 
         cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
@@ -104,11 +112,13 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * @param _slash_protect: U128
          */
         setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', false, _slash_protect);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', false, {
+                slash_protect: _slash_protect,
+	    });
         },
 
-        setSlashProtectH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', true, data);
+        setSlashProtectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', true, argsBytes);
         },
 
         buildSetSlashProtectCall: (_slash_protect: unknown) => {
@@ -126,11 +136,13 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * @param _number: U32
          */
         setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', false, _number);
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', false, {
+                number: _number,
+	    });
         },
 
-        setAssignedRelayersNumberH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', true, data);
+        setAssignedRelayersNumberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', true, argsBytes);
         },
 
         buildSetAssignedRelayersNumberCall: (_number: unknown) => {

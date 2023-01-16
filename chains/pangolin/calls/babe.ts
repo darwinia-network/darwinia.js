@@ -14,11 +14,14 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _key_owner_proof: {session: U32, trie_nodes: Vec<Vec<U8>>, validator_count: U32}
          */
         reportEquivocation: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'reportEquivocation', false, _equivocation_proof, _key_owner_proof);
+            return await dispatch(signer, 'Babe', 'reportEquivocation', false, {
+                equivocation_proof: _equivocation_proof,
+                key_owner_proof: _key_owner_proof,
+	    });
         },
 
-        reportEquivocationH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'reportEquivocation', true, data);
+        reportEquivocationH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'reportEquivocation', true, argsBytes);
         },
 
         buildReportEquivocationCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
@@ -46,11 +49,14 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _key_owner_proof: {session: U32, trie_nodes: Vec<Vec<U8>>, validator_count: U32}
          */
         reportEquivocationUnsigned: async (signer: ethers.Signer, _equivocation_proof: unknown, _key_owner_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', false, _equivocation_proof, _key_owner_proof);
+            return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', false, {
+                equivocation_proof: _equivocation_proof,
+                key_owner_proof: _key_owner_proof,
+	    });
         },
 
-        reportEquivocationUnsignedH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', true, data);
+        reportEquivocationUnsignedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'reportEquivocationUnsigned', true, argsBytes);
         },
 
         buildReportEquivocationUnsignedCall: (_equivocation_proof: unknown, _key_owner_proof: unknown) => {
@@ -73,11 +79,13 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _config: Enum<{1/V1: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}}>
          */
         planConfigChange: async (signer: ethers.Signer, _config: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'planConfigChange', false, _config);
+            return await dispatch(signer, 'Babe', 'planConfigChange', false, {
+                config: _config,
+	    });
         },
 
-        planConfigChangeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Babe', 'planConfigChange', true, data);
+        planConfigChangeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Babe', 'planConfigChange', true, argsBytes);
         },
 
         buildPlanConfigChangeCall: (_config: unknown) => {

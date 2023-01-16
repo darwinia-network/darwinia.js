@@ -12,11 +12,15 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _signature: [U8; 64]
          */
         migrate: async (signer: ethers.Signer, _from: unknown, _to: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'AccountMigration', 'migrate', false, _from, _to, _signature);
+            return await dispatch(signer, 'AccountMigration', 'migrate', false, {
+                from: _from,
+                to: _to,
+                signature: _signature,
+	    });
         },
 
-        migrateH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'AccountMigration', 'migrate', true, data);
+        migrateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'AccountMigration', 'migrate', true, argsBytes);
         },
 
         buildMigrateCall: (_from: unknown, _to: unknown, _signature: unknown) => {

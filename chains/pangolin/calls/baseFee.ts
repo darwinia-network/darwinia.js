@@ -9,11 +9,13 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _fee: [U64; 4]
          */
         setBaseFeePerGas: async (signer: ethers.Signer, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, _fee);
+            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', false, {
+                fee: _fee,
+	    });
         },
 
-        setBaseFeePerGasH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', true, data);
+        setBaseFeePerGasH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BaseFee', 'setBaseFeePerGas', true, argsBytes);
         },
 
         buildSetBaseFeePerGasCall: (_fee: unknown) => {
@@ -31,11 +33,13 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _is_active: Bool
          */
         setIsActive: async (signer: ethers.Signer, _is_active: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setIsActive', false, _is_active);
+            return await dispatch(signer, 'BaseFee', 'setIsActive', false, {
+                is_active: _is_active,
+	    });
         },
 
-        setIsActiveH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setIsActive', true, data);
+        setIsActiveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BaseFee', 'setIsActive', true, argsBytes);
         },
 
         buildSetIsActiveCall: (_is_active: unknown) => {
@@ -53,11 +57,13 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _elasticity: U32
          */
         setElasticity: async (signer: ethers.Signer, _elasticity: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setElasticity', false, _elasticity);
+            return await dispatch(signer, 'BaseFee', 'setElasticity', false, {
+                elasticity: _elasticity,
+	    });
         },
 
-        setElasticityH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'BaseFee', 'setElasticity', true, data);
+        setElasticityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'BaseFee', 'setElasticity', true, argsBytes);
         },
 
         buildSetElasticityCall: (_elasticity: unknown) => {

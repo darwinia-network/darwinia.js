@@ -116,6 +116,7 @@ export type CallAsParam = {
 
 export function buildRuntimeCall(metadata: Metadata, palletName: string, callName: string, args: object): CallAsParam {
     callName = camelToSnakeCase(callName);
+
     const { callIndex, } = getCallMeta(metadata, palletName, callName);
     return {
         callIndex: [callIndex[0], callIndex[1]],
@@ -123,15 +124,31 @@ export function buildRuntimeCall(metadata: Metadata, palletName: string, callNam
     }
 }
 
-export function decodeCall(metadata: Metadata, palletName: string, callName: string, args: BytesLike): CallAsParam {
-    const { callIndex, argLookupTypes, callsVariantLookupType }
-        = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
+export function decodeCall(metadata: Metadata, palletName: string, callName: string, argsBytes: BytesLike): CallAsParam {
+    const { callIndex, callsVariantLookupType } = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
 
-    const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex[1]), args]);
+    const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex[1]), argsBytes]);
     const decoded = metadata.registry.createType(callsVariantLookupType, callBytes).toJSON();
 
     return {
         callIndex: callIndex,
         args: (decoded as { [index: string]: AnyJson; })[callName]
     }
+}
+
+export function encodeCall(metadata: Metadata, palletName: string, callName: string, args: { [key: string]: any }): BytesLike {
+    callName = camelToSnakeCase(callName);
+
+    const { callIndex, callsVariantLookupType } = getCallMeta(metadata, palletName, callName);
+
+    const callNameWithArgs: { [key: string]: any } = {};
+    callNameWithArgs[callName] = args;
+
+    const encodedCall =
+        u8aConcat(
+            [callIndex[0]],
+            metadata.registry.createType(callsVariantLookupType, callNameWithArgs).toU8a()
+        );
+
+    return encodedCall;
 }

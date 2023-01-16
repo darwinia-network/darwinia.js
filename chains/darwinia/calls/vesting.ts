@@ -21,7 +21,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *
          */
         vest: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vest', false);
+            return await dispatch(signer, 'Vesting', 'vest', false, {
+	    });
         },
 
         vestH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
@@ -57,11 +58,13 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestOther', false, _target);
+            return await dispatch(signer, 'Vesting', 'vestOther', false, {
+                target: _target,
+	    });
         },
 
-        vestOtherH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestOther', true, data);
+        vestOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'vestOther', true, argsBytes);
         },
 
         buildVestOtherCall: (_target: unknown) => {
@@ -97,11 +100,14 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
          */
         vestedTransfer: async (signer: ethers.Signer, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestedTransfer', false, _target, _schedule);
+            return await dispatch(signer, 'Vesting', 'vestedTransfer', false, {
+                target: _target,
+                schedule: _schedule,
+	    });
         },
 
-        vestedTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'vestedTransfer', true, data);
+        vestedTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'vestedTransfer', true, argsBytes);
         },
 
         buildVestedTransferCall: (_target: unknown, _schedule: unknown) => {
@@ -140,11 +146,15 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
          */
         forceVestedTransfer: async (signer: ethers.Signer, _source: unknown, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, _source, _target, _schedule);
+            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, {
+                source: _source,
+                target: _target,
+                schedule: _schedule,
+	    });
         },
 
-        forceVestedTransferH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', true, data);
+        forceVestedTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'forceVestedTransfer', true, argsBytes);
         },
 
         buildForceVestedTransferCall: (_source: unknown, _target: unknown, _schedule: unknown) => {
@@ -186,11 +196,14 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * @param _schedule2_index: U32
          */
         mergeSchedules: async (signer: ethers.Signer, _schedule1_index: unknown, _schedule2_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'mergeSchedules', false, _schedule1_index, _schedule2_index);
+            return await dispatch(signer, 'Vesting', 'mergeSchedules', false, {
+                schedule1_index: _schedule1_index,
+                schedule2_index: _schedule2_index,
+	    });
         },
 
-        mergeSchedulesH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Vesting', 'mergeSchedules', true, data);
+        mergeSchedulesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Vesting', 'mergeSchedules', true, argsBytes);
         },
 
         buildMergeSchedulesCall: (_schedule1_index: unknown, _schedule2_index: unknown) => {

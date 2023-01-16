@@ -43,11 +43,15 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _old_count: U32
          */
         setMembers: async (signer: ethers.Signer, _new_members: unknown, _prime: unknown, _old_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'setMembers', false, _new_members, _prime, _old_count);
+            return await dispatch(signer, 'TechnicalCommittee', 'setMembers', false, {
+                new_members: _new_members,
+                prime: _prime,
+                old_count: _old_count,
+	    });
         },
 
-        setMembersH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'setMembers', true, data);
+        setMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'setMembers', true, argsBytes);
         },
 
         buildSetMembersCall: (_new_members: unknown, _prime: unknown, _old_count: unknown) => {
@@ -79,11 +83,14 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _length_bound: Compact<U32>
          */
         execute: async (signer: ethers.Signer, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'execute', false, _proposal, _length_bound);
+            return await dispatch(signer, 'TechnicalCommittee', 'execute', false, {
+                proposal: _proposal,
+                length_bound: _length_bound,
+	    });
         },
 
-        executeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'execute', true, data);
+        executeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'execute', true, argsBytes);
         },
 
         buildExecuteCall: (_proposal: unknown, _length_bound: unknown) => {
@@ -131,11 +138,15 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _length_bound: Compact<U32>
          */
         propose: async (signer: ethers.Signer, _threshold: unknown, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'propose', false, _threshold, _proposal, _length_bound);
+            return await dispatch(signer, 'TechnicalCommittee', 'propose', false, {
+                threshold: _threshold,
+                proposal: _proposal,
+                length_bound: _length_bound,
+	    });
         },
 
-        proposeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'propose', true, data);
+        proposeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'propose', true, argsBytes);
         },
 
         buildProposeCall: (_threshold: unknown, _proposal: unknown, _length_bound: unknown) => {
@@ -172,11 +183,15 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _approve: Bool
          */
         vote: async (signer: ethers.Signer, _proposal: unknown, _index: unknown, _approve: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'vote', false, _proposal, _index, _approve);
+            return await dispatch(signer, 'TechnicalCommittee', 'vote', false, {
+                proposal: _proposal,
+                index: _index,
+                approve: _approve,
+	    });
         },
 
-        voteH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'vote', true, data);
+        voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'vote', true, argsBytes);
         },
 
         buildVoteCall: (_proposal: unknown, _index: unknown, _approve: unknown) => {
@@ -231,11 +246,16 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _length_bound: Compact<U32>
          */
         close: async (signer: ethers.Signer, _proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'close', false, _proposal_hash, _index, _proposal_weight_bound, _length_bound);
+            return await dispatch(signer, 'TechnicalCommittee', 'close', false, {
+                proposal_hash: _proposal_hash,
+                index: _index,
+                proposal_weight_bound: _proposal_weight_bound,
+                length_bound: _length_bound,
+	    });
         },
 
-        closeH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'close', true, data);
+        closeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'close', true, argsBytes);
         },
 
         buildCloseCall: (_proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown) => {
@@ -270,11 +290,13 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
          * @param _proposal_hash: [U8; 32]
          */
         disapproveProposal: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', false, _proposal_hash);
+            return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', false, {
+                proposal_hash: _proposal_hash,
+	    });
         },
 
-        disapproveProposalH: async (signer: ethers.Signer, data: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', true, data);
+        disapproveProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'TechnicalCommittee', 'disapproveProposal', true, argsBytes);
         },
 
         buildDisapproveProposalCall: (_proposal_hash: unknown) => {
