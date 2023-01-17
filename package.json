@@ -1,11 +1,11 @@
 {
   "name": "darwinia-js-sdk",
   "version": "1.2.20",
-  "description": "A library to help fetch substrate storages via evm json-rpc `eth.call`",
+  "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
     "prepublish": "rm -rf dist && tsc",
-    "mypublsih": "npm run prepublish && npm publish",
+    "mypublish": "npm run prepublish && npm publish",
     "genpangolin2": "CHAIN=pangolin2 ENDPOINT=https://cors.kahub.in/http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
     "gencrab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darwinia-network/darwinia-storage.git"
+    "url": "git+https://github.com/darwinia-network/darwinia-js-sdk.git"
   },
   "keywords": [
     "substrate",
@@ -26,9 +26,9 @@
   "author": "Aki Wu",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/darwinia-network/darwinia-storage/issues"
+    "url": "https://github.com/darwinia-network/darwinia-js-sdk/issues"
   },
-  "homepage": "https://github.com/darwinia-network/darwinia-storage#readme",
+  "homepage": "https://github.com/darwinia-network/darwinia-js-sdk#readme",
   "type": "commonjs",
   "devDependencies": {
     "@types/ejs": "^3.1.1",
