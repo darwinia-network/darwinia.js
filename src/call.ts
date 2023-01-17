@@ -65,12 +65,7 @@ export function dispatch(provider: Provider, metadata: Metadata) {
         }
         console.debug(`call data: ${hexlify(callData)}`);
 
-        // selector of execute(bytes) + abi encode the calldata
-        let callDataAbiEncoded = ethers.utils.defaultAbiCoder.encode(["bytes"], [callData]);
-        const data = ethers.utils.concat(["0x09c5eabe", callDataAbiEncoded]);
-        console.debug(`selector appended: ${hexlify(data)}`);
-
-        return doDispatch(provider, signer, data);
+        return doDispatch(provider, signer, callData);
     };
 }
 
