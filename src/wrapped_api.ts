@@ -103,31 +103,23 @@ async function getLatestBlock(provider: ethers.providers.BaseProvider, current: 
         return latestBlock;
     } else {
         await new Promise(f => setTimeout(f, 1000));
-        // console.log("slept 1s.");
         return await getLatestBlock(provider, current);
     }
 }
 
-async function blockedSubscribeSystemEvents(provider: ethers.providers.BaseProvider, client: Client2, cb: (events: string) => Promise<void>) {
-    let currentBlock = 1;
-    while (true) {
-        try {
-            currentBlock = await getLatestBlock(provider, currentBlock)
-            console.debug(`block: ${currentBlock}`)
+async function subscribeSystemEvents(provider: ethers.providers.BaseProvider, client: Client2, currentBlock: number, cb: (events: string) => Promise<void>) {
+    try {
+        const newBlock = await getLatestBlock(provider, currentBlock)
+        console.debug(`block: ${newBlock}`)
 
-            const result = await client.storages.system.events();
-            await cb(result);
-        } catch (err) {
-            console.log((err as Error).message);
-        }
+        const result = await client.storages.system.events();
+        await cb(result);
+        await subscribeSystemEvents(provider, client, newBlock, cb);
+    } catch (err) {
+        console.log((err as Error).message);
+        await new Promise(f => setTimeout(f, 5000));
+        await subscribeSystemEvents(provider, client, currentBlock, cb);
     }
-}
-
-
-export type EventData = {
-    palletName: string,
-    eventName: string,
-    data: Map<string, any> 
 }
 
 function buildEvent(eventMeta: EventMeta, event: object): EventData {
@@ -148,16 +140,18 @@ function buildEvent(eventMeta: EventMeta, event: object): EventData {
 }
 
 type Client2 = {
-    storages: {
-        system: {
-            events: Function
-        }
-    },
+    storages: { system: { events: Function } },
     metadata: Metadata,
     provider: ethers.providers.BaseProvider
 }
 
-export async function blockedTrackSystemEvents(client: Client2, whatEventsToTrack: [string, string][], cb: (event: EventData) => Promise<void>) {
+export type EventData = {
+    palletName: string,
+    eventName: string,
+    data: Map<string, any>
+}
+
+export async function trackSystemEvents(client: Client2, whatEventsToTrack: [string, string][], cb: (event: EventData) => Promise<void>) {
     // Map<
     //   eventIndexHex,
     //   eventMeta
@@ -174,7 +168,7 @@ export async function blockedTrackSystemEvents(client: Client2, whatEventsToTrac
             return r;
         }, new Map<string, EventMeta>());
 
-    blockedSubscribeSystemEvents(client.provider, client, async (eventsJsonStr) => {
+    await subscribeSystemEvents(client.provider, client, 1, async (eventsJsonStr) => {
         const events = JSON.parse(eventsJsonStr)
         for (let i = 0; i < events.length; i++) {
             const event = events[i].event;
