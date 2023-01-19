@@ -6,7 +6,7 @@ export const getDmpQueue = (getStorage: GetStorage) => {
         /**
          * The configuration.
          *
-         * @return ConfigData: {max_individual: {ref_time: U64}}
+         * @return ConfigData: {max_individual: {ref_time: Compact<U64>, proof_size: Compact<U64>}}
          */
         configuration: async (): Promise<string | null> => {
             return await getStorage('DmpQueue', 'Configuration');

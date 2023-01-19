@@ -208,7 +208,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * The weight we reserve at the beginning of the block for processing XCMP messages. This
          * overrides the amount set in the Config trait.
          *
-         * @return Weight: {ref_time: U64}
+         * @return Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
          */
         reservedXcmpWeightOverride: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ReservedXcmpWeightOverride');
@@ -218,7 +218,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * The weight we reserve at the beginning of the block for processing DMP messages. This
          * overrides the amount set in the Config trait.
          *
-         * @return Weight: {ref_time: U64}
+         * @return Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
          */
         reservedDmpWeightOverride: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ReservedDmpWeightOverride');

@@ -20,7 +20,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `OverweightServiced`: On success.
          *
          * @param _index: U64
-         * @param _weight_limit: {ref_time: U64}
+         * @param _weight_limit: U64
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', false, {
@@ -187,7 +187,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.threshold_weight`
          *
-         * @param _new: {ref_time: U64}
+         * @param _new: U64
          */
         updateThresholdWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', false, {
@@ -216,7 +216,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.weight_restrict_decay`.
          *
-         * @param _new: {ref_time: U64}
+         * @param _new: U64
          */
         updateWeightRestrictDecay: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', false, {
@@ -245,7 +245,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.xcmp_max_individual_weight`.
          *
-         * @param _new: {ref_time: U64}
+         * @param _new: U64
          */
         updateXcmpMaxIndividualWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', false, {

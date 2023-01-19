@@ -14,15 +14,13 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * - `value`: The amount of deposit (must be at least `MinimumDeposit`).
          * 
          * Emits `Proposed`.
-         * 
-         * Weight: `O(p)`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param _proposal: Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>
          * @param _value: Compact<U128>
          */
-        propose: async (signer: ethers.Signer, _proposal_hash: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        propose: async (signer: ethers.Signer, _proposal: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'propose', false, {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
                 value: _value,
 	    });
         },
@@ -31,9 +29,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'propose', true, argsBytes);
         },
 
-        buildProposeCall: (_proposal_hash: unknown, _value: unknown) => {
+        buildProposeCall: (_proposal: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'propose', {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
                 value: _value,
             });
         },
@@ -49,18 +47,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * must have funds to cover the deposit, equal to the original deposit.
          * 
          * - `proposal`: The index of the proposal to second.
-         * - `seconds_upper_bound`: an upper bound on the current number of seconds on this
-         *   proposal. Extrinsic is weighted according to this value with no refund.
-         * 
-         * Weight: `O(S)` where S is the number of seconds a proposal already has.
          *
          * @param _proposal: Compact<U32>
-         * @param _seconds_upper_bound: Compact<U32>
          */
-        second: async (signer: ethers.Signer, _proposal: unknown, _seconds_upper_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        second: async (signer: ethers.Signer, _proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'second', false, {
                 proposal: _proposal,
-                seconds_upper_bound: _seconds_upper_bound,
 	    });
         },
 
@@ -68,10 +60,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'second', true, argsBytes);
         },
 
-        buildSecondCall: (_proposal: unknown, _seconds_upper_bound: unknown) => {
+        buildSecondCall: (_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'second', {
                 proposal: _proposal,
-                seconds_upper_bound: _seconds_upper_bound,
             });
         },
 
@@ -87,8 +78,6 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * - `ref_index`: The index of the referendum to vote for.
          * - `vote`: The vote configuration.
-         * 
-         * Weight: `O(R)` where R is the number of referendums the voter has voted on.
          *
          * @param _ref_index: Compact<U32>
          * @param _vote: Enum<{0/Standard: {vote: U8, balance: U128}, 1/Split: {aye: U128, nay: U128}}>
@@ -154,15 +143,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch origin of this call must be `ExternalOrigin`.
          * 
          * - `proposal_hash`: The preimage hash of the proposal.
-         * 
-         * Weight: `O(V)` with V number of vetoers in the blacklist of proposal.
-         *   Decoding vec of length V. Charged as maximum
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param _proposal: Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>
          */
-        externalPropose: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        externalPropose: async (signer: ethers.Signer, _proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalPropose', false, {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
 	    });
         },
 
@@ -170,9 +156,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalPropose', true, argsBytes);
         },
 
-        buildExternalProposeCall: (_proposal_hash: unknown) => {
+        buildExternalProposeCall: (_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalPropose', {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
             });
         },
 
@@ -193,11 +179,11 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param _proposal: Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>
          */
-        externalProposeMajority: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeMajority: async (signer: ethers.Signer, _proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', false, {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
 	    });
         },
 
@@ -205,9 +191,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', true, argsBytes);
         },
 
-        buildExternalProposeMajorityCall: (_proposal_hash: unknown) => {
+        buildExternalProposeMajorityCall: (_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeMajority', {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
             });
         },
 
@@ -228,11 +214,11 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param _proposal: Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>
          */
-        externalProposeDefault: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        externalProposeDefault: async (signer: ethers.Signer, _proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', false, {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
 	    });
         },
 
@@ -240,9 +226,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', true, argsBytes);
         },
 
-        buildExternalProposeDefaultCall: (_proposal_hash: unknown) => {
+        buildExternalProposeDefaultCall: (_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeDefault', {
-                proposal_hash: _proposal_hash,
+                proposal: _proposal,
             });
         },
 
@@ -258,7 +244,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch of this call must be `FastTrackOrigin`.
          * 
          * - `proposal_hash`: The hash of the current external proposal.
-         * - `voting_period`: The period that is allowed for voting on this proposal.
+         * - `voting_period`: The period that is allowed for voting on this proposal. Increased to
          * 	Must be always greater than zero.
          * 	For `FastTrackOrigin` must be equal or greater than `FastTrackVotingPeriod`.
          * - `delay`: The number of block after voting has ended in approval and this should be
@@ -358,37 +344,6 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 
         buildCancelReferendumCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'cancelReferendum', argsBytes)
-        },
-
-        /**
-         * Cancel a proposal queued for enactment.
-         * 
-         * The dispatch origin of this call must be _Root_.
-         * 
-         * - `which`: The index of the referendum to cancel.
-         * 
-         * Weight: `O(D)` where `D` is the items in the dispatch queue. Weighted as `D = 10`.
-         *
-         * @param _which: U32
-         */
-        cancelQueued: async (signer: ethers.Signer, _which: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'cancelQueued', false, {
-                which: _which,
-	    });
-        },
-
-        cancelQueuedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'cancelQueued', true, argsBytes);
-        },
-
-        buildCancelQueuedCall: (_which: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'cancelQueued', {
-                which: _which,
-            });
-        },
-
-        buildCancelQueuedCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'cancelQueued', argsBytes)
         },
 
         /**
@@ -498,168 +453,6 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 
         buildClearPublicProposalsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'clearPublicProposals', argsBytes)
-        },
-
-        /**
-         * Register the preimage for an upcoming proposal. This doesn't require the proposal to be
-         * in the dispatch queue but does require a deposit, returned once enacted.
-         * 
-         * The dispatch origin of this call must be _Signed_.
-         * 
-         * - `encoded_proposal`: The preimage of a proposal.
-         * 
-         * Emits `PreimageNoted`.
-         * 
-         * Weight: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).
-         *
-         * @param _encoded_proposal: Vec<U8>
-         */
-        notePreimage: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'notePreimage', false, {
-                encoded_proposal: _encoded_proposal,
-	    });
-        },
-
-        notePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'notePreimage', true, argsBytes);
-        },
-
-        buildNotePreimageCall: (_encoded_proposal: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'notePreimage', {
-                encoded_proposal: _encoded_proposal,
-            });
-        },
-
-        buildNotePreimageCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'notePreimage', argsBytes)
-        },
-
-        /**
-         * Same as `note_preimage` but origin is `OperationalPreimageOrigin`.
-         *
-         * @param _encoded_proposal: Vec<U8>
-         */
-        notePreimageOperational: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'notePreimageOperational', false, {
-                encoded_proposal: _encoded_proposal,
-	    });
-        },
-
-        notePreimageOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'notePreimageOperational', true, argsBytes);
-        },
-
-        buildNotePreimageOperationalCall: (_encoded_proposal: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'notePreimageOperational', {
-                encoded_proposal: _encoded_proposal,
-            });
-        },
-
-        buildNotePreimageOperationalCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'notePreimageOperational', argsBytes)
-        },
-
-        /**
-         * Register the preimage for an upcoming proposal. This requires the proposal to be
-         * in the dispatch queue. No deposit is needed. When this call is successful, i.e.
-         * the preimage has not been uploaded before and matches some imminent proposal,
-         * no fee is paid.
-         * 
-         * The dispatch origin of this call must be _Signed_.
-         * 
-         * - `encoded_proposal`: The preimage of a proposal.
-         * 
-         * Emits `PreimageNoted`.
-         * 
-         * Weight: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).
-         *
-         * @param _encoded_proposal: Vec<U8>
-         */
-        noteImminentPreimage: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'noteImminentPreimage', false, {
-                encoded_proposal: _encoded_proposal,
-	    });
-        },
-
-        noteImminentPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'noteImminentPreimage', true, argsBytes);
-        },
-
-        buildNoteImminentPreimageCall: (_encoded_proposal: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimage', {
-                encoded_proposal: _encoded_proposal,
-            });
-        },
-
-        buildNoteImminentPreimageCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'noteImminentPreimage', argsBytes)
-        },
-
-        /**
-         * Same as `note_imminent_preimage` but origin is `OperationalPreimageOrigin`.
-         *
-         * @param _encoded_proposal: Vec<U8>
-         */
-        noteImminentPreimageOperational: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', false, {
-                encoded_proposal: _encoded_proposal,
-	    });
-        },
-
-        noteImminentPreimageOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', true, argsBytes);
-        },
-
-        buildNoteImminentPreimageOperationalCall: (_encoded_proposal: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', {
-                encoded_proposal: _encoded_proposal,
-            });
-        },
-
-        buildNoteImminentPreimageOperationalCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', argsBytes)
-        },
-
-        /**
-         * Remove an expired proposal preimage and collect the deposit.
-         * 
-         * The dispatch origin of this call must be _Signed_.
-         * 
-         * - `proposal_hash`: The preimage hash of a proposal.
-         * - `proposal_length_upper_bound`: an upper bound on length of the proposal. Extrinsic is
-         *   weighted according to this value with no refund.
-         * 
-         * This will only work after `VotingPeriod` blocks from the time that the preimage was
-         * noted, if it's the same account doing it. If it's a different account, then it'll only
-         * work an additional `EnactmentPeriod` later.
-         * 
-         * Emits `PreimageReaped`.
-         * 
-         * Weight: `O(D)` where D is length of proposal.
-         *
-         * @param _proposal_hash: [U8; 32]
-         * @param _proposal_len_upper_bound: Compact<U32>
-         */
-        reapPreimage: async (signer: ethers.Signer, _proposal_hash: unknown, _proposal_len_upper_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'reapPreimage', false, {
-                proposal_hash: _proposal_hash,
-                proposal_len_upper_bound: _proposal_len_upper_bound,
-	    });
-        },
-
-        reapPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'reapPreimage', true, argsBytes);
-        },
-
-        buildReapPreimageCall: (_proposal_hash: unknown, _proposal_len_upper_bound: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'reapPreimage', {
-                proposal_hash: _proposal_hash,
-                proposal_len_upper_bound: _proposal_len_upper_bound,
-            });
-        },
-
-        buildReapPreimageCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'reapPreimage', argsBytes)
         },
 
         /**
@@ -784,34 +577,6 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 
         buildRemoveOtherVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'removeOtherVote', argsBytes)
-        },
-
-        /**
-         * Enact a proposal from a referendum. For now we just make the weight be the maximum.
-         *
-         * @param _proposal_hash: [U8; 32]
-         * @param _index: U32
-         */
-        enactProposal: async (signer: ethers.Signer, _proposal_hash: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'enactProposal', false, {
-                proposal_hash: _proposal_hash,
-                index: _index,
-	    });
-        },
-
-        enactProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Democracy', 'enactProposal', true, argsBytes);
-        },
-
-        buildEnactProposalCall: (_proposal_hash: unknown, _index: unknown) => {
-            return buildRuntimeCall(metadata, 'Democracy', 'enactProposal', {
-                proposal_hash: _proposal_hash,
-                index: _index,
-            });
-        },
-
-        buildEnactProposalCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Democracy', 'enactProposal', argsBytes)
         },
 
         /**

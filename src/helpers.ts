@@ -124,7 +124,6 @@ export function getEventMeta(metadata: Metadata, palletName: string, eventName: 
     const events = pallet.events.unwrap();
     const eventsSiType = metadata.registry.lookup.getSiType(events.type);
     const event = eventsSiType.def.asVariant.variants.find(v => {
-        console.log(v.name.toString())
         return v.name.toString() == eventName;
     });
     if (!event) {

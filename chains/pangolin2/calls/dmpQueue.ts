@@ -19,7 +19,7 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `OverweightServiced`: On success.
          *
          * @param _index: U64
-         * @param _weight_limit: {ref_time: U64}
+         * @param _weight_limit: U64
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, {

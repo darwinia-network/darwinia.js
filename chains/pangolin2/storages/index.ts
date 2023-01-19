@@ -37,7 +37,6 @@ import {getPolkadotXcm} from "./polkadotXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
 import {getEvm} from "./evm";
-import {getBaseFee} from "./baseFee";
 
 export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const getStorage = getStorageFunction(provider, metadata);
@@ -77,6 +76,5 @@ export const buildPangolin2StoragesClient = (provider: providers.BaseProvider, m
         dmpQueue: getDmpQueue(getStorage),
         ethereum: getEthereum(getStorage),
         evm: getEvm(getStorage),
-        baseFee: getBaseFee(getStorage),
     };
 }

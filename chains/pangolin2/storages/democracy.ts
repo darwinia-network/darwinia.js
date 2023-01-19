@@ -13,9 +13,9 @@ export const getDemocracy = (getStorage: GetStorage) => {
         },
 
         /**
-         * The public proposals. Unsorted. The second item is the proposal's hash.
+         * The public proposals. Unsorted. The second item is the proposal.
          *
-         * @return Vec<(U32, [U8; 32], [U8; 20])>
+         * @return BoundedVec: Vec<(U32, Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>, [U8; 20])>
          */
         publicProps: async (): Promise<string | null> => {
             return await getStorage('Democracy', 'PublicProps');
@@ -31,17 +31,6 @@ export const getDemocracy = (getStorage: GetStorage) => {
          */
         depositOf: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'DepositOf', param0);
-        },
-
-        /**
-         * Map of hashes to the proposal preimage, along with who registered it and their deposit.
-         * The block number is the block at which it was deposited.
-         *
-         * @param param0: H256: [U8; 32]
-         * @return PreimageStatus: Enum<{0/Missing: U32, 1/Available: {data: Vec<U8>, provider: [U8; 20], deposit: U128, since: U32, expiry: Enum<{0/None: , 1/Some: U32}>}}>
-         */
-        preimages: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('Democracy', 'Preimages', param0);
         },
 
         /**
@@ -69,7 +58,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
          * TWOX-NOTE: SAFE as indexes are not under an attacker’s control.
          *
          * @param param0: U32
-         * @return ReferendumInfo: Enum<{0/Ongoing: {end: U32, proposal_hash: [U8; 32], threshold: Enum<{0/SuperMajorityApprove: , 1/SuperMajorityAgainst: , 2/SimpleMajority: }>, delay: U32, tally: {ayes: U128, nays: U128, turnout: U128}}, 1/Finished: {approved: Bool, end: U32}}>
+         * @return ReferendumInfo: Enum<{0/Ongoing: {end: U32, proposal: Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>, threshold: Enum<{0/SuperMajorityApprove: , 1/SuperMajorityAgainst: , 2/SimpleMajority: }>, delay: U32, tally: {ayes: U128, nays: U128, turnout: U128}}, 1/Finished: {approved: Bool, end: U32}}>
          */
         referendumInfoOf: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'ReferendumInfoOf', param0);
@@ -104,7 +93,7 @@ export const getDemocracy = (getStorage: GetStorage) => {
          * - `LastTabledWasExternal` is `false`; or
          * - `PublicProps` is empty.
          *
-         * @return ([U8; 32], Enum<{0/SuperMajorityApprove: , 1/SuperMajorityAgainst: , 2/SimpleMajority: }>)
+         * @return (Enum<{0/Legacy: {hash: [U8; 32]}, 1/Inline: Vec<U8>, 2/Lookup: {hash: [U8; 32], len: U32}}>, Enum<{0/SuperMajorityApprove: , 1/SuperMajorityAgainst: , 2/SimpleMajority: }>)
          */
         nextExternal: async (): Promise<string | null> => {
             return await getStorage('Democracy', 'NextExternal');
@@ -129,17 +118,6 @@ export const getDemocracy = (getStorage: GetStorage) => {
          */
         cancellations: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'Cancellations', param0);
-        },
-
-        /**
-         * Storage version of the pallet.
-         *
-         * New networks start with last version.
-         *
-         * @return Releases: Enum<{0/V1: }>
-         */
-        storageVersion: async (): Promise<string | null> => {
-            return await getStorage('Democracy', 'StorageVersion');
         },
     };
 };

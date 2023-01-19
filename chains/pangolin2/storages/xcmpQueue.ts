@@ -61,7 +61,7 @@ export const getXcmpQueue = (getStorage: GetStorage) => {
         /**
          * The configuration which controls the dynamics of the outbound queue.
          *
-         * @return QueueConfigData: {suspend_threshold: U32, drop_threshold: U32, resume_threshold: U32, threshold_weight: {ref_time: U64}, weight_restrict_decay: {ref_time: U64}, xcmp_max_individual_weight: {ref_time: U64}}
+         * @return QueueConfigData: {suspend_threshold: U32, drop_threshold: U32, resume_threshold: U32, threshold_weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}, weight_restrict_decay: {ref_time: Compact<U64>, proof_size: Compact<U64>}, xcmp_max_individual_weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}}
          */
         queueConfig: async (): Promise<string | null> => {
             return await getStorage('XcmpQueue', 'QueueConfig');

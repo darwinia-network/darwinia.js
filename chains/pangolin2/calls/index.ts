@@ -36,7 +36,6 @@ import {getCumulusXcm} from "./cumulusXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
 import {getEvm} from "./evm";
-import {getBaseFee} from "./baseFee";
 import {getMessageTransact} from "./messageTransact";
 
 export const buildPangolin2CallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
@@ -76,7 +75,6 @@ export const buildPangolin2CallsClient = (provider: providers.BaseProvider, meta
         dmpQueue: getDmpQueue(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
         evm: getEvm(dispatch, metadata),
-        baseFee: getBaseFee(dispatch, metadata),
         messageTransact: getMessageTransact(dispatch, metadata),
     };
 }

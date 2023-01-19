@@ -9,7 +9,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * This new asset class has no assets initially and its owner is the origin.
          * 
-         * The origin must be Signed and the sender must have sufficient funds free.
+         * The origin must conform to the configured `CreateOrigin` and have sufficient funds free.
          * 
          * Funds of sender are reserved by `AssetDeposit`.
          * 
