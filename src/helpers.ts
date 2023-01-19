@@ -81,7 +81,7 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
     }
 
     // get call which is a variant item from pallet
-    if(pallet.calls.isNone) {
+    if (pallet.calls.isNone) {
         throw `Pallet ${palletName} has no calls`;
     }
     const calls = pallet.calls.unwrap();
@@ -105,7 +105,11 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
 export type EventMeta = {
     eventIndex?: [number, number],
     eventName?: string,
-    fields: string[],
+    fields: {
+        name: string,
+        typeName: string,
+        lookupType: string
+    }[],
     belongsTo: string,
 };
 
@@ -118,7 +122,7 @@ export function getEventMeta(metadata: Metadata, palletName: string, eventName: 
         throw `Can not find pallet ${palletName} in metadata`;
     }
 
-    if(pallet.events.isNone) {
+    if (pallet.events.isNone) {
         throw `Pallet ${palletName} has no events`;
     }
     const events = pallet.events.unwrap();
@@ -133,7 +137,11 @@ export function getEventMeta(metadata: Metadata, palletName: string, eventName: 
     return {
         eventIndex: [pallet.index.toNumber(), event.index.toNumber()],
         fields: event.fields.map(field => {
-            return metadata.registry.createLookupType(field.type);
+            return {
+                name: field.name.toString(),
+                typeName: field.typeName.toString(),
+                lookupType: metadata.registry.createLookupType(field.type)
+            };
         }),
         belongsTo: metadata.registry.createLookupType(events.type)
     };
@@ -147,7 +155,7 @@ export function getEventMetaByIndex(metadata: Metadata, palletIndex: number, eve
         throw `Can not find pallet with index ${palletIndex} in metadata`;
     }
 
-    if(pallet.events.isNone) {
+    if (pallet.events.isNone) {
         throw `Pallet ${palletIndex} has no events`;
     }
     const events = pallet.events.unwrap();
@@ -162,7 +170,11 @@ export function getEventMetaByIndex(metadata: Metadata, palletIndex: number, eve
     return {
         eventName: event.name.toString(),
         fields: event.fields.map(field => {
-            return metadata.registry.createLookupType(field.type);
+            return {
+                name: field.name.toString(),
+                typeName: field.typeName.toString(),
+                lookupType: metadata.registry.createLookupType(field.type)
+            };
         }),
         belongsTo: metadata.registry.createLookupType(events.type)
     };
