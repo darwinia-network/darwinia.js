@@ -67,8 +67,8 @@ export function buildStorageKey(metadata: Metadata, prefix: string, method: stri
 
 export type CallMeta = {
     callIndex: [number, number],
-    argLookupTypes: string[],
-    callsVariantLookupType: string,
+    args: string[],
+    belongsTo: string,
 };
 
 export function getCallMeta(metadata: Metadata, palletName: string, callName: string): CallMeta {
@@ -81,6 +81,9 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
     }
 
     // get call which is a variant item from pallet
+    if(pallet.calls.isNone) {
+        throw `Pallet ${palletName} has no calls`;
+    }
     const calls = pallet.calls.unwrap();
     const callsType = metadata.registry.lookup.getSiType(calls.type);
     const call = callsType.def.asVariant.variants.find(v => {
@@ -92,10 +95,77 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
 
     return {
         callIndex: [pallet.index.toNumber(), call.index.toNumber()],
-        argLookupTypes: call.fields.map(field => {
+        args: call.fields.map(field => {
             return metadata.registry.createLookupType(field.type);
         }),
-        callsVariantLookupType: metadata.registry.createLookupType(calls.type)
+        belongsTo: metadata.registry.createLookupType(calls.type)
+    };
+}
+
+export type EventMeta = {
+    eventIndex?: [number, number],
+    eventName?: string,
+    fields: string[],
+    belongsTo: string,
+};
+
+export function getEventMeta(metadata: Metadata, palletName: string, eventName: string): EventMeta {
+    // get pallet
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.name.toString() == palletName;
+    });
+    if (!pallet) {
+        throw `Can not find pallet ${palletName} in metadata`;
+    }
+
+    if(pallet.events.isNone) {
+        throw `Pallet ${palletName} has no events`;
+    }
+    const events = pallet.events.unwrap();
+    const eventsSiType = metadata.registry.lookup.getSiType(events.type);
+    const event = eventsSiType.def.asVariant.variants.find(v => {
+        console.log(v.name.toString())
+        return v.name.toString() == eventName;
+    });
+    if (!event) {
+        throw `Can not find ${eventName} event in ${palletName} pallet`;
+    }
+
+    return {
+        eventIndex: [pallet.index.toNumber(), event.index.toNumber()],
+        fields: event.fields.map(field => {
+            return metadata.registry.createLookupType(field.type);
+        }),
+        belongsTo: metadata.registry.createLookupType(events.type)
+    };
+}
+
+export function getEventMetaByIndex(metadata: Metadata, palletIndex: number, eventIndex: number): EventMeta {
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.index.toNumber() == palletIndex;
+    })
+    if (!pallet) {
+        throw `Can not find pallet with index ${palletIndex} in metadata`;
+    }
+
+    if(pallet.events.isNone) {
+        throw `Pallet ${palletIndex} has no events`;
+    }
+    const events = pallet.events.unwrap();
+    const eventsSiType = metadata.registry.lookup.getSiType(events.type);
+    const event = eventsSiType.def.asVariant.variants.find(v => {
+        return v.index.toNumber() == eventIndex;
+    });
+    if (!event) {
+        throw `Can not find event with ${eventIndex} in ${pallet.name} pallet`;
+    }
+
+    return {
+        eventName: event.name.toString(),
+        fields: event.fields.map(field => {
+            return metadata.registry.createLookupType(field.type);
+        }),
+        belongsTo: metadata.registry.createLookupType(events.type)
     };
 }
 
@@ -125,10 +195,10 @@ export function buildRuntimeCall(metadata: Metadata, palletName: string, callNam
 }
 
 export function decodeCall(metadata: Metadata, palletName: string, callName: string, argsBytes: BytesLike): CallAsParam {
-    const { callIndex, callsVariantLookupType } = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
+    const { callIndex, belongsTo } = getCallMeta(metadata, palletName, camelToSnakeCase(callName));
 
     const callBytes = ethers.utils.concat([ethers.utils.hexlify(callIndex[1]), argsBytes]);
-    const decoded = metadata.registry.createType(callsVariantLookupType, callBytes).toJSON();
+    const decoded = metadata.registry.createType(belongsTo, callBytes).toJSON();
 
     return {
         callIndex: callIndex,
@@ -139,7 +209,7 @@ export function decodeCall(metadata: Metadata, palletName: string, callName: str
 export function encodeCall(metadata: Metadata, palletName: string, callName: string, args: { [key: string]: any }): BytesLike {
     callName = camelToSnakeCase(callName);
 
-    const { callIndex, callsVariantLookupType } = getCallMeta(metadata, palletName, callName);
+    const { callIndex, belongsTo } = getCallMeta(metadata, palletName, callName);
 
     const callNameWithArgs: { [key: string]: any } = {};
     callNameWithArgs[callName] = args;
@@ -147,8 +217,9 @@ export function encodeCall(metadata: Metadata, palletName: string, callName: str
     const encodedCall =
         u8aConcat(
             [callIndex[0]],
-            metadata.registry.createType(callsVariantLookupType, callNameWithArgs).toU8a()
+            metadata.registry.createType(belongsTo, callNameWithArgs).toU8a()
         );
 
     return encodedCall;
 }
+

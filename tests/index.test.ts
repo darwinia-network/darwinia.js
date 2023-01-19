@@ -1,7 +1,7 @@
-import { buildMetadata, decodeCall } from "../index";
+import { buildMetadata, decodeCall, getCallMeta, getEventMeta } from "../index";
 import { staticMetadataForTest } from "./metadata_for_test";
 
-describe('call', () => {
+describe('metadata', () => {
     test('call can be decoded from scale codec bytes', () => {
         const metadata = buildMetadata(staticMetadataForTest);
         const result =
@@ -16,6 +16,34 @@ describe('call', () => {
                     },
                     proof: '0x'
                 }
+            }
+        );
+
+    });
+
+    test('call meta can be got from metadata', () => {
+        const metadata = buildMetadata(staticMetadataForTest);
+        const result = getCallMeta(metadata, 'System', 'remark_with_event');
+
+        expect(result).toStrictEqual(
+            {
+                callIndex: [0, 8],
+                args: ['Lookup12'],
+                belongsTo: 'Lookup144'
+            }
+        );
+
+    });
+
+    test('event meta can be got from metadata', () => {
+        const metadata = buildMetadata(staticMetadataForTest);
+        const result = getEventMeta(metadata, 'System', 'ExtrinsicSuccess');
+
+        expect(result).toStrictEqual(
+            {
+                eventIndex: [0, 0],
+                fields: ['Lookup21'],
+                belongsTo: 'Lookup20'
             }
         );
 
