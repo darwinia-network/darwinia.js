@@ -69,4 +69,4 @@ export function dispatch(provider: Provider, metadata: Metadata) {
     };
 }
 
-export type Dispatch = (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, args: any) => Promise<ethers.providers.TransactionReceipt>;
+export type Dispatch = (signer: ethers.Signer, palletName: string, callName: string, paramsEncoded: boolean, args?: any) => Promise<ethers.providers.TransactionReceipt>;
