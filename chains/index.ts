@@ -18,7 +18,8 @@ export const clientBuilder = {
         return {
             calls: buildPangolin2CallsClient(provider, metadata),
             storages: buildPangolin2StoragesClient(provider, metadata),
-            metadata: metadata
+            metadata: metadata,
+            provider: provider
         };
     },
     buildPangolinClient: (provider: providers.BaseProvider) => {
@@ -26,7 +27,8 @@ export const clientBuilder = {
         return {
             calls: buildPangolinCallsClient(provider, metadata),
             storages: buildPangolinStoragesClient(provider, metadata),
-            metadata: metadata
+            metadata: metadata,
+            provider: provider
         };
     },
     buildPangoroClient: (provider: providers.BaseProvider) => {
@@ -34,7 +36,8 @@ export const clientBuilder = {
         return {
             calls: buildPangoroCallsClient(provider, metadata),
             storages: buildPangoroStoragesClient(provider, metadata),
-            metadata: metadata
+            metadata: metadata,
+            provider: provider
         };
     },
     buildCrabClient: (provider: providers.BaseProvider) => {
@@ -42,7 +45,8 @@ export const clientBuilder = {
         return {
             calls: buildCrabCallsClient(provider, metadata),
             storages: buildCrabStoragesClient(provider, metadata),
-            metadata: metadata
+            metadata: metadata,
+            provider: provider
         };
     },
     buildDarwiniaClient: (provider: providers.BaseProvider) => {
@@ -50,7 +54,8 @@ export const clientBuilder = {
         return {
             calls: buildDarwiniaCallsClient(provider, metadata),
             storages: buildDarwiniaStoragesClient(provider, metadata),
-            metadata: metadata
+            metadata: metadata,
+            provider: provider
         };
     }
 };
