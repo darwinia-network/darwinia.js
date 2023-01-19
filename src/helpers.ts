@@ -103,8 +103,9 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
 }
 
 export type EventMeta = {
-    eventIndex?: [number, number],
-    eventName?: string,
+    palletName: string,
+    eventName: string,
+    eventIndex: [number, number],
     fields: {
         name: string,
         typeName: string,
@@ -135,6 +136,8 @@ export function getEventMeta(metadata: Metadata, palletName: string, eventName: 
     }
 
     return {
+        palletName: palletName,
+        eventName: eventName,
         eventIndex: [pallet.index.toNumber(), event.index.toNumber()],
         fields: event.fields.map(field => {
             return {
@@ -168,7 +171,9 @@ export function getEventMetaByIndex(metadata: Metadata, palletIndex: number, eve
     }
 
     return {
+        palletName: pallet.name.toString(),
         eventName: event.name.toString(),
+        eventIndex: [palletIndex, eventIndex],
         fields: event.fields.map(field => {
             return {
                 name: field.name.toString(),

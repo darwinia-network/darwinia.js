@@ -46,7 +46,7 @@ export function getStorage(provider: BaseProvider, metadata: Metadata) {
 
         // 2. GET RAW STORAGE DATA BY STORAGE KEY
         let raw = await getStorageRaw(provider, storageKey);
-        console.debug(`        raw: ${raw}`);
+        console.debug(`storage raw: ${raw}`);
         if (raw.toString() == "0x" && storageEntry.modifier.isDefault) {
             raw = storageEntry.fallback
         }
