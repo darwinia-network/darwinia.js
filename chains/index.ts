@@ -17,35 +17,40 @@ export const clientBuilder = {
         const metadata = buildMetadata(pangolin2StaticMetadata);
         return {
             calls: buildPangolin2CallsClient(provider, metadata),
-            storages: buildPangolin2StoragesClient(provider, metadata)
+            storages: buildPangolin2StoragesClient(provider, metadata),
+            metadata: metadata
         };
     },
     buildPangolinClient: (provider: providers.BaseProvider) => {
         const metadata = buildMetadata(pangolinStaticMetadata);
         return {
             calls: buildPangolinCallsClient(provider, metadata),
-            storages: buildPangolinStoragesClient(provider, metadata)
+            storages: buildPangolinStoragesClient(provider, metadata),
+            metadata: metadata
         };
     },
     buildPangoroClient: (provider: providers.BaseProvider) => {
         const metadata = buildMetadata(pangoroStaticMetadata);
         return {
             calls: buildPangoroCallsClient(provider, metadata),
-            storages: buildPangoroStoragesClient(provider, metadata)
+            storages: buildPangoroStoragesClient(provider, metadata),
+            metadata: metadata
         };
     },
     buildCrabClient: (provider: providers.BaseProvider) => {
         const metadata = buildMetadata(crabStaticMetadata);
         return {
             calls: buildCrabCallsClient(provider, metadata),
-            storages: buildCrabStoragesClient(provider, metadata)
+            storages: buildCrabStoragesClient(provider, metadata),
+            metadata: metadata
         };
     },
     buildDarwiniaClient: (provider: providers.BaseProvider) => {
         const metadata = buildMetadata(darwiniaStaticMetadata);
         return {
             calls: buildDarwiniaCallsClient(provider, metadata),
-            storages: buildDarwiniaStoragesClient(provider, metadata)
+            storages: buildDarwiniaStoragesClient(provider, metadata),
+            metadata: metadata
         };
     }
 };
