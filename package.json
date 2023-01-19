@@ -4,7 +4,7 @@
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
-    "prepublish": "rm -rf dist && tsc",
+    "build": "rm -rf dist && tsc",
     "mypublish": "npm run prepublish && npm publish",
     "genpangolin2": "CHAIN=pangolin2 ENDPOINT=https://cors.kahub.in/http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
