@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangoro/staking/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -23,10 +28,10 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * ------------------
          * # </weight>
          *
-         * @param _controller: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _value: Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
-         * @param _payee: Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
-         * @param _promise_month: U8
+         * @param {unknown} _controller Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _value Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
+         * @param {unknown} _payee Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
+         * @param {unknown} _promise_month U8
          */
         bond: async (signer: ethers.Signer, _controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bond', false, {
@@ -37,10 +42,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: bond}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         bondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bond', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBondCall: (_controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'bond', {
                 controller: _controller,
@@ -50,6 +65,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildBondCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'bond', argsBytes)
         },
@@ -71,8 +92,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _max_additional: Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
-         * @param _promise_month: U8
+         * @param {unknown} _max_additional Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
+         * @param {unknown} _promise_month U8
          */
         bondExtra: async (signer: ethers.Signer, _max_additional: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bondExtra', false, {
@@ -81,10 +102,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: bondExtra}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         bondExtraH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bondExtra', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBondExtraCall: (_max_additional: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'bondExtra', {
                 max_additional: _max_additional,
@@ -92,6 +123,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildBondExtraCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBondExtraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'bondExtra', argsBytes)
         },
@@ -113,8 +150,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: [Origin Account], Ledger
          * # </weight>
          *
-         * @param _value: U128
-         * @param _promise_month: U8
+         * @param {unknown} _value U128
+         * @param {unknown} _promise_month U8
          */
         depositExtra: async (signer: ethers.Signer, _value: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'depositExtra', false, {
@@ -123,10 +160,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: depositExtra}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         depositExtraH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'depositExtra', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDepositExtraCall: (_value: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'depositExtra', {
                 value: _value,
@@ -134,6 +181,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildDepositExtraCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDepositExtraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'depositExtra', argsBytes)
         },
@@ -160,7 +213,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * should be called. If there are still pledged Ring or Kton and user want to bond more
          * values, the `bond_extra` method should be called.
          *
-         * @param _value: Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
+         * @param {unknown} _value Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
          */
         unbond: async (signer: ethers.Signer, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unbond', false, {
@@ -168,16 +221,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: unbond}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unbondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unbond', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnbondCall: (_value: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'unbond', {
                 value: _value,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnbondCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnbondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'unbond', argsBytes)
         },
@@ -199,7 +268,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * NOTE: Weight annotation is the kill scenario, we refund otherwise.
          * # </weight>
          *
-         * @param _num_slashing_spans: U32
+         * @param {unknown} _num_slashing_spans U32
          */
         withdrawUnbonded: async (signer: ethers.Signer, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'withdrawUnbonded', false, {
@@ -207,16 +276,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: withdrawUnbonded}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         withdrawUnbondedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'withdrawUnbonded', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildWithdrawUnbondedCall: (_num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'withdrawUnbonded', {
                 num_slashing_spans: _num_slashing_spans,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildWithdrawUnbondedCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildWithdrawUnbondedCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'withdrawUnbonded', argsBytes)
         },
@@ -242,15 +327,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: claimMatureDeposits}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         claimMatureDepositsH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'claimMatureDeposits', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClaimMatureDepositsCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'claimMatureDeposits', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildClaimMatureDepositsCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClaimMatureDepositsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'claimMatureDeposits', argsBytes)
         },
@@ -274,7 +375,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: [Origin Account], Locks, Ledger
          * # </weight>
          *
-         * @param _expire_time: U64
+         * @param {unknown} _expire_time U64
          */
         tryClaimDepositsWithPunish: async (signer: ethers.Signer, _expire_time: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', false, {
@@ -282,16 +383,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: tryClaimDepositsWithPunish}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         tryClaimDepositsWithPunishH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTryClaimDepositsWithPunishCall: (_expire_time: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'tryClaimDepositsWithPunish', {
                 expire_time: _expire_time,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTryClaimDepositsWithPunishCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTryClaimDepositsWithPunishCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'tryClaimDepositsWithPunish', argsBytes)
         },
@@ -303,7 +420,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin for this call must be _Signed_ by the controller, not the stash.
          *
-         * @param _prefs: {commission: Compact<U32>, blocked: Bool}
+         * @param {unknown} _prefs {commission: Compact<U32>, blocked: Bool}
          */
         validate: async (signer: ethers.Signer, _prefs: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'validate', false, {
@@ -311,16 +428,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: validate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         validateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'validate', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildValidateCall: (_prefs: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'validate', {
                 prefs: _prefs,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildValidateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildValidateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'validate', argsBytes)
         },
@@ -337,7 +470,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * which is capped at CompactAssignments::LIMIT (MAX_NOMINATIONS).
          * - Both the reads and writes follow a similar pattern.
          *
-         * @param _targets: Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
+         * @param {unknown} _targets Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
          */
         nominate: async (signer: ethers.Signer, _targets: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', false, {
@@ -345,16 +478,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: nominate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         nominateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNominateCall: (_targets: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'nominate', {
                 targets: _targets,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNominateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNominateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'nominate', argsBytes)
         },
@@ -378,15 +527,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: chill}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         chillH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chill', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChillCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'chill', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildChillCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChillCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'chill', argsBytes)
         },
@@ -409,7 +574,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Write: Payee
          * # </weight>
          *
-         * @param _payee: Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
+         * @param {unknown} _payee Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
          */
         setPayee: async (signer: ethers.Signer, _payee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', false, {
@@ -417,16 +582,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setPayee}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setPayeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetPayeeCall: (_payee: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setPayee', {
                 payee: _payee,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetPayeeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetPayeeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setPayee', argsBytes)
         },
@@ -449,7 +630,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: Bonded, Ledger New Controller, Ledger Old Controller
          * # </weight>
          *
-         * @param _controller: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _controller Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         setController: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setController', false, {
@@ -457,16 +638,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setController}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setControllerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setController', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetControllerCall: (_controller: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setController', {
                 controller: _controller,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetControllerCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetControllerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setController', argsBytes)
         },
@@ -481,7 +678,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * Write: Validator Count
          * # </weight>
          *
-         * @param _new: Compact<U32>
+         * @param {unknown} _new Compact<U32>
          */
         setValidatorCount: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setValidatorCount', false, {
@@ -489,16 +686,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setValidatorCount}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setValidatorCount', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetValidatorCountCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setValidatorCount', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetValidatorCountCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setValidatorCount', argsBytes)
         },
@@ -512,7 +725,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * Same as [`Self::set_validator_count`].
          * # </weight>
          *
-         * @param _additional: Compact<U32>
+         * @param {unknown} _additional Compact<U32>
          */
         increaseValidatorCount: async (signer: ethers.Signer, _additional: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'increaseValidatorCount', false, {
@@ -520,16 +733,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: increaseValidatorCount}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         increaseValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'increaseValidatorCount', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildIncreaseValidatorCountCall: (_additional: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'increaseValidatorCount', {
                 additional: _additional,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildIncreaseValidatorCountCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildIncreaseValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'increaseValidatorCount', argsBytes)
         },
@@ -543,7 +772,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * Same as [`Self::set_validator_count`].
          * # </weight>
          *
-         * @param _factor: U8
+         * @param {unknown} _factor U8
          */
         scaleValidatorCount: async (signer: ethers.Signer, _factor: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'scaleValidatorCount', false, {
@@ -551,16 +780,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: scaleValidatorCount}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         scaleValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'scaleValidatorCount', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildScaleValidatorCountCall: (_factor: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'scaleValidatorCount', {
                 factor: _factor,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildScaleValidatorCountCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildScaleValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'scaleValidatorCount', argsBytes)
         },
@@ -588,15 +833,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceNoEras}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceNoErasH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNoEras', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNoErasCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNoEras', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceNoErasCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNoErasCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNoEras', argsBytes)
         },
@@ -625,15 +886,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceNewEra}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceNewEraH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEra', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNewEraCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNewEra', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceNewEraCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNewEraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNewEra', argsBytes)
         },
@@ -648,7 +925,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: Invulnerables
          * # </weight>
          *
-         * @param _invulnerables: Vec<[U8; 32]>
+         * @param {unknown} _invulnerables Vec<[U8; 32]>
          */
         setInvulnerables: async (signer: ethers.Signer, _invulnerables: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setInvulnerables', false, {
@@ -656,16 +933,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setInvulnerables}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setInvulnerablesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setInvulnerables', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetInvulnerablesCall: (_invulnerables: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setInvulnerables', {
                 invulnerables: _invulnerables,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetInvulnerablesCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetInvulnerablesCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setInvulnerables', argsBytes)
         },
@@ -682,8 +975,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * Account, Locks Writes Each: SpanSlash * S
          * # </weight>
          *
-         * @param _stash: [U8; 32]
-         * @param _num_slashing_spans: U32
+         * @param {unknown} _stash [U8; 32]
+         * @param {unknown} _num_slashing_spans U32
          */
         forceUnstake: async (signer: ethers.Signer, _stash: unknown, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceUnstake', false, {
@@ -692,10 +985,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceUnstake}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceUnstakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceUnstake', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnstakeCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'forceUnstake', {
                 stash: _stash,
@@ -703,6 +1006,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceUnstakeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnstakeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceUnstake', argsBytes)
         },
@@ -729,15 +1038,31 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceNewEraAlways}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceNewEraAlwaysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEraAlways', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNewEraAlwaysCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNewEraAlways', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceNewEraAlwaysCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceNewEraAlwaysCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNewEraAlways', argsBytes)
         },
@@ -757,8 +1082,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: Unapplied Slashes
          * # </weight>
          *
-         * @param _era: U32
-         * @param _slash_indices: Vec<U32>
+         * @param {unknown} _era U32
+         * @param {unknown} _slash_indices Vec<U32>
          */
         cancelDeferredSlash: async (signer: ethers.Signer, _era: unknown, _slash_indices: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'cancelDeferredSlash', false, {
@@ -767,10 +1092,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelDeferredSlash}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelDeferredSlashH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'cancelDeferredSlash', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelDeferredSlashCall: (_era: unknown, _slash_indices: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'cancelDeferredSlash', {
                 era: _era,
@@ -778,6 +1113,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelDeferredSlashCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelDeferredSlashCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'cancelDeferredSlash', argsBytes)
         },
@@ -805,8 +1146,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *   Paying even a dead controller is cheaper weight-wise. We don't do any refunds here.
          * # </weight>
          *
-         * @param _validator_stash: [U8; 32]
-         * @param _era: U32
+         * @param {unknown} _validator_stash [U8; 32]
+         * @param {unknown} _era U32
          */
         payoutStakers: async (signer: ethers.Signer, _validator_stash: unknown, _era: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'payoutStakers', false, {
@@ -815,10 +1156,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: payoutStakers}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         payoutStakersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'payoutStakers', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPayoutStakersCall: (_validator_stash: unknown, _era: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'payoutStakers', {
                 validator_stash: _validator_stash,
@@ -826,6 +1177,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildPayoutStakersCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPayoutStakersCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'payoutStakers', argsBytes)
         },
@@ -841,8 +1198,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Storage changes: Can't increase storage, only decrease it.
          * # </weight>
          *
-         * @param _plan_to_rebond_ring: Compact<U128>
-         * @param _plan_to_rebond_kton: Compact<U128>
+         * @param {unknown} _plan_to_rebond_ring Compact<U128>
+         * @param {unknown} _plan_to_rebond_kton Compact<U128>
          */
         rebond: async (signer: ethers.Signer, _plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'rebond', false, {
@@ -851,10 +1208,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: rebond}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         rebondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'rebond', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRebondCall: (_plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'rebond', {
                 plan_to_rebond_ring: _plan_to_rebond_ring,
@@ -862,6 +1229,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRebondCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRebondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'rebond', argsBytes)
         },
@@ -890,8 +1263,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *       ErasStartSessionIndex
          * # </weight>
          *
-         * @param _new_history_depth: Compact<U32>
-         * @param _era_items_deleted: Compact<U32>
+         * @param {unknown} _new_history_depth Compact<U32>
+         * @param {unknown} _era_items_deleted Compact<U32>
          */
         setHistoryDepth: async (signer: ethers.Signer, _new_history_depth: unknown, _era_items_deleted: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setHistoryDepth', false, {
@@ -900,10 +1273,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setHistoryDepth}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setHistoryDepthH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setHistoryDepth', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetHistoryDepthCall: (_new_history_depth: unknown, _era_items_deleted: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setHistoryDepth', {
                 new_history_depth: _new_history_depth,
@@ -911,6 +1294,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetHistoryDepthCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetHistoryDepthCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setHistoryDepth', argsBytes)
         },
@@ -929,8 +1318,8 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Refunds the transaction fees upon successful execution.
          *
-         * @param _stash: [U8; 32]
-         * @param _num_slashing_spans: U32
+         * @param {unknown} _stash [U8; 32]
+         * @param {unknown} _num_slashing_spans U32
          */
         reapStash: async (signer: ethers.Signer, _stash: unknown, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'reapStash', false, {
@@ -939,10 +1328,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: reapStash}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         reapStashH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'reapStash', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReapStashCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'reapStash', {
                 stash: _stash,
@@ -950,6 +1349,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildReapStashCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReapStashCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'reapStash', argsBytes)
         },
@@ -967,7 +1372,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * Note: Making this call only makes sense if you first set the validator preferences to
          * block any further nominations.
          *
-         * @param _who: Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
+         * @param {unknown} _who Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
          */
         kick: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', false, {
@@ -975,16 +1380,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: kick}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         kickH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKickCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'kick', {
                 who: _who,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildKickCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKickCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'kick', argsBytes)
         },
@@ -1008,12 +1429,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * NOTE: Existing nominators and validators will not be affected by this update.
          * to kick people under the new limits, `chill_other` should be called.
          *
-         * @param _min_nominator_bond: U128
-         * @param _min_validator_bond: U128
-         * @param _max_nominator_count: Enum<{0/None: , 1/Some: U32}>
-         * @param _max_validator_count: Enum<{0/None: , 1/Some: U32}>
-         * @param _chill_threshold: Enum<{0/None: , 1/Some: U8}>
-         * @param _min_commission: U32
+         * @param {unknown} _min_nominator_bond U128
+         * @param {unknown} _min_validator_bond U128
+         * @param {unknown} _max_nominator_count Enum<{0/None: , 1/Some: U32}>
+         * @param {unknown} _max_validator_count Enum<{0/None: , 1/Some: U32}>
+         * @param {unknown} _chill_threshold Enum<{0/None: , 1/Some: U8}>
+         * @param {unknown} _min_commission U32
          */
         setStakingConfigs: async (signer: ethers.Signer, _min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setStakingConfigs', false, {
@@ -1026,10 +1447,20 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setStakingConfigs}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setStakingConfigsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setStakingConfigs', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetStakingConfigsCall: (_min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setStakingConfigs', {
                 min_nominator_bond: _min_nominator_bond,
@@ -1041,6 +1472,12 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetStakingConfigsCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetStakingConfigsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setStakingConfigs', argsBytes)
         },
@@ -1068,7 +1505,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * This can be helpful if bond requirements are updated, and we need to remove old users
          * who do not satisfy these requirements.
          *
-         * @param _controller: [U8; 32]
+         * @param {unknown} _controller [U8; 32]
          */
         chillOther: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chillOther', false, {
@@ -1076,16 +1513,32 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: chillOther}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         chillOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chillOther', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChillOtherCall: (_controller: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'chillOther', {
                 controller: _controller,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildChillOtherCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChillOtherCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'chillOther', argsBytes)
         },

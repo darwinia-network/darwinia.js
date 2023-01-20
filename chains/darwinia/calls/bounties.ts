@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module darwinia/bounties/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -18,8 +23,8 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - `value`: The total payment amount of this bounty, curator fee included.
          * - `description`: The description of this bounty.
          *
-         * @param _value: Compact<U128>
-         * @param _description: Vec<U8>
+         * @param {unknown} _value Compact<U128>
+         * @param {unknown} _description Vec<U8>
          */
         proposeBounty: async (signer: ethers.Signer, _value: unknown, _description: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeBounty', false, {
@@ -28,10 +33,20 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: proposeBounty}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         proposeBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeBounty', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeBountyCall: (_value: unknown, _description: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'proposeBounty', {
                 value: _value,
@@ -39,6 +54,12 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildProposeBountyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeBountyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'proposeBounty', argsBytes)
         },
@@ -53,7 +74,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
+         * @param {unknown} _bounty_id Compact<U32>
          */
         approveBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'approveBounty', false, {
@@ -61,16 +82,32 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: approveBounty}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         approveBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'approveBounty', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildApproveBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'approveBounty', {
                 bounty_id: _bounty_id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildApproveBountyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildApproveBountyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'approveBounty', argsBytes)
         },
@@ -84,9 +121,9 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
-         * @param _curator: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _fee: Compact<U128>
+         * @param {unknown} _bounty_id Compact<U32>
+         * @param {unknown} _curator Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _fee Compact<U128>
          */
         proposeCurator: async (signer: ethers.Signer, _bounty_id: unknown, _curator: unknown, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeCurator', false, {
@@ -96,10 +133,20 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: proposeCurator}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         proposeCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'proposeCurator', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeCuratorCall: (_bounty_id: unknown, _curator: unknown, _fee: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'proposeCurator', {
                 bounty_id: _bounty_id,
@@ -108,6 +155,12 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildProposeCuratorCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeCuratorCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'proposeCurator', argsBytes)
         },
@@ -132,7 +185,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
+         * @param {unknown} _bounty_id Compact<U32>
          */
         unassignCurator: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'unassignCurator', false, {
@@ -140,16 +193,32 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: unassignCurator}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unassignCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'unassignCurator', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnassignCuratorCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'unassignCurator', {
                 bounty_id: _bounty_id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnassignCuratorCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnassignCuratorCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'unassignCurator', argsBytes)
         },
@@ -164,7 +233,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
+         * @param {unknown} _bounty_id Compact<U32>
          */
         acceptCurator: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'acceptCurator', false, {
@@ -172,16 +241,32 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: acceptCurator}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         acceptCuratorH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'acceptCurator', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAcceptCuratorCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'acceptCurator', {
                 bounty_id: _bounty_id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildAcceptCuratorCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAcceptCuratorCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'acceptCurator', argsBytes)
         },
@@ -199,8 +284,8 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
-         * @param _beneficiary: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _bounty_id Compact<U32>
+         * @param {unknown} _beneficiary Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         awardBounty: async (signer: ethers.Signer, _bounty_id: unknown, _beneficiary: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'awardBounty', false, {
@@ -209,10 +294,20 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: awardBounty}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         awardBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'awardBounty', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAwardBountyCall: (_bounty_id: unknown, _beneficiary: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'awardBounty', {
                 bounty_id: _bounty_id,
@@ -220,6 +315,12 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildAwardBountyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAwardBountyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'awardBounty', argsBytes)
         },
@@ -235,7 +336,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
+         * @param {unknown} _bounty_id Compact<U32>
          */
         claimBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'claimBounty', false, {
@@ -243,16 +344,32 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: claimBounty}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         claimBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'claimBounty', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClaimBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'claimBounty', {
                 bounty_id: _bounty_id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildClaimBountyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClaimBountyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'claimBounty', argsBytes)
         },
@@ -269,7 +386,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
+         * @param {unknown} _bounty_id Compact<U32>
          */
         closeBounty: async (signer: ethers.Signer, _bounty_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'closeBounty', false, {
@@ -277,16 +394,32 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: closeBounty}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         closeBountyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'closeBounty', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCloseBountyCall: (_bounty_id: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'closeBounty', {
                 bounty_id: _bounty_id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCloseBountyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCloseBountyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'closeBounty', argsBytes)
         },
@@ -303,8 +436,8 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1).
          * # </weight>
          *
-         * @param _bounty_id: Compact<U32>
-         * @param _remark: Vec<U8>
+         * @param {unknown} _bounty_id Compact<U32>
+         * @param {unknown} _remark Vec<U8>
          */
         extendBountyExpiry: async (signer: ethers.Signer, _bounty_id: unknown, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'extendBountyExpiry', false, {
@@ -313,10 +446,20 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: extendBountyExpiry}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         extendBountyExpiryH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Bounties', 'extendBountyExpiry', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExtendBountyExpiryCall: (_bounty_id: unknown, _remark: unknown) => {
             return buildRuntimeCall(metadata, 'Bounties', 'extendBountyExpiry', {
                 bounty_id: _bounty_id,
@@ -324,6 +467,12 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildExtendBountyExpiryCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExtendBountyExpiryCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Bounties', 'extendBountyExpiry', argsBytes)
         },

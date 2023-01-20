@@ -244,7 +244,7 @@ async function generateCalls(chainName: string, metadata: Metadata) {
             palletCalls.push([callName, callParams, call.docs.map(d => d.toString())])
         });
 
-        const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls, capitalize });
+        const result = ejs.render(palletCallsTemplate, { prefix, moduleName, palletCalls, capitalize, chainName });
         fs.writeFileSync(`${callDir}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);
@@ -288,7 +288,7 @@ function generateStorages(chainName: string, metadata: Metadata) {
         const outputTypes = buildOutputType(entries, metadata);
 
         // Generate file for a pallet
-        const result = ejs.render(template, { prefix, moduleName, entries, entryInputTypes, outputTypes });
+        const result = ejs.render(template, { prefix, moduleName, entries, entryInputTypes, outputTypes, chainName });
         fs.writeFileSync(`${storagesDir}/${moduleName}.ts`, result);
 
         moduleNames.push(moduleName);

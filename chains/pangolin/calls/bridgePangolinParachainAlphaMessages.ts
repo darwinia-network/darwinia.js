@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin/bridgePangolinParachainAlphaMessages/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -9,7 +14,7 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
          * 
          * May only be called either by root, or by `PalletOwner`.
          *
-         * @param _new_owner: Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 32]}>
          */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', false, {
@@ -17,16 +22,32 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOwner', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOwner', {
                 new_owner: _new_owner,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetOwnerCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOwnerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOwner', argsBytes)
         },
@@ -36,7 +57,7 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
          * 
          * May only be called either by root, or by `PalletOwner`.
          *
-         * @param _operating_mode: Enum<{0/Normal: , 1/RejectingOutboundMessages: , 2/Halted: }>
+         * @param {unknown} _operating_mode Enum<{0/Basic: Enum<{0/Normal: , 1/Halted: }>, 1/RejectingOutboundMessages: }>
          */
         setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', false, {
@@ -44,16 +65,32 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOperatingModeCall: (_operating_mode: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', {
                 operating_mode: _operating_mode,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetOperatingModeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOperatingModeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'setOperatingMode', argsBytes)
         },
@@ -66,7 +103,7 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
          * The weight is: single read for permissions check + 2 writes for parameter value and
          * event.
          *
-         * @param _parameter: Enum<{0/PangolinParachainAlphaToPangolinConversionRate: U128}>
+         * @param {unknown} _parameter Enum<{0/PangolinParachainAlphaToPangolinConversionRate: U128}>
          */
         updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', false, {
@@ -74,16 +111,32 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: updatePalletParameter}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updatePalletParameterH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdatePalletParameterCall: (_parameter: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', {
                 parameter: _parameter,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdatePalletParameterCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdatePalletParameterCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'updatePalletParameter', argsBytes)
         },
@@ -91,9 +144,9 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         /**
          * Send message over lane.
          *
-         * @param _lane_id: [U8; 4]
-         * @param _payload: {spec_version: U32, weight: U64, origin: Enum<{0/SourceRoot: , 1/TargetAccount: ([U8; 32], Enum<{0/Ed25519: [U8; 32], 1/Sr25519: [U8; 32], 2/Ecdsa: [U8; 33]}>, Enum<{0/Ed25519: [U8; 64], 1/Sr25519: [U8; 64], 2/Ecdsa: [U8; 65]}>), 2/SourceAccount: [U8; 32]}>, dispatch_fee_payment: Enum<{0/AtSourceChain: , 1/AtTargetChain: }>, call: Vec<U8>}
-         * @param _delivery_and_dispatch_fee: U128
+         * @param {unknown} _lane_id [U8; 4]
+         * @param {unknown} _payload {spec_version: U32, weight: U64, origin: Enum<{0/SourceRoot: , 1/TargetAccount: ([U8; 32], Enum<{0/Ed25519: [U8; 32], 1/Sr25519: [U8; 32], 2/Ecdsa: [U8; 33]}>, Enum<{0/Ed25519: [U8; 64], 1/Sr25519: [U8; 64], 2/Ecdsa: [U8; 65]}>), 2/SourceAccount: [U8; 32]}>, dispatch_fee_payment: Enum<{0/AtSourceChain: , 1/AtTargetChain: }>, call: Vec<U8>}
+         * @param {unknown} _delivery_and_dispatch_fee U128
          */
         sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'sendMessage', false, {
@@ -103,10 +156,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: sendMessage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         sendMessageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'sendMessage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSendMessageCall: (_lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'sendMessage', {
                 lane_id: _lane_id,
@@ -115,6 +178,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSendMessageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSendMessageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'sendMessage', argsBytes)
         },
@@ -122,9 +191,9 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         /**
          * Pay additional fee for the message.
          *
-         * @param _lane_id: [U8; 4]
-         * @param _nonce: U64
-         * @param _additional_fee: U128
+         * @param {unknown} _lane_id [U8; 4]
+         * @param {unknown} _nonce U64
+         * @param {unknown} _additional_fee U128
          */
         increaseMessageFee: async (signer: ethers.Signer, _lane_id: unknown, _nonce: unknown, _additional_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', false, {
@@ -134,10 +203,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: increaseMessageFee}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         increaseMessageFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildIncreaseMessageFeeCall: (_lane_id: unknown, _nonce: unknown, _additional_fee: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', {
                 lane_id: _lane_id,
@@ -146,6 +225,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildIncreaseMessageFeeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildIncreaseMessageFeeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'increaseMessageFee', argsBytes)
         },
@@ -157,10 +242,10 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
          * state update. Because of that, the submitter (relayer) has no benefit of not including
          * this data in the transaction, so reward confirmations lags should be minimal.
          *
-         * @param _relayer_id_at_bridged_chain: [U8; 32]
-         * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4], nonces_start: U64, nonces_end: U64}
-         * @param _messages_count: U32
-         * @param _dispatch_weight: U64
+         * @param {unknown} _relayer_id_at_bridged_chain [U8; 32]
+         * @param {unknown} _proof {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4], nonces_start: U64, nonces_end: U64}
+         * @param {unknown} _messages_count U32
+         * @param {unknown} _dispatch_weight U64
          */
         receiveMessagesProof: async (signer: ethers.Signer, _relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', false, {
@@ -171,10 +256,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: receiveMessagesProof}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         receiveMessagesProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReceiveMessagesProofCall: (_relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', {
                 relayer_id_at_bridged_chain: _relayer_id_at_bridged_chain,
@@ -184,6 +279,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildReceiveMessagesProofCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReceiveMessagesProofCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesProof', argsBytes)
         },
@@ -191,8 +292,8 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
         /**
          * Receive messages delivery proof from bridged chain.
          *
-         * @param _proof: {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4]}
-         * @param _relayers_state: {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64}
+         * @param {unknown} _proof {bridged_header_hash: [U8; 32], storage_proof: Vec<Vec<U8>>, lane: [U8; 4]}
+         * @param {unknown} _relayers_state {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64, last_delivered_nonce: U64}
          */
         receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', false, {
@@ -201,10 +302,20 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
 	    });
         },
 
+        /**
+	 * Similar to {@link: receiveMessagesDeliveryProof}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         receiveMessagesDeliveryProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReceiveMessagesDeliveryProofCall: (_proof: unknown, _relayers_state: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', {
                 proof: _proof,
@@ -212,6 +323,12 @@ export const getBridgePangolinParachainAlphaMessages = (dispatch: Dispatch, meta
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildReceiveMessagesDeliveryProofCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReceiveMessagesDeliveryProofCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangolinParachainAlphaMessages', 'receiveMessagesDeliveryProof', argsBytes)
         },

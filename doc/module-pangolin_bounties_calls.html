@@ -1,0 +1,4715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: pangolin/bounties/calls</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: pangolin/bounties/calls</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">This is the doc comment for pallet evm calls</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~acceptCurator"><span class="type-signature">(inner) </span>acceptCurator<span class="signature">(_bounty_id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Accept the curator role for a bounty.
+A deposit will be reserved from curator and refund upon successful payout.
+
+May only be called from the curator.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line222">line 222</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~acceptCuratorH"><span class="type-signature">(inner) </span>acceptCuratorH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: acceptCurator}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line232">line 232</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~approveBounty"><span class="type-signature">(inner) </span>approveBounty<span class="signature">(_bounty_id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Approve a bounty proposal. At a later time, the bounty will be funded and become active
+and the original deposit will be returned.
+
+May only be called from `T::ApproveOrigin`.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line75">line 75</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~approveBountyH"><span class="type-signature">(inner) </span>approveBountyH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: approveBounty}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line85">line 85</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~awardBounty"><span class="type-signature">(inner) </span>awardBounty<span class="signature">(_bounty_id, _beneficiary)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Award bounty to a beneficiary account. The beneficiary will be able to claim the funds
+after a delay.
+
+The dispatch origin for this call must be the curator of this bounty.
+
+- `bounty_id`: Bounty ID to award.
+- `beneficiary`: The beneficiary account whom will receive the payout.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_beneficiary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line270">line 270</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~awardBountyH"><span class="type-signature">(inner) </span>awardBountyH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: awardBounty}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line281">line 281</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildAcceptCuratorCall"><span class="type-signature">(inner) </span>buildAcceptCuratorCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line240">line 240</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildAcceptCuratorCallH"><span class="type-signature">(inner) </span>buildAcceptCuratorCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildAcceptCuratorCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line251">line 251</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildApproveBountyCall"><span class="type-signature">(inner) </span>buildApproveBountyCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line93">line 93</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildApproveBountyCallH"><span class="type-signature">(inner) </span>buildApproveBountyCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildApproveBountyCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line104">line 104</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildAwardBountyCall"><span class="type-signature">(inner) </span>buildAwardBountyCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line289">line 289</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildAwardBountyCallH"><span class="type-signature">(inner) </span>buildAwardBountyCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildAwardBountyCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line301">line 301</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildClaimBountyCall"><span class="type-signature">(inner) </span>buildClaimBountyCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line335">line 335</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildClaimBountyCallH"><span class="type-signature">(inner) </span>buildClaimBountyCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildClaimBountyCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line346">line 346</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildCloseBountyCall"><span class="type-signature">(inner) </span>buildCloseBountyCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line381">line 381</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildCloseBountyCallH"><span class="type-signature">(inner) </span>buildCloseBountyCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildCloseBountyCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line392">line 392</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildExtendBountyExpiryCall"><span class="type-signature">(inner) </span>buildExtendBountyExpiryCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line429">line 429</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildExtendBountyExpiryCallH"><span class="type-signature">(inner) </span>buildExtendBountyExpiryCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildExtendBountyExpiryCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line441">line 441</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildProposeBountyCall"><span class="type-signature">(inner) </span>buildProposeBountyCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildProposeBountyCallH"><span class="type-signature">(inner) </span>buildProposeBountyCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildProposeBountyCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildProposeCuratorCall"><span class="type-signature">(inner) </span>buildProposeCuratorCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line140">line 140</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildProposeCuratorCallH"><span class="type-signature">(inner) </span>buildProposeCuratorCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildProposeCuratorCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line153">line 153</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildUnassignCuratorCall"><span class="type-signature">(inner) </span>buildUnassignCuratorCall<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line196">line 196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~buildUnassignCuratorCallH"><span class="type-signature">(inner) </span>buildUnassignCuratorCallH<span class="signature">()</span><span class="type-signature"> &rarr; {CallAsParam}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+Similar to buildUnassignCuratorCall, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line207">line 207</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">CallAsParam</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~claimBounty"><span class="type-signature">(inner) </span>claimBounty<span class="signature">(_bounty_id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Claim the payout from an awarded bounty after payout delay.
+
+The dispatch origin for this call must be the beneficiary of this bounty.
+
+- `bounty_id`: Bounty ID to claim.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line317">line 317</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~claimBountyH"><span class="type-signature">(inner) </span>claimBountyH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: claimBounty}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line327">line 327</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~closeBounty"><span class="type-signature">(inner) </span>closeBounty<span class="signature">(_bounty_id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Cancel a proposed or active bounty. All the funds will be sent to treasury and
+the curator deposit will be unreserved if possible.
+
+Only `T::RejectOrigin` is able to cancel a bounty.
+
+- `bounty_id`: Bounty ID to cancel.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line363">line 363</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~closeBountyH"><span class="type-signature">(inner) </span>closeBountyH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: closeBounty}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line373">line 373</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~extendBountyExpiry"><span class="type-signature">(inner) </span>extendBountyExpiry<span class="signature">(_bounty_id, _remark)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extend the expiry time of an active bounty.
+
+The dispatch origin for this call must be the curator of this bounty.
+
+- `bounty_id`: Bounty ID to extend.
+- `remark`: additional information.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_remark</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Vec<U8></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line410">line 410</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~extendBountyExpiryH"><span class="type-signature">(inner) </span>extendBountyExpiryH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: extendBountyExpiry}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line421">line 421</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~proposeBounty"><span class="type-signature">(inner) </span>proposeBounty<span class="signature">(_value, _description)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Propose a new bounty.
+
+The dispatch origin for this call must be _Signed_.
+
+Payment: `TipReportDepositBase` will be reserved from the origin account, as well as
+`DataDepositPerByte` for each byte in `reason`. It will be unreserved upon approval,
+or slashed when rejected.
+
+- `curator`: The curator account whom will manage this bounty.
+- `fee`: The curator fee.
+- `value`: The total payment amount of this bounty, curator fee included.
+- `description`: The description of this bounty.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U128></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_description</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Vec<U8></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~proposeBountyH"><span class="type-signature">(inner) </span>proposeBountyH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: proposeBounty}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~proposeCurator"><span class="type-signature">(inner) </span>proposeCurator<span class="signature">(_bounty_id, _curator, _fee)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Assign a curator to a funded bounty.
+
+May only be called from `T::ApproveOrigin`.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_curator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>_fee</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U128></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line120">line 120</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~proposeCuratorH"><span class="type-signature">(inner) </span>proposeCuratorH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: proposeCurator}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line132">line 132</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~unassignCurator"><span class="type-signature">(inner) </span>unassignCurator<span class="signature">(_bounty_id)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Unassign curator from a bounty.
+
+This function can only be called by the `RejectOrigin` a signed origin.
+
+If this function is called by the `RejectOrigin`, we assume that the curator is
+malicious or inactive. As a result, we will slash the curator when possible.
+
+If the origin is the curator, we take this as a sign they are unable to do their job and
+they willingly give up. We could slash them, but for now we allow them to recover their
+deposit and exit without issue. (We may want to change this if it is abused.)
+
+Finally, the origin can be anyone if and only if the curator is "inactive". This allows
+anyone in the community to call out that a curator is not doing their due diligence, and
+we should pick a new curator. In this case the curator should also be slashed.
+
+# <weight>
+- O(1).
+# </weight>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>_bounty_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">unknown</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Compact<U32></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~unassignCuratorH"><span class="type-signature">(inner) </span>unassignCuratorH<span class="signature">(argsBytes)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Similar to {@link: unassignCurator}, but with scale encoded args.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>argsBytes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">BytesLike</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the args bytes</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="chains_pangolin_calls_bounties.js.html">chains/pangolin/calls/bounties.js</a>, <a href="chains_pangolin_calls_bounties.js.html#line188">line 188</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-crab_authorship_calls.html">crab/authorship/calls</a></li><li><a href="module-crab_authorship_storages.html">crab/authorship/storages</a></li><li><a href="module-crab_babe_calls.html">crab/babe/calls</a></li><li><a href="module-crab_babe_storages.html">crab/babe/storages</a></li><li><a href="module-crab_balances_calls.html">crab/balances/calls</a></li><li><a href="module-crab_balances_storages.html">crab/balances/storages</a></li><li><a href="module-crab_baseFee_calls.html">crab/baseFee/calls</a></li><li><a href="module-crab_baseFee_storages.html">crab/baseFee/storages</a></li><li><a href="module-crab_bounties_calls.html">crab/bounties/calls</a></li><li><a href="module-crab_bounties_storages.html">crab/bounties/storages</a></li><li><a href="module-crab_bridgeCrabParachainMessages_calls.html">crab/bridgeCrabParachainMessages/calls</a></li><li><a href="module-crab_bridgeCrabParachainMessages_storages.html">crab/bridgeCrabParachainMessages/storages</a></li><li><a href="module-crab_bridgeDarwiniaGrandpa_calls.html">crab/bridgeDarwiniaGrandpa/calls</a></li><li><a href="module-crab_bridgeDarwiniaGrandpa_storages.html">crab/bridgeDarwiniaGrandpa/storages</a></li><li><a href="module-crab_bridgeDarwiniaMessages_calls.html">crab/bridgeDarwiniaMessages/calls</a></li><li><a href="module-crab_bridgeDarwiniaMessages_storages.html">crab/bridgeDarwiniaMessages/storages</a></li><li><a href="module-crab_bridgeKusamaGrandpa_calls.html">crab/bridgeKusamaGrandpa/calls</a></li><li><a href="module-crab_bridgeKusamaGrandpa_storages.html">crab/bridgeKusamaGrandpa/storages</a></li><li><a href="module-crab_bridgeKusamaParachain_calls.html">crab/bridgeKusamaParachain/calls</a></li><li><a href="module-crab_bridgeKusamaParachain_storages.html">crab/bridgeKusamaParachain/storages</a></li><li><a href="module-crab_council_calls.html">crab/council/calls</a></li><li><a href="module-crab_council_storages.html">crab/council/storages</a></li><li><a href="module-crab_crabParachainFeeMarket_calls.html">crab/crabParachainFeeMarket/calls</a></li><li><a href="module-crab_crabParachainFeeMarket_storages.html">crab/crabParachainFeeMarket/storages</a></li><li><a href="module-crab_darwiniaFeeMarket_calls.html">crab/darwiniaFeeMarket/calls</a></li><li><a href="module-crab_darwiniaFeeMarket_storages.html">crab/darwiniaFeeMarket/storages</a></li><li><a href="module-crab_darwiniaHeaderMmr_storages.html">crab/darwiniaHeaderMmr/storages</a></li><li><a href="module-crab_democracy_calls.html">crab/democracy/calls</a></li><li><a href="module-crab_democracy_storages.html">crab/democracy/storages</a></li><li><a href="module-crab_electionProviderMultiPhase_calls.html">crab/electionProviderMultiPhase/calls</a></li><li><a href="module-crab_electionProviderMultiPhase_storages.html">crab/electionProviderMultiPhase/storages</a></li><li><a href="module-crab_ethereum_calls.html">crab/ethereum/calls</a></li><li><a href="module-crab_ethereum_storages.html">crab/ethereum/storages</a></li><li><a href="module-crab_evm_calls.html">crab/evm/calls</a></li><li><a href="module-crab_evm_storages.html">crab/evm/storages</a></li><li><a href="module-crab_grandpa_calls.html">crab/grandpa/calls</a></li><li><a href="module-crab_grandpa_storages.html">crab/grandpa/storages</a></li><li><a href="module-crab_identity_calls.html">crab/identity/calls</a></li><li><a href="module-crab_identity_storages.html">crab/identity/storages</a></li><li><a href="module-crab_imOnline_calls.html">crab/imOnline/calls</a></li><li><a href="module-crab_imOnline_storages.html">crab/imOnline/storages</a></li><li><a href="module-crab_indices_calls.html">crab/indices/calls</a></li><li><a href="module-crab_indices_storages.html">crab/indices/storages</a></li><li><a href="module-crab_kton_calls.html">crab/kton/calls</a></li><li><a href="module-crab_kton_storages.html">crab/kton/storages</a></li><li><a href="module-crab_multisig_calls.html">crab/multisig/calls</a></li><li><a href="module-crab_multisig_storages.html">crab/multisig/storages</a></li><li><a href="module-crab_offences_storages.html">crab/offences/storages</a></li><li><a href="module-crab_phragmenElection_calls.html">crab/phragmenElection/calls</a></li><li><a href="module-crab_phragmenElection_storages.html">crab/phragmenElection/storages</a></li><li><a href="module-crab_preimage_calls.html">crab/preimage/calls</a></li><li><a href="module-crab_preimage_storages.html">crab/preimage/storages</a></li><li><a href="module-crab_proxy_calls.html">crab/proxy/calls</a></li><li><a href="module-crab_proxy_storages.html">crab/proxy/storages</a></li><li><a href="module-crab_recovery_calls.html">crab/recovery/calls</a></li><li><a href="module-crab_recovery_storages.html">crab/recovery/storages</a></li><li><a href="module-crab_scheduler_calls.html">crab/scheduler/calls</a></li><li><a href="module-crab_scheduler_storages.html">crab/scheduler/storages</a></li><li><a href="module-crab_session_calls.html">crab/session/calls</a></li><li><a href="module-crab_session_storages.html">crab/session/storages</a></li><li><a href="module-crab_society_calls.html">crab/society/calls</a></li><li><a href="module-crab_society_storages.html">crab/society/storages</a></li><li><a href="module-crab_staking_calls.html">crab/staking/calls</a></li><li><a href="module-crab_staking_storages.html">crab/staking/storages</a></li><li><a href="module-crab_system_calls.html">crab/system/calls</a></li><li><a href="module-crab_system_storages.html">crab/system/storages</a></li><li><a href="module-crab_technicalCommittee_calls.html">crab/technicalCommittee/calls</a></li><li><a href="module-crab_technicalCommittee_storages.html">crab/technicalCommittee/storages</a></li><li><a href="module-crab_technicalMembership_calls.html">crab/technicalMembership/calls</a></li><li><a href="module-crab_technicalMembership_storages.html">crab/technicalMembership/storages</a></li><li><a href="module-crab_timestamp_calls.html">crab/timestamp/calls</a></li><li><a href="module-crab_timestamp_storages.html">crab/timestamp/storages</a></li><li><a href="module-crab_tips_calls.html">crab/tips/calls</a></li><li><a href="module-crab_tips_storages.html">crab/tips/storages</a></li><li><a href="module-crab_transactionPayment_storages.html">crab/transactionPayment/storages</a></li><li><a href="module-crab_treasury_calls.html">crab/treasury/calls</a></li><li><a href="module-crab_treasury_storages.html">crab/treasury/storages</a></li><li><a href="module-crab_utility_calls.html">crab/utility/calls</a></li><li><a href="module-crab_vesting_calls.html">crab/vesting/calls</a></li><li><a href="module-crab_vesting_storages.html">crab/vesting/storages</a></li><li><a href="module-darwinia_authorship_calls.html">darwinia/authorship/calls</a></li><li><a href="module-darwinia_authorship_storages.html">darwinia/authorship/storages</a></li><li><a href="module-darwinia_babe_calls.html">darwinia/babe/calls</a></li><li><a href="module-darwinia_babe_storages.html">darwinia/babe/storages</a></li><li><a href="module-darwinia_balances_calls.html">darwinia/balances/calls</a></li><li><a href="module-darwinia_balances_storages.html">darwinia/balances/storages</a></li><li><a href="module-darwinia_baseFee_calls.html">darwinia/baseFee/calls</a></li><li><a href="module-darwinia_baseFee_storages.html">darwinia/baseFee/storages</a></li><li><a href="module-darwinia_bounties_calls.html">darwinia/bounties/calls</a></li><li><a href="module-darwinia_bounties_storages.html">darwinia/bounties/storages</a></li><li><a href="module-darwinia_bridgeCrabGrandpa_calls.html">darwinia/bridgeCrabGrandpa/calls</a></li><li><a href="module-darwinia_bridgeCrabGrandpa_storages.html">darwinia/bridgeCrabGrandpa/storages</a></li><li><a href="module-darwinia_bridgeCrabMessages_calls.html">darwinia/bridgeCrabMessages/calls</a></li><li><a href="module-darwinia_bridgeCrabMessages_storages.html">darwinia/bridgeCrabMessages/storages</a></li><li><a href="module-darwinia_bridgeDarwiniaParachainMessages_calls.html">darwinia/bridgeDarwiniaParachainMessages/calls</a></li><li><a href="module-darwinia_bridgeDarwiniaParachainMessages_storages.html">darwinia/bridgeDarwiniaParachainMessages/storages</a></li><li><a href="module-darwinia_bridgePolkadotGrandpa_calls.html">darwinia/bridgePolkadotGrandpa/calls</a></li><li><a href="module-darwinia_bridgePolkadotGrandpa_storages.html">darwinia/bridgePolkadotGrandpa/storages</a></li><li><a href="module-darwinia_bridgePolkadotParachain_calls.html">darwinia/bridgePolkadotParachain/calls</a></li><li><a href="module-darwinia_bridgePolkadotParachain_storages.html">darwinia/bridgePolkadotParachain/storages</a></li><li><a href="module-darwinia_council_calls.html">darwinia/council/calls</a></li><li><a href="module-darwinia_council_storages.html">darwinia/council/storages</a></li><li><a href="module-darwinia_darwiniaHeaderMmr_storages.html">darwinia/darwiniaHeaderMmr/storages</a></li><li><a href="module-darwinia_darwiniaParachainFeeMarket_calls.html">darwinia/darwiniaParachainFeeMarket/calls</a></li><li><a href="module-darwinia_darwiniaParachainFeeMarket_storages.html">darwinia/darwiniaParachainFeeMarket/storages</a></li><li><a href="module-darwinia_democracy_calls.html">darwinia/democracy/calls</a></li><li><a href="module-darwinia_democracy_storages.html">darwinia/democracy/storages</a></li><li><a href="module-darwinia_ecdsaAuthority_calls.html">darwinia/ecdsaAuthority/calls</a></li><li><a href="module-darwinia_ecdsaAuthority_storages.html">darwinia/ecdsaAuthority/storages</a></li><li><a href="module-darwinia_electionProviderMultiPhase_calls.html">darwinia/electionProviderMultiPhase/calls</a></li><li><a href="module-darwinia_electionProviderMultiPhase_storages.html">darwinia/electionProviderMultiPhase/storages</a></li><li><a href="module-darwinia_ethereum_calls.html">darwinia/ethereum/calls</a></li><li><a href="module-darwinia_ethereum_storages.html">darwinia/ethereum/storages</a></li><li><a href="module-darwinia_evm_calls.html">darwinia/evm/calls</a></li><li><a href="module-darwinia_evm_storages.html">darwinia/evm/storages</a></li><li><a href="module-darwinia_feeMarket_calls.html">darwinia/feeMarket/calls</a></li><li><a href="module-darwinia_feeMarket_storages.html">darwinia/feeMarket/storages</a></li><li><a href="module-darwinia_grandpa_calls.html">darwinia/grandpa/calls</a></li><li><a href="module-darwinia_grandpa_storages.html">darwinia/grandpa/storages</a></li><li><a href="module-darwinia_identity_calls.html">darwinia/identity/calls</a></li><li><a href="module-darwinia_identity_storages.html">darwinia/identity/storages</a></li><li><a href="module-darwinia_imOnline_calls.html">darwinia/imOnline/calls</a></li><li><a href="module-darwinia_imOnline_storages.html">darwinia/imOnline/storages</a></li><li><a href="module-darwinia_kton_calls.html">darwinia/kton/calls</a></li><li><a href="module-darwinia_kton_storages.html">darwinia/kton/storages</a></li><li><a href="module-darwinia_messageGadget_calls.html">darwinia/messageGadget/calls</a></li><li><a href="module-darwinia_messageGadget_storages.html">darwinia/messageGadget/storages</a></li><li><a href="module-darwinia_multisig_calls.html">darwinia/multisig/calls</a></li><li><a href="module-darwinia_multisig_storages.html">darwinia/multisig/storages</a></li><li><a href="module-darwinia_offences_storages.html">darwinia/offences/storages</a></li><li><a href="module-darwinia_phragmenElection_calls.html">darwinia/phragmenElection/calls</a></li><li><a href="module-darwinia_phragmenElection_storages.html">darwinia/phragmenElection/storages</a></li><li><a href="module-darwinia_preimage_calls.html">darwinia/preimage/calls</a></li><li><a href="module-darwinia_preimage_storages.html">darwinia/preimage/storages</a></li><li><a href="module-darwinia_proxy_calls.html">darwinia/proxy/calls</a></li><li><a href="module-darwinia_proxy_storages.html">darwinia/proxy/storages</a></li><li><a href="module-darwinia_recovery_calls.html">darwinia/recovery/calls</a></li><li><a href="module-darwinia_recovery_storages.html">darwinia/recovery/storages</a></li><li><a href="module-darwinia_scheduler_calls.html">darwinia/scheduler/calls</a></li><li><a href="module-darwinia_scheduler_storages.html">darwinia/scheduler/storages</a></li><li><a href="module-darwinia_session_calls.html">darwinia/session/calls</a></li><li><a href="module-darwinia_session_storages.html">darwinia/session/storages</a></li><li><a href="module-darwinia_society_calls.html">darwinia/society/calls</a></li><li><a href="module-darwinia_society_storages.html">darwinia/society/storages</a></li><li><a href="module-darwinia_staking_calls.html">darwinia/staking/calls</a></li><li><a href="module-darwinia_staking_storages.html">darwinia/staking/storages</a></li><li><a href="module-darwinia_sudo_calls.html">darwinia/sudo/calls</a></li><li><a href="module-darwinia_sudo_storages.html">darwinia/sudo/storages</a></li><li><a href="module-darwinia_system_calls.html">darwinia/system/calls</a></li><li><a href="module-darwinia_system_storages.html">darwinia/system/storages</a></li><li><a href="module-darwinia_technicalCommittee_calls.html">darwinia/technicalCommittee/calls</a></li><li><a href="module-darwinia_technicalCommittee_storages.html">darwinia/technicalCommittee/storages</a></li><li><a href="module-darwinia_technicalMembership_calls.html">darwinia/technicalMembership/calls</a></li><li><a href="module-darwinia_technicalMembership_storages.html">darwinia/technicalMembership/storages</a></li><li><a href="module-darwinia_timestamp_calls.html">darwinia/timestamp/calls</a></li><li><a href="module-darwinia_timestamp_storages.html">darwinia/timestamp/storages</a></li><li><a href="module-darwinia_tips_calls.html">darwinia/tips/calls</a></li><li><a href="module-darwinia_tips_storages.html">darwinia/tips/storages</a></li><li><a href="module-darwinia_transactionPayment_storages.html">darwinia/transactionPayment/storages</a></li><li><a href="module-darwinia_treasury_calls.html">darwinia/treasury/calls</a></li><li><a href="module-darwinia_treasury_storages.html">darwinia/treasury/storages</a></li><li><a href="module-darwinia_tronBacking_storages.html">darwinia/tronBacking/storages</a></li><li><a href="module-darwinia_utility_calls.html">darwinia/utility/calls</a></li><li><a href="module-darwinia_vesting_calls.html">darwinia/vesting/calls</a></li><li><a href="module-darwinia_vesting_storages.html">darwinia/vesting/storages</a></li><li><a href="module-pangolin_authorship_calls.html">pangolin/authorship/calls</a></li><li><a href="module-pangolin_authorship_storages.html">pangolin/authorship/storages</a></li><li><a href="module-pangolin_babe_calls.html">pangolin/babe/calls</a></li><li><a href="module-pangolin_babe_storages.html">pangolin/babe/storages</a></li><li><a href="module-pangolin_balances_calls.html">pangolin/balances/calls</a></li><li><a href="module-pangolin_balances_storages.html">pangolin/balances/storages</a></li><li><a href="module-pangolin_baseFee_calls.html">pangolin/baseFee/calls</a></li><li><a href="module-pangolin_baseFee_storages.html">pangolin/baseFee/storages</a></li><li><a href="module-pangolin_beefy_storages.html">pangolin/beefy/storages</a></li><li><a href="module-pangolin_bounties_calls.html">pangolin/bounties/calls</a></li><li><a href="module-pangolin_bounties_storages.html">pangolin/bounties/storages</a></li><li><a href="module-pangolin_bridgeMoonbaseRelayGrandpa_calls.html">pangolin/bridgeMoonbaseRelayGrandpa/calls</a></li><li><a href="module-pangolin_bridgeMoonbaseRelayGrandpa_storages.html">pangolin/bridgeMoonbaseRelayGrandpa/storages</a></li><li><a href="module-pangolin_bridgeMoonbaseRelayParachain_calls.html">pangolin/bridgeMoonbaseRelayParachain/calls</a></li><li><a href="module-pangolin_bridgeMoonbaseRelayParachain_storages.html">pangolin/bridgeMoonbaseRelayParachain/storages</a></li><li><a href="module-pangolin_bridgePangolinParachainAlphaMessages_calls.html">pangolin/bridgePangolinParachainAlphaMessages/calls</a></li><li><a href="module-pangolin_bridgePangolinParachainAlphaMessages_storages.html">pangolin/bridgePangolinParachainAlphaMessages/storages</a></li><li><a href="module-pangolin_bridgePangolinParachainMessages_calls.html">pangolin/bridgePangolinParachainMessages/calls</a></li><li><a href="module-pangolin_bridgePangolinParachainMessages_storages.html">pangolin/bridgePangolinParachainMessages/storages</a></li><li><a href="module-pangolin_bridgePangoroGrandpa_calls.html">pangolin/bridgePangoroGrandpa/calls</a></li><li><a href="module-pangolin_bridgePangoroGrandpa_storages.html">pangolin/bridgePangoroGrandpa/storages</a></li><li><a href="module-pangolin_bridgePangoroMessages_calls.html">pangolin/bridgePangoroMessages/calls</a></li><li><a href="module-pangolin_bridgePangoroMessages_storages.html">pangolin/bridgePangoroMessages/storages</a></li><li><a href="module-pangolin_bridgeRococoGrandpa_calls.html">pangolin/bridgeRococoGrandpa/calls</a></li><li><a href="module-pangolin_bridgeRococoGrandpa_storages.html">pangolin/bridgeRococoGrandpa/storages</a></li><li><a href="module-pangolin_bridgeRococoParachain_calls.html">pangolin/bridgeRococoParachain/calls</a></li><li><a href="module-pangolin_bridgeRococoParachain_storages.html">pangolin/bridgeRococoParachain/storages</a></li><li><a href="module-pangolin_council_calls.html">pangolin/council/calls</a></li><li><a href="module-pangolin_council_storages.html">pangolin/council/storages</a></li><li><a href="module-pangolin_democracy_calls.html">pangolin/democracy/calls</a></li><li><a href="module-pangolin_democracy_storages.html">pangolin/democracy/storages</a></li><li><a href="module-pangolin_ecdsaAuthority_calls.html">pangolin/ecdsaAuthority/calls</a></li><li><a href="module-pangolin_ecdsaAuthority_storages.html">pangolin/ecdsaAuthority/storages</a></li><li><a href="module-pangolin_electionProviderMultiPhase_calls.html">pangolin/electionProviderMultiPhase/calls</a></li><li><a href="module-pangolin_electionProviderMultiPhase_storages.html">pangolin/electionProviderMultiPhase/storages</a></li><li><a href="module-pangolin_ethereum_calls.html">pangolin/ethereum/calls</a></li><li><a href="module-pangolin_ethereum_storages.html">pangolin/ethereum/storages</a></li><li><a href="module-pangolin_evm_calls.html">pangolin/evm/calls</a></li><li><a href="module-pangolin_evm_storages.html">pangolin/evm/storages</a></li><li><a href="module-pangolin_grandpa_calls.html">pangolin/grandpa/calls</a></li><li><a href="module-pangolin_grandpa_storages.html">pangolin/grandpa/storages</a></li><li><a href="module-pangolin_headerMmr_storages.html">pangolin/headerMmr/storages</a></li><li><a href="module-pangolin_identity_calls.html">pangolin/identity/calls</a></li><li><a href="module-pangolin_identity_storages.html">pangolin/identity/storages</a></li><li><a href="module-pangolin_imOnline_calls.html">pangolin/imOnline/calls</a></li><li><a href="module-pangolin_imOnline_storages.html">pangolin/imOnline/storages</a></li><li><a href="module-pangolin_kton_calls.html">pangolin/kton/calls</a></li><li><a href="module-pangolin_kton_storages.html">pangolin/kton/storages</a></li><li><a href="module-pangolin_ktonTreasury_calls.html">pangolin/ktonTreasury/calls</a></li><li><a href="module-pangolin_ktonTreasury_storages.html">pangolin/ktonTreasury/storages</a></li><li><a href="module-pangolin_messageGadget_calls.html">pangolin/messageGadget/calls</a></li><li><a href="module-pangolin_messageGadget_storages.html">pangolin/messageGadget/storages</a></li><li><a href="module-pangolin_multisig_calls.html">pangolin/multisig/calls</a></li><li><a href="module-pangolin_multisig_storages.html">pangolin/multisig/storages</a></li><li><a href="module-pangolin_offences_storages.html">pangolin/offences/storages</a></li><li><a href="module-pangolin_pangolinParachainAlphaFeeMarket_calls.html">pangolin/pangolinParachainAlphaFeeMarket/calls</a></li><li><a href="module-pangolin_pangolinParachainAlphaFeeMarket_storages.html">pangolin/pangolinParachainAlphaFeeMarket/storages</a></li><li><a href="module-pangolin_pangolinParachainFeeMarket_calls.html">pangolin/pangolinParachainFeeMarket/calls</a></li><li><a href="module-pangolin_pangolinParachainFeeMarket_storages.html">pangolin/pangolinParachainFeeMarket/storages</a></li><li><a href="module-pangolin_pangoroFeeMarket_calls.html">pangolin/pangoroFeeMarket/calls</a></li><li><a href="module-pangolin_pangoroFeeMarket_storages.html">pangolin/pangoroFeeMarket/storages</a></li><li><a href="module-pangolin_phragmenElection_calls.html">pangolin/phragmenElection/calls</a></li><li><a href="module-pangolin_phragmenElection_storages.html">pangolin/phragmenElection/storages</a></li><li><a href="module-pangolin_preimage_calls.html">pangolin/preimage/calls</a></li><li><a href="module-pangolin_preimage_storages.html">pangolin/preimage/storages</a></li><li><a href="module-pangolin_proxy_calls.html">pangolin/proxy/calls</a></li><li><a href="module-pangolin_proxy_storages.html">pangolin/proxy/storages</a></li><li><a href="module-pangolin_recovery_calls.html">pangolin/recovery/calls</a></li><li><a href="module-pangolin_recovery_storages.html">pangolin/recovery/storages</a></li><li><a href="module-pangolin_scheduler_calls.html">pangolin/scheduler/calls</a></li><li><a href="module-pangolin_scheduler_storages.html">pangolin/scheduler/storages</a></li><li><a href="module-pangolin_session_calls.html">pangolin/session/calls</a></li><li><a href="module-pangolin_session_storages.html">pangolin/session/storages</a></li><li><a href="module-pangolin_society_calls.html">pangolin/society/calls</a></li><li><a href="module-pangolin_society_storages.html">pangolin/society/storages</a></li><li><a href="module-pangolin_staking_calls.html">pangolin/staking/calls</a></li><li><a href="module-pangolin_staking_storages.html">pangolin/staking/storages</a></li><li><a href="module-pangolin_sudo_calls.html">pangolin/sudo/calls</a></li><li><a href="module-pangolin_sudo_storages.html">pangolin/sudo/storages</a></li><li><a href="module-pangolin_system_calls.html">pangolin/system/calls</a></li><li><a href="module-pangolin_system_storages.html">pangolin/system/storages</a></li><li><a href="module-pangolin_technicalCommittee_calls.html">pangolin/technicalCommittee/calls</a></li><li><a href="module-pangolin_technicalCommittee_storages.html">pangolin/technicalCommittee/storages</a></li><li><a href="module-pangolin_technicalMembership_calls.html">pangolin/technicalMembership/calls</a></li><li><a href="module-pangolin_technicalMembership_storages.html">pangolin/technicalMembership/storages</a></li><li><a href="module-pangolin_timestamp_calls.html">pangolin/timestamp/calls</a></li><li><a href="module-pangolin_timestamp_storages.html">pangolin/timestamp/storages</a></li><li><a href="module-pangolin_tips_calls.html">pangolin/tips/calls</a></li><li><a href="module-pangolin_tips_storages.html">pangolin/tips/storages</a></li><li><a href="module-pangolin_transactionPayment_storages.html">pangolin/transactionPayment/storages</a></li><li><a href="module-pangolin_treasury_calls.html">pangolin/treasury/calls</a></li><li><a href="module-pangolin_treasury_storages.html">pangolin/treasury/storages</a></li><li><a href="module-pangolin_utility_calls.html">pangolin/utility/calls</a></li><li><a href="module-pangolin_vesting_calls.html">pangolin/vesting/calls</a></li><li><a href="module-pangolin_vesting_storages.html">pangolin/vesting/storages</a></li><li><a href="module-pangolin2_accountMigration_calls.html">pangolin2/accountMigration/calls</a></li><li><a href="module-pangolin2_accountMigration_storages.html">pangolin2/accountMigration/storages</a></li><li><a href="module-pangolin2_assets_calls.html">pangolin2/assets/calls</a></li><li><a href="module-pangolin2_assets_storages.html">pangolin2/assets/storages</a></li><li><a href="module-pangolin2_aura_storages.html">pangolin2/aura/storages</a></li><li><a href="module-pangolin2_auraExt_storages.html">pangolin2/auraExt/storages</a></li><li><a href="module-pangolin2_authorship_calls.html">pangolin2/authorship/calls</a></li><li><a href="module-pangolin2_authorship_storages.html">pangolin2/authorship/storages</a></li><li><a href="module-pangolin2_balances_calls.html">pangolin2/balances/calls</a></li><li><a href="module-pangolin2_balances_storages.html">pangolin2/balances/storages</a></li><li><a href="module-pangolin2_council_calls.html">pangolin2/council/calls</a></li><li><a href="module-pangolin2_council_storages.html">pangolin2/council/storages</a></li><li><a href="module-pangolin2_democracy_calls.html">pangolin2/democracy/calls</a></li><li><a href="module-pangolin2_democracy_storages.html">pangolin2/democracy/storages</a></li><li><a href="module-pangolin2_deposit_calls.html">pangolin2/deposit/calls</a></li><li><a href="module-pangolin2_deposit_storages.html">pangolin2/deposit/storages</a></li><li><a href="module-pangolin2_dmpQueue_calls.html">pangolin2/dmpQueue/calls</a></li><li><a href="module-pangolin2_dmpQueue_storages.html">pangolin2/dmpQueue/storages</a></li><li><a href="module-pangolin2_ecdsaAuthority_calls.html">pangolin2/ecdsaAuthority/calls</a></li><li><a href="module-pangolin2_ecdsaAuthority_storages.html">pangolin2/ecdsaAuthority/storages</a></li><li><a href="module-pangolin2_ethereum_calls.html">pangolin2/ethereum/calls</a></li><li><a href="module-pangolin2_ethereum_storages.html">pangolin2/ethereum/storages</a></li><li><a href="module-pangolin2_evm_calls.html">pangolin2/evm/calls</a></li><li><a href="module-pangolin2_evm_storages.html">pangolin2/evm/storages</a></li><li><a href="module-pangolin2_identity_calls.html">pangolin2/identity/calls</a></li><li><a href="module-pangolin2_identity_storages.html">pangolin2/identity/storages</a></li><li><a href="module-pangolin2_messageGadget_calls.html">pangolin2/messageGadget/calls</a></li><li><a href="module-pangolin2_messageGadget_storages.html">pangolin2/messageGadget/storages</a></li><li><a href="module-pangolin2_messageTransact_calls.html">pangolin2/messageTransact/calls</a></li><li><a href="module-pangolin2_multisig_calls.html">pangolin2/multisig/calls</a></li><li><a href="module-pangolin2_multisig_storages.html">pangolin2/multisig/storages</a></li><li><a href="module-pangolin2_parachainInfo_storages.html">pangolin2/parachainInfo/storages</a></li><li><a href="module-pangolin2_parachainSystem_calls.html">pangolin2/parachainSystem/calls</a></li><li><a href="module-pangolin2_parachainSystem_storages.html">pangolin2/parachainSystem/storages</a></li><li><a href="module-pangolin2_phragmenElection_calls.html">pangolin2/phragmenElection/calls</a></li><li><a href="module-pangolin2_phragmenElection_storages.html">pangolin2/phragmenElection/storages</a></li><li><a href="module-pangolin2_polkadotXcm_calls.html">pangolin2/polkadotXcm/calls</a></li><li><a href="module-pangolin2_polkadotXcm_storages.html">pangolin2/polkadotXcm/storages</a></li><li><a href="module-pangolin2_preimage_calls.html">pangolin2/preimage/calls</a></li><li><a href="module-pangolin2_preimage_storages.html">pangolin2/preimage/storages</a></li><li><a href="module-pangolin2_proxy_calls.html">pangolin2/proxy/calls</a></li><li><a href="module-pangolin2_proxy_storages.html">pangolin2/proxy/storages</a></li><li><a href="module-pangolin2_scheduler_calls.html">pangolin2/scheduler/calls</a></li><li><a href="module-pangolin2_scheduler_storages.html">pangolin2/scheduler/storages</a></li><li><a href="module-pangolin2_session_calls.html">pangolin2/session/calls</a></li><li><a href="module-pangolin2_session_storages.html">pangolin2/session/storages</a></li><li><a href="module-pangolin2_staking_calls.html">pangolin2/staking/calls</a></li><li><a href="module-pangolin2_staking_storages.html">pangolin2/staking/storages</a></li><li><a href="module-pangolin2_sudo_calls.html">pangolin2/sudo/calls</a></li><li><a href="module-pangolin2_sudo_storages.html">pangolin2/sudo/storages</a></li><li><a href="module-pangolin2_system_calls.html">pangolin2/system/calls</a></li><li><a href="module-pangolin2_system_storages.html">pangolin2/system/storages</a></li><li><a href="module-pangolin2_technicalCommittee_calls.html">pangolin2/technicalCommittee/calls</a></li><li><a href="module-pangolin2_technicalCommittee_storages.html">pangolin2/technicalCommittee/storages</a></li><li><a href="module-pangolin2_technicalMembership_calls.html">pangolin2/technicalMembership/calls</a></li><li><a href="module-pangolin2_technicalMembership_storages.html">pangolin2/technicalMembership/storages</a></li><li><a href="module-pangolin2_timestamp_calls.html">pangolin2/timestamp/calls</a></li><li><a href="module-pangolin2_timestamp_storages.html">pangolin2/timestamp/storages</a></li><li><a href="module-pangolin2_tips_calls.html">pangolin2/tips/calls</a></li><li><a href="module-pangolin2_tips_storages.html">pangolin2/tips/storages</a></li><li><a href="module-pangolin2_transactionPayment_storages.html">pangolin2/transactionPayment/storages</a></li><li><a href="module-pangolin2_treasury_calls.html">pangolin2/treasury/calls</a></li><li><a href="module-pangolin2_treasury_storages.html">pangolin2/treasury/storages</a></li><li><a href="module-pangolin2_utility_calls.html">pangolin2/utility/calls</a></li><li><a href="module-pangolin2_vesting_calls.html">pangolin2/vesting/calls</a></li><li><a href="module-pangolin2_vesting_storages.html">pangolin2/vesting/storages</a></li><li><a href="module-pangolin2_xcmpQueue_calls.html">pangolin2/xcmpQueue/calls</a></li><li><a href="module-pangolin2_xcmpQueue_storages.html">pangolin2/xcmpQueue/storages</a></li><li><a href="module-pangoro_authorship_calls.html">pangoro/authorship/calls</a></li><li><a href="module-pangoro_authorship_storages.html">pangoro/authorship/storages</a></li><li><a href="module-pangoro_babe_calls.html">pangoro/babe/calls</a></li><li><a href="module-pangoro_babe_storages.html">pangoro/babe/storages</a></li><li><a href="module-pangoro_balances_calls.html">pangoro/balances/calls</a></li><li><a href="module-pangoro_balances_storages.html">pangoro/balances/storages</a></li><li><a href="module-pangoro_baseFee_calls.html">pangoro/baseFee/calls</a></li><li><a href="module-pangoro_baseFee_storages.html">pangoro/baseFee/storages</a></li><li><a href="module-pangoro_beefy_storages.html">pangoro/beefy/storages</a></li><li><a href="module-pangoro_bridgePangolinGrandpa_calls.html">pangoro/bridgePangolinGrandpa/calls</a></li><li><a href="module-pangoro_bridgePangolinGrandpa_storages.html">pangoro/bridgePangolinGrandpa/storages</a></li><li><a href="module-pangoro_bridgePangolinMessages_calls.html">pangoro/bridgePangolinMessages/calls</a></li><li><a href="module-pangoro_bridgePangolinMessages_storages.html">pangoro/bridgePangolinMessages/storages</a></li><li><a href="module-pangoro_ecdsaAuthority_calls.html">pangoro/ecdsaAuthority/calls</a></li><li><a href="module-pangoro_ecdsaAuthority_storages.html">pangoro/ecdsaAuthority/storages</a></li><li><a href="module-pangoro_electionProviderMultiPhase_calls.html">pangoro/electionProviderMultiPhase/calls</a></li><li><a href="module-pangoro_electionProviderMultiPhase_storages.html">pangoro/electionProviderMultiPhase/storages</a></li><li><a href="module-pangoro_ethereum_calls.html">pangoro/ethereum/calls</a></li><li><a href="module-pangoro_ethereum_storages.html">pangoro/ethereum/storages</a></li><li><a href="module-pangoro_evm_calls.html">pangoro/evm/calls</a></li><li><a href="module-pangoro_evm_storages.html">pangoro/evm/storages</a></li><li><a href="module-pangoro_grandpa_calls.html">pangoro/grandpa/calls</a></li><li><a href="module-pangoro_grandpa_storages.html">pangoro/grandpa/storages</a></li><li><a href="module-pangoro_imOnline_calls.html">pangoro/imOnline/calls</a></li><li><a href="module-pangoro_imOnline_storages.html">pangoro/imOnline/storages</a></li><li><a href="module-pangoro_kton_calls.html">pangoro/kton/calls</a></li><li><a href="module-pangoro_kton_storages.html">pangoro/kton/storages</a></li><li><a href="module-pangoro_messageGadget_calls.html">pangoro/messageGadget/calls</a></li><li><a href="module-pangoro_messageGadget_storages.html">pangoro/messageGadget/storages</a></li><li><a href="module-pangoro_offences_storages.html">pangoro/offences/storages</a></li><li><a href="module-pangoro_pangolinFeeMarket_calls.html">pangoro/pangolinFeeMarket/calls</a></li><li><a href="module-pangoro_pangolinFeeMarket_storages.html">pangoro/pangolinFeeMarket/storages</a></li><li><a href="module-pangoro_preimage_calls.html">pangoro/preimage/calls</a></li><li><a href="module-pangoro_preimage_storages.html">pangoro/preimage/storages</a></li><li><a href="module-pangoro_scheduler_calls.html">pangoro/scheduler/calls</a></li><li><a href="module-pangoro_scheduler_storages.html">pangoro/scheduler/storages</a></li><li><a href="module-pangoro_session_calls.html">pangoro/session/calls</a></li><li><a href="module-pangoro_session_storages.html">pangoro/session/storages</a></li><li><a href="module-pangoro_staking_calls.html">pangoro/staking/calls</a></li><li><a href="module-pangoro_staking_storages.html">pangoro/staking/storages</a></li><li><a href="module-pangoro_sudo_calls.html">pangoro/sudo/calls</a></li><li><a href="module-pangoro_sudo_storages.html">pangoro/sudo/storages</a></li><li><a href="module-pangoro_system_calls.html">pangoro/system/calls</a></li><li><a href="module-pangoro_system_storages.html">pangoro/system/storages</a></li><li><a href="module-pangoro_timestamp_calls.html">pangoro/timestamp/calls</a></li><li><a href="module-pangoro_timestamp_storages.html">pangoro/timestamp/storages</a></li><li><a href="module-pangoro_transactionPause_calls.html">pangoro/transactionPause/calls</a></li><li><a href="module-pangoro_transactionPause_storages.html">pangoro/transactionPause/storages</a></li><li><a href="module-pangoro_transactionPayment_storages.html">pangoro/transactionPayment/storages</a></li><li><a href="module-pangoro_treasury_calls.html">pangoro/treasury/calls</a></li><li><a href="module-pangoro_treasury_storages.html">pangoro/treasury/storages</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getSystemEvents">getSystemEvents</a></li><li><a href="global.html#nominateAndStake">nominateAndStake</a></li><li><a href="global.html#setSessionKeysAndCommission">setSessionKeysAndCommission</a></li><li><a href="global.html#trackSystemEvents">trackSystemEvents</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Fri Jan 20 2023 17:02:20 GMT+0800 (China Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

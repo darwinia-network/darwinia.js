@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin2/dmpQueue/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -18,8 +23,8 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * Events:
          * - `OverweightServiced`: On success.
          *
-         * @param _index: U64
-         * @param _weight_limit: U64
+         * @param {unknown} _index U64
+         * @param {unknown} _weight_limit U64
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', false, {
@@ -28,10 +33,20 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: serviceOverweight}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         serviceOverweightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'DmpQueue', 'serviceOverweight', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildServiceOverweightCall: (_index: unknown, _weight_limit: unknown) => {
             return buildRuntimeCall(metadata, 'DmpQueue', 'serviceOverweight', {
                 index: _index,
@@ -39,6 +54,12 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildServiceOverweightCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildServiceOverweightCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'DmpQueue', 'serviceOverweight', argsBytes)
         },

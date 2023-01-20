@@ -1,12 +1,17 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module crab/babe/storages
+ */
 export const getBabe = (getStorage: GetStorage) => {
     return {
 
         /**
          * Current epoch index.
          *
-         * @return U64
+         * @returns {Promise<string | null>} U64
          */
         epochIndex: async (): Promise<string | null> => {
             return await getStorage('Babe', 'EpochIndex');
@@ -15,7 +20,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * Current epoch authorities.
          *
-         * @return WeakBoundedVec: Vec<([U8; 32], U64)>
+         * @returns {Promise<string | null>} WeakBoundedVec: Vec<([U8; 32], U64)>
          */
         authorities: async (): Promise<string | null> => {
             return await getStorage('Babe', 'Authorities');
@@ -25,7 +30,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * The slot at which the first epoch actually started. This is 0
          * until the first block of the chain.
          *
-         * @return Slot: U64
+         * @returns {Promise<string | null>} Slot: U64
          */
         genesisSlot: async (): Promise<string | null> => {
             return await getStorage('Babe', 'GenesisSlot');
@@ -34,7 +39,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * Current slot number.
          *
-         * @return Slot: U64
+         * @returns {Promise<string | null>} Slot: U64
          */
         currentSlot: async (): Promise<string | null> => {
             return await getStorage('Babe', 'CurrentSlot');
@@ -52,7 +57,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * used where a number is needed that cannot have been chosen by an
          * adversary, for purposes such as public-coin zero-knowledge proofs.
          *
-         * @return [U8; 32]
+         * @returns {Promise<string | null>} [U8; 32]
          */
         randomness: async (): Promise<string | null> => {
             return await getStorage('Babe', 'Randomness');
@@ -61,7 +66,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * Pending epoch configuration change that will be applied when the next epoch is enacted.
          *
-         * @return NextConfigDescriptor: Enum<{1/V1: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}}>
+         * @returns {Promise<string | null>} NextConfigDescriptor: Enum<{1/V1: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}}>
          */
         pendingEpochConfigChange: async (): Promise<string | null> => {
             return await getStorage('Babe', 'PendingEpochConfigChange');
@@ -70,7 +75,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * Next epoch randomness.
          *
-         * @return [U8; 32]
+         * @returns {Promise<string | null>} [U8; 32]
          */
         nextRandomness: async (): Promise<string | null> => {
             return await getStorage('Babe', 'NextRandomness');
@@ -79,7 +84,7 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * Next epoch authorities.
          *
-         * @return WeakBoundedVec: Vec<([U8; 32], U64)>
+         * @returns {Promise<string | null>} WeakBoundedVec: Vec<([U8; 32], U64)>
          */
         nextAuthorities: async (): Promise<string | null> => {
             return await getStorage('Babe', 'NextAuthorities');
@@ -96,7 +101,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * We reset all segments and return to `0` at the beginning of every
          * epoch.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         segmentIndex: async (): Promise<string | null> => {
             return await getStorage('Babe', 'SegmentIndex');
@@ -105,8 +110,8 @@ export const getBabe = (getStorage: GetStorage) => {
         /**
          * TWOX-NOTE: `SegmentIndex` is an increasing integer, so this is okay.
          *
-         * @param param0: U32
-         * @return BoundedVec: Vec<[U8; 32]>
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} BoundedVec: Vec<[U8; 32]>
          */
         underConstruction: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Babe', 'UnderConstruction', param0);
@@ -116,7 +121,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * Temporary value (cleared at block finalization) which is `Some`
          * if per-block initialization has already been called for current block.
          *
-         * @return Option: Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @returns {Promise<string | null>} Option: Enum<{0/None: , 1/Some: [U8; 32]}>
          */
         initialized: async (): Promise<string | null> => {
             return await getStorage('Babe', 'Initialized');
@@ -128,7 +133,7 @@ export const getBabe = (getStorage: GetStorage) => {
          *
          * It is set in `on_initialize`, before it will contain the value from the last block.
          *
-         * @return Option: Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @returns {Promise<string | null>} Option: Enum<{0/None: , 1/Some: [U8; 32]}>
          */
         authorVrfRandomness: async (): Promise<string | null> => {
             return await getStorage('Babe', 'AuthorVrfRandomness');
@@ -141,7 +146,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * entropy was fixed (i.e. it was known to chain observers). Since epochs are defined in
          * slots, which may be skipped, the block numbers may not line up with the slot numbers.
          *
-         * @return (U32, U32)
+         * @returns {Promise<string | null>} (U32, U32)
          */
         epochStart: async (): Promise<string | null> => {
             return await getStorage('Babe', 'EpochStart');
@@ -154,7 +159,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * on block finalization. Querying this storage entry outside of block
          * execution context should always yield zero.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         lateness: async (): Promise<string | null> => {
             return await getStorage('Babe', 'Lateness');
@@ -164,7 +169,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * The configuration for the current epoch. Should never be `None` as it is initialized in
          * genesis.
          *
-         * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}
+         * @returns {Promise<string | null>} BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}
          */
         epochConfig: async (): Promise<string | null> => {
             return await getStorage('Babe', 'EpochConfig');
@@ -174,7 +179,7 @@ export const getBabe = (getStorage: GetStorage) => {
          * The configuration for the next epoch, `None` if the config will not change
          * (you can fallback to `EpochConfig` instead in that case).
          *
-         * @return BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}
+         * @returns {Promise<string | null>} BabeEpochConfiguration: {c: (U64, U64), allowed_slots: Enum<{0/PrimarySlots: , 1/PrimaryAndSecondaryPlainSlots: , 2/PrimaryAndSecondaryVRFSlots: }>}
          */
         nextEpochConfig: async (): Promise<string | null> => {
             return await getStorage('Babe', 'NextEpochConfig');

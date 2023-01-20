@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin/pangolinParachainAlphaFeeMarket/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -9,8 +14,8 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
          * the default value is MinimumRelayFee in runtime. (Update market needed)
          * Note: One account can enroll only once.
          *
-         * @param _lock_collateral: U128
-         * @param _relay_fee: Enum<{0/None: , 1/Some: U128}>
+         * @param {unknown} _lock_collateral U128
+         * @param {unknown} _relay_fee Enum<{0/None: , 1/Some: U128}>
          */
         enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', false, {
@@ -19,10 +24,20 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
 	    });
         },
 
+        /**
+	 * Similar to {@link: enrollAndLockCollateral}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         enrollAndLockCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEnrollAndLockCollateralCall: (_lock_collateral: unknown, _relay_fee: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', {
                 lock_collateral: _lock_collateral,
@@ -30,40 +45,102 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildEnrollAndLockCollateralCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEnrollAndLockCollateralCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'enrollAndLockCollateral', argsBytes)
         },
 
         /**
-         * Update locked collateral for enrolled relayer, only supporting lock more. (Update market
-         * needed)
+         * Increase relayer's locked collateral
          *
-         * @param _new_collateral: U128
+         * @param {unknown} _new_collateral U128
          */
-        updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', false, {
+        increaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'increaseLockedCollateral', false, {
                 new_collateral: _new_collateral,
 	    });
         },
 
-        updateLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', true, argsBytes);
+        /**
+	 * Similar to {@link: increaseLockedCollateral}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
+        increaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'increaseLockedCollateral', true, argsBytes);
         },
 
-        buildUpdateLockedCollateralCall: (_new_collateral: unknown) => {
-            return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', {
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
+        buildIncreaseLockedCollateralCall: (_new_collateral: unknown) => {
+            return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'increaseLockedCollateral', {
                 new_collateral: _new_collateral,
             });
         },
 
-        buildUpdateLockedCollateralCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'updateLockedCollateral', argsBytes)
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildIncreaseLockedCollateralCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
+        buildIncreaseLockedCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'increaseLockedCollateral', argsBytes)
+        },
+
+        /**
+         * Decrease relayer's locked collateral
+         *
+         * @param {unknown} _new_collateral U128
+         */
+        decreaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'decreaseLockedCollateral', false, {
+                new_collateral: _new_collateral,
+	    });
+        },
+
+        /**
+	 * Similar to {@link: decreaseLockedCollateral}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
+        decreaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'decreaseLockedCollateral', true, argsBytes);
+        },
+
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
+        buildDecreaseLockedCollateralCall: (_new_collateral: unknown) => {
+            return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'decreaseLockedCollateral', {
+                new_collateral: _new_collateral,
+            });
+        },
+
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildDecreaseLockedCollateralCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
+        buildDecreaseLockedCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'decreaseLockedCollateral', argsBytes)
         },
 
         /**
          * Update relay fee for enrolled relayer. (Update market needed)
          *
-         * @param _new_fee: U128
+         * @param {unknown} _new_fee U128
          */
         updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', false, {
@@ -71,16 +148,32 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateRelayFee}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateRelayFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateRelayFeeCall: (_new_fee: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', {
                 new_fee: _new_fee,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateRelayFeeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateRelayFeeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'updateRelayFee', argsBytes)
         },
@@ -94,22 +187,38 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelEnrollment}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'cancelEnrollment', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelEnrollmentCall: () => {
             return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'cancelEnrollment', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelEnrollmentCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelEnrollmentCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'cancelEnrollment', argsBytes)
         },
 
         /**
          *
-         * @param _slash_protect: U128
+         * @param {unknown} _slash_protect U128
          */
         setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', false, {
@@ -117,23 +226,39 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
 	    });
         },
 
+        /**
+	 * Similar to {@link: setSlashProtect}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setSlashProtectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetSlashProtectCall: (_slash_protect: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', {
                 slash_protect: _slash_protect,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetSlashProtectCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetSlashProtectCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'setSlashProtect', argsBytes)
         },
 
         /**
          *
-         * @param _number: U32
+         * @param {unknown} _number U32
          */
         setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', false, {
@@ -141,16 +266,32 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
 	    });
         },
 
+        /**
+	 * Similar to {@link: setAssignedRelayersNumber}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setAssignedRelayersNumberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetAssignedRelayersNumberCall: (_number: unknown) => {
             return buildRuntimeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', {
                 number: _number,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetAssignedRelayersNumberCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetAssignedRelayersNumberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PangolinParachainAlphaFeeMarket', 'setAssignedRelayersNumber', argsBytes)
         },

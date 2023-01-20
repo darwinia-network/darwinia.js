@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module <%= chainName %>/<%= moduleName %>/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -28,7 +33,7 @@ _%>
 	    const paramName = callParam[0];
 	    const paramType = callParam[1];
 _%>
-         * @param <%- `_${paramName}` %>: <%- paramType %>
+         * @param {unknown} <%- `_${paramName}` %> <%- paramType %>
 <%_
 	    input.push(`_${paramName}: unknown`)
 	}
@@ -49,10 +54,20 @@ _%>
 	    });
         },
 
+        /**
+	 * Similar to {@link: <%= `${callName}` %>}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', argsBytes: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', argsBytes' : '' %>);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         <%= `build${capitalize(callName)}Call` %>: (<%= input.join(", ") %>) => {
             return buildRuntimeCall(metadata, '<%= prefix %>', '<%= callName %>', {
 	    <%_
@@ -68,6 +83,12 @@ _%>
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to <%= `build${capitalize(callName)}Call` %>, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         <%= `build${capitalize(callName)}CallH` %>: (argsBytes: BytesLike) => {
             return decodeCall(metadata, '<%= prefix %>', '<%= callName %>', argsBytes)
         },

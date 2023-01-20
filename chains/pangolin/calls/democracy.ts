@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin/democracy/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -17,8 +22,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(p)`
          *
-         * @param _proposal_hash: [U8; 32]
-         * @param _value: Compact<U128>
+         * @param {unknown} _proposal_hash [U8; 32]
+         * @param {unknown} _value Compact<U128>
          */
         propose: async (signer: ethers.Signer, _proposal_hash: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'propose', false, {
@@ -27,10 +32,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: propose}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         proposeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'propose', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeCall: (_proposal_hash: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'propose', {
                 proposal_hash: _proposal_hash,
@@ -38,6 +53,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildProposeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildProposeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'propose', argsBytes)
         },
@@ -54,8 +75,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(S)` where S is the number of seconds a proposal already has.
          *
-         * @param _proposal: Compact<U32>
-         * @param _seconds_upper_bound: Compact<U32>
+         * @param {unknown} _proposal Compact<U32>
+         * @param {unknown} _seconds_upper_bound Compact<U32>
          */
         second: async (signer: ethers.Signer, _proposal: unknown, _seconds_upper_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'second', false, {
@@ -64,10 +85,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: second}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         secondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'second', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSecondCall: (_proposal: unknown, _seconds_upper_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'second', {
                 proposal: _proposal,
@@ -75,6 +106,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSecondCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSecondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'second', argsBytes)
         },
@@ -90,8 +127,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(R)` where R is the number of referendums the voter has voted on.
          *
-         * @param _ref_index: Compact<U32>
-         * @param _vote: Enum<{0/Standard: {vote: U8, balance: U128}, 1/Split: {aye: U128, nay: U128}}>
+         * @param {unknown} _ref_index Compact<U32>
+         * @param {unknown} _vote Enum<{0/Standard: {vote: U8, balance: U128}, 1/Split: {aye: U128, nay: U128}}>
          */
         vote: async (signer: ethers.Signer, _ref_index: unknown, _vote: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vote', false, {
@@ -100,10 +137,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: vote}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vote', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVoteCall: (_ref_index: unknown, _vote: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'vote', {
                 ref_index: _ref_index,
@@ -111,6 +158,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVoteCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'vote', argsBytes)
         },
@@ -125,7 +178,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`.
          *
-         * @param _ref_index: U32
+         * @param {unknown} _ref_index U32
          */
         emergencyCancel: async (signer: ethers.Signer, _ref_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', false, {
@@ -133,16 +186,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: emergencyCancel}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         emergencyCancelH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'emergencyCancel', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEmergencyCancelCall: (_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'emergencyCancel', {
                 ref_index: _ref_index,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildEmergencyCancelCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEmergencyCancelCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'emergencyCancel', argsBytes)
         },
@@ -158,7 +227,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(V)` with V number of vetoers in the blacklist of proposal.
          *   Decoding vec of length V. Charged as maximum
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param {unknown} _proposal_hash [U8; 32]
          */
         externalPropose: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalPropose', false, {
@@ -166,16 +235,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: externalPropose}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         externalProposeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalPropose', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalPropose', {
                 proposal_hash: _proposal_hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildExternalProposeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'externalPropose', argsBytes)
         },
@@ -193,7 +278,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param {unknown} _proposal_hash [U8; 32]
          */
         externalProposeMajority: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', false, {
@@ -201,16 +286,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: externalProposeMajority}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         externalProposeMajorityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeMajority', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeMajorityCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeMajority', {
                 proposal_hash: _proposal_hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildExternalProposeMajorityCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeMajorityCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'externalProposeMajority', argsBytes)
         },
@@ -228,7 +329,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param {unknown} _proposal_hash [U8; 32]
          */
         externalProposeDefault: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', false, {
@@ -236,16 +337,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: externalProposeDefault}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         externalProposeDefaultH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'externalProposeDefault', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeDefaultCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'externalProposeDefault', {
                 proposal_hash: _proposal_hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildExternalProposeDefaultCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildExternalProposeDefaultCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'externalProposeDefault', argsBytes)
         },
@@ -267,9 +384,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _proposal_hash: [U8; 32]
-         * @param _voting_period: U32
-         * @param _delay: U32
+         * @param {unknown} _proposal_hash [U8; 32]
+         * @param {unknown} _voting_period U32
+         * @param {unknown} _delay U32
          */
         fastTrack: async (signer: ethers.Signer, _proposal_hash: unknown, _voting_period: unknown, _delay: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'fastTrack', false, {
@@ -279,10 +396,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: fastTrack}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         fastTrackH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'fastTrack', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFastTrackCall: (_proposal_hash: unknown, _voting_period: unknown, _delay: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'fastTrack', {
                 proposal_hash: _proposal_hash,
@@ -291,6 +418,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildFastTrackCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFastTrackCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'fastTrack', argsBytes)
         },
@@ -306,7 +439,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(V + log(V))` where V is number of `existing vetoers`
          *
-         * @param _proposal_hash: [U8; 32]
+         * @param {unknown} _proposal_hash [U8; 32]
          */
         vetoExternal: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', false, {
@@ -314,16 +447,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: vetoExternal}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         vetoExternalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'vetoExternal', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVetoExternalCall: (_proposal_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'vetoExternal', {
                 proposal_hash: _proposal_hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVetoExternalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVetoExternalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'vetoExternal', argsBytes)
         },
@@ -337,7 +486,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * # Weight: `O(1)`.
          *
-         * @param _ref_index: Compact<U32>
+         * @param {unknown} _ref_index Compact<U32>
          */
         cancelReferendum: async (signer: ethers.Signer, _ref_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', false, {
@@ -345,16 +494,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelReferendum}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelReferendumH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelReferendum', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelReferendumCall: (_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelReferendum', {
                 ref_index: _ref_index,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelReferendumCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelReferendumCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'cancelReferendum', argsBytes)
         },
@@ -368,7 +533,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(D)` where `D` is the items in the dispatch queue. Weighted as `D = 10`.
          *
-         * @param _which: U32
+         * @param {unknown} _which U32
          */
         cancelQueued: async (signer: ethers.Signer, _which: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', false, {
@@ -376,16 +541,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelQueued}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelQueuedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelQueued', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelQueuedCall: (_which: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelQueued', {
                 which: _which,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelQueuedCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelQueuedCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'cancelQueued', argsBytes)
         },
@@ -412,9 +593,9 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(R)` where R is the number of referendums the voter delegating to has
          *   voted on. Weight is charged as if maximum votes.
          *
-         * @param _to: [U8; 32]
-         * @param _conviction: Enum<{0/None: , 1/Locked1x: , 2/Locked2x: , 3/Locked3x: , 4/Locked4x: , 5/Locked5x: , 6/Locked6x: }>
-         * @param _balance: U128
+         * @param {unknown} _to [U8; 32]
+         * @param {unknown} _conviction Enum<{0/None: , 1/Locked1x: , 2/Locked2x: , 3/Locked3x: , 4/Locked4x: , 5/Locked5x: , 6/Locked6x: }>
+         * @param {unknown} _balance U128
          */
         delegate: async (signer: ethers.Signer, _to: unknown, _conviction: unknown, _balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'delegate', false, {
@@ -424,10 +605,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: delegate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         delegateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'delegate', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDelegateCall: (_to: unknown, _conviction: unknown, _balance: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'delegate', {
                 to: _to,
@@ -436,6 +627,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildDelegateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDelegateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'delegate', argsBytes)
         },
@@ -460,15 +657,31 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: undelegate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         undelegateH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'undelegate', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUndelegateCall: () => {
             return buildRuntimeCall(metadata, 'Democracy', 'undelegate', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUndelegateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUndelegateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'undelegate', argsBytes)
         },
@@ -486,15 +699,31 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: clearPublicProposals}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         clearPublicProposalsH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'clearPublicProposals', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearPublicProposalsCall: () => {
             return buildRuntimeCall(metadata, 'Democracy', 'clearPublicProposals', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildClearPublicProposalsCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearPublicProposalsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'clearPublicProposals', argsBytes)
         },
@@ -511,7 +740,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).
          *
-         * @param _encoded_proposal: Vec<U8>
+         * @param {unknown} _encoded_proposal Vec<U8>
          */
         notePreimage: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimage', false, {
@@ -519,16 +748,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: notePreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         notePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'notePreimage', {
                 encoded_proposal: _encoded_proposal,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNotePreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'notePreimage', argsBytes)
         },
@@ -536,7 +781,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Same as `note_preimage` but origin is `OperationalPreimageOrigin`.
          *
-         * @param _encoded_proposal: Vec<U8>
+         * @param {unknown} _encoded_proposal Vec<U8>
          */
         notePreimageOperational: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', false, {
@@ -544,16 +789,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: notePreimageOperational}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         notePreimageOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'notePreimageOperational', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageOperationalCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'notePreimageOperational', {
                 encoded_proposal: _encoded_proposal,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNotePreimageOperationalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageOperationalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'notePreimageOperational', argsBytes)
         },
@@ -572,7 +833,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(E)` with E size of `encoded_proposal` (protected by a required deposit).
          *
-         * @param _encoded_proposal: Vec<U8>
+         * @param {unknown} _encoded_proposal Vec<U8>
          */
         noteImminentPreimage: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', false, {
@@ -580,16 +841,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: noteImminentPreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         noteImminentPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNoteImminentPreimageCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimage', {
                 encoded_proposal: _encoded_proposal,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNoteImminentPreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNoteImminentPreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'noteImminentPreimage', argsBytes)
         },
@@ -597,7 +874,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Same as `note_imminent_preimage` but origin is `OperationalPreimageOrigin`.
          *
-         * @param _encoded_proposal: Vec<U8>
+         * @param {unknown} _encoded_proposal Vec<U8>
          */
         noteImminentPreimageOperational: async (signer: ethers.Signer, _encoded_proposal: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', false, {
@@ -605,16 +882,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: noteImminentPreimageOperational}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         noteImminentPreimageOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'noteImminentPreimageOperational', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNoteImminentPreimageOperationalCall: (_encoded_proposal: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', {
                 encoded_proposal: _encoded_proposal,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNoteImminentPreimageOperationalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNoteImminentPreimageOperationalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'noteImminentPreimageOperational', argsBytes)
         },
@@ -636,8 +929,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(D)` where D is length of proposal.
          *
-         * @param _proposal_hash: [U8; 32]
-         * @param _proposal_len_upper_bound: Compact<U32>
+         * @param {unknown} _proposal_hash [U8; 32]
+         * @param {unknown} _proposal_len_upper_bound Compact<U32>
          */
         reapPreimage: async (signer: ethers.Signer, _proposal_hash: unknown, _proposal_len_upper_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', false, {
@@ -646,10 +939,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: reapPreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         reapPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'reapPreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReapPreimageCall: (_proposal_hash: unknown, _proposal_len_upper_bound: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'reapPreimage', {
                 proposal_hash: _proposal_hash,
@@ -657,6 +960,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildReapPreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildReapPreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'reapPreimage', argsBytes)
         },
@@ -670,7 +979,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(R)` with R number of vote of target.
          *
-         * @param _target: [U8; 32]
+         * @param {unknown} _target [U8; 32]
          */
         unlock: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'unlock', false, {
@@ -678,16 +987,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: unlock}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unlockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'unlock', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnlockCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'unlock', {
                 target: _target,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnlockCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnlockCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'unlock', argsBytes)
         },
@@ -721,7 +1046,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(R + log R)` where R is the number of referenda that `target` has voted on.
          *   Weight is calculated for the maximum number of vote.
          *
-         * @param _index: U32
+         * @param {unknown} _index U32
          */
         removeVote: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeVote', false, {
@@ -729,16 +1054,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: removeVote}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         removeVoteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeVote', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveVoteCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'removeVote', {
                 index: _index,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRemoveVoteCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'removeVote', argsBytes)
         },
@@ -760,8 +1101,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(R + log R)` where R is the number of referenda that `target` has voted on.
          *   Weight is calculated for the maximum number of vote.
          *
-         * @param _target: [U8; 32]
-         * @param _index: U32
+         * @param {unknown} _target [U8; 32]
+         * @param {unknown} _index U32
          */
         removeOtherVote: async (signer: ethers.Signer, _target: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', false, {
@@ -770,10 +1111,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: removeOtherVote}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         removeOtherVoteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'removeOtherVote', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveOtherVoteCall: (_target: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'removeOtherVote', {
                 target: _target,
@@ -781,6 +1132,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRemoveOtherVoteCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveOtherVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'removeOtherVote', argsBytes)
         },
@@ -788,8 +1145,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Enact a proposal from a referendum. For now we just make the weight be the maximum.
          *
-         * @param _proposal_hash: [U8; 32]
-         * @param _index: U32
+         * @param {unknown} _proposal_hash [U8; 32]
+         * @param {unknown} _index U32
          */
         enactProposal: async (signer: ethers.Signer, _proposal_hash: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'enactProposal', false, {
@@ -798,10 +1155,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: enactProposal}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         enactProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'enactProposal', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEnactProposalCall: (_proposal_hash: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'enactProposal', {
                 proposal_hash: _proposal_hash,
@@ -809,6 +1176,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildEnactProposalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildEnactProposalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'enactProposal', argsBytes)
         },
@@ -830,8 +1203,8 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(p)` (though as this is an high-privilege dispatch, we assume it has a
          *   reasonable value).
          *
-         * @param _proposal_hash: [U8; 32]
-         * @param _maybe_ref_index: Enum<{0/None: , 1/Some: U32}>
+         * @param {unknown} _proposal_hash [U8; 32]
+         * @param {unknown} _maybe_ref_index Enum<{0/None: , 1/Some: U32}>
          */
         blacklist: async (signer: ethers.Signer, _proposal_hash: unknown, _maybe_ref_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'blacklist', false, {
@@ -840,10 +1213,20 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: blacklist}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         blacklistH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'blacklist', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBlacklistCall: (_proposal_hash: unknown, _maybe_ref_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'blacklist', {
                 proposal_hash: _proposal_hash,
@@ -851,6 +1234,12 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildBlacklistCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBlacklistCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'blacklist', argsBytes)
         },
@@ -864,7 +1253,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(p)` where `p = PublicProps::<T>::decode_len()`
          *
-         * @param _prop_index: Compact<U32>
+         * @param {unknown} _prop_index Compact<U32>
          */
         cancelProposal: async (signer: ethers.Signer, _prop_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', false, {
@@ -872,16 +1261,32 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelProposal}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Democracy', 'cancelProposal', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelProposalCall: (_prop_index: unknown) => {
             return buildRuntimeCall(metadata, 'Democracy', 'cancelProposal', {
                 prop_index: _prop_index,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelProposalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelProposalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Democracy', 'cancelProposal', argsBytes)
         },

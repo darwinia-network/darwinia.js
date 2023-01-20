@@ -1,5 +1,10 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module pangolin/bridgePangoroMessages/storages
+ */
 export const getBridgePangoroMessages = (getStorage: GetStorage) => {
     return {
 
@@ -11,7 +16,7 @@ export const getBridgePangoroMessages = (getStorage: GetStorage) => {
          * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
          * flag directly or call the `halt_operations`).
          *
-         * @return AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId32: [U8; 32]
          */
         palletOwner: async (): Promise<string | null> => {
             return await getStorage('BridgePangoroMessages', 'PalletOwner');
@@ -22,7 +27,7 @@ export const getBridgePangoroMessages = (getStorage: GetStorage) => {
          *
          * Depending on the mode either all, some, or no transactions will be allowed.
          *
-         * @return OperatingMode: Enum<{0/Normal: , 1/RejectingOutboundMessages: , 2/Halted: }>
+         * @returns {Promise<string | null>} MessagesOperatingMode: Enum<{0/Basic: Enum<{0/Normal: , 1/Halted: }>, 1/RejectingOutboundMessages: }>
          */
         palletOperatingMode: async (): Promise<string | null> => {
             return await getStorage('BridgePangoroMessages', 'PalletOperatingMode');
@@ -31,8 +36,8 @@ export const getBridgePangoroMessages = (getStorage: GetStorage) => {
         /**
          * Map of lane id => inbound lane data.
          *
-         * @param param0: [U8; 4]
-         * @return InboundLaneData: {relayers: Vec<{relayer: [U8; 32], messages: {begin: U64, end: U64, dispatch_results: BitVec<U8>}}>, last_confirmed_nonce: U64}
+         * @param {unknown} param0 [U8; 4]
+         * @returns {Promise<string | null>} InboundLaneData: {relayers: Vec<{relayer: [U8; 32], messages: {begin: U64, end: U64, dispatch_results: BitVec<U8>}}>, last_confirmed_nonce: U64}
          */
         inboundLanes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangoroMessages', 'InboundLanes', param0);
@@ -41,8 +46,8 @@ export const getBridgePangoroMessages = (getStorage: GetStorage) => {
         /**
          * Map of lane id => outbound lane data.
          *
-         * @param param0: [U8; 4]
-         * @return OutboundLaneData: {oldest_unpruned_nonce: U64, latest_received_nonce: U64, latest_generated_nonce: U64}
+         * @param {unknown} param0 [U8; 4]
+         * @returns {Promise<string | null>} OutboundLaneData: {oldest_unpruned_nonce: U64, latest_received_nonce: U64, latest_generated_nonce: U64}
          */
         outboundLanes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangoroMessages', 'OutboundLanes', param0);
@@ -51,8 +56,8 @@ export const getBridgePangoroMessages = (getStorage: GetStorage) => {
         /**
          * All queued outbound messages.
          *
-         * @param param0: MessageKey: {lane_id: [U8; 4], nonce: U64}
-         * @return MessageData: {payload: Vec<U8>, fee: U128}
+         * @param {unknown} param0 MessageKey: {lane_id: [U8; 4], nonce: U64}
+         * @returns {Promise<string | null>} MessageData: {payload: Vec<U8>, fee: U128}
          */
         outboundMessages: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangoroMessages', 'OutboundMessages', param0);

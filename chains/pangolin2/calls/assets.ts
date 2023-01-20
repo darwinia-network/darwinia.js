@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin2/assets/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -25,9 +30,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _admin: [U8; 20]
-         * @param _min_balance: U128
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _admin [U8; 20]
+         * @param {unknown} _min_balance U128
          */
         create: async (signer: ethers.Signer, _id: unknown, _admin: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'create', false, {
@@ -37,10 +42,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: create}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'create', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCreateCall: (_id: unknown, _admin: unknown, _min_balance: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'create', {
                 id: _id,
@@ -49,6 +64,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCreateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCreateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'create', argsBytes)
         },
@@ -74,10 +95,10 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _owner: [U8; 20]
-         * @param _is_sufficient: Bool
-         * @param _min_balance: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _owner [U8; 20]
+         * @param {unknown} _is_sufficient Bool
+         * @param {unknown} _min_balance Compact<U128>
          */
         forceCreate: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCreate', false, {
@@ -88,10 +109,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceCreate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceCreateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCreate', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceCreateCall: (_id: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceCreate', {
                 id: _id,
@@ -101,6 +132,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceCreateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceCreateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceCreate', argsBytes)
         },
@@ -125,8 +162,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * - `s = witness.sufficients`
          * - `a = witness.approvals`
          *
-         * @param _id: Compact<U64>
-         * @param _witness: {accounts: Compact<U32>, sufficients: Compact<U32>, approvals: Compact<U32>}
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _witness {accounts: Compact<U32>, sufficients: Compact<U32>, approvals: Compact<U32>}
          */
         destroy: async (signer: ethers.Signer, _id: unknown, _witness: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'destroy', false, {
@@ -135,10 +172,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: destroy}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         destroyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'destroy', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDestroyCall: (_id: unknown, _witness: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'destroy', {
                 id: _id,
@@ -146,6 +193,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildDestroyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDestroyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'destroy', argsBytes)
         },
@@ -164,9 +217,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(1)`
          * Modes: Pre-existing balance of `beneficiary`; Account pre-existence of `beneficiary`.
          *
-         * @param _id: Compact<U64>
-         * @param _beneficiary: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _beneficiary [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         mint: async (signer: ethers.Signer, _id: unknown, _beneficiary: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'mint', false, {
@@ -176,10 +229,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: mint}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         mintH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'mint', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildMintCall: (_id: unknown, _beneficiary: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'mint', {
                 id: _id,
@@ -188,6 +251,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildMintCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildMintCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'mint', argsBytes)
         },
@@ -209,9 +278,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * Weight: `O(1)`
          * Modes: Post-existence of `who`; Pre & post Zombie-status of `who`.
          *
-         * @param _id: Compact<U64>
-         * @param _who: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         burn: async (signer: ethers.Signer, _id: unknown, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'burn', false, {
@@ -221,10 +290,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: burn}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         burnH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'burn', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBurnCall: (_id: unknown, _who: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'burn', {
                 id: _id,
@@ -233,6 +312,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildBurnCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBurnCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'burn', argsBytes)
         },
@@ -257,9 +342,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * Modes: Pre-existence of `target`; Post-existence of sender; Account pre-existence of
          * `target`.
          *
-         * @param _id: Compact<U64>
-         * @param _target: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _target [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         transfer: async (signer: ethers.Signer, _id: unknown, _target: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transfer', false, {
@@ -269,10 +354,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCall: (_id: unknown, _target: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'transfer', {
                 id: _id,
@@ -281,6 +376,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'transfer', argsBytes)
         },
@@ -305,9 +406,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * Modes: Pre-existence of `target`; Post-existence of sender; Account pre-existence of
          * `target`.
          *
-         * @param _id: Compact<U64>
-         * @param _target: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _target [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         transferKeepAlive: async (signer: ethers.Signer, _id: unknown, _target: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferKeepAlive', false, {
@@ -317,10 +418,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transferKeepAlive}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferKeepAlive', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCall: (_id: unknown, _target: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'transferKeepAlive', {
                 id: _id,
@@ -329,6 +440,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferKeepAliveCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'transferKeepAlive', argsBytes)
         },
@@ -354,10 +471,10 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * Modes: Pre-existence of `dest`; Post-existence of `source`; Account pre-existence of
          * `dest`.
          *
-         * @param _id: Compact<U64>
-         * @param _source: [U8; 20]
-         * @param _dest: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _source [U8; 20]
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         forceTransfer: async (signer: ethers.Signer, _id: unknown, _source: unknown, _dest: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceTransfer', false, {
@@ -368,10 +485,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCall: (_id: unknown, _source: unknown, _dest: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceTransfer', {
                 id: _id,
@@ -381,6 +508,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceTransfer', argsBytes)
         },
@@ -397,8 +530,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _who: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
          */
         freeze: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freeze', false, {
@@ -407,10 +540,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: freeze}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         freezeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freeze', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFreezeCall: (_id: unknown, _who: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'freeze', {
                 id: _id,
@@ -418,6 +561,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildFreezeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFreezeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'freeze', argsBytes)
         },
@@ -434,8 +583,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _who: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
          */
         thaw: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thaw', false, {
@@ -444,10 +593,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: thaw}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         thawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thaw', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildThawCall: (_id: unknown, _who: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'thaw', {
                 id: _id,
@@ -455,6 +614,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildThawCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildThawCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'thaw', argsBytes)
         },
@@ -470,7 +635,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
+         * @param {unknown} _id Compact<U64>
          */
         freezeAsset: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freezeAsset', false, {
@@ -478,16 +643,32 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: freezeAsset}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         freezeAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'freezeAsset', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFreezeAssetCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'freezeAsset', {
                 id: _id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildFreezeAssetCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFreezeAssetCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'freezeAsset', argsBytes)
         },
@@ -503,7 +684,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
+         * @param {unknown} _id Compact<U64>
          */
         thawAsset: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thawAsset', false, {
@@ -511,16 +692,32 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: thawAsset}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         thawAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'thawAsset', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildThawAssetCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'thawAsset', {
                 id: _id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildThawAssetCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildThawAssetCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'thawAsset', argsBytes)
         },
@@ -537,8 +734,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _owner: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _owner [U8; 20]
          */
         transferOwnership: async (signer: ethers.Signer, _id: unknown, _owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferOwnership', false, {
@@ -547,10 +744,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transferOwnership}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferOwnershipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferOwnership', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferOwnershipCall: (_id: unknown, _owner: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'transferOwnership', {
                 id: _id,
@@ -558,6 +765,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferOwnershipCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferOwnershipCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'transferOwnership', argsBytes)
         },
@@ -576,10 +789,10 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _issuer: [U8; 20]
-         * @param _admin: [U8; 20]
-         * @param _freezer: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _issuer [U8; 20]
+         * @param {unknown} _admin [U8; 20]
+         * @param {unknown} _freezer [U8; 20]
          */
         setTeam: async (signer: ethers.Signer, _id: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setTeam', false, {
@@ -590,10 +803,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setTeam}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setTeamH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setTeam', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetTeamCall: (_id: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'setTeam', {
                 id: _id,
@@ -603,6 +826,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetTeamCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetTeamCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'setTeam', argsBytes)
         },
@@ -625,10 +854,10 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _name: Vec<U8>
-         * @param _symbol: Vec<U8>
-         * @param _decimals: U8
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _name Vec<U8>
+         * @param {unknown} _symbol Vec<U8>
+         * @param {unknown} _decimals U8
          */
         setMetadata: async (signer: ethers.Signer, _id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setMetadata', false, {
@@ -639,10 +868,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setMetadata}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'setMetadata', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetMetadataCall: (_id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'setMetadata', {
                 id: _id,
@@ -652,6 +891,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetMetadataCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetMetadataCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'setMetadata', argsBytes)
         },
@@ -669,7 +914,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
+         * @param {unknown} _id Compact<U64>
          */
         clearMetadata: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'clearMetadata', false, {
@@ -677,16 +922,32 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: clearMetadata}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         clearMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'clearMetadata', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearMetadataCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'clearMetadata', {
                 id: _id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildClearMetadataCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearMetadataCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'clearMetadata', argsBytes)
         },
@@ -707,11 +968,11 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(N + S)` where N and S are the length of the name and symbol respectively.
          *
-         * @param _id: Compact<U64>
-         * @param _name: Vec<U8>
-         * @param _symbol: Vec<U8>
-         * @param _decimals: U8
-         * @param _is_frozen: Bool
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _name Vec<U8>
+         * @param {unknown} _symbol Vec<U8>
+         * @param {unknown} _decimals U8
+         * @param {unknown} _is_frozen Bool
          */
         forceSetMetadata: async (signer: ethers.Signer, _id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown, _is_frozen: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceSetMetadata', false, {
@@ -723,10 +984,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceSetMetadata}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceSetMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceSetMetadata', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceSetMetadataCall: (_id: unknown, _name: unknown, _symbol: unknown, _decimals: unknown, _is_frozen: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceSetMetadata', {
                 id: _id,
@@ -737,6 +1008,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceSetMetadataCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceSetMetadataCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceSetMetadata', argsBytes)
         },
@@ -754,7 +1031,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
+         * @param {unknown} _id Compact<U64>
          */
         forceClearMetadata: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceClearMetadata', false, {
@@ -762,16 +1039,32 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceClearMetadata}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceClearMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceClearMetadata', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceClearMetadataCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceClearMetadata', {
                 id: _id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceClearMetadataCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceClearMetadataCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceClearMetadata', argsBytes)
         },
@@ -800,14 +1093,14 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _owner: [U8; 20]
-         * @param _issuer: [U8; 20]
-         * @param _admin: [U8; 20]
-         * @param _freezer: [U8; 20]
-         * @param _min_balance: Compact<U128>
-         * @param _is_sufficient: Bool
-         * @param _is_frozen: Bool
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _owner [U8; 20]
+         * @param {unknown} _issuer [U8; 20]
+         * @param {unknown} _admin [U8; 20]
+         * @param {unknown} _freezer [U8; 20]
+         * @param {unknown} _min_balance Compact<U128>
+         * @param {unknown} _is_sufficient Bool
+         * @param {unknown} _is_frozen Bool
          */
         forceAssetStatus: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown, _min_balance: unknown, _is_sufficient: unknown, _is_frozen: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceAssetStatus', false, {
@@ -822,10 +1115,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceAssetStatus}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceAssetStatusH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceAssetStatus', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceAssetStatusCall: (_id: unknown, _owner: unknown, _issuer: unknown, _admin: unknown, _freezer: unknown, _min_balance: unknown, _is_sufficient: unknown, _is_frozen: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceAssetStatus', {
                 id: _id,
@@ -839,6 +1142,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceAssetStatusCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceAssetStatusCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceAssetStatus', argsBytes)
         },
@@ -865,9 +1174,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _delegate: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _delegate [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         approveTransfer: async (signer: ethers.Signer, _id: unknown, _delegate: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'approveTransfer', false, {
@@ -877,10 +1186,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: approveTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         approveTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'approveTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildApproveTransferCall: (_id: unknown, _delegate: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'approveTransfer', {
                 id: _id,
@@ -889,6 +1208,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildApproveTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildApproveTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'approveTransfer', argsBytes)
         },
@@ -908,8 +1233,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _delegate: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _delegate [U8; 20]
          */
         cancelApproval: async (signer: ethers.Signer, _id: unknown, _delegate: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'cancelApproval', false, {
@@ -918,10 +1243,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: cancelApproval}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         cancelApprovalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'cancelApproval', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelApprovalCall: (_id: unknown, _delegate: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'cancelApproval', {
                 id: _id,
@@ -929,6 +1264,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildCancelApprovalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildCancelApprovalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'cancelApproval', argsBytes)
         },
@@ -948,9 +1289,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _owner: [U8; 20]
-         * @param _delegate: [U8; 20]
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _owner [U8; 20]
+         * @param {unknown} _delegate [U8; 20]
          */
         forceCancelApproval: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _delegate: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCancelApproval', false, {
@@ -960,10 +1301,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceCancelApproval}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceCancelApprovalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'forceCancelApproval', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceCancelApprovalCall: (_id: unknown, _owner: unknown, _delegate: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'forceCancelApproval', {
                 id: _id,
@@ -972,6 +1323,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceCancelApprovalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceCancelApprovalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'forceCancelApproval', argsBytes)
         },
@@ -996,10 +1353,10 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Weight: `O(1)`
          *
-         * @param _id: Compact<U64>
-         * @param _owner: [U8; 20]
-         * @param _destination: [U8; 20]
-         * @param _amount: Compact<U128>
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _owner [U8; 20]
+         * @param {unknown} _destination [U8; 20]
+         * @param {unknown} _amount Compact<U128>
          */
         transferApproved: async (signer: ethers.Signer, _id: unknown, _owner: unknown, _destination: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferApproved', false, {
@@ -1010,10 +1367,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transferApproved}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferApprovedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'transferApproved', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferApprovedCall: (_id: unknown, _owner: unknown, _destination: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'transferApproved', {
                 id: _id,
@@ -1023,6 +1390,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferApprovedCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferApprovedCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'transferApproved', argsBytes)
         },
@@ -1038,7 +1411,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `Touched` event when successful.
          *
-         * @param _id: Compact<U64>
+         * @param {unknown} _id Compact<U64>
          */
         touch: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'touch', false, {
@@ -1046,16 +1419,32 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: touch}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         touchH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'touch', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTouchCall: (_id: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'touch', {
                 id: _id,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTouchCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTouchCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'touch', argsBytes)
         },
@@ -1070,8 +1459,8 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `Refunded` event when successful.
          *
-         * @param _id: Compact<U64>
-         * @param _allow_burn: Bool
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _allow_burn Bool
          */
         refund: async (signer: ethers.Signer, _id: unknown, _allow_burn: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'refund', false, {
@@ -1080,10 +1469,20 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: refund}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         refundH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Assets', 'refund', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRefundCall: (_id: unknown, _allow_burn: unknown) => {
             return buildRuntimeCall(metadata, 'Assets', 'refund', {
                 id: _id,
@@ -1091,6 +1490,12 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRefundCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRefundCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'refund', argsBytes)
         },

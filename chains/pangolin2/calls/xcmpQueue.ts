@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin2/xcmpQueue/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -19,8 +24,8 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * Events:
          * - `OverweightServiced`: On success.
          *
-         * @param _index: U64
-         * @param _weight_limit: U64
+         * @param {unknown} _index U64
+         * @param {unknown} _weight_limit U64
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', false, {
@@ -29,10 +34,20 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: serviceOverweight}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         serviceOverweightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildServiceOverweightCall: (_index: unknown, _weight_limit: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'serviceOverweight', {
                 index: _index,
@@ -40,6 +55,12 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildServiceOverweightCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildServiceOverweightCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'serviceOverweight', argsBytes)
         },
@@ -55,15 +76,31 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: suspendXcmExecution}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         suspendXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'suspendXcmExecution', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSuspendXcmExecutionCall: () => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'suspendXcmExecution', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSuspendXcmExecutionCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSuspendXcmExecutionCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'suspendXcmExecution', argsBytes)
         },
@@ -81,15 +118,31 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: resumeXcmExecution}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         resumeXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'resumeXcmExecution', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildResumeXcmExecutionCall: () => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'resumeXcmExecution', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildResumeXcmExecutionCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildResumeXcmExecutionCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'resumeXcmExecution', argsBytes)
         },
@@ -101,7 +154,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.suspend_value`
          *
-         * @param _new: U32
+         * @param {unknown} _new U32
          */
         updateSuspendThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', false, {
@@ -109,16 +162,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateSuspendThreshold}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateSuspendThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateSuspendThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateSuspendThreshold', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateSuspendThresholdCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateSuspendThresholdCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateSuspendThreshold', argsBytes)
         },
@@ -130,7 +199,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.drop_threshold`
          *
-         * @param _new: U32
+         * @param {unknown} _new U32
          */
         updateDropThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', false, {
@@ -138,16 +207,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateDropThreshold}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateDropThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateDropThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateDropThreshold', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateDropThresholdCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateDropThresholdCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateDropThreshold', argsBytes)
         },
@@ -159,7 +244,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.resume_threshold`
          *
-         * @param _new: U32
+         * @param {unknown} _new U32
          */
         updateResumeThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', false, {
@@ -167,16 +252,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateResumeThreshold}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateResumeThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateResumeThresholdCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateResumeThreshold', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateResumeThresholdCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateResumeThresholdCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateResumeThreshold', argsBytes)
         },
@@ -187,7 +288,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.threshold_weight`
          *
-         * @param _new: U64
+         * @param {unknown} _new U64
          */
         updateThresholdWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', false, {
@@ -195,16 +296,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateThresholdWeight}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateThresholdWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateThresholdWeightCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateThresholdWeight', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateThresholdWeightCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateThresholdWeightCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateThresholdWeight', argsBytes)
         },
@@ -216,7 +333,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.weight_restrict_decay`.
          *
-         * @param _new: U64
+         * @param {unknown} _new U64
          */
         updateWeightRestrictDecay: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', false, {
@@ -224,16 +341,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateWeightRestrictDecay}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateWeightRestrictDecayH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateWeightRestrictDecayCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateWeightRestrictDecay', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateWeightRestrictDecayCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateWeightRestrictDecayCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateWeightRestrictDecay', argsBytes)
         },
@@ -245,7 +378,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.xcmp_max_individual_weight`.
          *
-         * @param _new: U64
+         * @param {unknown} _new U64
          */
         updateXcmpMaxIndividualWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', false, {
@@ -253,16 +386,32 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: updateXcmpMaxIndividualWeight}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         updateXcmpMaxIndividualWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateXcmpMaxIndividualWeightCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUpdateXcmpMaxIndividualWeightCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUpdateXcmpMaxIndividualWeightCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', argsBytes)
         },

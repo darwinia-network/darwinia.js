@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin2/technicalMembership/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -9,7 +14,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::AddOrigin`.
          *
-         * @param _who: [U8; 20]
+         * @param {unknown} _who [U8; 20]
          */
         addMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'addMember', false, {
@@ -17,16 +22,32 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: addMember}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         addMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'addMember', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAddMemberCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'addMember', {
                 who: _who,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildAddMemberCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildAddMemberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'addMember', argsBytes)
         },
@@ -36,7 +57,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::RemoveOrigin`.
          *
-         * @param _who: [U8; 20]
+         * @param {unknown} _who [U8; 20]
          */
         removeMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'removeMember', false, {
@@ -44,16 +65,32 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: removeMember}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         removeMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'removeMember', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveMemberCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'removeMember', {
                 who: _who,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRemoveMemberCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemoveMemberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'removeMember', argsBytes)
         },
@@ -65,8 +102,8 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * Prime membership is *not* passed from `remove` to `add`, if extant.
          *
-         * @param _remove: [U8; 20]
-         * @param _add: [U8; 20]
+         * @param {unknown} _remove [U8; 20]
+         * @param {unknown} _add [U8; 20]
          */
         swapMember: async (signer: ethers.Signer, _remove: unknown, _add: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'swapMember', false, {
@@ -75,10 +112,20 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: swapMember}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         swapMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'swapMember', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSwapMemberCall: (_remove: unknown, _add: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'swapMember', {
                 remove: _remove,
@@ -86,6 +133,12 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSwapMemberCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSwapMemberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'swapMember', argsBytes)
         },
@@ -96,7 +149,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::ResetOrigin`.
          *
-         * @param _members: Vec<[U8; 20]>
+         * @param {unknown} _members Vec<[U8; 20]>
          */
         resetMembers: async (signer: ethers.Signer, _members: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'resetMembers', false, {
@@ -104,16 +157,32 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: resetMembers}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         resetMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'resetMembers', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildResetMembersCall: (_members: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'resetMembers', {
                 members: _members,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildResetMembersCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildResetMembersCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'resetMembers', argsBytes)
         },
@@ -125,7 +194,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * Prime membership is passed from the origin account to `new`, if extant.
          *
-         * @param _new: [U8; 20]
+         * @param {unknown} _new [U8; 20]
          */
         changeKey: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'changeKey', false, {
@@ -133,16 +202,32 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: changeKey}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         changeKeyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'changeKey', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChangeKeyCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'changeKey', {
                 new: _new,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildChangeKeyCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildChangeKeyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'changeKey', argsBytes)
         },
@@ -152,7 +237,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::PrimeOrigin`.
          *
-         * @param _who: [U8; 20]
+         * @param {unknown} _who [U8; 20]
          */
         setPrime: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'setPrime', false, {
@@ -160,16 +245,32 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: setPrime}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setPrimeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'setPrime', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetPrimeCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'setPrime', {
                 who: _who,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetPrimeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetPrimeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'setPrime', argsBytes)
         },
@@ -185,15 +286,31 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
 	    });
         },
 
+        /**
+	 * Similar to {@link: clearPrime}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         clearPrimeH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'TechnicalMembership', 'clearPrime', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearPrimeCall: () => {
             return buildRuntimeCall(metadata, 'TechnicalMembership', 'clearPrime', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildClearPrimeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildClearPrimeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'TechnicalMembership', 'clearPrime', argsBytes)
         },

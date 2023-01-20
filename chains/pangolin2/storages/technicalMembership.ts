@@ -1,12 +1,17 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module pangolin2/technicalMembership/storages
+ */
 export const getTechnicalMembership = (getStorage: GetStorage) => {
     return {
 
         /**
          * The current membership, stored as an ordered Vec.
          *
-         * @return BoundedVec: Vec<[U8; 20]>
+         * @returns {Promise<string | null>} BoundedVec: Vec<[U8; 20]>
          */
         members: async (): Promise<string | null> => {
             return await getStorage('TechnicalMembership', 'Members');
@@ -15,7 +20,7 @@ export const getTechnicalMembership = (getStorage: GetStorage) => {
         /**
          * The current prime member, if one exists.
          *
-         * @return AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         prime: async (): Promise<string | null> => {
             return await getStorage('TechnicalMembership', 'Prime');

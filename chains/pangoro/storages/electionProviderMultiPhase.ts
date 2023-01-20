@@ -1,5 +1,10 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module pangoro/electionProviderMultiPhase/storages
+ */
 export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
     return {
 
@@ -11,7 +16,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          *
          * This is merely incremented once per every time that an upstream `elect` is called.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         round: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'Round');
@@ -20,7 +25,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
         /**
          * Current phase.
          *
-         * @return Phase: Enum<{0/Off: , 1/Signed: , 2/Unsigned: (Bool, U32), 3/Emergency: }>
+         * @returns {Promise<string | null>} Phase: Enum<{0/Off: , 1/Signed: , 2/Unsigned: (Bool, U32), 3/Emergency: }>
          */
         currentPhase: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'CurrentPhase');
@@ -29,7 +34,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
         /**
          * Current best solution, signed or unsigned, queued to be returned upon `elect`.
          *
-         * @return ReadySolution: {supports: Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>, score: [U128; 3], compute: Enum<{0/OnChain: , 1/Signed: , 2/Unsigned: , 3/Fallback: , 4/Emergency: }>}
+         * @returns {Promise<string | null>} ReadySolution: {supports: Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>, score: [U128; 3], compute: Enum<{0/OnChain: , 1/Signed: , 2/Unsigned: , 3/Fallback: , 4/Emergency: }>}
          */
         queuedSolution: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'QueuedSolution');
@@ -40,7 +45,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          *
          * This is created at the beginning of the signed phase and cleared upon calling `elect`.
          *
-         * @return RoundSnapshot: {voters: Vec<([U8; 32], U64, Vec<[U8; 32]>)>, targets: Vec<[U8; 32]>}
+         * @returns {Promise<string | null>} RoundSnapshot: {voters: Vec<([U8; 32], U64, Vec<[U8; 32]>)>, targets: Vec<[U8; 32]>}
          */
         snapshot: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'Snapshot');
@@ -51,7 +56,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          *
          * Only exists when [`Snapshot`] is present.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         desiredTargets: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'DesiredTargets');
@@ -62,7 +67,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          *
          * Only exists when [`Snapshot`] is present.
          *
-         * @return SolutionOrSnapshotSize: {voters: Compact<U32>, targets: Compact<U32>}
+         * @returns {Promise<string | null>} SolutionOrSnapshotSize: {voters: Compact<U32>, targets: Compact<U32>}
          */
         snapshotMetadata: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'SnapshotMetadata');
@@ -79,7 +84,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          * capacity, it will simply saturate. We can't just iterate over `SignedSubmissionsMap`,
          * because iteration is slow. Instead, we store the value here.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         signedSubmissionNextIndex: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'SignedSubmissionNextIndex');
@@ -93,7 +98,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          * can be quite large, so we're willing to pay the cost of multiple database accesses to access
          * them one at a time instead of reading and decoding all of them at once.
          *
-         * @return BoundedBTreeMap: Vec<([U128; 3], U32)>
+         * @returns {Promise<string | null>} BoundedBTreeMap: Vec<([U128; 3], U32)>
          */
         signedSubmissionIndices: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'SignedSubmissionIndices');
@@ -108,8 +113,8 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          * Twox note: the key of the map is an auto-incrementing index which users cannot inspect or
          * affect; we shouldn't need a cryptographically secure hasher.
          *
-         * @param param0: U32
-         * @return SignedSubmission: {who: [U8; 32], deposit: U128, raw_solution: {solution: {votes1: Vec<(Compact<U32>, Compact<U16>)>, votes2: Vec<(Compact<U32>, (Compact<U16>, Compact<U16>), Compact<U16>)>, votes3: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 2], Compact<U16>)>, votes4: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 3], Compact<U16>)>, votes5: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 4], Compact<U16>)>, votes6: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 5], Compact<U16>)>, votes7: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 6], Compact<U16>)>, votes8: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 7], Compact<U16>)>, votes9: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 8], Compact<U16>)>, votes10: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 9], Compact<U16>)>, votes11: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 10], Compact<U16>)>, votes12: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 11], Compact<U16>)>, votes13: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 12], Compact<U16>)>, votes14: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 13], Compact<U16>)>, votes15: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 14], Compact<U16>)>, votes16: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 15], Compact<U16>)>}, score: [U128; 3], round: U32}, reward: U128}
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} SignedSubmission: {who: [U8; 32], deposit: U128, raw_solution: {solution: {votes1: Vec<(Compact<U32>, Compact<U16>)>, votes2: Vec<(Compact<U32>, (Compact<U16>, Compact<U16>), Compact<U16>)>, votes3: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 2], Compact<U16>)>, votes4: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 3], Compact<U16>)>, votes5: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 4], Compact<U16>)>, votes6: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 5], Compact<U16>)>, votes7: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 6], Compact<U16>)>, votes8: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 7], Compact<U16>)>, votes9: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 8], Compact<U16>)>, votes10: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 9], Compact<U16>)>, votes11: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 10], Compact<U16>)>, votes12: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 11], Compact<U16>)>, votes13: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 12], Compact<U16>)>, votes14: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 13], Compact<U16>)>, votes15: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 14], Compact<U16>)>, votes16: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 15], Compact<U16>)>}, score: [U128; 3], round: U32}, reward: U128}
          */
         signedSubmissionsMap: async (param0: unknown): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'SignedSubmissionsMap', param0);
@@ -121,7 +126,7 @@ export const getElectionProviderMultiPhase = (getStorage: GetStorage) => {
          *
          * Can be set via `set_minimum_untrusted_score`.
          *
-         * @return [U128; 3]
+         * @returns {Promise<string | null>} [U128; 3]
          */
         minimumUntrustedScore: async (): Promise<string | null> => {
             return await getStorage('ElectionProviderMultiPhase', 'MinimumUntrustedScore');

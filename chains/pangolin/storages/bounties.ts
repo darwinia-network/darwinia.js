@@ -1,12 +1,17 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module pangolin/bounties/storages
+ */
 export const getBounties = (getStorage: GetStorage) => {
     return {
 
         /**
          * Number of bounty proposals that have been made.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         bountyCount: async (): Promise<string | null> => {
             return await getStorage('Bounties', 'BountyCount');
@@ -15,8 +20,8 @@ export const getBounties = (getStorage: GetStorage) => {
         /**
          * Bounties that have been made.
          *
-         * @param param0: U32
-         * @return Bounty: {proposer: [U8; 32], value: U128, fee: U128, curator_deposit: U128, bond: U128, status: Enum<{0/Proposed: , 1/Approved: , 2/Funded: , 3/CuratorProposed: {curator: [U8; 32]}, 4/Active: {curator: [U8; 32], update_due: U32}, 5/PendingPayout: {curator: [U8; 32], beneficiary: [U8; 32], unlock_at: U32}}>}
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} Bounty: {proposer: [U8; 32], value: U128, fee: U128, curator_deposit: U128, bond: U128, status: Enum<{0/Proposed: , 1/Approved: , 2/Funded: , 3/CuratorProposed: {curator: [U8; 32]}, 4/Active: {curator: [U8; 32], update_due: U32}, 5/PendingPayout: {curator: [U8; 32], beneficiary: [U8; 32], unlock_at: U32}}>}
          */
         bounties: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Bounties', 'Bounties', param0);
@@ -25,8 +30,8 @@ export const getBounties = (getStorage: GetStorage) => {
         /**
          * The description of each bounty.
          *
-         * @param param0: U32
-         * @return Vec<U8>
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} Vec<U8>
          */
         bountyDescriptions: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Bounties', 'BountyDescriptions', param0);
@@ -35,7 +40,7 @@ export const getBounties = (getStorage: GetStorage) => {
         /**
          * Bounty indices that have been approved but not yet funded.
          *
-         * @return Vec<U32>
+         * @returns {Promise<string | null>} Vec<U32>
          */
         bountyApprovals: async (): Promise<string | null> => {
             return await getStorage('Bounties', 'BountyApprovals');

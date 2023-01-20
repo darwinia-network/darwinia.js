@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module pangolin2/system/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -7,7 +12,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * A dispatch that will fill the block weight up to the given ratio.
          *
-         * @param _ratio: U32
+         * @param {unknown} _ratio U32
          */
         fillBlock: async (signer: ethers.Signer, _ratio: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'fillBlock', false, {
@@ -15,16 +20,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: fillBlock}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         fillBlockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'fillBlock', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFillBlockCall: (_ratio: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'fillBlock', {
                 ratio: _ratio,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildFillBlockCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFillBlockCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'fillBlock', argsBytes)
         },
@@ -36,7 +57,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * - `O(1)`
          * # </weight>
          *
-         * @param _remark: Vec<U8>
+         * @param {unknown} _remark Vec<U8>
          */
         remark: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remark', false, {
@@ -44,16 +65,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: remark}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         remarkH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remark', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemarkCall: (_remark: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'remark', {
                 remark: _remark,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRemarkCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemarkCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'remark', argsBytes)
         },
@@ -61,7 +98,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Set the number of pages in the WebAssembly environment's heap.
          *
-         * @param _pages: U64
+         * @param {unknown} _pages U64
          */
         setHeapPages: async (signer: ethers.Signer, _pages: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setHeapPages', false, {
@@ -69,16 +106,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setHeapPages}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setHeapPagesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setHeapPages', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetHeapPagesCall: (_pages: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setHeapPages', {
                 pages: _pages,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetHeapPagesCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetHeapPagesCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'setHeapPages', argsBytes)
         },
@@ -97,7 +150,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * expensive. We will treat this as a full block.
          * # </weight>
          *
-         * @param _code: Vec<U8>
+         * @param {unknown} _code Vec<U8>
          */
         setCode: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCode', false, {
@@ -105,16 +158,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setCode}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setCodeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCode', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetCodeCall: (_code: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setCode', {
                 code: _code,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetCodeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetCodeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'setCode', argsBytes)
         },
@@ -130,7 +199,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * The weight of this function is dependent on the runtime. We will treat this as a full
          * block. # </weight>
          *
-         * @param _code: Vec<U8>
+         * @param {unknown} _code Vec<U8>
          */
         setCodeWithoutChecks: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', false, {
@@ -138,16 +207,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setCodeWithoutChecks}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setCodeWithoutChecksH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetCodeWithoutChecksCall: (_code: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setCodeWithoutChecks', {
                 code: _code,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetCodeWithoutChecksCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetCodeWithoutChecksCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'setCodeWithoutChecks', argsBytes)
         },
@@ -155,7 +240,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Set some items of storage.
          *
-         * @param _items: Vec<(Vec<U8>, Vec<U8>)>
+         * @param {unknown} _items Vec<(Vec<U8>, Vec<U8>)>
          */
         setStorage: async (signer: ethers.Signer, _items: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setStorage', false, {
@@ -163,16 +248,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setStorage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'setStorage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetStorageCall: (_items: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'setStorage', {
                 items: _items,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetStorageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetStorageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'setStorage', argsBytes)
         },
@@ -180,7 +281,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Kill some items from storage.
          *
-         * @param _keys: Vec<Vec<U8>>
+         * @param {unknown} _keys Vec<Vec<U8>>
          */
         killStorage: async (signer: ethers.Signer, _keys: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killStorage', false, {
@@ -188,16 +289,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: killStorage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         killStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killStorage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKillStorageCall: (_keys: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'killStorage', {
                 keys: _keys,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildKillStorageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKillStorageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'killStorage', argsBytes)
         },
@@ -208,8 +325,8 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * **NOTE:** We rely on the Root origin to provide us the number of subkeys under
          * the prefix we are removing to accurately calculate the weight of this function.
          *
-         * @param _prefix: Vec<U8>
-         * @param _subkeys: U32
+         * @param {unknown} _prefix Vec<U8>
+         * @param {unknown} _subkeys U32
          */
         killPrefix: async (signer: ethers.Signer, _prefix: unknown, _subkeys: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killPrefix', false, {
@@ -218,10 +335,20 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: killPrefix}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         killPrefixH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'killPrefix', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKillPrefixCall: (_prefix: unknown, _subkeys: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'killPrefix', {
                 prefix: _prefix,
@@ -229,6 +356,12 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildKillPrefixCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildKillPrefixCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'killPrefix', argsBytes)
         },
@@ -236,7 +369,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Make some on-chain remark and emit event.
          *
-         * @param _remark: Vec<U8>
+         * @param {unknown} _remark Vec<U8>
          */
         remarkWithEvent: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', false, {
@@ -244,16 +377,32 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: remarkWithEvent}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         remarkWithEventH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemarkWithEventCall: (_remark: unknown) => {
             return buildRuntimeCall(metadata, 'System', 'remarkWithEvent', {
                 remark: _remark,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRemarkWithEventCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRemarkWithEventCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'System', 'remarkWithEvent', argsBytes)
         },

@@ -1,12 +1,17 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module crab/grandpa/storages
+ */
 export const getGrandpa = (getStorage: GetStorage) => {
     return {
 
         /**
          * State of the current authority set.
          *
-         * @return StoredState: Enum<{0/Live: , 1/PendingPause: {scheduled_at: U32, delay: U32}, 2/Paused: , 3/PendingResume: {scheduled_at: U32, delay: U32}}>
+         * @returns {Promise<string | null>} StoredState: Enum<{0/Live: , 1/PendingPause: {scheduled_at: U32, delay: U32}, 2/Paused: , 3/PendingResume: {scheduled_at: U32, delay: U32}}>
          */
         state: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'State');
@@ -15,7 +20,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
          * Pending change: (signaled at, scheduled change).
          *
-         * @return StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec<([U8; 32], U64)>, forced: Enum<{0/None: , 1/Some: U32}>}
+         * @returns {Promise<string | null>} StoredPendingChange: {scheduled_at: U32, delay: U32, next_authorities: Vec<([U8; 32], U64)>, forced: Enum<{0/None: , 1/Some: U32}>}
          */
         pendingChange: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'PendingChange');
@@ -24,7 +29,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
          * next block number where we can force a change.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         nextForced: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'NextForced');
@@ -33,7 +38,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
         /**
          * `true` if we are currently stalled.
          *
-         * @return (U32, U32)
+         * @returns {Promise<string | null>} (U32, U32)
          */
         stalled: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'Stalled');
@@ -43,7 +48,7 @@ export const getGrandpa = (getStorage: GetStorage) => {
          * The number of changes (both in terms of keys and underlying economic responsibilities)
          * in the "set" of Grandpa validators from genesis.
          *
-         * @return U64
+         * @returns {Promise<string | null>} U64
          */
         currentSetId: async (): Promise<string | null> => {
             return await getStorage('Grandpa', 'CurrentSetId');
@@ -55,8 +60,8 @@ export const getGrandpa = (getStorage: GetStorage) => {
          *
          * TWOX-NOTE: `SetId` is not under user control.
          *
-         * @param param0: U64
-         * @return U32
+         * @param {unknown} param0 U64
+         * @returns {Promise<string | null>} U32
          */
         setIdSession: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Grandpa', 'SetIdSession', param0);

@@ -1,5 +1,10 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet evm storages
+ *
+ * @module darwinia/imOnline/storages
+ */
 export const getImOnline = (getStorage: GetStorage) => {
     return {
 
@@ -16,7 +21,7 @@ export const getImOnline = (getStorage: GetStorage) => {
          * progress estimate from `NextSessionRotation`, as those estimates should be
          * more accurate then the value we calculate for `HeartbeatAfter`.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         heartbeatAfter: async (): Promise<string | null> => {
             return await getStorage('ImOnline', 'HeartbeatAfter');
@@ -25,7 +30,7 @@ export const getImOnline = (getStorage: GetStorage) => {
         /**
          * The current set of keys that may issue a heartbeat.
          *
-         * @return WeakBoundedVec: Vec<[U8; 32]>
+         * @returns {Promise<string | null>} WeakBoundedVec: Vec<[U8; 32]>
          */
         keys: async (): Promise<string | null> => {
             return await getStorage('ImOnline', 'Keys');
@@ -35,9 +40,9 @@ export const getImOnline = (getStorage: GetStorage) => {
          * For each session index, we keep a mapping of `SessionIndex` and `AuthIndex` to
          * `WrapperOpaque<BoundedOpaqueNetworkState>`.
          *
-         * @param param0: U32
-         * @param param1: U32
-         * @return WrapperOpaque: (Compact<U32>, {peer_id: Vec<U8>, external_addresses: Vec<Vec<U8>>})
+         * @param {unknown} param0 U32
+         * @param {unknown} param1 U32
+         * @returns {Promise<string | null>} WrapperOpaque: (Compact<U32>, {peer_id: Vec<U8>, external_addresses: Vec<Vec<U8>>})
          */
         receivedHeartbeats: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('ImOnline', 'ReceivedHeartbeats', param0, param1);
@@ -47,9 +52,9 @@ export const getImOnline = (getStorage: GetStorage) => {
          * For each session index, we keep a mapping of `ValidatorId<T>` to the
          * number of blocks authored by the given authority.
          *
-         * @param param0: U32
-         * @param param1: AccountId32: [U8; 32]
-         * @return U32
+         * @param {unknown} param0 U32
+         * @param {unknown} param1 AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} U32
          */
         authoredBlocks: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('ImOnline', 'AuthoredBlocks', param0, param1);

@@ -1,3 +1,8 @@
+/**
+ * This is the doc comment for pallet evm calls
+ *
+ * @module crab/kton/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -30,8 +35,8 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * # </weight>
          *
-         * @param _dest: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _value: Compact<U128>
+         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _value Compact<U128>
          */
         transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transfer', false, {
@@ -40,10 +45,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'transfer', {
                 dest: _dest,
@@ -51,6 +66,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'transfer', argsBytes)
         },
@@ -65,9 +86,9 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin for this call is `root`.
          *
-         * @param _who: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _new_free: Compact<U128>
-         * @param _new_reserved: Compact<U128>
+         * @param {unknown} _who Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _new_free Compact<U128>
+         * @param {unknown} _new_reserved Compact<U128>
          */
         setBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _new_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'setBalance', false, {
@@ -77,10 +98,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: setBalance}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'setBalance', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'setBalance', {
                 who: _who,
@@ -89,6 +120,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetBalanceCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetBalanceCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'setBalance', argsBytes)
         },
@@ -101,9 +138,9 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          *   assumed to be in the overlay.
          * # </weight>
          *
-         * @param _source: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _dest: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _value: Compact<U128>
+         * @param {unknown} _source Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _value Compact<U128>
          */
         forceTransfer: async (signer: ethers.Signer, _source: unknown, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'forceTransfer', false, {
@@ -113,10 +150,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'forceTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'forceTransfer', {
                 source: _source,
@@ -125,6 +172,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'forceTransfer', argsBytes)
         },
@@ -137,8 +190,8 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * [`transfer`]: struct.Pallet.html#method.transfer
          *
-         * @param _dest: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _value: Compact<U128>
+         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _value Compact<U128>
          */
         transferKeepAlive: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transferKeepAlive', false, {
@@ -147,10 +200,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transferKeepAlive}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transferKeepAlive', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'transferKeepAlive', {
                 dest: _dest,
@@ -158,6 +221,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferKeepAliveCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'transferKeepAlive', argsBytes)
         },
@@ -181,8 +250,8 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1). Just like transfer, but reading the user's transferable balance first.
          *   #</weight>
          *
-         * @param _dest: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _keep_alive: Bool
+         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _keep_alive Bool
          */
         transferAll: async (signer: ethers.Signer, _dest: unknown, _keep_alive: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transferAll', false, {
@@ -191,10 +260,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: transferAll}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferAllH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'transferAll', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferAllCall: (_dest: unknown, _keep_alive: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'transferAll', {
                 dest: _dest,
@@ -202,6 +281,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferAllCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferAllCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'transferAll', argsBytes)
         },
@@ -211,8 +296,8 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Can only be called by ROOT.
          *
-         * @param _who: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _amount: U128
+         * @param {unknown} _who Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _amount U128
          */
         forceUnreserve: async (signer: ethers.Signer, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'forceUnreserve', false, {
@@ -221,10 +306,20 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: forceUnreserve}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceUnreserveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Kton', 'forceUnreserve', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnreserveCall: (_who: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Kton', 'forceUnreserve', {
                 who: _who,
@@ -232,6 +327,12 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceUnreserveCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnreserveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Kton', 'forceUnreserve', argsBytes)
         },
