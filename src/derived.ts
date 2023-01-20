@@ -72,23 +72,16 @@ export async function setSessionKeysAndCommission(client: Client, signer: ethers
 /**
  * TODO: cache meta
  */
-export async function getSystemEvents(client: Client): Promise<Map<string, any>> {
-    const result: Map<string, any> = new Map();
+export async function getSystemEvents(client: Client2): Promise<EventData[]> {
+    const result: EventData[] = [];
 
     const eventsJsonStr = await client.storages.system.events();
     const events = JSON.parse(eventsJsonStr)
     for (let i = 0; i < events.length; i++) {
-        const eventIndex = hexToU8a(events[i].event.index);
-        const fieldValues = events[i].event.data;
-
-        // get the metadata of the event
+        const event = events[i].event;
+        const eventIndex = hexToU8a(event.index);
         const eventMeta = getEventMetaByIndex(client.metadata, eventIndex[0], eventIndex[1]);
-
-        for (let j = 0; j < eventMeta.fields.length; j++) {
-            const field = eventMeta.fields[j];
-            const value = fieldValues[j];
-            result.set(field.name, value);
-        }
+        result.push(buildEvent(eventMeta, event));
     }
 
     return result;

@@ -136,6 +136,12 @@ More examples in [examples](./examples)
 
   Track specified events. [Example](examples/derived_track_system_events.ts)
 
+* **getSystemEvents**
+ 
+  Get the latest events. 
+
+  You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](examples/derived_get_system_events.ts)
+
 see [src/derived.ts](src/derived.ts).
 
 ### TODO
