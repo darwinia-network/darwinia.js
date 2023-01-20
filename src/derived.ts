@@ -151,12 +151,19 @@ export type EventData = {
     data: Map<string, any>
 }
 
-export async function trackSystemEvents(client: Client2, whatEventsToTrack: [string, string][], cb: (event: EventData) => Promise<void>) {
+/**
+ * Track specified events.
+ *
+ * @param client: client from clientBuilder
+ * @param eventsToTrack: [PalletName, EventName] array 
+ * @param cb: callback
+ */
+export async function trackSystemEvents(client: Client2, eventsToTrack: [string, string][], cb: (event: EventData) => Promise<void>) {
     // Map<
     //   eventIndexHex,
     //   eventMeta
     // >
-    const eventMetas = whatEventsToTrack
+    const eventMetas = eventsToTrack
         .map(e => {
             return getEventMeta(client.metadata, e[0], e[1]);
         })

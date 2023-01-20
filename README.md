@@ -3,26 +3,15 @@
 A library to help 
 1. fetch internal substrate storages, and
 2. dispatch calls
-3. Easy-to-use wrapped functions(Wrapped API) which are build from 1 and 2. 
+3. Easy-to-use derived functions([Derived API List](#derived-api-list)) which are build from 1 and 2. 
 
 ## Install
 ```shell
 npm install darwinia-js-sdk
 ```
 
-## Wrapped APIs
 
-* nominateAndStake
-
-  Stake and nominate collator.
-
-* setSessionKeysAndCommission
-
-  Set session keys and commission. 
-
-see [src/wrapped_api.ts](src/wrapped_api.ts).
-
-## API Usage
+## Usage
 
 ### fetch storage
 
@@ -131,8 +120,23 @@ async function main(): Promise<void> {
 main();
 
 ```
+More examples in [examples](./examples)
 
-more examples in [examples](./examples)
+## Derived API List
+
+* **nominateAndStake**
+
+  Stake and nominate collator.
+
+* **setSessionKeysAndCommission**
+
+  Set session keys and commission. [Example](examples/derived_set_session_keys_and_commission.ts)
+
+* **trackSystemEvents**
+
+  Track specified events. [Example](examples/derived_track_system_events.ts)
+
+see [src/derived.ts](src/derived.ts).
 
 ### TODO
 
