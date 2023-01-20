@@ -21,10 +21,10 @@
         "recurse": true,
         "verbose": true,
         "theme_opts": {
+            "homepageTitle": "darwinia-js-sdk doc",
+            "title": "Home",
             "default_theme": "light",
-            "theme_opts": {
-              "create_style": ".sidebar-title { font-size: 2rem }"
-            }
+            "create_style": ".sidebar-items-container {margin-top: 1rem;} .pre-div {border-radius: 0.5rem;} .sidebar-section-title {border-radius: 0.5rem;} .sidebar {border-radius: 0.5rem;}"
         },
         "template": "node_modules/clean-jsdoc-theme"
     },
