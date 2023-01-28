@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Utility`'s calls. 
+ * 
+ * `Utility`'s storages: {@link: module:pangolin/utility/storages}
  *
  * @module pangolin/utility/calls
  */
@@ -39,7 +41,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: batch}, but with scale encoded args.
+	 * Similar to {@link: pangolin/utility/calls/batch}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -94,7 +96,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asDerivative}, but with scale encoded args.
+	 * Similar to {@link: pangolin/utility/calls/asDerivative}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -149,7 +151,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: batchAll}, but with scale encoded args.
+	 * Similar to {@link: pangolin/utility/calls/batchAll}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -201,7 +203,7 @@ export const getUtility = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: dispatchAs}, but with scale encoded args.
+	 * Similar to {@link: pangolin/utility/calls/dispatchAs}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `XcmpQueue`'s calls. 
+ * 
+ * `XcmpQueue`'s storages: {@link: module:pangolin2/xcmpQueue/storages}
  *
  * @module pangolin2/xcmpQueue/calls
  */
@@ -35,7 +37,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: serviceOverweight}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/serviceOverweight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -77,7 +79,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: suspendXcmExecution}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/suspendXcmExecution}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -119,7 +121,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: resumeXcmExecution}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/resumeXcmExecution}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -163,7 +165,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateSuspendThreshold}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateSuspendThreshold}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -208,7 +210,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateDropThreshold}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateDropThreshold}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -253,7 +255,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateResumeThreshold}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateResumeThreshold}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -297,7 +299,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateThresholdWeight}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateThresholdWeight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -342,7 +344,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateWeightRestrictDecay}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateWeightRestrictDecay}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -387,7 +389,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: updateXcmpMaxIndividualWeight}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/xcmpQueue/calls/updateXcmpMaxIndividualWeight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

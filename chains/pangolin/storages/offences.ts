@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Offences`'s storages.
+ * 
+ * `Offences`'s calls: {@link: module:pangolin/offences/calls}
  *
  * @module pangolin/offences/storages
  */

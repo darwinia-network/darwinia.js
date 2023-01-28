@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeRococoGrandpa`'s calls. 
+ * 
+ * `BridgeRococoGrandpa`'s storages: {@link: module:pangolin/bridgeRococoGrandpa/storages}
  *
  * @module pangolin/bridgeRococoGrandpa/calls
  */
@@ -29,7 +31,7 @@ export const getBridgeRococoGrandpa = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: submitFinalityProof}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoGrandpa/calls/submitFinalityProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -79,7 +81,7 @@ export const getBridgeRococoGrandpa = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: initialize}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoGrandpa/calls/initialize}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -122,7 +124,7 @@ export const getBridgeRococoGrandpa = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoGrandpa/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -165,7 +167,7 @@ export const getBridgeRococoGrandpa = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoGrandpa/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeKusamaParachain`'s calls. 
+ * 
+ * `BridgeKusamaParachain`'s storages: {@link: module:crab/bridgeKusamaParachain/storages}
  *
  * @module crab/bridgeKusamaParachain/calls
  */
@@ -30,7 +32,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: submitParachainHeads}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeKusamaParachain/calls/submitParachainHeads}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

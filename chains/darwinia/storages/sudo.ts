@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Sudo`'s storages.
+ * 
+ * `Sudo`'s calls: {@link: module:darwinia/sudo/calls}
  *
  * @module darwinia/sudo/storages
  */

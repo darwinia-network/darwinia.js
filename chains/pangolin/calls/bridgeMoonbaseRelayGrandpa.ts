@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeMoonbaseRelayGrandpa`'s calls. 
+ * 
+ * `BridgeMoonbaseRelayGrandpa`'s storages: {@link: module:pangolin/bridgeMoonbaseRelayGrandpa/storages}
  *
  * @module pangolin/bridgeMoonbaseRelayGrandpa/calls
  */
@@ -29,7 +31,7 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: submitFinalityProof}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayGrandpa/calls/submitFinalityProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -79,7 +81,7 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: initialize}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayGrandpa/calls/initialize}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -122,7 +124,7 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayGrandpa/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -165,7 +167,7 @@ export const getBridgeMoonbaseRelayGrandpa = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayGrandpa/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `CrabParachainFeeMarket`'s storages.
+ * 
+ * `CrabParachainFeeMarket`'s calls: {@link: module:crab/crabParachainFeeMarket/calls}
  *
  * @module crab/crabParachainFeeMarket/storages
  */

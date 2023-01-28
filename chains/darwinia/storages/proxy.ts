@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Proxy`'s storages.
+ * 
+ * `Proxy`'s calls: {@link: module:darwinia/proxy/calls}
  *
  * @module darwinia/proxy/storages
  */

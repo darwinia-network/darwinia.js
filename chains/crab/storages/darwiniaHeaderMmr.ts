@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `DarwiniaHeaderMmr`'s storages.
+ * 
+ * `DarwiniaHeaderMmr`'s calls: {@link: module:crab/darwiniaHeaderMmr/calls}
  *
  * @module crab/darwiniaHeaderMmr/storages
  */

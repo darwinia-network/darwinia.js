@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `ElectionProviderMultiPhase`'s calls. 
+ * 
+ * `ElectionProviderMultiPhase`'s storages: {@link: module:crab/electionProviderMultiPhase/storages}
  *
  * @module crab/electionProviderMultiPhase/calls
  */
@@ -36,7 +38,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: submitUnsigned}, but with scale encoded args.
+	 * Similar to {@link: crab/electionProviderMultiPhase/calls/submitUnsigned}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -82,7 +84,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: setMinimumUntrustedScore}, but with scale encoded args.
+	 * Similar to {@link: crab/electionProviderMultiPhase/calls/setMinimumUntrustedScore}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -130,7 +132,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: setEmergencyElectionResult}, but with scale encoded args.
+	 * Similar to {@link: crab/electionProviderMultiPhase/calls/setEmergencyElectionResult}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -185,7 +187,7 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Similar to {@link: submit}, but with scale encoded args.
+	 * Similar to {@link: crab/electionProviderMultiPhase/calls/submit}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

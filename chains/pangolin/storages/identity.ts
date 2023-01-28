@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Identity`'s storages.
+ * 
+ * `Identity`'s calls: {@link: module:pangolin/identity/calls}
  *
  * @module pangolin/identity/storages
  */

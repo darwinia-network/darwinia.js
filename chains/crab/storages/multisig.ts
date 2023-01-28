@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Multisig`'s storages.
+ * 
+ * `Multisig`'s calls: {@link: module:crab/multisig/calls}
  *
  * @module crab/multisig/storages
  */

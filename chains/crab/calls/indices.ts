@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Indices`'s calls. 
+ * 
+ * `Indices`'s storages: {@link: module:crab/indices/storages}
  *
  * @module crab/indices/calls
  */
@@ -38,7 +40,7 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claim}, but with scale encoded args.
+	 * Similar to {@link: crab/indices/calls/claim}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -100,7 +102,7 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transfer}, but with scale encoded args.
+	 * Similar to {@link: crab/indices/calls/transfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -159,7 +161,7 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: free}, but with scale encoded args.
+	 * Similar to {@link: crab/indices/calls/free}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -224,7 +226,7 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 * Similar to {@link: crab/indices/calls/forceTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -284,7 +286,7 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: freeze}, but with scale encoded args.
+	 * Similar to {@link: crab/indices/calls/freeze}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

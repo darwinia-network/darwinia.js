@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Authorship`'s storages.
+ * 
+ * `Authorship`'s calls: {@link: module:crab/authorship/calls}
  *
  * @module crab/authorship/storages
  */

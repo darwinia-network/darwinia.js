@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Deposit`'s calls. 
+ * 
+ * `Deposit`'s storages: {@link: module:pangolin2/deposit/storages}
  *
  * @module pangolin2/deposit/calls
  */
@@ -23,7 +25,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: lock}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/deposit/calls/lock}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -63,7 +65,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claim}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/deposit/calls/claim}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -103,7 +105,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claimWithPenalty}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/deposit/calls/claimWithPenalty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

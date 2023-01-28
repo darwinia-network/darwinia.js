@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgePangoroMessages`'s storages.
+ * 
+ * `BridgePangoroMessages`'s calls: {@link: module:pangolin/bridgePangoroMessages/calls}
  *
  * @module pangolin/bridgePangoroMessages/storages
  */

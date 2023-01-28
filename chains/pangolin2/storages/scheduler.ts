@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Scheduler`'s storages.
+ * 
+ * `Scheduler`'s calls: {@link: module:pangolin2/scheduler/calls}
  *
  * @module pangolin2/scheduler/storages
  */

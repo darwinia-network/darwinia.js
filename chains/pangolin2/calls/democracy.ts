@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Democracy`'s calls. 
+ * 
+ * `Democracy`'s storages: {@link: module:pangolin2/democracy/storages}
  *
  * @module pangolin2/democracy/calls
  */
@@ -31,7 +33,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: propose}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/propose}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -78,7 +80,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: second}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/second}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -127,7 +129,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vote}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/vote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -176,7 +178,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: emergencyCancel}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/emergencyCancel}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -222,7 +224,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: externalPropose}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/externalPropose}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -273,7 +275,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: externalProposeMajority}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/externalProposeMajority}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -324,7 +326,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: externalProposeDefault}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/externalProposeDefault}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -384,7 +386,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: fastTrack}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/fastTrack}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -435,7 +437,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vetoExternal}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/vetoExternal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -482,7 +484,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelReferendum}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/cancelReferendum}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -546,7 +548,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: delegate}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/delegate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -598,7 +600,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: undelegate}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/undelegate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -640,7 +642,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: clearPublicProposals}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/clearPublicProposals}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -686,7 +688,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unlock}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/unlock}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -753,7 +755,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeVote}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/removeVote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -810,7 +812,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeOtherVote}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/removeOtherVote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -868,7 +870,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: blacklist}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/blacklist}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -916,7 +918,7 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelProposal}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/democracy/calls/cancelProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

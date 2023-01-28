@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `PangolinParachainAlphaFeeMarket`'s calls. 
+ * 
+ * `PangolinParachainAlphaFeeMarket`'s storages: {@link: module:pangolin/pangolinParachainAlphaFeeMarket/storages}
  *
  * @module pangolin/pangolinParachainAlphaFeeMarket/calls
  */
@@ -25,7 +27,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: enrollAndLockCollateral}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/enrollAndLockCollateral}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -67,7 +69,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: increaseLockedCollateral}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/increaseLockedCollateral}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -108,7 +110,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: decreaseLockedCollateral}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/decreaseLockedCollateral}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -149,7 +151,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: updateRelayFee}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/updateRelayFee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -188,7 +190,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: cancelEnrollment}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/cancelEnrollment}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -227,7 +229,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: setSlashProtect}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/setSlashProtect}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -267,7 +269,7 @@ export const getPangolinParachainAlphaFeeMarket = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: setAssignedRelayersNumber}, but with scale encoded args.
+	 * Similar to {@link: pangolin/pangolinParachainAlphaFeeMarket/calls/setAssignedRelayersNumber}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

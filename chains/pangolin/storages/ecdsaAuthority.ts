@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `EcdsaAuthority`'s storages.
+ * 
+ * `EcdsaAuthority`'s calls: {@link: module:pangolin/ecdsaAuthority/calls}
  *
  * @module pangolin/ecdsaAuthority/storages
  */

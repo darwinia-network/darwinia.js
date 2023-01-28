@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `PolkadotXcm`'s calls. 
+ * 
+ * `PolkadotXcm`'s storages: {@link: module:pangolin2/polkadotXcm/storages}
  *
  * @module pangolin2/polkadotXcm/calls
  */
@@ -22,7 +24,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: send}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/send}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -84,7 +86,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: teleportAssets}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/teleportAssets}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -149,7 +151,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reserveTransferAssets}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/reserveTransferAssets}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -205,7 +207,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: execute}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/execute}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -254,7 +256,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceXcmVersion}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/forceXcmVersion}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -300,7 +302,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceDefaultXcmVersion}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/forceDefaultXcmVersion}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -344,7 +346,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceSubscribeVersionNotify}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/forceSubscribeVersionNotify}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -390,7 +392,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceUnsubscribeVersionNotify}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/forceUnsubscribeVersionNotify}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -456,7 +458,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: limitedReserveTransferAssets}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/limitedReserveTransferAssets}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -525,7 +527,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: limitedTeleportAssets}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/polkadotXcm/calls/limitedTeleportAssets}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

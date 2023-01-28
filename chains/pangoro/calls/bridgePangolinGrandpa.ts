@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgePangolinGrandpa`'s calls. 
+ * 
+ * `BridgePangolinGrandpa`'s storages: {@link: module:pangoro/bridgePangolinGrandpa/storages}
  *
  * @module pangoro/bridgePangolinGrandpa/calls
  */
@@ -29,7 +31,7 @@ export const getBridgePangolinGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: submitFinalityProof}, but with scale encoded args.
+	 * Similar to {@link: pangoro/bridgePangolinGrandpa/calls/submitFinalityProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -79,7 +81,7 @@ export const getBridgePangolinGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: initialize}, but with scale encoded args.
+	 * Similar to {@link: pangoro/bridgePangolinGrandpa/calls/initialize}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -122,7 +124,7 @@ export const getBridgePangolinGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangoro/bridgePangolinGrandpa/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -165,7 +167,7 @@ export const getBridgePangolinGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOperational}, but with scale encoded args.
+	 * Similar to {@link: pangoro/bridgePangolinGrandpa/calls/setOperational}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

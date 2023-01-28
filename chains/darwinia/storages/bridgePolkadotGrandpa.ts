@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgePolkadotGrandpa`'s storages.
+ * 
+ * `BridgePolkadotGrandpa`'s calls: {@link: module:darwinia/bridgePolkadotGrandpa/calls}
  *
  * @module darwinia/bridgePolkadotGrandpa/storages
  */

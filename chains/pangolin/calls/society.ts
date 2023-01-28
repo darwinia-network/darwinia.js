@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Society`'s calls. 
+ * 
+ * `Society`'s storages: {@link: module:pangolin/society/storages}
  *
  * @module pangolin/society/calls
  */
@@ -54,7 +56,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: bid}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/bid}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -113,7 +115,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unbid}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/unbid}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -202,7 +204,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vouch}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/vouch}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -261,7 +263,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unvouch}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/unvouch}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -322,7 +324,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vote}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/vote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -379,7 +381,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: defenderVote}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/defenderVote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -438,7 +440,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: payout}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/payout}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -500,7 +502,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: found}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/found}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -553,7 +555,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unfound}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/unfound}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -622,7 +624,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: judgeSuspendedMember}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/judgeSuspendedMember}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -705,7 +707,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: judgeSuspendedCandidate}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/judgeSuspendedCandidate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -760,7 +762,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setMaxMembers}, but with scale encoded args.
+	 * Similar to {@link: pangolin/society/calls/setMaxMembers}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

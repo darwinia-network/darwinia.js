@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `DarwiniaParachainFeeMarket`'s storages.
+ * 
+ * `DarwiniaParachainFeeMarket`'s calls: {@link: module:darwinia/darwiniaParachainFeeMarket/calls}
  *
  * @module darwinia/darwiniaParachainFeeMarket/storages
  */

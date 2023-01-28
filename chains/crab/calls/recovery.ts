@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Recovery`'s calls. 
+ * 
+ * `Recovery`'s storages: {@link: module:crab/recovery/storages}
  *
  * @module crab/recovery/calls
  */
@@ -35,7 +37,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asRecovered}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/asRecovered}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -91,7 +93,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setRecovered}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/setRecovered}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -163,7 +165,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: createRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/createRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -227,7 +229,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: initiateRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/initiateRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -293,7 +295,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vouchRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/vouchRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -354,7 +356,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claimRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/claimRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -414,7 +416,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: closeRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/closeRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -473,7 +475,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeRecovery}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/removeRecovery}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -523,7 +525,7 @@ export const getRecovery = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelRecovered}, but with scale encoded args.
+	 * Similar to {@link: crab/recovery/calls/cancelRecovered}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

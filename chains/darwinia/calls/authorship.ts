@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Authorship`'s calls. 
+ * 
+ * `Authorship`'s storages: {@link: module:darwinia/authorship/storages}
  *
  * @module darwinia/authorship/calls
  */
@@ -21,7 +23,7 @@ export const getAuthorship = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setUncles}, but with scale encoded args.
+	 * Similar to {@link: darwinia/authorship/calls/setUncles}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

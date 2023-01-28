@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Preimage`'s storages.
+ * 
+ * `Preimage`'s calls: {@link: module:darwinia/preimage/calls}
  *
  * @module darwinia/preimage/storages
  */

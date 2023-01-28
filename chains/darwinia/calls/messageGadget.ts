@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `MessageGadget`'s calls. 
+ * 
+ * `MessageGadget`'s storages: {@link: module:darwinia/messageGadget/storages}
  *
  * @module darwinia/messageGadget/calls
  */
@@ -20,7 +22,7 @@ export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setCommitmentContract}, but with scale encoded args.
+	 * Similar to {@link: darwinia/messageGadget/calls/setCommitmentContract}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

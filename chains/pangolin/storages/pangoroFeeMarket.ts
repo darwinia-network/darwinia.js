@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `PangoroFeeMarket`'s storages.
+ * 
+ * `PangoroFeeMarket`'s calls: {@link: module:pangolin/pangoroFeeMarket/calls}
  *
  * @module pangolin/pangoroFeeMarket/storages
  */

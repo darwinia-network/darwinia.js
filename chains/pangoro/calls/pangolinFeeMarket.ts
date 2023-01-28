@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `PangolinFeeMarket`'s calls. 
+ * 
+ * `PangolinFeeMarket`'s storages: {@link: module:pangoro/pangolinFeeMarket/storages}
  *
  * @module pangoro/pangolinFeeMarket/calls
  */
@@ -25,7 +27,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: enrollAndLockCollateral}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/enrollAndLockCollateral}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -68,7 +70,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: updateLockedCollateral}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/updateLockedCollateral}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -109,7 +111,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: updateRelayFee}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/updateRelayFee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -148,7 +150,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: cancelEnrollment}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/cancelEnrollment}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -187,7 +189,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: setSlashProtect}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/setSlashProtect}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -227,7 +229,7 @@ export const getPangolinFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-	 * Similar to {@link: setAssignedRelayersNumber}, but with scale encoded args.
+	 * Similar to {@link: pangoro/pangolinFeeMarket/calls/setAssignedRelayersNumber}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

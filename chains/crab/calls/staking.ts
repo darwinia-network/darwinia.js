@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Staking`'s calls. 
+ * 
+ * `Staking`'s storages: {@link: module:crab/staking/storages}
  *
  * @module crab/staking/calls
  */
@@ -43,7 +45,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: bond}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/bond}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -103,7 +105,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: bondExtra}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/bondExtra}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -161,7 +163,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: depositExtra}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/depositExtra}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -222,7 +224,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unbond}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/unbond}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -277,7 +279,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: withdrawUnbonded}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/withdrawUnbonded}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -328,7 +330,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claimMatureDeposits}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/claimMatureDeposits}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -384,7 +386,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: tryClaimDepositsWithPunish}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/tryClaimDepositsWithPunish}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -429,7 +431,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: validate}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/validate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -479,7 +481,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: nominate}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/nominate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -528,7 +530,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: chill}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/chill}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -583,7 +585,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setPayee}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setPayee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -639,7 +641,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setController}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setController}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -687,7 +689,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setValidatorCount}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setValidatorCount}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -734,7 +736,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: increaseValidatorCount}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/increaseValidatorCount}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -781,7 +783,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: scaleValidatorCount}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/scaleValidatorCount}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -834,7 +836,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceNoEras}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/forceNoEras}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -887,7 +889,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceNewEra}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/forceNewEra}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -934,7 +936,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setInvulnerables}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setInvulnerables}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -986,7 +988,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceUnstake}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/forceUnstake}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1039,7 +1041,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceNewEraAlways}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/forceNewEraAlways}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1093,7 +1095,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelDeferredSlash}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/cancelDeferredSlash}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1157,7 +1159,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: payoutStakers}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/payoutStakers}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1209,7 +1211,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: rebond}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/rebond}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1274,7 +1276,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setHistoryDepth}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setHistoryDepth}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1329,7 +1331,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reapStash}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/reapStash}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1381,7 +1383,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: kick}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/kick}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1448,7 +1450,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setStakingConfigs}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/setStakingConfigs}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1514,7 +1516,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: chillOther}, but with scale encoded args.
+	 * Similar to {@link: crab/staking/calls/chillOther}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

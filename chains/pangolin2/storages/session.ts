@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Session`'s storages.
+ * 
+ * `Session`'s calls: {@link: module:pangolin2/session/calls}
  *
  * @module pangolin2/session/storages
  */

@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Babe`'s calls. 
+ * 
+ * `Babe`'s storages: {@link: module:crab/babe/storages}
  *
  * @module crab/babe/calls
  */
@@ -26,7 +28,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reportEquivocation}, but with scale encoded args.
+	 * Similar to {@link: crab/babe/calls/reportEquivocation}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -77,7 +79,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reportEquivocationUnsigned}, but with scale encoded args.
+	 * Similar to {@link: crab/babe/calls/reportEquivocationUnsigned}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -122,7 +124,7 @@ export const getBabe = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: planConfigChange}, but with scale encoded args.
+	 * Similar to {@link: crab/babe/calls/planConfigChange}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

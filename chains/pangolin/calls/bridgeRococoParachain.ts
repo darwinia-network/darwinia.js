@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeRococoParachain`'s calls. 
+ * 
+ * `BridgeRococoParachain`'s storages: {@link: module:pangolin/bridgeRococoParachain/storages}
  *
  * @module pangolin/bridgeRococoParachain/calls
  */
@@ -30,7 +32,7 @@ export const getBridgeRococoParachain = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: submitParachainHeads}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoParachain/calls/submitParachainHeads}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -75,7 +77,7 @@ export const getBridgeRococoParachain = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoParachain/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -118,7 +120,7 @@ export const getBridgeRococoParachain = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeRococoParachain/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

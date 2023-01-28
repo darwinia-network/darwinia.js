@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Grandpa`'s storages.
+ * 
+ * `Grandpa`'s calls: {@link: module:pangolin/grandpa/calls}
  *
  * @module pangolin/grandpa/storages
  */

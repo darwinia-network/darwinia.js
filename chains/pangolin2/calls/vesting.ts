@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Vesting`'s calls. 
+ * 
+ * `Vesting`'s storages: {@link: module:pangolin2/vesting/storages}
  *
  * @module pangolin2/vesting/calls
  */
@@ -31,7 +33,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vest}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/vesting/calls/vest}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -85,7 +87,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vestOther}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/vesting/calls/vestOther}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -144,7 +146,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vestedTransfer}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/vesting/calls/vestedTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -207,7 +209,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceVestedTransfer}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/vesting/calls/forceVestedTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -272,7 +274,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: mergeSchedules}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/vesting/calls/mergeSchedules}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

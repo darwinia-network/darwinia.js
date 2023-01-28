@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `System`'s calls. 
+ * 
+ * `System`'s storages: {@link: module:pangolin2/system/storages}
  *
  * @module pangolin2/system/calls
  */
@@ -21,7 +23,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: fillBlock}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/fillBlock}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -66,7 +68,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: remark}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/remark}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -107,7 +109,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setHeapPages}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/setHeapPages}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -159,7 +161,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setCode}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/setCode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -208,7 +210,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setCodeWithoutChecks}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/setCodeWithoutChecks}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -249,7 +251,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setStorage}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/setStorage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -290,7 +292,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: killStorage}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/killStorage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -336,7 +338,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: killPrefix}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/killPrefix}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -378,7 +380,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: remarkWithEvent}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/system/calls/remarkWithEvent}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

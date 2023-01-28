@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `EVM`'s storages.
+ * 
+ * `EVM`'s calls: {@link: module:darwinia/evm/calls}
  *
  * @module darwinia/evm/storages
  */

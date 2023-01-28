@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Preimage`'s calls. 
+ * 
+ * `Preimage`'s storages: {@link: module:pangoro/preimage/storages}
  *
  * @module pangoro/preimage/calls
  */
@@ -24,7 +26,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: notePreimage}, but with scale encoded args.
+	 * Similar to {@link: pangoro/preimage/calls/notePreimage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -65,7 +67,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unnotePreimage}, but with scale encoded args.
+	 * Similar to {@link: pangoro/preimage/calls/unnotePreimage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -109,7 +111,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: requestPreimage}, but with scale encoded args.
+	 * Similar to {@link: pangoro/preimage/calls/requestPreimage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -152,7 +154,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unrequestPreimage}, but with scale encoded args.
+	 * Similar to {@link: pangoro/preimage/calls/unrequestPreimage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

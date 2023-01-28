@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeMoonbaseRelayParachain`'s calls. 
+ * 
+ * `BridgeMoonbaseRelayParachain`'s storages: {@link: module:pangolin/bridgeMoonbaseRelayParachain/storages}
  *
  * @module pangolin/bridgeMoonbaseRelayParachain/calls
  */
@@ -30,7 +32,7 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Similar to {@link: submitParachainHeads}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/submitParachainHeads}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -75,7 +77,7 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -118,7 +120,7 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

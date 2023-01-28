@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `ParachainSystem`'s calls. 
+ * 
+ * `ParachainSystem`'s storages: {@link: module:pangolin2/parachainSystem/storages}
  *
  * @module pangolin2/parachainSystem/calls
  */
@@ -29,7 +31,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setValidationData}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/parachainSystem/calls/setValidationData}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -69,7 +71,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: sudoSendUpwardMessage}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/parachainSystem/calls/sudoSendUpwardMessage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -109,7 +111,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: authorizeUpgrade}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/parachainSystem/calls/authorizeUpgrade}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -149,7 +151,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: enactAuthorizedUpgrade}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/parachainSystem/calls/enactAuthorizedUpgrade}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

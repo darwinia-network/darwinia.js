@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BaseFee`'s calls. 
+ * 
+ * `BaseFee`'s storages: {@link: module:crab/baseFee/storages}
  *
  * @module crab/baseFee/calls
  */
@@ -20,7 +22,7 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setBaseFeePerGas}, but with scale encoded args.
+	 * Similar to {@link: crab/baseFee/calls/setBaseFeePerGas}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -60,7 +62,7 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setIsActive}, but with scale encoded args.
+	 * Similar to {@link: crab/baseFee/calls/setIsActive}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -100,7 +102,7 @@ export const getBaseFee = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setElasticity}, but with scale encoded args.
+	 * Similar to {@link: crab/baseFee/calls/setElasticity}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

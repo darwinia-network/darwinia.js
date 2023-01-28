@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Ethereum`'s calls. 
+ * 
+ * `Ethereum`'s storages: {@link: module:pangolin2/ethereum/storages}
  *
  * @module pangolin2/ethereum/calls
  */
@@ -21,7 +23,7 @@ export const getEthereum = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transact}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/ethereum/calls/transact}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

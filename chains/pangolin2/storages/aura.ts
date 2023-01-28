@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Aura`'s storages.
+ * 
+ * `Aura`'s calls: {@link: module:pangolin2/aura/calls}
  *
  * @module pangolin2/aura/storages
  */

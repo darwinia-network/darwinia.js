@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Grandpa`'s calls. 
+ * 
+ * `Grandpa`'s storages: {@link: module:pangoro/grandpa/storages}
  *
  * @module pangoro/grandpa/calls
  */
@@ -26,7 +28,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reportEquivocation}, but with scale encoded args.
+	 * Similar to {@link: pangoro/grandpa/calls/reportEquivocation}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -78,7 +80,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reportEquivocationUnsigned}, but with scale encoded args.
+	 * Similar to {@link: pangoro/grandpa/calls/reportEquivocationUnsigned}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -128,7 +130,7 @@ export const getGrandpa = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: noteStalled}, but with scale encoded args.
+	 * Similar to {@link: pangoro/grandpa/calls/noteStalled}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

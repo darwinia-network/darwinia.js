@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Tips`'s calls. 
+ * 
+ * `Tips`'s storages: {@link: module:darwinia/tips/storages}
  *
  * @module darwinia/tips/calls
  */
@@ -41,7 +43,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: reportAwesome}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/reportAwesome}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -101,7 +103,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: retractTip}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/retractTip}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -167,7 +169,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: tipNew}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/tipNew}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -235,7 +237,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: tip}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/tip}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -292,7 +294,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: closeTip}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/closeTip}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -344,7 +346,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: slashTip}, but with scale encoded args.
+	 * Similar to {@link: darwinia/tips/calls/slashTip}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

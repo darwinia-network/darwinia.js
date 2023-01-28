@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Session`'s calls. 
+ * 
+ * `Session`'s storages: {@link: module:pangolin2/session/storages}
  *
  * @module pangolin2/session/calls
  */
@@ -36,7 +38,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setKeys}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/session/calls/setKeys}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -91,7 +93,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: purgeKeys}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/session/calls/purgeKeys}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

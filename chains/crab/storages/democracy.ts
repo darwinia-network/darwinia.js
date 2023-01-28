@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Democracy`'s storages.
+ * 
+ * `Democracy`'s calls: {@link: module:crab/democracy/calls}
  *
  * @module crab/democracy/storages
  */

@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Recovery`'s storages.
+ * 
+ * `Recovery`'s calls: {@link: module:pangolin/recovery/calls}
  *
  * @module pangolin/recovery/storages
  */

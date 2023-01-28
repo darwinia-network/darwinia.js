@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Balances`'s calls. 
+ * 
+ * `Balances`'s storages: {@link: module:pangoro/balances/storages}
  *
  * @module pangoro/balances/calls
  */
@@ -46,7 +48,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transfer}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/transfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -99,7 +101,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setBalance}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/setBalance}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -151,7 +153,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/forceTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -201,7 +203,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferKeepAlive}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/transferKeepAlive}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -261,7 +263,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferAll}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/transferAll}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -307,7 +309,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceUnreserve}, but with scale encoded args.
+	 * Similar to {@link: pangoro/balances/calls/forceUnreserve}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

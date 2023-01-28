@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgePangolinParachainMessages`'s storages.
+ * 
+ * `BridgePangolinParachainMessages`'s calls: {@link: module:pangolin/bridgePangolinParachainMessages/calls}
  *
  * @module pangolin/bridgePangolinParachainMessages/storages
  */

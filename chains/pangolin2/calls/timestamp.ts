@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Timestamp`'s calls. 
+ * 
+ * `Timestamp`'s storages: {@link: module:pangolin2/timestamp/storages}
  *
  * @module pangolin2/timestamp/calls
  */
@@ -36,7 +38,7 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: set}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/timestamp/calls/set}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

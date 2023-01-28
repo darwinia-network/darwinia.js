@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Offences`'s storages.
+ * 
+ * `Offences`'s calls: {@link: module:pangoro/offences/calls}
  *
  * @module pangoro/offences/storages
  */

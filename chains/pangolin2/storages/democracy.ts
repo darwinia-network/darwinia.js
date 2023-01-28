@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Democracy`'s storages.
+ * 
+ * `Democracy`'s calls: {@link: module:pangolin2/democracy/calls}
  *
  * @module pangolin2/democracy/storages
  */

@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Council`'s calls. 
+ * 
+ * `Council`'s storages: {@link: module:pangolin2/council/storages}
  *
  * @module pangolin2/council/calls
  */
@@ -56,7 +58,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setMembers}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/setMembers}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -111,7 +113,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: execute}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/execute}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -183,7 +185,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: propose}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/propose}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -244,7 +246,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vote}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/vote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -324,7 +326,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: closeOldWeight}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/closeOldWeight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -381,7 +383,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: disapproveProposal}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/disapproveProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -459,7 +461,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: close}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/council/calls/close}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

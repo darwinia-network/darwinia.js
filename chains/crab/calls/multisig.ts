@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Multisig`'s calls. 
+ * 
+ * `Multisig`'s storages: {@link: module:crab/multisig/storages}
  *
  * @module crab/multisig/calls
  */
@@ -38,7 +40,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asMultiThreshold_1}, but with scale encoded args.
+	 * Similar to {@link: crab/multisig/calls/asMultiThreshold_1}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -134,7 +136,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asMulti}, but with scale encoded args.
+	 * Similar to {@link: crab/multisig/calls/asMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -222,7 +224,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveAsMulti}, but with scale encoded args.
+	 * Similar to {@link: crab/multisig/calls/approveAsMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -298,7 +300,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelAsMulti}, but with scale encoded args.
+	 * Similar to {@link: crab/multisig/calls/cancelAsMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

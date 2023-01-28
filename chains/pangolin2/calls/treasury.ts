@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Treasury`'s calls. 
+ * 
+ * `Treasury`'s storages: {@link: module:pangolin2/treasury/storages}
  *
  * @module pangolin2/treasury/calls
  */
@@ -31,7 +33,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proposeSpend}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/treasury/calls/proposeSpend}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -81,7 +83,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: rejectProposal}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/treasury/calls/rejectProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -131,7 +133,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveProposal}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/treasury/calls/approveProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -181,7 +183,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: spend}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/treasury/calls/spend}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -237,7 +239,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeApproval}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/treasury/calls/removeApproval}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

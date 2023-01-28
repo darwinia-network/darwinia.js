@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `MessageGadget`'s storages.
+ * 
+ * `MessageGadget`'s calls: {@link: module:pangoro/messageGadget/calls}
  *
  * @module pangoro/messageGadget/storages
  */

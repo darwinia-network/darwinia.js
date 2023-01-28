@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgeMoonbaseRelayGrandpa`'s storages.
+ * 
+ * `BridgeMoonbaseRelayGrandpa`'s calls: {@link: module:pangolin/bridgeMoonbaseRelayGrandpa/calls}
  *
  * @module pangolin/bridgeMoonbaseRelayGrandpa/storages
  */

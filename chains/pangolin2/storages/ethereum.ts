@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Ethereum`'s storages.
+ * 
+ * `Ethereum`'s calls: {@link: module:pangolin2/ethereum/calls}
  *
  * @module pangolin2/ethereum/storages
  */

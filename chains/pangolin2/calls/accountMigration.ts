@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `AccountMigration`'s calls. 
+ * 
+ * `AccountMigration`'s storages: {@link: module:pangolin2/accountMigration/storages}
  *
  * @module pangolin2/accountMigration/calls
  */
@@ -25,7 +27,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: migrate}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/accountMigration/calls/migrate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

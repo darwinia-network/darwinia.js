@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Beefy`'s storages.
+ * 
+ * `Beefy`'s calls: {@link: module:pangolin/beefy/calls}
  *
  * @module pangolin/beefy/storages
  */

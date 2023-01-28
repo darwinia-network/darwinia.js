@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeDarwiniaGrandpa`'s calls. 
+ * 
+ * `BridgeDarwiniaGrandpa`'s storages: {@link: module:crab/bridgeDarwiniaGrandpa/storages}
  *
  * @module crab/bridgeDarwiniaGrandpa/calls
  */
@@ -29,7 +31,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: submitFinalityProof}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeDarwiniaGrandpa/calls/submitFinalityProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -79,7 +81,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: initialize}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeDarwiniaGrandpa/calls/initialize}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -122,7 +124,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeDarwiniaGrandpa/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -165,7 +167,7 @@ export const getBridgeDarwiniaGrandpa = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Similar to {@link: setOperational}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeDarwiniaGrandpa/calls/setOperational}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

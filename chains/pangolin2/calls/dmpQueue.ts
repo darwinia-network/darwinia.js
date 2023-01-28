@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `DmpQueue`'s calls. 
+ * 
+ * `DmpQueue`'s storages: {@link: module:pangolin2/dmpQueue/storages}
  *
  * @module pangolin2/dmpQueue/calls
  */
@@ -34,7 +36,7 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: serviceOverweight}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/dmpQueue/calls/serviceOverweight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

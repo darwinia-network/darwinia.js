@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `TransactionPause`'s calls. 
+ * 
+ * `TransactionPause`'s storages: {@link: module:pangoro/transactionPause/storages}
  *
  * @module pangoro/transactionPause/calls
  */
@@ -22,7 +24,7 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: pauseTransaction}, but with scale encoded args.
+	 * Similar to {@link: pangoro/transactionPause/calls/pauseTransaction}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -65,7 +67,7 @@ export const getTransactionPause = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unpauseTransaction}, but with scale encoded args.
+	 * Similar to {@link: pangoro/transactionPause/calls/unpauseTransaction}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

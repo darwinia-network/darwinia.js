@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgePangolinParachainMessages`'s calls. 
+ * 
+ * `BridgePangolinParachainMessages`'s storages: {@link: module:pangolin/bridgePangolinParachainMessages/storages}
  *
  * @module pangolin/bridgePangolinParachainMessages/calls
  */
@@ -23,7 +25,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -66,7 +68,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -112,7 +114,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: updatePalletParameter}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/updatePalletParameter}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -157,7 +159,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: sendMessage}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/sendMessage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -204,7 +206,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: increaseMessageFee}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/increaseMessageFee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -257,7 +259,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: receiveMessagesProof}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/receiveMessagesProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -303,7 +305,7 @@ export const getBridgePangolinParachainMessages = (dispatch: Dispatch, metadata:
         },
 
         /**
-	 * Similar to {@link: receiveMessagesDeliveryProof}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bridgePangolinParachainMessages/calls/receiveMessagesDeliveryProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

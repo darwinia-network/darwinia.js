@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `PhragmenElection`'s calls. 
+ * 
+ * `PhragmenElection`'s storages: {@link: module:pangolin2/phragmenElection/storages}
  *
  * @module pangolin2/phragmenElection/calls
  */
@@ -45,7 +47,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: vote}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/vote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -89,7 +91,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeVoter}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/removeVoter}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -143,7 +145,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: submitCandidacy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/submitCandidacy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -201,7 +203,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: renounceCandidacy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/renounceCandidacy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -263,7 +265,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeMember}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/removeMember}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -317,7 +319,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cleanDefunctVoters}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/phragmenElection/calls/cleanDefunctVoters}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

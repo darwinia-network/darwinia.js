@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Proxy`'s calls. 
+ * 
+ * `Proxy`'s storages: {@link: module:darwinia/proxy/storages}
  *
  * @module darwinia/proxy/calls
  */
@@ -39,7 +41,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proxy}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/proxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -98,7 +100,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: addProxy}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/addProxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -155,7 +157,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeProxy}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/removeProxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -205,7 +207,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeProxies}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/removeProxies}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -271,7 +273,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: anonymous}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/anonymous}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -341,7 +343,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: killAnonymous}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/killAnonymous}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -408,7 +410,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: announce}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/announce}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -467,7 +469,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeAnnouncement}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/removeAnnouncement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -526,7 +528,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: rejectAnnouncement}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/rejectAnnouncement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -590,7 +592,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proxyAnnounced}, but with scale encoded args.
+	 * Similar to {@link: darwinia/proxy/calls/proxyAnnounced}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

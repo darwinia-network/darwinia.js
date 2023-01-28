@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgeCrabParachainMessages`'s calls. 
+ * 
+ * `BridgeCrabParachainMessages`'s storages: {@link: module:crab/bridgeCrabParachainMessages/storages}
  *
  * @module crab/bridgeCrabParachainMessages/calls
  */
@@ -23,7 +25,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: setOwner}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/setOwner}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -66,7 +68,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: setOperatingMode}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/setOperatingMode}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -112,7 +114,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: updatePalletParameter}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/updatePalletParameter}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -157,7 +159,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: sendMessage}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/sendMessage}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -204,7 +206,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: increaseMessageFee}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/increaseMessageFee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -257,7 +259,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: receiveMessagesProof}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/receiveMessagesProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -303,7 +305,7 @@ export const getBridgeCrabParachainMessages = (dispatch: Dispatch, metadata: Met
         },
 
         /**
-	 * Similar to {@link: receiveMessagesDeliveryProof}, but with scale encoded args.
+	 * Similar to {@link: crab/bridgeCrabParachainMessages/calls/receiveMessagesDeliveryProof}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

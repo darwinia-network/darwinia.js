@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Babe`'s storages.
+ * 
+ * `Babe`'s calls: {@link: module:pangoro/babe/calls}
  *
  * @module pangoro/babe/storages
  */

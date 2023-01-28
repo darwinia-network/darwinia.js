@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Council`'s storages.
+ * 
+ * `Council`'s calls: {@link: module:crab/council/calls}
  *
  * @module crab/council/storages
  */

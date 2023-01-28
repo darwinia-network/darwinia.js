@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Kton`'s calls. 
+ * 
+ * `Kton`'s storages: {@link: module:crab/kton/storages}
  *
  * @module crab/kton/calls
  */
@@ -46,7 +48,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transfer}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/transfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -99,7 +101,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setBalance}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/setBalance}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -151,7 +153,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/forceTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -201,7 +203,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferKeepAlive}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/transferKeepAlive}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -261,7 +263,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferAll}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/transferAll}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -307,7 +309,7 @@ export const getKton = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceUnreserve}, but with scale encoded args.
+	 * Similar to {@link: crab/kton/calls/forceUnreserve}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Timestamp`'s storages.
+ * 
+ * `Timestamp`'s calls: {@link: module:pangoro/timestamp/calls}
  *
  * @module pangoro/timestamp/storages
  */

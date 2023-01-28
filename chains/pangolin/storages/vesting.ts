@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Vesting`'s storages.
+ * 
+ * `Vesting`'s calls: {@link: module:pangolin/vesting/calls}
  *
  * @module pangolin/vesting/storages
  */

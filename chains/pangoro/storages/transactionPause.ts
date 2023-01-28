@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `TransactionPause`'s storages.
+ * 
+ * `TransactionPause`'s calls: {@link: module:pangoro/transactionPause/calls}
  *
  * @module pangoro/transactionPause/storages
  */

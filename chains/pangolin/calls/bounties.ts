@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Bounties`'s calls. 
+ * 
+ * `Bounties`'s storages: {@link: module:pangolin/bounties/storages}
  *
  * @module pangolin/bounties/calls
  */
@@ -34,7 +36,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proposeBounty}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/proposeBounty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -83,7 +85,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveBounty}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/approveBounty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -134,7 +136,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proposeCurator}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/proposeCurator}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -194,7 +196,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unassignCurator}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/unassignCurator}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -242,7 +244,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: acceptCurator}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/acceptCurator}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -295,7 +297,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: awardBounty}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/awardBounty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -345,7 +347,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claimBounty}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/claimBounty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -395,7 +397,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: closeBounty}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/closeBounty}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -447,7 +449,7 @@ export const getBounties = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: extendBountyExpiry}, but with scale encoded args.
+	 * Similar to {@link: pangolin/bounties/calls/extendBountyExpiry}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

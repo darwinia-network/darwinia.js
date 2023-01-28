@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `TechnicalCommittee`'s storages.
+ * 
+ * `TechnicalCommittee`'s calls: {@link: module:darwinia/technicalCommittee/calls}
  *
  * @module darwinia/technicalCommittee/storages
  */

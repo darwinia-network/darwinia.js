@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgeCrabMessages`'s storages.
+ * 
+ * `BridgeCrabMessages`'s calls: {@link: module:darwinia/bridgeCrabMessages/calls}
  *
  * @module darwinia/bridgeCrabMessages/storages
  */

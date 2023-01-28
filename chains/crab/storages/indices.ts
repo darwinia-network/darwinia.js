@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Indices`'s storages.
+ * 
+ * `Indices`'s calls: {@link: module:crab/indices/calls}
  *
  * @module crab/indices/storages
  */

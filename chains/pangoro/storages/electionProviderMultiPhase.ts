@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `ElectionProviderMultiPhase`'s storages.
+ * 
+ * `ElectionProviderMultiPhase`'s calls: {@link: module:pangoro/electionProviderMultiPhase/calls}
  *
  * @module pangoro/electionProviderMultiPhase/storages
  */

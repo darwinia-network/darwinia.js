@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `TechnicalCommittee`'s calls. 
+ * 
+ * `TechnicalCommittee`'s storages: {@link: module:darwinia/technicalCommittee/storages}
  *
  * @module darwinia/technicalCommittee/calls
  */
@@ -56,7 +58,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: setMembers}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/setMembers}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -111,7 +113,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: execute}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/execute}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -183,7 +185,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: propose}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/propose}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -244,7 +246,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: vote}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/vote}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -324,7 +326,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: close}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/close}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -381,7 +383,7 @@ export const getTechnicalCommittee = (dispatch: Dispatch, metadata: Metadata) =>
         },
 
         /**
-	 * Similar to {@link: disapproveProposal}, but with scale encoded args.
+	 * Similar to {@link: darwinia/technicalCommittee/calls/disapproveProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

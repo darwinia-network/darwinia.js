@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Authorship`'s storages.
+ * 
+ * `Authorship`'s calls: {@link: module:pangolin2/authorship/calls}
  *
  * @module pangolin2/authorship/storages
  */

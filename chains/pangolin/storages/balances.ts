@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Balances`'s storages.
+ * 
+ * `Balances`'s calls: {@link: module:pangolin/balances/calls}
  *
  * @module pangolin/balances/storages
  */

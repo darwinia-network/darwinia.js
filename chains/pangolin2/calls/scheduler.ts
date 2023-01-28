@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Scheduler`'s calls. 
+ * 
+ * `Scheduler`'s storages: {@link: module:pangolin2/scheduler/storages}
  *
  * @module pangolin2/scheduler/calls
  */
@@ -27,7 +29,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: schedule}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/schedule}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -73,7 +75,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancel}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/cancel}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -123,7 +125,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: scheduleNamed}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/scheduleNamed}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -168,7 +170,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelNamed}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/cancelNamed}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -219,7 +221,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: scheduleAfter}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/scheduleAfter}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -275,7 +277,7 @@ export const getScheduler = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: scheduleNamedAfter}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/scheduler/calls/scheduleNamedAfter}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

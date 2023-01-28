@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Treasury`'s calls. 
+ * 
+ * `Treasury`'s storages: {@link: module:darwinia/treasury/storages}
  *
  * @module darwinia/treasury/calls
  */
@@ -31,7 +33,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proposeSpend}, but with scale encoded args.
+	 * Similar to {@link: darwinia/treasury/calls/proposeSpend}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -81,7 +83,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: rejectProposal}, but with scale encoded args.
+	 * Similar to {@link: darwinia/treasury/calls/rejectProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -131,7 +133,7 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveProposal}, but with scale encoded args.
+	 * Similar to {@link: darwinia/treasury/calls/approveProposal}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

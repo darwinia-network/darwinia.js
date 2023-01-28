@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `EVM`'s calls. 
+ * 
+ * `EVM`'s storages: {@link: crab/evm/storages}
  *
  * @module crab/evm/calls
  */
@@ -37,7 +39,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: call}, but with scale encoded args.
+	 * Similar to {@link: crab/evm/calls/call}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -101,7 +103,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: create}, but with scale encoded args.
+	 * Similar to {@link: crab/evm/calls/create}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -165,7 +167,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: create2}, but with scale encoded args.
+	 * Similar to {@link: crab/evm/calls/create2}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

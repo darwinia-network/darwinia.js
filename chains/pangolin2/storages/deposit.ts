@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Deposit`'s storages.
+ * 
+ * `Deposit`'s calls: {@link: module:pangolin2/deposit/calls}
  *
  * @module pangolin2/deposit/storages
  */

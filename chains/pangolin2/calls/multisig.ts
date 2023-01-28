@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Multisig`'s calls. 
+ * 
+ * `Multisig`'s storages: {@link: module:pangolin2/multisig/storages}
  *
  * @module pangolin2/multisig/calls
  */
@@ -38,7 +40,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asMultiThreshold_1}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/multisig/calls/asMultiThreshold_1}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -132,7 +134,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: asMulti}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/multisig/calls/asMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -219,7 +221,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveAsMulti}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/multisig/calls/approveAsMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -295,7 +297,7 @@ export const getMultisig = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelAsMulti}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/multisig/calls/cancelAsMulti}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

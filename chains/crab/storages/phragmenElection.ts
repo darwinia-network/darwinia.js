@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `PhragmenElection`'s storages.
+ * 
+ * `PhragmenElection`'s calls: {@link: module:crab/phragmenElection/calls}
  *
  * @module crab/phragmenElection/storages
  */

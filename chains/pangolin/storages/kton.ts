@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Kton`'s storages.
+ * 
+ * `Kton`'s calls: {@link: module:pangolin/kton/calls}
  *
  * @module pangolin/kton/storages
  */

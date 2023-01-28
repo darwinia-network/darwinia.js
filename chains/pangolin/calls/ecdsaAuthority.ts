@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `EcdsaAuthority`'s calls. 
+ * 
+ * `EcdsaAuthority`'s storages: {@link: module:pangolin/ecdsaAuthority/storages}
  *
  * @module pangolin/ecdsaAuthority/calls
  */
@@ -24,7 +26,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: addAuthority}, but with scale encoded args.
+	 * Similar to {@link: pangolin/ecdsaAuthority/calls/addAuthority}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -67,7 +69,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeAuthority}, but with scale encoded args.
+	 * Similar to {@link: pangolin/ecdsaAuthority/calls/removeAuthority}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -112,7 +114,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: swapAuthority}, but with scale encoded args.
+	 * Similar to {@link: pangolin/ecdsaAuthority/calls/swapAuthority}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -158,7 +160,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: submitAuthoritiesChangeSignature}, but with scale encoded args.
+	 * Similar to {@link: pangolin/ecdsaAuthority/calls/submitAuthoritiesChangeSignature}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -204,7 +206,7 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: submitNewMessageRootSignature}, but with scale encoded args.
+	 * Similar to {@link: pangolin/ecdsaAuthority/calls/submitNewMessageRootSignature}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

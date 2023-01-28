@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `ImOnline`'s storages.
+ * 
+ * `ImOnline`'s calls: {@link: module:pangoro/imOnline/calls}
  *
  * @module pangoro/imOnline/storages
  */

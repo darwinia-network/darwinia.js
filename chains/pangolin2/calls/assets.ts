@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Assets`'s calls. 
+ * 
+ * `Assets`'s storages: {@link: module:pangolin2/assets/storages}
  *
  * @module pangolin2/assets/calls
  */
@@ -43,7 +45,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: create}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/create}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -110,7 +112,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceCreate}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceCreate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -173,7 +175,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: destroy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/destroy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -230,7 +232,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: mint}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/mint}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -291,7 +293,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: burn}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/burn}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -355,7 +357,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transfer}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/transfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -419,7 +421,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferKeepAlive}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/transferKeepAlive}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -486,7 +488,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceTransfer}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -541,7 +543,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: freeze}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/freeze}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -594,7 +596,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: thaw}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/thaw}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -644,7 +646,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: freezeAsset}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/freezeAsset}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -693,7 +695,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: thawAsset}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/thawAsset}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -745,7 +747,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferOwnership}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/transferOwnership}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -804,7 +806,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setTeam}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/setTeam}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -869,7 +871,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setMetadata}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/setMetadata}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -923,7 +925,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: clearMetadata}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/clearMetadata}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -985,7 +987,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceSetMetadata}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceSetMetadata}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1040,7 +1042,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceClearMetadata}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceClearMetadata}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1116,7 +1118,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceAssetStatus}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceAssetStatus}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1187,7 +1189,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: approveTransfer}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/approveTransfer}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1244,7 +1246,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelApproval}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/cancelApproval}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1302,7 +1304,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: forceCancelApproval}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/forceCancelApproval}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1368,7 +1370,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: transferApproved}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/transferApproved}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1420,7 +1422,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: touch}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/touch}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -1470,7 +1472,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: refund}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/assets/calls/refund}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

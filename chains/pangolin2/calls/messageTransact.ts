@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `MessageTransact`'s calls. 
+ * 
+ * `MessageTransact`'s storages: {@link: module:pangolin2/messageTransact/storages}
  *
  * @module pangolin2/messageTransact/calls
  */
@@ -22,7 +24,7 @@ export const getMessageTransact = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: messageTransact}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/messageTransact/calls/messageTransact}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

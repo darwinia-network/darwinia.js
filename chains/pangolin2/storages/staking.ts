@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Staking`'s storages.
+ * 
+ * `Staking`'s calls: {@link: module:pangolin2/staking/calls}
  *
  * @module pangolin2/staking/storages
  */

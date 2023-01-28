@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Bounties`'s storages.
+ * 
+ * `Bounties`'s calls: {@link: module:pangolin/bounties/calls}
  *
  * @module pangolin/bounties/storages
  */

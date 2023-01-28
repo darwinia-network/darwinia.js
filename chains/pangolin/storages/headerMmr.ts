@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `HeaderMmr`'s storages.
+ * 
+ * `HeaderMmr`'s calls: {@link: module:pangolin/headerMmr/calls}
  *
  * @module pangolin/headerMmr/storages
  */

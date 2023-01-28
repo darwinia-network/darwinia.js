@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Ethereum`'s storages.
+ * 
+ * `Ethereum`'s calls: {@link: module:crab/ethereum/calls}
  *
  * @module crab/ethereum/storages
  */

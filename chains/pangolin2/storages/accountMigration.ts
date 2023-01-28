@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `AccountMigration`'s storages.
+ * 
+ * `AccountMigration`'s calls: {@link: module:pangolin2/accountMigration/calls}
  *
  * @module pangolin2/accountMigration/storages
  */

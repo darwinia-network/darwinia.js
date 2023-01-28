@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Sudo`'s calls. 
+ * 
+ * `Sudo`'s storages: {@link: module:pangoro/sudo/storages}
  *
  * @module pangoro/sudo/calls
  */
@@ -30,7 +32,7 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: sudo}, but with scale encoded args.
+	 * Similar to {@link: pangoro/sudo/calls/sudo}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -82,7 +84,7 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: sudoUncheckedWeight}, but with scale encoded args.
+	 * Similar to {@link: pangoro/sudo/calls/sudoUncheckedWeight}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -133,7 +135,7 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setKey}, but with scale encoded args.
+	 * Similar to {@link: pangoro/sudo/calls/setKey}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -186,7 +188,7 @@ export const getSudo = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: sudoAs}, but with scale encoded args.
+	 * Similar to {@link: pangoro/sudo/calls/sudoAs}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

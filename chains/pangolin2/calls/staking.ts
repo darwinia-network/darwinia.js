@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Staking`'s calls. 
+ * 
+ * `Staking`'s storages: {@link: module:pangolin2/staking/storages}
  *
  * @module pangolin2/staking/calls
  */
@@ -27,7 +29,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: stake}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/stake}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -74,7 +76,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: unstake}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/unstake}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -123,7 +125,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: restake}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/restake}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -164,7 +166,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: claim}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/claim}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -206,7 +208,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: collect}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/collect}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -249,7 +251,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: nominate}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/nominate}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -292,7 +294,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: chill}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/staking/calls/chill}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

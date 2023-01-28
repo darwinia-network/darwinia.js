@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `ParachainInfo`'s calls. 
+ * 
+ * `ParachainInfo`'s storages: {@link: module:pangolin2/parachainInfo/storages}
  *
  * @module pangolin2/parachainInfo/calls
  */

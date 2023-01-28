@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Evm`'s calls. 
+ * 
+ * `Evm`'s storages: {@link: module:pangolin2/evm/storages}
  *
  * @module pangolin2/evm/calls
  */
@@ -23,7 +25,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: withdraw}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/evm/calls/withdraw}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -81,7 +83,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: call}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/evm/calls/call}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -145,7 +147,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: create}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/evm/calls/create}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -209,7 +211,7 @@ export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: create2}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/evm/calls/create2}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

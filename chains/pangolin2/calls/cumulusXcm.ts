@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `CumulusXcm`'s calls. 
+ * 
+ * `CumulusXcm`'s storages: {@link: module:pangolin2/cumulusXcm/storages}
  *
  * @module pangolin2/cumulusXcm/calls
  */

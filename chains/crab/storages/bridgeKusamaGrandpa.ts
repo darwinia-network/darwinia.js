@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `BridgeKusamaGrandpa`'s storages.
+ * 
+ * `BridgeKusamaGrandpa`'s calls: {@link: module:crab/bridgeKusamaGrandpa/calls}
  *
  * @module crab/bridgeKusamaGrandpa/storages
  */

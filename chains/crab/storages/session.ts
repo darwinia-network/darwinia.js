@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Session`'s storages.
+ * 
+ * `Session`'s calls: {@link: module:crab/session/calls}
  *
  * @module crab/session/storages
  */

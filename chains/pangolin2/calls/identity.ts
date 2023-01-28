@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Identity`'s calls. 
+ * 
+ * `Identity`'s storages: {@link: module:pangolin2/identity/storages}
  *
  * @module pangolin2/identity/calls
  */
@@ -33,7 +35,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: addRegistrar}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/addRegistrar}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -92,7 +94,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setIdentity}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/setIdentity}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -153,7 +155,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setSubs}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/setSubs}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -209,7 +211,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: clearIdentity}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/clearIdentity}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -273,7 +275,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: requestJudgement}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/requestJudgement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -331,7 +333,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: cancelRequest}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/cancelRequest}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -386,7 +388,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setFee}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/setFee}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -442,7 +444,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setAccountId}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/setAccountId}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -498,7 +500,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: setFields}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/setFields}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -565,7 +567,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: provideJudgement}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/provideJudgement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -627,7 +629,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: killIdentity}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/killIdentity}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -676,7 +678,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: addSub}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/addSub}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -723,7 +725,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: renameSub}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/renameSub}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -771,7 +773,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeSub}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/removeSub}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -819,7 +821,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: quitSub}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/identity/calls/quitSub}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

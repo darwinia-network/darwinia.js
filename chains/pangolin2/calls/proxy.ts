@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `Proxy`'s calls. 
+ * 
+ * `Proxy`'s storages: {@link: module:pangolin2/proxy/storages}
  *
  * @module pangolin2/proxy/calls
  */
@@ -35,7 +37,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proxy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/proxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -90,7 +92,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: addProxy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/addProxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -143,7 +145,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeProxy}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/removeProxy}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -189,7 +191,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeProxies}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/removeProxies}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -250,7 +252,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: createPure}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/createPure}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -316,7 +318,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: killPure}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/killPure}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -377,7 +379,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: announce}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/announce}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -430,7 +432,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: removeAnnouncement}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/removeAnnouncement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -483,7 +485,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: rejectAnnouncement}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/rejectAnnouncement}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -541,7 +543,7 @@ export const getProxy = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: proxyAnnounced}, but with scale encoded args.
+	 * Similar to {@link: pangolin2/proxy/calls/proxyAnnounced}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

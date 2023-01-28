@@ -1,7 +1,9 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet evm storages
+ * This is the doc comment for pallet `Treasury`'s storages.
+ * 
+ * `Treasury`'s calls: {@link: module:pangolin2/treasury/calls}
  *
  * @module pangolin2/treasury/storages
  */

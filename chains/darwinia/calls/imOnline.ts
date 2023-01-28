@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `ImOnline`'s calls. 
+ * 
+ * `ImOnline`'s storages: {@link: module:darwinia/imOnline/storages}
  *
  * @module darwinia/imOnline/calls
  */
@@ -31,7 +33,7 @@ export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Similar to {@link: heartbeat}, but with scale encoded args.
+	 * Similar to {@link: darwinia/imOnline/calls/heartbeat}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

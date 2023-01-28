@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `TechnicalMembership`'s calls. 
+ * 
+ * `TechnicalMembership`'s storages: {@link: module:pangolin/technicalMembership/storages}
  *
  * @module pangolin/technicalMembership/calls
  */
@@ -23,7 +25,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: addMember}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/addMember}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -66,7 +68,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: removeMember}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/removeMember}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -113,7 +115,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: swapMember}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/swapMember}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -158,7 +160,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: resetMembers}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/resetMembers}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -203,7 +205,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: changeKey}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/changeKey}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -246,7 +248,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: setPrime}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/setPrime}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
@@ -287,7 +289,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
         },
 
         /**
-	 * Similar to {@link: clearPrime}, but with scale encoded args.
+	 * Similar to {@link: pangolin/technicalMembership/calls/clearPrime}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */

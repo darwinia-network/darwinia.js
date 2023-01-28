@@ -1,5 +1,7 @@
 /**
- * This is the doc comment for pallet evm calls
+ * This is the doc comment for pallet `BridgePolkadotParachain`'s calls. 
+ * 
+ * `BridgePolkadotParachain`'s storages: {@link: module:darwinia/bridgePolkadotParachain/storages}
  *
  * @module darwinia/bridgePolkadotParachain/calls
  */
@@ -30,7 +32,7 @@ export const getBridgePolkadotParachain = (dispatch: Dispatch, metadata: Metadat
         },
 
         /**
-	 * Similar to {@link: submitParachainHeads}, but with scale encoded args.
+	 * Similar to {@link: darwinia/bridgePolkadotParachain/calls/submitParachainHeads}, but with scale encoded args.
 	 *
 	 * @param {BytesLike} argsBytes the args bytes
 	 */
