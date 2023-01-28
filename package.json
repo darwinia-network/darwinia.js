@@ -12,7 +12,7 @@
     "genpangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
     "gendarwinia": "CHAIN=darwinia ENDPOINT=https://rpc.darwinia.network ts-node generator/generator.ts",
     "test": "jest",
-    "doc": "rm -rf out && jsdoc -r -c jsdoc.json --verbose"
+    "doc": "rm -rf doc && jsdoc -r -c jsdoc.json --verbose"
   },
   "repository": {
     "type": "git",
