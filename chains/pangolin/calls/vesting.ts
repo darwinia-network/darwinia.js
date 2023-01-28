@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `Vesting`'s calls. 
+ * 
+ * `Vesting`'s storages: {@link: module:pangolin/vesting/storages}
+ *
+ * @module pangolin/vesting/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -25,15 +32,31 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin/vesting/calls/vest}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         vestH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vest', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestCall: () => {
             return buildRuntimeCall(metadata, 'Vesting', 'vest', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVestCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Vesting', 'vest', argsBytes)
         },
@@ -55,7 +78,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account
          * # </weight>
          *
-         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
          */
         vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', false, {
@@ -63,16 +86,32 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin/vesting/calls/vestOther}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         vestOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestOther', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestOtherCall: (_target: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'vestOther', {
                 target: _target,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVestOtherCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestOtherCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Vesting', 'vestOther', argsBytes)
         },
@@ -96,8 +135,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account, [Sender Account]
          * # </weight>
          *
-         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
+         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _schedule {locked: U128, per_block: U128, starting_block: U32}
          */
         vestedTransfer: async (signer: ethers.Signer, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', false, {
@@ -106,10 +145,20 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin/vesting/calls/vestedTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         vestedTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'vestedTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestedTransferCall: (_target: unknown, _schedule: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'vestedTransfer', {
                 target: _target,
@@ -117,6 +166,12 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVestedTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVestedTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Vesting', 'vestedTransfer', argsBytes)
         },
@@ -141,9 +196,9 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account, Source Account
          * # </weight>
          *
-         * @param _source: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _target: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _schedule: {locked: U128, per_block: U128, starting_block: U32}
+         * @param {unknown} _source Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _schedule {locked: U128, per_block: U128, starting_block: U32}
          */
         forceVestedTransfer: async (signer: ethers.Signer, _source: unknown, _target: unknown, _schedule: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', false, {
@@ -153,10 +208,20 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin/vesting/calls/forceVestedTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceVestedTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'forceVestedTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceVestedTransferCall: (_source: unknown, _target: unknown, _schedule: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'forceVestedTransfer', {
                 source: _source,
@@ -165,6 +230,12 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceVestedTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceVestedTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Vesting', 'forceVestedTransfer', argsBytes)
         },
@@ -192,8 +263,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * - `schedule1_index`: index of the first schedule to merge.
          * - `schedule2_index`: index of the second schedule to merge.
          *
-         * @param _schedule1_index: U32
-         * @param _schedule2_index: U32
+         * @param {unknown} _schedule1_index U32
+         * @param {unknown} _schedule2_index U32
          */
         mergeSchedules: async (signer: ethers.Signer, _schedule1_index: unknown, _schedule2_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', false, {
@@ -202,10 +273,20 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin/vesting/calls/mergeSchedules}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         mergeSchedulesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Vesting', 'mergeSchedules', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildMergeSchedulesCall: (_schedule1_index: unknown, _schedule2_index: unknown) => {
             return buildRuntimeCall(metadata, 'Vesting', 'mergeSchedules', {
                 schedule1_index: _schedule1_index,
@@ -213,6 +294,12 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildMergeSchedulesCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildMergeSchedulesCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Vesting', 'mergeSchedules', argsBytes)
         },

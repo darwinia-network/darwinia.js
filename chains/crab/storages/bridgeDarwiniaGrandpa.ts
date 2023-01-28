@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `BridgeDarwiniaGrandpa`'s storages.
+ * 
+ * `BridgeDarwiniaGrandpa`'s calls: {@link: module:crab/bridgeDarwiniaGrandpa/calls}
+ *
+ * @module crab/bridgeDarwiniaGrandpa/storages
+ */
 export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
     return {
 
@@ -12,7 +19,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
          * The `RequestCount` is decreased by one at the beginning of every block. This is to ensure
          * that the pallet can always make progress.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         requestCount: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'RequestCount');
@@ -21,7 +28,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * Hash of the header used to bootstrap the pallet.
          *
-         * @return H256: [U8; 32]
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         initialHash: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'InitialHash');
@@ -30,7 +37,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * Hash of the best finalized header.
          *
-         * @return H256: [U8; 32]
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         bestFinalized: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'BestFinalized');
@@ -39,8 +46,8 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * A ring buffer of imported hashes. Ordered by the insertion time.
          *
-         * @param param0: U32
-         * @return H256: [U8; 32]
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         importedHashes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'ImportedHashes', param0);
@@ -49,7 +56,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * Current ring buffer position.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         importedHashesPointer: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'ImportedHashesPointer');
@@ -58,8 +65,8 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * Headers which have been imported into the pallet.
          *
-         * @param param0: H256: [U8; 32]
-         * @return Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
+         * @param {unknown} param0 H256: [U8; 32]
+         * @returns {Promise<string | null>} Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
          */
         importedHeaders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'ImportedHeaders', param0);
@@ -68,7 +75,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * The current GRANDPA Authority set.
          *
-         * @return AuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
+         * @returns {Promise<string | null>} AuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
          */
         currentAuthoritySet: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'CurrentAuthoritySet');
@@ -82,7 +89,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
          * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
          * flag directly or call the `halt_operations`).
          *
-         * @return AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId32: [U8; 32]
          */
         palletOwner: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'PalletOwner');
@@ -91,7 +98,7 @@ export const getBridgeDarwiniaGrandpa = (getStorage: GetStorage) => {
         /**
          * If true, all pallet transactions are failed immediately.
          *
-         * @return Bool
+         * @returns {Promise<string | null>} Bool
          */
         isHalted: async (): Promise<string | null> => {
             return await getStorage('BridgeDarwiniaGrandpa', 'IsHalted');

@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `Session`'s calls. 
+ * 
+ * `Session`'s storages: {@link: module:pangolin2/session/storages}
+ *
+ * @module pangolin2/session/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -20,8 +27,8 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          * - DbWrites per key id: `KeyOwner`
          * # </weight>
          *
-         * @param _keys: {aura: [U8; 32]}
-         * @param _proof: Vec<U8>
+         * @param {unknown} _keys {aura: [U8; 32]}
+         * @param {unknown} _proof Vec<U8>
          */
         setKeys: async (signer: ethers.Signer, _keys: unknown, _proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'setKeys', false, {
@@ -30,10 +37,20 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/session/calls/setKeys}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setKeysH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'setKeys', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetKeysCall: (_keys: unknown, _proof: unknown) => {
             return buildRuntimeCall(metadata, 'Session', 'setKeys', {
                 keys: _keys,
@@ -41,6 +58,12 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetKeysCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetKeysCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Session', 'setKeys', argsBytes)
         },
@@ -69,15 +92,31 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/session/calls/purgeKeys}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         purgeKeysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Session', 'purgeKeys', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPurgeKeysCall: () => {
             return buildRuntimeCall(metadata, 'Session', 'purgeKeys', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildPurgeKeysCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPurgeKeysCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Session', 'purgeKeys', argsBytes)
         },

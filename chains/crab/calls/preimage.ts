@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `Preimage`'s calls. 
+ * 
+ * `Preimage`'s storages: {@link: module:crab/preimage/storages}
+ *
+ * @module crab/preimage/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -10,7 +17,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * If the preimage was previously requested, no fees or deposits are taken for providing
          * the preimage. Otherwise, a deposit is taken proportional to the size of the preimage.
          *
-         * @param _bytes: Vec<U8>
+         * @param {unknown} _bytes Vec<U8>
          */
         notePreimage: async (signer: ethers.Signer, _bytes: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', false, {
@@ -18,16 +25,32 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/preimage/calls/notePreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         notePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageCall: (_bytes: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'notePreimage', {
                 bytes: _bytes,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildNotePreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildNotePreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Preimage', 'notePreimage', argsBytes)
         },
@@ -35,7 +58,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Clear an unrequested preimage from the runtime storage.
          *
-         * @param _hash: [U8; 32]
+         * @param {unknown} _hash [U8; 32]
          */
         unnotePreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', false, {
@@ -43,16 +66,32 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/preimage/calls/unnotePreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unnotePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnnotePreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'unnotePreimage', {
                 hash: _hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnnotePreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnnotePreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Preimage', 'unnotePreimage', argsBytes)
         },
@@ -63,7 +102,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * If the preimage requests has already been provided on-chain, we unreserve any deposit
          * a user may have paid, and take the control of the preimage out of their hands.
          *
-         * @param _hash: [U8; 32]
+         * @param {unknown} _hash [U8; 32]
          */
         requestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', false, {
@@ -71,16 +110,32 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/preimage/calls/requestPreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         requestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRequestPreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'requestPreimage', {
                 hash: _hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildRequestPreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildRequestPreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Preimage', 'requestPreimage', argsBytes)
         },
@@ -90,7 +145,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * NOTE: THIS MUST NOT BE CALLED ON `hash` MORE TIMES THAN `request_preimage`.
          *
-         * @param _hash: [U8; 32]
+         * @param {unknown} _hash [U8; 32]
          */
         unrequestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', false, {
@@ -98,16 +153,32 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/preimage/calls/unrequestPreimage}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unrequestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnrequestPreimageCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Preimage', 'unrequestPreimage', {
                 hash: _hash,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnrequestPreimageCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnrequestPreimageCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Preimage', 'unrequestPreimage', argsBytes)
         },

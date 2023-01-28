@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `BridgePolkadotGrandpa`'s calls. 
+ * 
+ * `BridgePolkadotGrandpa`'s storages: {@link: module:darwinia/bridgePolkadotGrandpa/storages}
+ *
+ * @module darwinia/bridgePolkadotGrandpa/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -13,8 +20,8 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * If successful in verification, it will write the target header to the underlying storage
          * pallet.
          *
-         * @param _finality_target: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
-         * @param _justification: {round: U64, commit: {target_hash: [U8; 32], target_number: U32, precommits: Vec<{precommit: {target_hash: [U8; 32], target_number: U32}, signature: [U8; 64], id: [U8; 32]}>}, votes_ancestries: Vec<{parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}>}
+         * @param {unknown} _finality_target {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
+         * @param {unknown} _justification {round: U64, commit: {target_hash: [U8; 32], target_number: U32, precommits: Vec<{precommit: {target_hash: [U8; 32], target_number: U32}, signature: [U8; 64], id: [U8; 32]}>}, votes_ancestries: Vec<{parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}>}
          */
         submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', false, {
@@ -23,10 +30,20 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
 	    });
         },
 
+        /**
+	 * Similar to {@link: darwinia/bridgePolkadotGrandpa/calls/submitFinalityProof}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         submitFinalityProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'submitFinalityProof', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePolkadotGrandpa', 'submitFinalityProof', {
                 finality_target: _finality_target,
@@ -34,6 +51,12 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSubmitFinalityProofCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSubmitFinalityProofCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePolkadotGrandpa', 'submitFinalityProof', argsBytes)
         },
@@ -49,7 +72,7 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * with practically no checks in terms of the validity of the data. It is important that
          * you ensure that valid data is being passed in.
          *
-         * @param _init_data: {header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}, authority_list: Vec<([U8; 32], U64)>, set_id: U64, is_halted: Bool}
+         * @param {unknown} _init_data {header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}, authority_list: Vec<([U8; 32], U64)>, set_id: U64, is_halted: Bool}
          */
         initialize: async (signer: ethers.Signer, _init_data: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', false, {
@@ -57,16 +80,32 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
 	    });
         },
 
+        /**
+	 * Similar to {@link: darwinia/bridgePolkadotGrandpa/calls/initialize}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         initializeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'initialize', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildInitializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePolkadotGrandpa', 'initialize', {
                 init_data: _init_data,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildInitializeCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildInitializeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePolkadotGrandpa', 'initialize', argsBytes)
         },
@@ -76,7 +115,7 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * 
          * May only be called either by root, or by `PalletOwner`.
          *
-         * @param _new_owner: Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 32]}>
          */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', false, {
@@ -84,16 +123,32 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
 	    });
         },
 
+        /**
+	 * Similar to {@link: darwinia/bridgePolkadotGrandpa/calls/setOwner}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOwner', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePolkadotGrandpa', 'setOwner', {
                 new_owner: _new_owner,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetOwnerCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOwnerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePolkadotGrandpa', 'setOwner', argsBytes)
         },
@@ -103,7 +158,7 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
          * 
          * May only be called either by root, or by `PalletOwner`.
          *
-         * @param _operational: Bool
+         * @param {unknown} _operational Bool
          */
         setOperational: async (signer: ethers.Signer, _operational: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', false, {
@@ -111,16 +166,32 @@ export const getBridgePolkadotGrandpa = (dispatch: Dispatch, metadata: Metadata)
 	    });
         },
 
+        /**
+	 * Similar to {@link: darwinia/bridgePolkadotGrandpa/calls/setOperational}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setOperationalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePolkadotGrandpa', 'setOperational', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOperationalCall: (_operational: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePolkadotGrandpa', 'setOperational', {
                 operational: _operational,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetOperationalCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetOperationalCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePolkadotGrandpa', 'setOperational', argsBytes)
         },

@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `BridgeMoonbaseRelayGrandpa`'s storages.
+ * 
+ * `BridgeMoonbaseRelayGrandpa`'s calls: {@link: module:pangolin/bridgeMoonbaseRelayGrandpa/calls}
+ *
+ * @module pangolin/bridgeMoonbaseRelayGrandpa/storages
+ */
 export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
     return {
 
@@ -12,7 +19,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
          * The `RequestCount` is decreased by one at the beginning of every block. This is to ensure
          * that the pallet can always make progress.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         requestCount: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'RequestCount');
@@ -21,7 +28,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * Hash of the header used to bootstrap the pallet.
          *
-         * @return H256: [U8; 32]
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         initialHash: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'InitialHash');
@@ -30,7 +37,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * Hash of the best finalized header.
          *
-         * @return H256: [U8; 32]
+         * @returns {Promise<string | null>} (U32, [U8; 32])
          */
         bestFinalized: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'BestFinalized');
@@ -39,8 +46,8 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * A ring buffer of imported hashes. Ordered by the insertion time.
          *
-         * @param param0: U32
-         * @return H256: [U8; 32]
+         * @param {unknown} param0 U32
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         importedHashes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'ImportedHashes', param0);
@@ -49,7 +56,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * Current ring buffer position.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         importedHashesPointer: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'ImportedHashesPointer');
@@ -58,8 +65,8 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * Headers which have been imported into the pallet.
          *
-         * @param param0: H256: [U8; 32]
-         * @return Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
+         * @param {unknown} param0 H256: [U8; 32]
+         * @returns {Promise<string | null>} Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
          */
         importedHeaders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'ImportedHeaders', param0);
@@ -68,7 +75,7 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
         /**
          * The current GRANDPA Authority set.
          *
-         * @return AuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
+         * @returns {Promise<string | null>} AuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
          */
         currentAuthoritySet: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'CurrentAuthoritySet');
@@ -82,19 +89,21 @@ export const getBridgeMoonbaseRelayGrandpa = (getStorage: GetStorage) => {
          * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
          * flag directly or call the `halt_operations`).
          *
-         * @return AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId32: [U8; 32]
          */
         palletOwner: async (): Promise<string | null> => {
             return await getStorage('BridgeMoonbaseRelayGrandpa', 'PalletOwner');
         },
 
         /**
-         * If true, all pallet transactions are failed immediately.
+         * The current operating mode of the pallet.
          *
-         * @return Bool
+         * Depending on the mode either all, or no transactions will be allowed.
+         *
+         * @returns {Promise<string | null>} BasicOperatingMode: Enum<{0/Normal: , 1/Halted: }>
          */
-        isHalted: async (): Promise<string | null> => {
-            return await getStorage('BridgeMoonbaseRelayGrandpa', 'IsHalted');
+        palletOperatingMode: async (): Promise<string | null> => {
+            return await getStorage('BridgeMoonbaseRelayGrandpa', 'PalletOperatingMode');
         },
     };
 };

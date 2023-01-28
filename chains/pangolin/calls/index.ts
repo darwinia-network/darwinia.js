@@ -40,16 +40,14 @@ import {getBaseFee} from "./baseFee";
 import {getBridgePangoroGrandpa} from "./bridgePangoroGrandpa";
 import {getBridgePangoroMessages} from "./bridgePangoroMessages";
 import {getBridgeRococoGrandpa} from "./bridgeRococoGrandpa";
-import {getBridgeRococoParachains} from "./bridgeRococoParachains";
+import {getBridgeRococoParachain} from "./bridgeRococoParachain";
 import {getBridgePangolinParachainMessages} from "./bridgePangolinParachainMessages";
 import {getPangoroFeeMarket} from "./pangoroFeeMarket";
 import {getPangolinParachainFeeMarket} from "./pangolinParachainFeeMarket";
-import {getTransactionPause} from "./transactionPause";
 import {getBridgeMoonbaseRelayGrandpa} from "./bridgeMoonbaseRelayGrandpa";
-import {getBridgeMoonbaseRelayParachains} from "./bridgeMoonbaseRelayParachains";
+import {getBridgeMoonbaseRelayParachain} from "./bridgeMoonbaseRelayParachain";
 import {getBridgePangolinParachainAlphaMessages} from "./bridgePangolinParachainAlphaMessages";
 import {getPangolinParachainAlphaFeeMarket} from "./pangolinParachainAlphaFeeMarket";
-import {getToPangolinParachainBacking} from "./toPangolinParachainBacking";
 
 export const buildPangolinCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const dispatch = dispatchCall(provider, metadata);
@@ -92,15 +90,13 @@ export const buildPangolinCallsClient = (provider: providers.BaseProvider, metad
         bridgePangoroGrandpa: getBridgePangoroGrandpa(dispatch, metadata),
         bridgePangoroMessages: getBridgePangoroMessages(dispatch, metadata),
         bridgeRococoGrandpa: getBridgeRococoGrandpa(dispatch, metadata),
-        bridgeRococoParachains: getBridgeRococoParachains(dispatch, metadata),
+        bridgeRococoParachain: getBridgeRococoParachain(dispatch, metadata),
         bridgePangolinParachainMessages: getBridgePangolinParachainMessages(dispatch, metadata),
         pangoroFeeMarket: getPangoroFeeMarket(dispatch, metadata),
         pangolinParachainFeeMarket: getPangolinParachainFeeMarket(dispatch, metadata),
-        transactionPause: getTransactionPause(dispatch, metadata),
         bridgeMoonbaseRelayGrandpa: getBridgeMoonbaseRelayGrandpa(dispatch, metadata),
-        bridgeMoonbaseRelayParachains: getBridgeMoonbaseRelayParachains(dispatch, metadata),
+        bridgeMoonbaseRelayParachain: getBridgeMoonbaseRelayParachain(dispatch, metadata),
         bridgePangolinParachainAlphaMessages: getBridgePangolinParachainAlphaMessages(dispatch, metadata),
         pangolinParachainAlphaFeeMarket: getPangolinParachainAlphaFeeMarket(dispatch, metadata),
-        toPangolinParachainBacking: getToPangolinParachainBacking(dispatch, metadata),
     };
 }

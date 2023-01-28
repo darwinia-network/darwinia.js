@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `AuraExt`'s storages.
+ * 
+ * `AuraExt`'s calls: {@link: module:pangolin2/auraExt/calls}
+ *
+ * @module pangolin2/auraExt/storages
+ */
 export const getAuraExt = (getStorage: GetStorage) => {
     return {
 
@@ -10,7 +17,7 @@ export const getAuraExt = (getStorage: GetStorage) => {
          * but we require the old authorities to verify the seal when validating a PoV. This will always
          * be updated to the latest AuRa authorities in `on_finalize`.
          *
-         * @return BoundedVec: Vec<[U8; 32]>
+         * @returns {Promise<string | null>} BoundedVec: Vec<[U8; 32]>
          */
         authorities: async (): Promise<string | null> => {
             return await getStorage('AuraExt', 'Authorities');

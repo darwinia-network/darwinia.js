@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `<%= prefix %>`'s storages.
+ * 
+ * `<%= prefix %>`'s calls: {@link: module:<%= chainName %>/<%= moduleName %>/calls}
+ *
+ * @module <%= chainName %>/<%= moduleName %>/storages
+ */
 export const get<%= prefix %> = (getStorage: GetStorage) => {
     return {
 <%_
@@ -24,12 +31,12 @@ _%>
             for(let j = 0; j < inputTypeNames.length; j++) {
                 const inputTypeName = inputTypeNames[j];
 _%>
-         * @param param<%= j %>: <%- inputTypeName %>
+         * @param {unknown} param<%= j %> <%- inputTypeName %>
 <%_
             }
         }
 _%>
-         * @return <%- outputTypeName %>
+         * @returns {Promise<string | null>} <%- outputTypeName %>
          */
 <%_
         if(entry.type.isPlain) {

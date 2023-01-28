@@ -1,12 +1,19 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `PangolinParachainAlphaFeeMarket`'s storages.
+ * 
+ * `PangolinParachainAlphaFeeMarket`'s calls: {@link: module:pangolin/pangolinParachainAlphaFeeMarket/calls}
+ *
+ * @module pangolin/pangolinParachainAlphaFeeMarket/storages
+ */
 export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
     return {
 
         /**
          *
-         * @param param0: AccountId32: [U8; 32]
-         * @return Relayer: {id: [U8; 32], collateral: U128, fee: U128}
+         * @param {unknown} param0 AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} Relayer: {id: [U8; 32], collateral: U128, fee: U128}
          */
         relayersMap: async (param0: unknown): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'RelayersMap', param0);
@@ -14,7 +21,7 @@ export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
 
         /**
          *
-         * @return Vec<[U8; 32]>
+         * @returns {Promise<string | null>} Vec<[U8; 32]>
          */
         relayers: async (): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'Relayers');
@@ -22,7 +29,7 @@ export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
 
         /**
          *
-         * @return Vec<{id: [U8; 32], collateral: U128, fee: U128}>
+         * @returns {Promise<string | null>} Vec<{id: [U8; 32], collateral: U128, fee: U128}>
          */
         assignedRelayers: async (): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'AssignedRelayers');
@@ -30,8 +37,8 @@ export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
 
         /**
          *
-         * @param param0: ([U8; 4], U64)
-         * @return Order: {lane: [U8; 4], message: U64, sent_time: U32, confirm_time: Enum<{0/None: , 1/Some: U32}>, locked_collateral: U128, assigned_relayers: Vec<{id: [U8; 32], fee: U128, valid_range: {start: U32, end: U32}}>}
+         * @param {unknown} param0 ([U8; 4], U64)
+         * @returns {Promise<string | null>} Order: {lane: [U8; 4], message: U64, sent_time: U32, confirm_time: Enum<{0/None: , 1/Some: U32}>, collateral_per_assigned_relayer: U128, assigned_relayers: Vec<{id: [U8; 32], fee: U128, valid_range: {start: U32, end: U32}}>}
          */
         orders: async (param0: unknown): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'Orders', param0);
@@ -39,7 +46,7 @@ export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
 
         /**
          *
-         * @return U128
+         * @returns {Promise<string | null>} U128
          */
         collateralSlashProtect: async (): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'CollateralSlashProtect');
@@ -47,7 +54,7 @@ export const getPangolinParachainAlphaFeeMarket = (getStorage: GetStorage) => {
 
         /**
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         assignedRelayersNumber: async (): Promise<string | null> => {
             return await getStorage('PangolinParachainAlphaFeeMarket', 'AssignedRelayersNumber');

@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `BridgeKusamaParachain`'s calls. 
+ * 
+ * `BridgeKusamaParachain`'s storages: {@link: module:crab/bridgeKusamaParachain/storages}
+ *
+ * @module crab/bridgeKusamaParachain/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -12,9 +19,9 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * The proof is supposed to be crafted at the `relay_header_hash` that must already be
          * imported by corresponding GRANDPA pallet at this chain.
          *
-         * @param _relay_block_hash: [U8; 32]
-         * @param _parachains: Vec<U32>
-         * @param _parachain_heads_proof: Vec<Vec<U8>>
+         * @param {unknown} _relay_block_hash [U8; 32]
+         * @param {unknown} _parachains Vec<U32>
+         * @param {unknown} _parachain_heads_proof Vec<Vec<U8>>
          */
         submitParachainHeads: async (signer: ethers.Signer, _relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', false, {
@@ -24,10 +31,20 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/bridgeKusamaParachain/calls/submitParachainHeads}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         submitParachainHeadsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSubmitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeKusamaParachain', 'submitParachainHeads', {
                 relay_block_hash: _relay_block_hash,
@@ -36,6 +53,12 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSubmitParachainHeadsCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSubmitParachainHeadsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgeKusamaParachain', 'submitParachainHeads', argsBytes)
         },

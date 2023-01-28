@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `Society`'s calls. 
+ * 
+ * `Society`'s storages: {@link: module:crab/society/storages}
+ *
+ * @module crab/society/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -40,7 +47,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + B + C + logM + logB + X)
          * # </weight>
          *
-         * @param _value: U128
+         * @param {unknown} _value U128
          */
         bid: async (signer: ethers.Signer, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'bid', false, {
@@ -48,16 +55,32 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/bid}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         bidH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'bid', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBidCall: (_value: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'bid', {
                 value: _value,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildBidCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildBidCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'bid', argsBytes)
         },
@@ -83,7 +106,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(B + X)
          * # </weight>
          *
-         * @param _pos: U32
+         * @param {unknown} _pos U32
          */
         unbid: async (signer: ethers.Signer, _pos: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unbid', false, {
@@ -91,16 +114,32 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/unbid}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unbidH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unbid', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnbidCall: (_pos: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'unbid', {
                 pos: _pos,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnbidCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnbidCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'unbid', argsBytes)
         },
@@ -152,9 +191,9 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + B + C + logM + logB + X)
          * # </weight>
          *
-         * @param _who: [U8; 32]
-         * @param _value: U128
-         * @param _tip: U128
+         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _value U128
+         * @param {unknown} _tip U128
          */
         vouch: async (signer: ethers.Signer, _who: unknown, _value: unknown, _tip: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vouch', false, {
@@ -164,10 +203,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/vouch}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         vouchH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vouch', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVouchCall: (_who: unknown, _value: unknown, _tip: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vouch', {
                 who: _who,
@@ -176,6 +225,12 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVouchCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVouchCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'vouch', argsBytes)
         },
@@ -199,7 +254,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(B)
          * # </weight>
          *
-         * @param _pos: U32
+         * @param {unknown} _pos U32
          */
         unvouch: async (signer: ethers.Signer, _pos: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unvouch', false, {
@@ -207,16 +262,32 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/unvouch}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unvouchH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unvouch', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnvouchCall: (_pos: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'unvouch', {
                 pos: _pos,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnvouchCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnvouchCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'unvouch', argsBytes)
         },
@@ -242,8 +313,8 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + logM + C)
          * # </weight>
          *
-         * @param _candidate: Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param _approve: Bool
+         * @param {unknown} _candidate Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _approve Bool
          */
         vote: async (signer: ethers.Signer, _candidate: unknown, _approve: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vote', false, {
@@ -252,10 +323,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/vote}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'vote', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVoteCall: (_candidate: unknown, _approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'vote', {
                 candidate: _candidate,
@@ -263,6 +344,12 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildVoteCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'vote', argsBytes)
         },
@@ -285,7 +372,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + logM)
          * # </weight>
          *
-         * @param _approve: Bool
+         * @param {unknown} _approve Bool
          */
         defenderVote: async (signer: ethers.Signer, _approve: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'defenderVote', false, {
@@ -293,16 +380,32 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/defenderVote}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         defenderVoteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'defenderVote', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDefenderVoteCall: (_approve: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'defenderVote', {
                 approve: _approve,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildDefenderVoteCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildDefenderVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'defenderVote', argsBytes)
         },
@@ -336,15 +439,31 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/payout}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         payoutH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'payout', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPayoutCall: () => {
             return buildRuntimeCall(metadata, 'Society', 'payout', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildPayoutCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildPayoutCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'payout', argsBytes)
         },
@@ -370,9 +489,9 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(1)
          * # </weight>
          *
-         * @param _founder: [U8; 32]
-         * @param _max_members: U32
-         * @param _rules: Vec<U8>
+         * @param {unknown} _founder [U8; 32]
+         * @param {unknown} _max_members U32
+         * @param {unknown} _rules Vec<U8>
          */
         found: async (signer: ethers.Signer, _founder: unknown, _max_members: unknown, _rules: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'found', false, {
@@ -382,10 +501,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/found}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         foundH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'found', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFoundCall: (_founder: unknown, _max_members: unknown, _rules: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'found', {
                 founder: _founder,
@@ -394,6 +523,12 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildFoundCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildFoundCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'found', argsBytes)
         },
@@ -419,15 +554,31 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/unfound}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         unfoundH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'unfound', true);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnfoundCall: () => {
             return buildRuntimeCall(metadata, 'Society', 'unfound', {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildUnfoundCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildUnfoundCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'unfound', argsBytes)
         },
@@ -462,8 +613,8 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + logM + B)
          * # </weight>
          *
-         * @param _who: [U8; 32]
-         * @param _forgive: Bool
+         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _forgive Bool
          */
         judgeSuspendedMember: async (signer: ethers.Signer, _who: unknown, _forgive: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', false, {
@@ -472,10 +623,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/judgeSuspendedMember}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         judgeSuspendedMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedMember', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildJudgeSuspendedMemberCall: (_who: unknown, _forgive: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'judgeSuspendedMember', {
                 who: _who,
@@ -483,6 +644,12 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildJudgeSuspendedMemberCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildJudgeSuspendedMemberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'judgeSuspendedMember', argsBytes)
         },
@@ -529,8 +696,8 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(M + logM + B + X)
          * # </weight>
          *
-         * @param _who: [U8; 32]
-         * @param _judgement: Enum<{0/Rebid: , 1/Reject: , 2/Approve: }>
+         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _judgement Enum<{0/Rebid: , 1/Reject: , 2/Approve: }>
          */
         judgeSuspendedCandidate: async (signer: ethers.Signer, _who: unknown, _judgement: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', false, {
@@ -539,10 +706,20 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/judgeSuspendedCandidate}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         judgeSuspendedCandidateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'judgeSuspendedCandidate', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildJudgeSuspendedCandidateCall: (_who: unknown, _judgement: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'judgeSuspendedCandidate', {
                 who: _who,
@@ -550,6 +727,12 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildJudgeSuspendedCandidateCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildJudgeSuspendedCandidateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'judgeSuspendedCandidate', argsBytes)
         },
@@ -570,7 +753,7 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
          * Total Complexity: O(1)
          * # </weight>
          *
-         * @param _max: U32
+         * @param {unknown} _max U32
          */
         setMaxMembers: async (signer: ethers.Signer, _max: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'setMaxMembers', false, {
@@ -578,16 +761,32 @@ export const getSociety = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: crab/society/calls/setMaxMembers}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setMaxMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Society', 'setMaxMembers', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetMaxMembersCall: (_max: unknown) => {
             return buildRuntimeCall(metadata, 'Society', 'setMaxMembers', {
                 max: _max,
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetMaxMembersCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetMaxMembersCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Society', 'setMaxMembers', argsBytes)
         },

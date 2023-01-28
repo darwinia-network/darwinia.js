@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `TransactionPause`'s storages.
+ * 
+ * `TransactionPause`'s calls: {@link: module:pangoro/transactionPause/calls}
+ *
+ * @module pangoro/transactionPause/storages
+ */
 export const getTransactionPause = (getStorage: GetStorage) => {
     return {
 
@@ -8,8 +15,8 @@ export const getTransactionPause = (getStorage: GetStorage) => {
          *
          * map (PalletNameBytes, FunctionNameBytes) => Option<()>
          *
-         * @param param0: (Vec<U8>, Vec<U8>)
-         * @return ()
+         * @param {unknown} param0 (Vec<U8>, Vec<U8>)
+         * @returns {Promise<string | null>} ()
          */
         pausedTransactions: async (param0: unknown): Promise<string | null> => {
             return await getStorage('TransactionPause', 'PausedTransactions', param0);

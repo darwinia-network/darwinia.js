@@ -1,13 +1,20 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `Staking`'s storages.
+ * 
+ * `Staking`'s calls: {@link: module:pangolin2/staking/calls}
+ *
+ * @module pangolin2/staking/storages
+ */
 export const getStaking = (getStorage: GetStorage) => {
     return {
 
         /**
          * All staking ledgers.
          *
-         * @param param0: AccountId20: [U8; 20]
-         * @return Ledger: {staked_ring: U128, staked_kton: U128, staked_deposits: Vec<U16>, unstaking_ring: Vec<(U128, U32)>, unstaking_kton: Vec<(U128, U32)>, unstaking_deposits: Vec<(U16, U32)>}
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Ledger: {staked_ring: U128, staked_kton: U128, staked_deposits: Vec<U16>, unstaking_ring: Vec<(U128, U32)>, unstaking_kton: Vec<(U128, U32)>, unstaking_deposits: Vec<(U16, U32)>}
          */
         ledgers: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Staking', 'Ledgers', param0);
@@ -18,7 +25,7 @@ export const getStaking = (getStorage: GetStorage) => {
          *
          * This will count RING + deposit(locking RING).
          *
-         * @return U128
+         * @returns {Promise<string | null>} U128
          */
         ringPool: async (): Promise<string | null> => {
             return await getStorage('Staking', 'RingPool');
@@ -27,7 +34,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * Total staked KTON.
          *
-         * @return U128
+         * @returns {Promise<string | null>} U128
          */
         ktonPool: async (): Promise<string | null> => {
             return await getStorage('Staking', 'KtonPool');
@@ -36,8 +43,8 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * The map from (wannabe) collator to the preferences of that collator.
          *
-         * @param param0: AccountId20: [U8; 20]
-         * @return Perbill: U32
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Perbill: U32
          */
         collators: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Staking', 'Collators', param0);
@@ -46,8 +53,8 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * Stakers' exposure.
          *
-         * @param param0: AccountId20: [U8; 20]
-         * @return Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
          */
         exposures: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Staking', 'Exposures', param0);
@@ -56,7 +63,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * The ideal number of active collators.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         collatorCount: async (): Promise<string | null> => {
             return await getStorage('Staking', 'CollatorCount');
@@ -66,8 +73,8 @@ export const getStaking = (getStorage: GetStorage) => {
          * The map from nominator to their nomination preferences, namely the collator that
          * they wish to support.
          *
-         * @param param0: AccountId20: [U8; 20]
-         * @return AccountId20: [U8; 20]
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         nominators: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Staking', 'Nominators', param0);
@@ -76,7 +83,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * Collator's reward points.
          *
-         * @return (U32, Vec<([U8; 20], U32)>)
+         * @returns {Promise<string | null>} (U32, Vec<([U8; 20], U32)>)
          */
         rewardPoints: async (): Promise<string | null> => {
             return await getStorage('Staking', 'RewardPoints');
@@ -85,7 +92,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * Active session's start-time.
          *
-         * @return U128
+         * @returns {Promise<string | null>} U128
          */
         sessionStartTime: async (): Promise<string | null> => {
             return await getStorage('Staking', 'SessionStartTime');
@@ -94,7 +101,7 @@ export const getStaking = (getStorage: GetStorage) => {
         /**
          * Elapsed time.
          *
-         * @return U128
+         * @returns {Promise<string | null>} U128
          */
         elapsedTime: async (): Promise<string | null> => {
             return await getStorage('Staking', 'ElapsedTime');

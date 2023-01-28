@@ -1,12 +1,19 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `Aura`'s storages.
+ * 
+ * `Aura`'s calls: {@link: module:pangolin2/aura/calls}
+ *
+ * @module pangolin2/aura/storages
+ */
 export const getAura = (getStorage: GetStorage) => {
     return {
 
         /**
          * The current authority set.
          *
-         * @return BoundedVec: Vec<[U8; 32]>
+         * @returns {Promise<string | null>} BoundedVec: Vec<[U8; 32]>
          */
         authorities: async (): Promise<string | null> => {
             return await getStorage('Aura', 'Authorities');
@@ -17,7 +24,7 @@ export const getAura = (getStorage: GetStorage) => {
          *
          * This will be set in `on_initialize`.
          *
-         * @return Slot: U64
+         * @returns {Promise<string | null>} Slot: U64
          */
         currentSlot: async (): Promise<string | null> => {
             return await getStorage('Aura', 'CurrentSlot');

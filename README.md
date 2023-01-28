@@ -124,31 +124,29 @@ More examples in [examples](./examples)
 
 ## Derived API List
 
-* **nominateAndStake**
+#### nominateAndStake
 
-  Stake and nominate collator.
+Nominate a collator and stake tokens to the collator.
 
-* **setSessionKeysAndCommission**
+#### setSessionKeysAndCommission
 
-  Set session keys and commission. [Example](examples/derived_set_session_keys_and_commission.ts)
+Set session keys and commission percetage. [Example](examples/derived_set_session_keys_and_commission.ts)
 
-* **trackSystemEvents**
+#### trackSystemEvents
 
-  Track specified events. [Example](examples/derived_track_system_events.ts)
+Track specified events. [Example](examples/derived_track_system_events.ts)
 
-* **getSystemEvents**
+#### getSystemEvents
  
-  Get the latest events. 
+Get the latest events. You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](examples/derived_get_system_events.ts)
 
-  You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](examples/derived_get_system_events.ts)
+See [src/derived.ts](src/derived.ts).
 
-see [src/derived.ts](src/derived.ts).
+## TODO
 
-### TODO
+1. metadata check. automatically check whether the metadata carried by lib is outdated, prompting to upgrade
 
-- [ ] metadata check. automatically check whether the metadata carried by lib is outdated, prompting to upgrade
-
-### Get the metadata static hex string from darwinia node
+## Get the metadata static hex string from darwinia node
 ```shell
 curl -X POST \
      -H 'Content-Type: application/json' \

@@ -1,5 +1,12 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `ParachainSystem`'s storages.
+ * 
+ * `ParachainSystem`'s calls: {@link: module:pangolin2/parachainSystem/calls}
+ *
+ * @module pangolin2/parachainSystem/storages
+ */
 export const getParachainSystem = (getStorage: GetStorage) => {
     return {
 
@@ -11,7 +18,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * [well_known_keys::CODE]: sp_core::storage::well_known_keys::CODE
          *
-         * @return Vec<U8>
+         * @returns {Promise<string | null>} Vec<U8>
          */
         pendingValidationCode: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'PendingValidationCode');
@@ -24,7 +31,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * This will be cleared in `on_initialize` of each new block if no other pallet already set
          * the value.
          *
-         * @return Vec<U8>
+         * @returns {Promise<string | null>} Vec<U8>
          */
         newValidationCode: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'NewValidationCode');
@@ -35,7 +42,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * This value is expected to be set only once per block and it's never stored
          * in the trie.
          *
-         * @return PersistedValidationData: {parent_head: Vec<U8>, relay_parent_number: U32, relay_parent_storage_root: [U8; 32], max_pov_size: U32}
+         * @returns {Promise<string | null>} PersistedValidationData: {parent_head: Vec<U8>, relay_parent_number: U32, relay_parent_storage_root: [U8; 32], max_pov_size: U32}
          */
         validationData: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ValidationData');
@@ -44,7 +51,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * Were the validation data set to notify the relay chain?
          *
-         * @return Bool
+         * @returns {Promise<string | null>} Bool
          */
         didSetValidationCode: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'DidSetValidationCode');
@@ -53,7 +60,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * The relay chain block number associated with the last parachain block.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         lastRelayChainBlockNumber: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'LastRelayChainBlockNumber');
@@ -68,7 +75,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * relay-chain. This value is ephemeral which means it doesn't hit the storage. This value is
          * set after the inherent.
          *
-         * @return Option: Enum<{0/None: , 1/Some: Enum<{0/Present: }>}>
+         * @returns {Promise<string | null>} Option: Enum<{0/None: , 1/Some: Enum<{0/Present: }>}>
          */
         upgradeRestrictionSignal: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'UpgradeRestrictionSignal');
@@ -82,7 +89,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @return StorageProof: {trie_nodes: Vec<Vec<U8>>}
+         * @returns {Promise<string | null>} StorageProof: {trie_nodes: Vec<Vec<U8>>}
          */
         relayStateProof: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'RelayStateProof');
@@ -97,7 +104,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @return MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: (U32, U32), ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
+         * @returns {Promise<string | null>} MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: (U32, U32), ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
          */
         relevantMessagingState: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'RelevantMessagingState');
@@ -111,7 +118,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @return AbridgedHostConfiguration: {max_code_size: U32, max_head_data_size: U32, max_upward_queue_count: U32, max_upward_queue_size: U32, max_upward_message_size: U32, max_upward_message_num_per_candidate: U32, hrmp_max_message_num_per_candidate: U32, validation_upgrade_cooldown: U32, validation_upgrade_delay: U32}
+         * @returns {Promise<string | null>} AbridgedHostConfiguration: {max_code_size: U32, max_head_data_size: U32, max_upward_queue_count: U32, max_upward_queue_size: U32, max_upward_message_size: U32, max_upward_message_num_per_candidate: U32, hrmp_max_message_num_per_candidate: U32, validation_upgrade_cooldown: U32, validation_upgrade_delay: U32}
          */
         hostConfiguration: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'HostConfiguration');
@@ -123,7 +130,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * This value is loaded before and saved after processing inbound downward messages carried
          * by the system inherent.
          *
-         * @return MessageQueueChain: [U8; 32]
+         * @returns {Promise<string | null>} MessageQueueChain: [U8; 32]
          */
         lastDmqMqcHead: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'LastDmqMqcHead');
@@ -135,7 +142,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * This value is loaded before and saved after processing inbound downward messages carried
          * by the system inherent.
          *
-         * @return BTreeMap: Vec<(U32, [U8; 32])>
+         * @returns {Promise<string | null>} BTreeMap: Vec<(U32, [U8; 32])>
          */
         lastHrmpMqcHeads: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'LastHrmpMqcHeads');
@@ -146,7 +153,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This will be cleared in `on_initialize` of each new block.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         processedDownwardMessages: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ProcessedDownwardMessages');
@@ -157,7 +164,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This will be cleared in `on_initialize` of each new block.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         hrmpWatermark: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'HrmpWatermark');
@@ -168,7 +175,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This will be cleared in `on_initialize` of each new block.
          *
-         * @return Vec<{recipient: U32, data: Vec<U8>}>
+         * @returns {Promise<string | null>} Vec<{recipient: U32, data: Vec<U8>}>
          */
         hrmpOutboundMessages: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'HrmpOutboundMessages');
@@ -179,7 +186,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This will be cleared in `on_initialize` of each new block.
          *
-         * @return Vec<Vec<U8>>
+         * @returns {Promise<string | null>} Vec<Vec<U8>>
          */
         upwardMessages: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'UpwardMessages');
@@ -188,7 +195,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * Upward messages that are still pending and not yet send to the relay chain.
          *
-         * @return Vec<Vec<U8>>
+         * @returns {Promise<string | null>} Vec<Vec<U8>>
          */
         pendingUpwardMessages: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'PendingUpwardMessages');
@@ -198,7 +205,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * The number of HRMP messages we observed in `on_initialize` and thus used that number for
          * announcing the weight of `on_initialize` and `on_finalize`.
          *
-         * @return U32
+         * @returns {Promise<string | null>} U32
          */
         announcedHrmpMessagesPerCandidate: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'AnnouncedHrmpMessagesPerCandidate');
@@ -208,7 +215,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * The weight we reserve at the beginning of the block for processing XCMP messages. This
          * overrides the amount set in the Config trait.
          *
-         * @return Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
+         * @returns {Promise<string | null>} Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
          */
         reservedXcmpWeightOverride: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ReservedXcmpWeightOverride');
@@ -218,7 +225,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          * The weight we reserve at the beginning of the block for processing DMP messages. This
          * overrides the amount set in the Config trait.
          *
-         * @return Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
+         * @returns {Promise<string | null>} Weight: {ref_time: Compact<U64>, proof_size: Compact<U64>}
          */
         reservedDmpWeightOverride: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'ReservedDmpWeightOverride');
@@ -227,7 +234,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * The next authorized upgrade, if there is one.
          *
-         * @return H256: [U8; 32]
+         * @returns {Promise<string | null>} H256: [U8; 32]
          */
         authorizedUpgrade: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'AuthorizedUpgrade');
@@ -238,7 +245,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * See [`Pallet::set_custom_validation_head_data`] for more information.
          *
-         * @return Vec<U8>
+         * @returns {Promise<string | null>} Vec<U8>
          */
         customValidationHeadData: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'CustomValidationHeadData');

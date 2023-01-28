@@ -1,3 +1,10 @@
+/**
+ * This is the doc comment for pallet `Balances`'s calls. 
+ * 
+ * `Balances`'s storages: {@link: module:pangolin2/balances/storages}
+ *
+ * @module pangolin2/balances/calls
+ */
 import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
@@ -31,8 +38,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * - Origin account is already in memory, so no DB operations for them.
          * # </weight>
          *
-         * @param _dest: [U8; 20]
-         * @param _value: Compact<U128>
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _value Compact<U128>
          */
         transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transfer', false, {
@@ -41,10 +48,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/transfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transfer', {
                 dest: _dest,
@@ -52,6 +69,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'transfer', argsBytes)
         },
@@ -66,9 +89,9 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin for this call is `root`.
          *
-         * @param _who: [U8; 20]
-         * @param _new_free: Compact<U128>
-         * @param _new_reserved: Compact<U128>
+         * @param {unknown} _who [U8; 20]
+         * @param {unknown} _new_free Compact<U128>
+         * @param {unknown} _new_reserved Compact<U128>
          */
         setBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _new_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'setBalance', false, {
@@ -78,10 +101,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/setBalance}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         setBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'setBalance', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'setBalance', {
                 who: _who,
@@ -90,6 +123,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildSetBalanceCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildSetBalanceCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'setBalance', argsBytes)
         },
@@ -102,9 +141,9 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          *   assumed to be in the overlay.
          * # </weight>
          *
-         * @param _source: [U8; 20]
-         * @param _dest: [U8; 20]
-         * @param _value: Compact<U128>
+         * @param {unknown} _source [U8; 20]
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _value Compact<U128>
          */
         forceTransfer: async (signer: ethers.Signer, _source: unknown, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', false, {
@@ -114,10 +153,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/forceTransfer}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCall: (_source: unknown, _dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'forceTransfer', {
                 source: _source,
@@ -126,6 +175,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceTransferCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'forceTransfer', argsBytes)
         },
@@ -138,8 +193,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * [`transfer`]: struct.Pallet.html#method.transfer
          *
-         * @param _dest: [U8; 20]
-         * @param _value: Compact<U128>
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _value Compact<U128>
          */
         transferKeepAlive: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', false, {
@@ -148,10 +203,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/transferKeepAlive}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCall: (_dest: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transferKeepAlive', {
                 dest: _dest,
@@ -159,6 +224,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferKeepAliveCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferKeepAliveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'transferKeepAlive', argsBytes)
         },
@@ -182,8 +253,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1). Just like transfer, but reading the user's transferable balance first.
          *   #</weight>
          *
-         * @param _dest: [U8; 20]
-         * @param _keep_alive: Bool
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _keep_alive Bool
          */
         transferAll: async (signer: ethers.Signer, _dest: unknown, _keep_alive: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferAll', false, {
@@ -192,10 +263,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/transferAll}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         transferAllH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'transferAll', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferAllCall: (_dest: unknown, _keep_alive: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'transferAll', {
                 dest: _dest,
@@ -203,6 +284,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildTransferAllCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildTransferAllCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'transferAll', argsBytes)
         },
@@ -212,8 +299,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Can only be called by ROOT.
          *
-         * @param _who: [U8; 20]
-         * @param _amount: U128
+         * @param {unknown} _who [U8; 20]
+         * @param {unknown} _amount U128
          */
         forceUnreserve: async (signer: ethers.Signer, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', false, {
@@ -222,10 +309,20 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 	    });
         },
 
+        /**
+	 * Similar to {@link: pangolin2/balances/calls/forceUnreserve}, but with scale encoded args.
+	 *
+	 * @param {BytesLike} argsBytes the args bytes
+	 */
         forceUnreserveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', true, argsBytes);
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnreserveCall: (_who: unknown, _amount: unknown) => {
             return buildRuntimeCall(metadata, 'Balances', 'forceUnreserve', {
                 who: _who,
@@ -233,6 +330,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
             });
         },
 
+        /**
+	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+	 * Similar to buildForceUnreserveCall, but with scale encoded args.
+	 *
+	 * @returns {CallAsParam} 
+	 */
         buildForceUnreserveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'forceUnreserve', argsBytes)
         },

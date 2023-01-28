@@ -1,12 +1,19 @@
 import { GetStorage } from "../../../src/storage";
 
+/**
+ * This is the doc comment for pallet `Timestamp`'s storages.
+ * 
+ * `Timestamp`'s calls: {@link: module:crab/timestamp/calls}
+ *
+ * @module crab/timestamp/storages
+ */
 export const getTimestamp = (getStorage: GetStorage) => {
     return {
 
         /**
          * Current time for the current block.
          *
-         * @return U64
+         * @returns {Promise<string | null>} U64
          */
         now: async (): Promise<string | null> => {
             return await getStorage('Timestamp', 'Now');
@@ -15,7 +22,7 @@ export const getTimestamp = (getStorage: GetStorage) => {
         /**
          * Did the timestamp get updated in this block?
          *
-         * @return Bool
+         * @returns {Promise<string | null>} Bool
          */
         didUpdate: async (): Promise<string | null> => {
             return await getStorage('Timestamp', 'DidUpdate');
