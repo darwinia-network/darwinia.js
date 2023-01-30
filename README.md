@@ -120,7 +120,7 @@ async function main(): Promise<void> {
 main();
 
 ```
-More examples in [examples](./examples)
+More examples in [examples](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples)
 
 ## Derived API List
 
@@ -130,17 +130,17 @@ Nominate a collator and stake tokens to the collator.
 
 #### setSessionKeysAndCommission
 
-Set session keys and commission percetage. [Example](examples/derived_set_session_keys_and_commission.ts)
+Set session keys and commission percetage. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_set_session_keys_and_commission.ts)
 
 #### trackSystemEvents
 
-Track specified events. [Example](examples/derived_track_system_events.ts)
+Track specified events. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_track_system_events.ts)
 
 #### getSystemEvents
  
-Get the latest events. You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](examples/derived_get_system_events.ts)
+Get the latest events. You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_get_system_events.ts)
 
-See [src/derived.ts](src/derived.ts).
+See [src/derived.ts](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/src/derived.ts).
 
 ## TODO
 
