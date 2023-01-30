@@ -1,6 +1,6 @@
 {
   "name": "darwinia-js-sdk",
-  "version": "1.2.22",
+  "version": "1.2.23",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
