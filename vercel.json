@@ -21,5 +21,8 @@
           }
         ]
       }
+    ],
+    "redirects": [
+        { "source": "/", "destination": "/latest/index.html" }
     ]
-  }
+}
