@@ -1,8 +1,11 @@
 name: Deploy docs
 
 on:
+  # push:
+  #   branches: [main]
   push:
-    branches: [main]
+    tags:
+      - "v*"
   workflow_dispatch:
 
 env:
