@@ -22,29 +22,31 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {unknown} _relay_block_hash [U8; 32]
          * @param {unknown} _parachains Vec<U32>
          * @param {unknown} _parachain_heads_proof Vec<Vec<U8>>
+         * @instance
          */
         submitParachainHeads: async (signer: ethers.Signer, _relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', false, {
                 relay_block_hash: _relay_block_hash,
                 parachains: _parachains,
                 parachain_heads_proof: _parachain_heads_proof,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/bridgeKusamaParachain/calls/submitParachainHeads}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/bridgeKusamaParachain/calls/submitParachainHeads}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitParachainHeadsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitParachainHeadsCall: (_relay_block_hash: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeKusamaParachain', 'submitParachainHeads', {
                 relay_block_hash: _relay_block_hash,
@@ -54,14 +56,15 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitParachainHeadsCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitParachainHeadsCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitParachainHeadsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgeKusamaParachain', 'submitParachainHeads', argsBytes)
         },
 
     }
 }
+

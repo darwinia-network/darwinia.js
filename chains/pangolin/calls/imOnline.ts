@@ -24,28 +24,30 @@ export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _heartbeat {block_number: U32, network_state: {peer_id: Vec<U8>, external_addresses: Vec<Vec<U8>>}, session_index: U32, authority_index: U32, validators_len: U32}
          * @param {unknown} _signature [U8; 64]
+         * @instance
          */
         heartbeat: async (signer: ethers.Signer, _heartbeat: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ImOnline', 'heartbeat', false, {
                 heartbeat: _heartbeat,
                 signature: _signature,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/imOnline/calls/heartbeat}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/imOnline/calls/heartbeat}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         heartbeatH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ImOnline', 'heartbeat', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildHeartbeatCall: (_heartbeat: unknown, _signature: unknown) => {
             return buildRuntimeCall(metadata, 'ImOnline', 'heartbeat', {
                 heartbeat: _heartbeat,
@@ -54,14 +56,15 @@ export const getImOnline = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildHeartbeatCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildHeartbeatCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildHeartbeatCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'ImOnline', 'heartbeat', argsBytes)
         },
 
     }
 }
+

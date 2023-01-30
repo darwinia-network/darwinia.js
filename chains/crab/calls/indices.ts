@@ -32,27 +32,29 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _index U32
+         * @instance
          */
         claim: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'claim', false, {
                 index: _index,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/indices/calls/claim}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/indices/calls/claim}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         claimH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'claim', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildClaimCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'claim', {
                 index: _index,
@@ -60,11 +62,11 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildClaimCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildClaimCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildClaimCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Indices', 'claim', argsBytes)
         },
@@ -93,28 +95,30 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _new [U8; 32]
          * @param {unknown} _index U32
+         * @instance
          */
         transfer: async (signer: ethers.Signer, _new: unknown, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'transfer', false, {
                 new: _new,
                 index: _index,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/indices/calls/transfer}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/indices/calls/transfer}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'transfer', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTransferCall: (_new: unknown, _index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'transfer', {
                 new: _new,
@@ -123,11 +127,11 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildTransferCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTransferCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Indices', 'transfer', argsBytes)
         },
@@ -153,27 +157,29 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _index U32
+         * @instance
          */
         free: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'free', false, {
                 index: _index,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/indices/calls/free}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/indices/calls/free}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         freeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'free', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildFreeCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'free', {
                 index: _index,
@@ -181,11 +187,11 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildFreeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildFreeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildFreeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Indices', 'free', argsBytes)
         },
@@ -216,29 +222,31 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new [U8; 32]
          * @param {unknown} _index U32
          * @param {unknown} _freeze Bool
+         * @instance
          */
         forceTransfer: async (signer: ethers.Signer, _new: unknown, _index: unknown, _freeze: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'forceTransfer', false, {
                 new: _new,
                 index: _index,
                 freeze: _freeze,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/indices/calls/forceTransfer}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/indices/calls/forceTransfer}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'forceTransfer', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceTransferCall: (_new: unknown, _index: unknown, _freeze: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'forceTransfer', {
                 new: _new,
@@ -248,11 +256,11 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildForceTransferCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceTransferCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceTransferCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Indices', 'forceTransfer', argsBytes)
         },
@@ -278,27 +286,29 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _index U32
+         * @instance
          */
         freeze: async (signer: ethers.Signer, _index: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'freeze', false, {
                 index: _index,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/indices/calls/freeze}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/indices/calls/freeze}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         freezeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Indices', 'freeze', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildFreezeCall: (_index: unknown) => {
             return buildRuntimeCall(metadata, 'Indices', 'freeze', {
                 index: _index,
@@ -306,14 +316,15 @@ export const getIndices = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildFreezeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildFreezeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildFreezeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Indices', 'freeze', argsBytes)
         },
 
     }
 }
+

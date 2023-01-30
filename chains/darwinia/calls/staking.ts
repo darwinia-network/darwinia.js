@@ -34,6 +34,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
          * @param {unknown} _payee Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
          * @param {unknown} _promise_month U8
+         * @instance
          */
         bond: async (signer: ethers.Signer, _controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bond', false, {
@@ -41,23 +42,24 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
                 value: _value,
                 payee: _payee,
                 promise_month: _promise_month,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/bond}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/bond}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         bondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bond', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildBondCall: (_controller: unknown, _value: unknown, _payee: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'bond', {
                 controller: _controller,
@@ -68,11 +70,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildBondCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildBondCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildBondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'bond', argsBytes)
         },
@@ -96,28 +98,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _max_additional Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
          * @param {unknown} _promise_month U8
+         * @instance
          */
         bondExtra: async (signer: ethers.Signer, _max_additional: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bondExtra', false, {
                 max_additional: _max_additional,
                 promise_month: _promise_month,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/bondExtra}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/bondExtra}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         bondExtraH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'bondExtra', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildBondExtraCall: (_max_additional: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'bondExtra', {
                 max_additional: _max_additional,
@@ -126,11 +130,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildBondExtraCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildBondExtraCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildBondExtraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'bondExtra', argsBytes)
         },
@@ -154,28 +158,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _value U128
          * @param {unknown} _promise_month U8
+         * @instance
          */
         depositExtra: async (signer: ethers.Signer, _value: unknown, _promise_month: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'depositExtra', false, {
                 value: _value,
                 promise_month: _promise_month,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/depositExtra}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/depositExtra}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         depositExtraH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'depositExtra', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildDepositExtraCall: (_value: unknown, _promise_month: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'depositExtra', {
                 value: _value,
@@ -184,11 +190,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildDepositExtraCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildDepositExtraCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildDepositExtraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'depositExtra', argsBytes)
         },
@@ -216,27 +222,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * values, the `bond_extra` method should be called.
          *
          * @param {unknown} _value Enum<{0/RingBalance: U128, 1/KtonBalance: U128}>
+         * @instance
          */
         unbond: async (signer: ethers.Signer, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unbond', false, {
                 value: _value,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/unbond}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/unbond}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         unbondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'unbond', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildUnbondCall: (_value: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'unbond', {
                 value: _value,
@@ -244,11 +252,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildUnbondCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildUnbondCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildUnbondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'unbond', argsBytes)
         },
@@ -271,27 +279,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _num_slashing_spans U32
+         * @instance
          */
         withdrawUnbonded: async (signer: ethers.Signer, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'withdrawUnbonded', false, {
                 num_slashing_spans: _num_slashing_spans,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/withdrawUnbonded}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/withdrawUnbonded}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         withdrawUnbondedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'withdrawUnbonded', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildWithdrawUnbondedCall: (_num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'withdrawUnbonded', {
                 num_slashing_spans: _num_slashing_spans,
@@ -299,11 +309,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildWithdrawUnbondedCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildWithdrawUnbondedCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildWithdrawUnbondedCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'withdrawUnbonded', argsBytes)
         },
@@ -323,37 +333,39 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: [Origin Account], Ledger
          * # </weight>
          *
+         * @instance
          */
         claimMatureDeposits: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'claimMatureDeposits', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/claimMatureDeposits}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/claimMatureDeposits}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         claimMatureDepositsH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'claimMatureDeposits', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildClaimMatureDepositsCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'claimMatureDeposits', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildClaimMatureDepositsCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildClaimMatureDepositsCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildClaimMatureDepositsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'claimMatureDeposits', argsBytes)
         },
@@ -378,27 +390,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _expire_time U64
+         * @instance
          */
         tryClaimDepositsWithPunish: async (signer: ethers.Signer, _expire_time: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', false, {
                 expire_time: _expire_time,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/tryClaimDepositsWithPunish}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/tryClaimDepositsWithPunish}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         tryClaimDepositsWithPunishH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'tryClaimDepositsWithPunish', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTryClaimDepositsWithPunishCall: (_expire_time: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'tryClaimDepositsWithPunish', {
                 expire_time: _expire_time,
@@ -406,11 +420,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildTryClaimDepositsWithPunishCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTryClaimDepositsWithPunishCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTryClaimDepositsWithPunishCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'tryClaimDepositsWithPunish', argsBytes)
         },
@@ -423,27 +437,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch origin for this call must be _Signed_ by the controller, not the stash.
          *
          * @param {unknown} _prefs {commission: Compact<U32>, blocked: Bool}
+         * @instance
          */
         validate: async (signer: ethers.Signer, _prefs: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'validate', false, {
                 prefs: _prefs,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/validate}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/validate}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         validateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'validate', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildValidateCall: (_prefs: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'validate', {
                 prefs: _prefs,
@@ -451,11 +467,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildValidateCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildValidateCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildValidateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'validate', argsBytes)
         },
@@ -473,27 +489,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Both the reads and writes follow a similar pattern.
          *
          * @param {unknown} _targets Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
+         * @instance
          */
         nominate: async (signer: ethers.Signer, _targets: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', false, {
                 targets: _targets,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/nominate}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/nominate}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         nominateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'nominate', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildNominateCall: (_targets: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'nominate', {
                 targets: _targets,
@@ -501,11 +519,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildNominateCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildNominateCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildNominateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'nominate', argsBytes)
         },
@@ -523,37 +541,39 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Writes are limited to the `origin` account key.
          * # </weight>
          *
+         * @instance
          */
         chill: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chill', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/chill}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/chill}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         chillH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chill', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildChillCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'chill', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildChillCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildChillCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildChillCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'chill', argsBytes)
         },
@@ -577,27 +597,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _payee Enum<{0/Staked: , 1/Stash: , 2/Controller: , 3/Account: [U8; 32], 4/None: }>
+         * @instance
          */
         setPayee: async (signer: ethers.Signer, _payee: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', false, {
                 payee: _payee,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setPayee}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setPayee}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setPayeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setPayee', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetPayeeCall: (_payee: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setPayee', {
                 payee: _payee,
@@ -605,11 +627,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetPayeeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetPayeeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetPayeeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setPayee', argsBytes)
         },
@@ -633,27 +655,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _controller Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @instance
          */
         setController: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setController', false, {
                 controller: _controller,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setController}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setController}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setControllerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setController', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetControllerCall: (_controller: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setController', {
                 controller: _controller,
@@ -661,11 +685,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetControllerCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetControllerCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetControllerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setController', argsBytes)
         },
@@ -681,27 +705,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _new Compact<U32>
+         * @instance
          */
         setValidatorCount: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setValidatorCount', false, {
                 new: _new,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setValidatorCount}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setValidatorCount}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setValidatorCount', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetValidatorCountCall: (_new: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setValidatorCount', {
                 new: _new,
@@ -709,11 +735,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetValidatorCountCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetValidatorCountCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setValidatorCount', argsBytes)
         },
@@ -728,27 +754,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _additional Compact<U32>
+         * @instance
          */
         increaseValidatorCount: async (signer: ethers.Signer, _additional: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'increaseValidatorCount', false, {
                 additional: _additional,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/increaseValidatorCount}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/increaseValidatorCount}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         increaseValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'increaseValidatorCount', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildIncreaseValidatorCountCall: (_additional: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'increaseValidatorCount', {
                 additional: _additional,
@@ -756,11 +784,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildIncreaseValidatorCountCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildIncreaseValidatorCountCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildIncreaseValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'increaseValidatorCount', argsBytes)
         },
@@ -775,27 +803,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _factor U8
+         * @instance
          */
         scaleValidatorCount: async (signer: ethers.Signer, _factor: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'scaleValidatorCount', false, {
                 factor: _factor,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/scaleValidatorCount}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/scaleValidatorCount}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         scaleValidatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'scaleValidatorCount', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildScaleValidatorCountCall: (_factor: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'scaleValidatorCount', {
                 factor: _factor,
@@ -803,11 +833,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildScaleValidatorCountCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildScaleValidatorCountCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildScaleValidatorCountCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'scaleValidatorCount', argsBytes)
         },
@@ -829,37 +859,39 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: ForceEra
          * # </weight>
          *
+         * @instance
          */
         forceNoEras: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNoEras', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/forceNoEras}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/forceNoEras}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         forceNoErasH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNoEras', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNoErasCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNoEras', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildForceNoErasCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceNoErasCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNoErasCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNoEras', argsBytes)
         },
@@ -882,37 +914,39 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write ForceEra
          * # </weight>
          *
+         * @instance
          */
         forceNewEra: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEra', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/forceNewEra}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/forceNewEra}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         forceNewEraH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEra', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNewEraCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNewEra', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildForceNewEraCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceNewEraCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNewEraCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNewEra', argsBytes)
         },
@@ -928,27 +962,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _invulnerables Vec<[U8; 32]>
+         * @instance
          */
         setInvulnerables: async (signer: ethers.Signer, _invulnerables: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setInvulnerables', false, {
                 invulnerables: _invulnerables,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setInvulnerables}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setInvulnerables}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setInvulnerablesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setInvulnerables', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetInvulnerablesCall: (_invulnerables: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setInvulnerables', {
                 invulnerables: _invulnerables,
@@ -956,11 +992,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetInvulnerablesCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetInvulnerablesCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetInvulnerablesCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setInvulnerables', argsBytes)
         },
@@ -979,28 +1015,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _stash [U8; 32]
          * @param {unknown} _num_slashing_spans U32
+         * @instance
          */
         forceUnstake: async (signer: ethers.Signer, _stash: unknown, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceUnstake', false, {
                 stash: _stash,
                 num_slashing_spans: _num_slashing_spans,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/forceUnstake}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/forceUnstake}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         forceUnstakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceUnstake', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceUnstakeCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'forceUnstake', {
                 stash: _stash,
@@ -1009,11 +1047,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildForceUnstakeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceUnstakeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceUnstakeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceUnstake', argsBytes)
         },
@@ -1034,37 +1072,39 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * - Write: ForceEra
          * # </weight>
          *
+         * @instance
          */
         forceNewEraAlways: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEraAlways', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/forceNewEraAlways}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/forceNewEraAlways}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         forceNewEraAlwaysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'forceNewEraAlways', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNewEraAlwaysCall: () => {
             return buildRuntimeCall(metadata, 'Staking', 'forceNewEraAlways', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildForceNewEraAlwaysCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceNewEraAlwaysCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildForceNewEraAlwaysCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'forceNewEraAlways', argsBytes)
         },
@@ -1086,28 +1126,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _era U32
          * @param {unknown} _slash_indices Vec<U32>
+         * @instance
          */
         cancelDeferredSlash: async (signer: ethers.Signer, _era: unknown, _slash_indices: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'cancelDeferredSlash', false, {
                 era: _era,
                 slash_indices: _slash_indices,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/cancelDeferredSlash}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/cancelDeferredSlash}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         cancelDeferredSlashH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'cancelDeferredSlash', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCancelDeferredSlashCall: (_era: unknown, _slash_indices: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'cancelDeferredSlash', {
                 era: _era,
@@ -1116,11 +1158,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCancelDeferredSlashCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCancelDeferredSlashCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCancelDeferredSlashCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'cancelDeferredSlash', argsBytes)
         },
@@ -1150,28 +1192,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _validator_stash [U8; 32]
          * @param {unknown} _era U32
+         * @instance
          */
         payoutStakers: async (signer: ethers.Signer, _validator_stash: unknown, _era: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'payoutStakers', false, {
                 validator_stash: _validator_stash,
                 era: _era,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/payoutStakers}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/payoutStakers}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         payoutStakersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'payoutStakers', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildPayoutStakersCall: (_validator_stash: unknown, _era: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'payoutStakers', {
                 validator_stash: _validator_stash,
@@ -1180,11 +1224,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildPayoutStakersCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildPayoutStakersCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildPayoutStakersCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'payoutStakers', argsBytes)
         },
@@ -1202,28 +1246,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _plan_to_rebond_ring Compact<U128>
          * @param {unknown} _plan_to_rebond_kton Compact<U128>
+         * @instance
          */
         rebond: async (signer: ethers.Signer, _plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'rebond', false, {
                 plan_to_rebond_ring: _plan_to_rebond_ring,
                 plan_to_rebond_kton: _plan_to_rebond_kton,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/rebond}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/rebond}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         rebondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'rebond', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRebondCall: (_plan_to_rebond_ring: unknown, _plan_to_rebond_kton: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'rebond', {
                 plan_to_rebond_ring: _plan_to_rebond_ring,
@@ -1232,11 +1278,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildRebondCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRebondCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRebondCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'rebond', argsBytes)
         },
@@ -1267,28 +1313,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _new_history_depth Compact<U32>
          * @param {unknown} _era_items_deleted Compact<U32>
+         * @instance
          */
         setHistoryDepth: async (signer: ethers.Signer, _new_history_depth: unknown, _era_items_deleted: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setHistoryDepth', false, {
                 new_history_depth: _new_history_depth,
                 era_items_deleted: _era_items_deleted,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setHistoryDepth}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setHistoryDepth}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setHistoryDepthH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setHistoryDepth', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetHistoryDepthCall: (_new_history_depth: unknown, _era_items_deleted: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setHistoryDepth', {
                 new_history_depth: _new_history_depth,
@@ -1297,11 +1345,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetHistoryDepthCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetHistoryDepthCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetHistoryDepthCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setHistoryDepth', argsBytes)
         },
@@ -1322,28 +1370,30 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _stash [U8; 32]
          * @param {unknown} _num_slashing_spans U32
+         * @instance
          */
         reapStash: async (signer: ethers.Signer, _stash: unknown, _num_slashing_spans: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'reapStash', false, {
                 stash: _stash,
                 num_slashing_spans: _num_slashing_spans,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/reapStash}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/reapStash}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         reapStashH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'reapStash', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildReapStashCall: (_stash: unknown, _num_slashing_spans: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'reapStash', {
                 stash: _stash,
@@ -1352,11 +1402,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildReapStashCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildReapStashCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildReapStashCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'reapStash', argsBytes)
         },
@@ -1375,27 +1425,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * block any further nominations.
          *
          * @param {unknown} _who Vec<Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>>
+         * @instance
          */
         kick: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', false, {
                 who: _who,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/kick}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/kick}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         kickH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'kick', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildKickCall: (_who: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'kick', {
                 who: _who,
@@ -1403,11 +1455,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildKickCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildKickCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildKickCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'kick', argsBytes)
         },
@@ -1437,6 +1489,7 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _max_validator_count Enum<{0/None: , 1/Some: U32}>
          * @param {unknown} _chill_threshold Enum<{0/None: , 1/Some: U8}>
          * @param {unknown} _min_commission U32
+         * @instance
          */
         setStakingConfigs: async (signer: ethers.Signer, _min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setStakingConfigs', false, {
@@ -1446,23 +1499,24 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
                 max_validator_count: _max_validator_count,
                 chill_threshold: _chill_threshold,
                 min_commission: _min_commission,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/setStakingConfigs}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/setStakingConfigs}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setStakingConfigsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'setStakingConfigs', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetStakingConfigsCall: (_min_nominator_bond: unknown, _min_validator_bond: unknown, _max_nominator_count: unknown, _max_validator_count: unknown, _chill_threshold: unknown, _min_commission: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'setStakingConfigs', {
                 min_nominator_bond: _min_nominator_bond,
@@ -1475,11 +1529,11 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetStakingConfigsCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetStakingConfigsCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetStakingConfigsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'setStakingConfigs', argsBytes)
         },
@@ -1508,27 +1562,29 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * who do not satisfy these requirements.
          *
          * @param {unknown} _controller [U8; 32]
+         * @instance
          */
         chillOther: async (signer: ethers.Signer, _controller: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chillOther', false, {
                 controller: _controller,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: darwinia/staking/calls/chillOther}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: darwinia/staking/calls/chillOther}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         chillOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Staking', 'chillOther', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildChillOtherCall: (_controller: unknown) => {
             return buildRuntimeCall(metadata, 'Staking', 'chillOther', {
                 controller: _controller,
@@ -1536,14 +1592,15 @@ export const getStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildChillOtherCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildChillOtherCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildChillOtherCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Staking', 'chillOther', argsBytes)
         },
 
     }
 }
+

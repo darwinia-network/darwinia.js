@@ -22,28 +22,30 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
          *
          * @param {unknown} _finality_target {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
          * @param {unknown} _justification {round: U64, commit: {target_hash: [U8; 32], target_number: U32, precommits: Vec<{precommit: {target_hash: [U8; 32], target_number: U32}, signature: [U8; 64], id: [U8; 32]}>}, votes_ancestries: Vec<{parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}>}
+         * @instance
          */
         submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', false, {
                 finality_target: _finality_target,
                 justification: _justification,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/submitFinalityProof}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/submitFinalityProof}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitFinalityProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'submitFinalityProof', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitFinalityProofCall: (_finality_target: unknown, _justification: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'submitFinalityProof', {
                 finality_target: _finality_target,
@@ -52,11 +54,11 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitFinalityProofCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitFinalityProofCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitFinalityProofCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangoroGrandpa', 'submitFinalityProof', argsBytes)
         },
@@ -73,27 +75,29 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
          * you ensure that valid data is being passed in.
          *
          * @param {unknown} _init_data {header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}, authority_list: Vec<([U8; 32], U64)>, set_id: U64, operating_mode: Enum<{0/Normal: , 1/Halted: }>}
+         * @instance
          */
         initialize: async (signer: ethers.Signer, _init_data: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', false, {
                 init_data: _init_data,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/initialize}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/initialize}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         initializeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'initialize', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildInitializeCall: (_init_data: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'initialize', {
                 init_data: _init_data,
@@ -101,11 +105,11 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildInitializeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildInitializeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildInitializeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangoroGrandpa', 'initialize', argsBytes)
         },
@@ -116,27 +120,29 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
          * May only be called either by root, or by `PalletOwner`.
          *
          * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @instance
          */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', false, {
                 new_owner: _new_owner,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/setOwner}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/setOwner}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOwner', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'setOwner', {
                 new_owner: _new_owner,
@@ -144,11 +150,11 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetOwnerCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetOwnerCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOwnerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangoroGrandpa', 'setOwner', argsBytes)
         },
@@ -159,27 +165,29 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
          * May only be called either by root, or by `PalletOwner`.
          *
          * @param {unknown} _operating_mode Enum<{0/Normal: , 1/Halted: }>
+         * @instance
          */
         setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperatingMode', false, {
                 operating_mode: _operating_mode,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/setOperatingMode}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgePangoroGrandpa/calls/setOperatingMode}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgePangoroGrandpa', 'setOperatingMode', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOperatingModeCall: (_operating_mode: unknown) => {
             return buildRuntimeCall(metadata, 'BridgePangoroGrandpa', 'setOperatingMode', {
                 operating_mode: _operating_mode,
@@ -187,14 +195,15 @@ export const getBridgePangoroGrandpa = (dispatch: Dispatch, metadata: Metadata) 
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetOperatingModeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetOperatingModeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOperatingModeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgePangoroGrandpa', 'setOperatingMode', argsBytes)
         },
 
     }
 }
+

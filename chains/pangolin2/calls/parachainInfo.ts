@@ -13,3 +13,4 @@ export const getParachainInfo = (dispatch: Dispatch, metadata: Metadata) => {
     return {
     }
 }
+

@@ -22,29 +22,31 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
          * @param {unknown} _at_relay_block (U32, [U8; 32])
          * @param {unknown} _parachains Vec<(U32, [U8; 32])>
          * @param {unknown} _parachain_heads_proof Vec<Vec<U8>>
+         * @instance
          */
         submitParachainHeads: async (signer: ethers.Signer, _at_relay_block: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'submitParachainHeads', false, {
                 at_relay_block: _at_relay_block,
                 parachains: _parachains,
                 parachain_heads_proof: _parachain_heads_proof,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/submitParachainHeads}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/submitParachainHeads}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitParachainHeadsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'submitParachainHeads', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitParachainHeadsCall: (_at_relay_block: unknown, _parachains: unknown, _parachain_heads_proof: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayParachain', 'submitParachainHeads', {
                 at_relay_block: _at_relay_block,
@@ -54,11 +56,11 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitParachainHeadsCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitParachainHeadsCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitParachainHeadsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgeMoonbaseRelayParachain', 'submitParachainHeads', argsBytes)
         },
@@ -69,27 +71,29 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
          * May only be called either by root, or by `PalletOwner`.
          *
          * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @instance
          */
         setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'setOwner', false, {
                 new_owner: _new_owner,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOwner}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOwner}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'setOwner', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOwnerCall: (_new_owner: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayParachain', 'setOwner', {
                 new_owner: _new_owner,
@@ -97,11 +101,11 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetOwnerCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetOwnerCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOwnerCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgeMoonbaseRelayParachain', 'setOwner', argsBytes)
         },
@@ -112,27 +116,29 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
          * May only be called either by root, or by `PalletOwner`.
          *
          * @param {unknown} _operating_mode Enum<{0/Normal: , 1/Halted: }>
+         * @instance
          */
         setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'setOperatingMode', false, {
                 operating_mode: _operating_mode,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOperatingMode}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin/bridgeMoonbaseRelayParachain/calls/setOperatingMode}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'BridgeMoonbaseRelayParachain', 'setOperatingMode', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOperatingModeCall: (_operating_mode: unknown) => {
             return buildRuntimeCall(metadata, 'BridgeMoonbaseRelayParachain', 'setOperatingMode', {
                 operating_mode: _operating_mode,
@@ -140,14 +146,15 @@ export const getBridgeMoonbaseRelayParachain = (dispatch: Dispatch, metadata: Me
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetOperatingModeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetOperatingModeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetOperatingModeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'BridgeMoonbaseRelayParachain', 'setOperatingMode', argsBytes)
         },
 
     }
 }
+

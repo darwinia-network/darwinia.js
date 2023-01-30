@@ -38,28 +38,30 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _votes Vec<[U8; 20]>
          * @param {unknown} _value Compact<U128>
+         * @instance
          */
         vote: async (signer: ethers.Signer, _votes: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, {
                 votes: _votes,
                 value: _value,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/vote}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/vote}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildVoteCall: (_votes: unknown, _value: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'vote', {
                 votes: _votes,
@@ -68,11 +70,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildVoteCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildVoteCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildVoteCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'vote', argsBytes)
         },
@@ -84,37 +86,39 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin of this call must be signed and be a voter.
          *
+         * @instance
          */
         removeVoter: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', false, {
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/removeVoter}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/removeVoter}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         removeVoterH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', true);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRemoveVoterCall: () => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeVoter', {
             });
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildRemoveVoterCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRemoveVoterCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRemoveVoterCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'removeVoter', argsBytes)
         },
@@ -137,27 +141,29 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _candidate_count Compact<U32>
+         * @instance
          */
         submitCandidacy: async (signer: ethers.Signer, _candidate_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, {
                 candidate_count: _candidate_count,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/submitCandidacy}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/submitCandidacy}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitCandidacyCall: (_candidate_count: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'submitCandidacy', {
                 candidate_count: _candidate_count,
@@ -165,11 +171,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitCandidacyCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitCandidacyCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitCandidacyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'submitCandidacy', argsBytes)
         },
@@ -195,27 +201,29 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _renouncing Enum<{0/Member: , 1/RunnerUp: , 2/Candidate: Compact<U32>}>
+         * @instance
          */
         renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, {
                 renouncing: _renouncing,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/renounceCandidacy}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/renounceCandidacy}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         renounceCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRenounceCandidacyCall: (_renouncing: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'renounceCandidacy', {
                 renouncing: _renouncing,
@@ -223,11 +231,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildRenounceCandidacyCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRenounceCandidacyCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRenounceCandidacyCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'renounceCandidacy', argsBytes)
         },
@@ -255,29 +263,31 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _who [U8; 20]
          * @param {unknown} _slash_bond Bool
          * @param {unknown} _rerun_election Bool
+         * @instance
          */
         removeMember: async (signer: ethers.Signer, _who: unknown, _slash_bond: unknown, _rerun_election: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, {
                 who: _who,
                 slash_bond: _slash_bond,
                 rerun_election: _rerun_election,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/removeMember}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/removeMember}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         removeMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRemoveMemberCall: (_who: unknown, _slash_bond: unknown, _rerun_election: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeMember', {
                 who: _who,
@@ -287,11 +297,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildRemoveMemberCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRemoveMemberCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRemoveMemberCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'removeMember', argsBytes)
         },
@@ -310,28 +320,30 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _num_voters U32
          * @param {unknown} _num_defunct U32
+         * @instance
          */
         cleanDefunctVoters: async (signer: ethers.Signer, _num_voters: unknown, _num_defunct: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, {
                 num_voters: _num_voters,
                 num_defunct: _num_defunct,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangolin2/phragmenElection/calls/cleanDefunctVoters}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangolin2/phragmenElection/calls/cleanDefunctVoters}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         cleanDefunctVotersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCleanDefunctVotersCall: (_num_voters: unknown, _num_defunct: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'cleanDefunctVoters', {
                 num_voters: _num_voters,
@@ -340,14 +352,15 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCleanDefunctVotersCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCleanDefunctVotersCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCleanDefunctVotersCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PhragmenElection', 'cleanDefunctVoters', argsBytes)
         },
 
     }
 }
+

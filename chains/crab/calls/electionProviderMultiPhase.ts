@@ -29,28 +29,30 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          *
          * @param {unknown} _raw_solution {solution: {votes1: Vec<(Compact<U32>, Compact<U16>)>, votes2: Vec<(Compact<U32>, (Compact<U16>, Compact<U16>), Compact<U16>)>, votes3: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 2], Compact<U16>)>, votes4: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 3], Compact<U16>)>, votes5: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 4], Compact<U16>)>, votes6: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 5], Compact<U16>)>, votes7: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 6], Compact<U16>)>, votes8: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 7], Compact<U16>)>, votes9: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 8], Compact<U16>)>, votes10: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 9], Compact<U16>)>, votes11: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 10], Compact<U16>)>, votes12: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 11], Compact<U16>)>, votes13: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 12], Compact<U16>)>, votes14: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 13], Compact<U16>)>, votes15: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 14], Compact<U16>)>, votes16: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 15], Compact<U16>)>, votes17: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 16], Compact<U16>)>, votes18: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 17], Compact<U16>)>, votes19: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 18], Compact<U16>)>, votes20: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 19], Compact<U16>)>, votes21: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 20], Compact<U16>)>, votes22: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 21], Compact<U16>)>, votes23: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 22], Compact<U16>)>, votes24: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 23], Compact<U16>)>}, score: [U128; 3], round: U32}
          * @param {unknown} _witness {voters: Compact<U32>, targets: Compact<U32>}
+         * @instance
          */
         submitUnsigned: async (signer: ethers.Signer, _raw_solution: unknown, _witness: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', false, {
                 raw_solution: _raw_solution,
                 witness: _witness,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/electionProviderMultiPhase/calls/submitUnsigned}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/electionProviderMultiPhase/calls/submitUnsigned}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitUnsignedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submitUnsigned', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitUnsignedCall: (_raw_solution: unknown, _witness: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'submitUnsigned', {
                 raw_solution: _raw_solution,
@@ -59,11 +61,11 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitUnsignedCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitUnsignedCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitUnsignedCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'ElectionProviderMultiPhase', 'submitUnsigned', argsBytes)
         },
@@ -76,27 +78,29 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * This check can be turned off by setting the value to `None`.
          *
          * @param {unknown} _maybe_next_score Enum<{0/None: , 1/Some: [U128; 3]}>
+         * @instance
          */
         setMinimumUntrustedScore: async (signer: ethers.Signer, _maybe_next_score: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', false, {
                 maybe_next_score: _maybe_next_score,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/electionProviderMultiPhase/calls/setMinimumUntrustedScore}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/electionProviderMultiPhase/calls/setMinimumUntrustedScore}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setMinimumUntrustedScoreH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetMinimumUntrustedScoreCall: (_maybe_next_score: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', {
                 maybe_next_score: _maybe_next_score,
@@ -104,11 +108,11 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetMinimumUntrustedScoreCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetMinimumUntrustedScoreCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetMinimumUntrustedScoreCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'ElectionProviderMultiPhase', 'setMinimumUntrustedScore', argsBytes)
         },
@@ -124,27 +128,29 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          * memory/weight constrains).
          *
          * @param {unknown} _supports Vec<([U8; 32], {total: U128, voters: Vec<([U8; 32], U128)>})>
+         * @instance
          */
         setEmergencyElectionResult: async (signer: ethers.Signer, _supports: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', false, {
                 supports: _supports,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/electionProviderMultiPhase/calls/setEmergencyElectionResult}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/electionProviderMultiPhase/calls/setEmergencyElectionResult}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         setEmergencyElectionResultH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetEmergencyElectionResultCall: (_supports: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', {
                 supports: _supports,
@@ -152,11 +158,11 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSetEmergencyElectionResultCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetEmergencyElectionResultCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSetEmergencyElectionResultCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'ElectionProviderMultiPhase', 'setEmergencyElectionResult', argsBytes)
         },
@@ -178,28 +184,30 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
          *
          * @param {unknown} _raw_solution {solution: {votes1: Vec<(Compact<U32>, Compact<U16>)>, votes2: Vec<(Compact<U32>, (Compact<U16>, Compact<U16>), Compact<U16>)>, votes3: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 2], Compact<U16>)>, votes4: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 3], Compact<U16>)>, votes5: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 4], Compact<U16>)>, votes6: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 5], Compact<U16>)>, votes7: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 6], Compact<U16>)>, votes8: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 7], Compact<U16>)>, votes9: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 8], Compact<U16>)>, votes10: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 9], Compact<U16>)>, votes11: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 10], Compact<U16>)>, votes12: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 11], Compact<U16>)>, votes13: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 12], Compact<U16>)>, votes14: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 13], Compact<U16>)>, votes15: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 14], Compact<U16>)>, votes16: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 15], Compact<U16>)>, votes17: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 16], Compact<U16>)>, votes18: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 17], Compact<U16>)>, votes19: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 18], Compact<U16>)>, votes20: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 19], Compact<U16>)>, votes21: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 20], Compact<U16>)>, votes22: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 21], Compact<U16>)>, votes23: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 22], Compact<U16>)>, votes24: Vec<(Compact<U32>, [(Compact<U16>, Compact<U16>); 23], Compact<U16>)>}, score: [U128; 3], round: U32}
          * @param {unknown} _num_signed_submissions U32
+         * @instance
          */
         submit: async (signer: ethers.Signer, _raw_solution: unknown, _num_signed_submissions: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', false, {
                 raw_solution: _raw_solution,
                 num_signed_submissions: _num_signed_submissions,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/electionProviderMultiPhase/calls/submit}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/electionProviderMultiPhase/calls/submit}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         submitH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ElectionProviderMultiPhase', 'submit', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitCall: (_raw_solution: unknown, _num_signed_submissions: unknown) => {
             return buildRuntimeCall(metadata, 'ElectionProviderMultiPhase', 'submit', {
                 raw_solution: _raw_solution,
@@ -208,14 +216,15 @@ export const getElectionProviderMultiPhase = (dispatch: Dispatch, metadata: Meta
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSubmitCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSubmitCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSubmitCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'ElectionProviderMultiPhase', 'submit', argsBytes)
         },
 
     }
 }
+

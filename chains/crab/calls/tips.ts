@@ -34,28 +34,30 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _reason Vec<U8>
          * @param {unknown} _who [U8; 32]
+         * @instance
          */
         reportAwesome: async (signer: ethers.Signer, _reason: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'reportAwesome', false, {
                 reason: _reason,
                 who: _who,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/reportAwesome}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/reportAwesome}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         reportAwesomeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'reportAwesome', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildReportAwesomeCall: (_reason: unknown, _who: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'reportAwesome', {
                 reason: _reason,
@@ -64,11 +66,11 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildReportAwesomeCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildReportAwesomeCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildReportAwesomeCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'reportAwesome', argsBytes)
         },
@@ -95,27 +97,29 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _hash [U8; 32]
+         * @instance
          */
         retractTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'retractTip', false, {
                 hash: _hash,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/retractTip}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/retractTip}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         retractTipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'retractTip', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRetractTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'retractTip', {
                 hash: _hash,
@@ -123,11 +127,11 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildRetractTipCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRetractTipCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildRetractTipCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'retractTip', argsBytes)
         },
@@ -159,29 +163,31 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _reason Vec<U8>
          * @param {unknown} _who [U8; 32]
          * @param {unknown} _tip_value Compact<U128>
+         * @instance
          */
         tipNew: async (signer: ethers.Signer, _reason: unknown, _who: unknown, _tip_value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tipNew', false, {
                 reason: _reason,
                 who: _who,
                 tip_value: _tip_value,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/tipNew}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/tipNew}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         tipNewH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tipNew', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTipNewCall: (_reason: unknown, _who: unknown, _tip_value: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'tipNew', {
                 reason: _reason,
@@ -191,11 +197,11 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildTipNewCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTipNewCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTipNewCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'tipNew', argsBytes)
         },
@@ -228,28 +234,30 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @param {unknown} _hash [U8; 32]
          * @param {unknown} _tip_value Compact<U128>
+         * @instance
          */
         tip: async (signer: ethers.Signer, _hash: unknown, _tip_value: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tip', false, {
                 hash: _hash,
                 tip_value: _tip_value,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/tip}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/tip}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         tipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'tip', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTipCall: (_hash: unknown, _tip_value: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'tip', {
                 hash: _hash,
@@ -258,11 +266,11 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildTipCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTipCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildTipCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'tip', argsBytes)
         },
@@ -286,27 +294,29 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _hash [U8; 32]
+         * @instance
          */
         closeTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'closeTip', false, {
                 hash: _hash,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/closeTip}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/closeTip}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         closeTipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'closeTip', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCloseTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'closeTip', {
                 hash: _hash,
@@ -314,11 +324,11 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCloseTipCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCloseTipCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCloseTipCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'closeTip', argsBytes)
         },
@@ -338,27 +348,29 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _hash [U8; 32]
+         * @instance
          */
         slashTip: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'slashTip', false, {
                 hash: _hash,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: crab/tips/calls/slashTip}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: crab/tips/calls/slashTip}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         slashTipH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Tips', 'slashTip', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSlashTipCall: (_hash: unknown) => {
             return buildRuntimeCall(metadata, 'Tips', 'slashTip', {
                 hash: _hash,
@@ -366,14 +378,15 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildSlashTipCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSlashTipCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildSlashTipCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Tips', 'slashTip', argsBytes)
         },
 
     }
 }
+
