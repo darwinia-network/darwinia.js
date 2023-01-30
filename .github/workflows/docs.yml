@@ -35,9 +35,7 @@ jobs:
 
       - name: Prepare Project Config
         run: |
-          mv vercel.json doc/darwinia-js-sdk
-          cd doc/darwinia-js-sdk
-          mv * latest
+          mv vercel.json doc
 
       - uses: ./.github/actions/smart-vercel
         name: Deploy to Vercel
@@ -45,7 +43,7 @@ jobs:
           vercel_token: ${{ secrets.VERCEL_TOKEN }}
           vercel_group: itering
           preview_output: true
-          dist_path: doc/darwinia-js-sdk
+          dist_path: doc
           project_name: docs-darwinia-js-sdk
           prod_mode: true
           script_run: false
