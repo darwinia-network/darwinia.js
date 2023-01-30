@@ -1,0 +1,55 @@
+name: Deploy docs
+
+on:
+  # push:
+  #   branches: [main]
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+env:
+  OPENSSL_DIR: /home/runner/openssl
+  OPENSSL_STATIC: 1
+  RUST_TOOLCHAIN: nightly
+
+
+jobs:
+  deploy-docs:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/checkout@v2
+        with:
+          repository: itering/actions
+          path: .github/actions
+          persist-credentials: false
+          ssh-key: "${{ secrets.ITERING_ACTIONS_DEPLOY_KEY }}"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run doc
+
+      - name: Prepare Project Config
+        run: |
+          mv vercel.json doc
+
+      - uses: ./.github/actions/smart-vercel
+        name: Deploy to Vercel
+        with:
+          vercel_token: ${{ secrets.VERCEL_TOKEN }}
+          vercel_group: itering
+          preview_output: true
+          dist_path: doc
+          project_name: docs-darwinia-js-sdk
+          prod_mode: true
+          script_run: false
+          enable_cache: true
+          enable_notify_slack: true
+          slack_channel: darwinia-js-sdk
+          slack_webhook: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
+
