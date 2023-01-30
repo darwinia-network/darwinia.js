@@ -1,35 +1,43 @@
 {
-    "plugins": ["plugins/markdown"],
-    "recurseDepth": 10,
-    "source": {
-        "include": ["./dist", "./README.md", "./package.json"],
-        "includePattern": ".+\\.js(doc|x)?$",
-        "excludePattern": "(^|\\/|\\\\)_"
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "recurseDepth": 10,
+  "source": {
+    "include": [
+      "./dist",
+      "./README.md"
+    ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false
+  },
+  "opts": {
+    "destination": "./doc/",
+    "readme": "./README.md",
+    "recurse": true,
+    "verbose": true,
+    "theme_opts": {
+      "homepageTitle": "darwinia-js-sdk doc",
+      "title": "Home",
+      "default_theme": "light",
+      "create_style": ".sidebar-items-container {margin-top: 1rem;} .pre-div {border-radius: 0.5rem;} .sidebar-section-title {border-radius: 0.5rem;} .sidebar {border-radius: 0.5rem;}"
     },
-    "sourceType": "module",
-    "tags": {
-        "allowUnknownTags": true,
-        "dictionaries": ["jsdoc","closure"]
-    },
-    "templates": {
-        "cleverLinks": false,
-        "monospaceLinks": false
-    },
-    "opts": {
-        "destination": "./doc/",
-        "readme": "./README.md",
-        "recurse": true,
-        "verbose": true,
-        "theme_opts": {
-            "homepageTitle": "darwinia-js-sdk doc",
-            "title": "Home",
-            "default_theme": "light",
-            "create_style": ".sidebar-items-container {margin-top: 1rem;} .pre-div {border-radius: 0.5rem;} .sidebar-section-title {border-radius: 0.5rem;} .sidebar {border-radius: 0.5rem;}"
-        },
-        "template": "node_modules/clean-jsdoc-theme"
-    },
-    "markdown": {
-        "hardwrap": false,
-        "idInHeadings": true
-    }
+    "template": "node_modules/clean-jsdoc-theme"
+  },
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
+  }
 }
