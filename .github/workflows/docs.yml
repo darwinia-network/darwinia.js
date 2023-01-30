@@ -43,6 +43,7 @@ jobs:
           vercel_token: ${{ secrets.VERCEL_TOKEN }}
           vercel_group: itering
           preview_output: true
+          dist_path: doc
           project_name: docs-darwinia-js-sdk
           prod_mode: true
           script_run: false
