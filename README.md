@@ -46,9 +46,9 @@ async function main(): Promise<void> {
 
     const signer = provider.getSigner();
 
-    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+    const pangolin = clientBuilder.buildPangolinClient(provider);
   
-    await pangolin2.calls.session.setKeys(
+    await pangolin.calls.session.setKeys(
       signer,
       { aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d" }, // keys
       "0x" // proof
@@ -70,10 +70,10 @@ async function main(): Promise<void> {
 
     const signer = provider.getSigner();
 
-    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+    const pangolin = clientBuilder.buildPangolinClient(provider);
 
     // prepare calls
-    const setKeysCall = pangolin2.calls.session.buildSetKeysCall(
+    const setKeysCall = pangolin.calls.session.buildSetKeysCall(
         // keys
         { 
             aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d"
@@ -82,10 +82,10 @@ async function main(): Promise<void> {
         "px"
     );
 
-    const collectCall = pangolin2.calls.staking.buildCollectCall(120000000);
+    const collectCall = pangolin.calls.staking.buildCollectCall(120000000);
 
     // dispatch
-    await pangolin2.calls.utility.batchAll(
+    await pangolin.calls.utility.batchAll(
         signer, 
         [
             setKeysCall,
@@ -108,10 +108,10 @@ async function main(): Promise<void> {
 
     const signer = provider.getSigner();
 
-    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+    const pangolin = clientBuilder.buildPangolinClient(provider);
 
     // call ended with `D` is the version that accept params encoded in scale codec  
-    await pangolin2.calls.session.setKeysH(
+    await pangolin.calls.session.setKeysH(
       signer,
       "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded (keys, proof)
     )
