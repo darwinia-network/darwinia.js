@@ -34,10 +34,11 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          *   - Removing enough funds from an account will trigger `T::DustRemoval::on_unbalanced`.
          *   - `transfer_keep_alive` works the same way as `transfer`, but has an additional check
          *     that the transfer will not kill the origin account.
-         * 
+         * ---------------------------------
+         * - Origin account is already in memory, so no DB operations for them.
          * # </weight>
          *
-         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _dest [U8; 20]
          * @param {unknown} _value Compact<U128>
          * @instance
          */
@@ -90,7 +91,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin for this call is `root`.
          *
-         * @param {unknown} _who Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _who [U8; 20]
          * @param {unknown} _new_free Compact<U128>
          * @param {unknown} _new_reserved Compact<U128>
          * @instance
@@ -144,8 +145,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          *   assumed to be in the overlay.
          * # </weight>
          *
-         * @param {unknown} _source Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _source [U8; 20]
+         * @param {unknown} _dest [U8; 20]
          * @param {unknown} _value Compact<U128>
          * @instance
          */
@@ -198,7 +199,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * [`transfer`]: struct.Pallet.html#method.transfer
          *
-         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _dest [U8; 20]
          * @param {unknown} _value Compact<U128>
          * @instance
          */
@@ -260,7 +261,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * - O(1). Just like transfer, but reading the user's transferable balance first.
          *   #</weight>
          *
-         * @param {unknown} _dest Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _dest [U8; 20]
          * @param {unknown} _keep_alive Bool
          * @instance
          */
@@ -308,7 +309,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Can only be called by ROOT.
          *
-         * @param {unknown} _who Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _who [U8; 20]
          * @param {unknown} _amount U128
          * @instance
          */

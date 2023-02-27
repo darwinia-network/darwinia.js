@@ -16,7 +16,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::AddOrigin`.
          *
-         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _who [U8; 20]
          * @instance
          */
         addMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -61,7 +61,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::RemoveOrigin`.
          *
-         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _who [U8; 20]
          * @instance
          */
         removeMember: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -108,8 +108,8 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * Prime membership is *not* passed from `remove` to `add`, if extant.
          *
-         * @param {unknown} _remove [U8; 32]
-         * @param {unknown} _add [U8; 32]
+         * @param {unknown} _remove [U8; 20]
+         * @param {unknown} _add [U8; 20]
          * @instance
          */
         swapMember: async (signer: ethers.Signer, _remove: unknown, _add: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -157,7 +157,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::ResetOrigin`.
          *
-         * @param {unknown} _members Vec<[U8; 32]>
+         * @param {unknown} _members Vec<[U8; 20]>
          * @instance
          */
         resetMembers: async (signer: ethers.Signer, _members: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -204,7 +204,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * Prime membership is passed from the origin account to `new`, if extant.
          *
-         * @param {unknown} _new [U8; 32]
+         * @param {unknown} _new [U8; 20]
          * @instance
          */
         changeKey: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -249,7 +249,7 @@ export const getTechnicalMembership = (dispatch: Dispatch, metadata: Metadata) =
          * 
          * May only be called from `T::PrimeOrigin`.
          *
-         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _who [U8; 20]
          * @instance
          */
         setPrime: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {

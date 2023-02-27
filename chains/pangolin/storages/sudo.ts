@@ -13,7 +13,7 @@ export const getSudo = (getStorage: GetStorage) => {
         /**
          * The `AccountId` of the sudo key.
          *
-         * @returns {Promise<string | null>} AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         key: async (): Promise<string | null> => {
             return await getStorage('Sudo', 'Key');

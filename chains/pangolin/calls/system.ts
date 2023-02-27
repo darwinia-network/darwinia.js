@@ -12,49 +12,6 @@ import { Metadata } from "@polkadot/types";
 export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * A dispatch that will fill the block weight up to the given ratio.
-         *
-         * @param {unknown} _ratio U32
-         * @instance
-         */
-        fillBlock: async (signer: ethers.Signer, _ratio: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'System', 'fillBlock', false, {
-                ratio: _ratio,
-           });
-        },
-
-        /**
-         * Similar to {@link: pangolin/system/calls/fillBlock}, but with scale encoded args.
-         *
-         * @param {BytesLike} argsBytes the args bytes
-         * @instance
-         */
-        fillBlockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'System', 'fillBlock', true, argsBytes);
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildFillBlockCall: (_ratio: unknown) => {
-            return buildRuntimeCall(metadata, 'System', 'fillBlock', {
-                ratio: _ratio,
-            });
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildFillBlockCall, but with scale encoded args.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildFillBlockCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'System', 'fillBlock', argsBytes)
-        },
-
-        /**
          * Make some on-chain remark.
          * 
          * # <weight>
@@ -386,11 +343,6 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 
         /**
          * Make some on-chain remark and emit event.
-         * 
-         * # <weight>
-         * - `O(b)` where b is the length of the remark.
-         * - 1 event.
-         * # </weight>
          *
          * @param {unknown} _remark Vec<U8>
          * @instance
