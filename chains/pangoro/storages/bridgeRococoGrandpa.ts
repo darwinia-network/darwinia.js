@@ -1,13 +1,13 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet `BridgePangolinGrandpa`'s storages.
+ * This is the doc comment for pallet `BridgeRococoGrandpa`'s storages.
  * 
- * `BridgePangolinGrandpa`'s calls: {@link: module:pangoro/bridgePangolinGrandpa/calls}
+ * `BridgeRococoGrandpa`'s calls: {@link: module:pangoro/bridgeRococoGrandpa/calls}
  *
- * @module pangoro/bridgePangolinGrandpa/storages
+ * @module pangoro/bridgeRococoGrandpa/storages
  */
-export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
+export const getBridgeRococoGrandpa = (getStorage: GetStorage) => {
     return {
 
         /**
@@ -22,7 +22,7 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} U32
          */
         requestCount: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'RequestCount');
+            return await getStorage('BridgeRococoGrandpa', 'RequestCount');
         },
 
         /**
@@ -31,16 +31,16 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} H256: [U8; 32]
          */
         initialHash: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'InitialHash');
+            return await getStorage('BridgeRococoGrandpa', 'InitialHash');
         },
 
         /**
          * Hash of the best finalized header.
          *
-         * @returns {Promise<string | null>} H256: [U8; 32]
+         * @returns {Promise<string | null>} (U32, [U8; 32])
          */
         bestFinalized: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'BestFinalized');
+            return await getStorage('BridgeRococoGrandpa', 'BestFinalized');
         },
 
         /**
@@ -50,7 +50,7 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} H256: [U8; 32]
          */
         importedHashes: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'ImportedHashes', param0);
+            return await getStorage('BridgeRococoGrandpa', 'ImportedHashes', param0);
         },
 
         /**
@@ -59,7 +59,7 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} U32
          */
         importedHashesPointer: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'ImportedHashesPointer');
+            return await getStorage('BridgeRococoGrandpa', 'ImportedHashesPointer');
         },
 
         /**
@@ -69,16 +69,16 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} Header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}
          */
         importedHeaders: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'ImportedHeaders', param0);
+            return await getStorage('BridgeRococoGrandpa', 'ImportedHeaders', param0);
         },
 
         /**
          * The current GRANDPA Authority set.
          *
-         * @returns {Promise<string | null>} AuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
+         * @returns {Promise<string | null>} StoredAuthoritySet: {authorities: Vec<([U8; 32], U64)>, set_id: U64}
          */
         currentAuthoritySet: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'CurrentAuthoritySet');
+            return await getStorage('BridgeRococoGrandpa', 'CurrentAuthoritySet');
         },
 
         /**
@@ -89,19 +89,21 @@ export const getBridgePangolinGrandpa = (getStorage: GetStorage) => {
          * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
          * flag directly or call the `halt_operations`).
          *
-         * @returns {Promise<string | null>} AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         palletOwner: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'PalletOwner');
+            return await getStorage('BridgeRococoGrandpa', 'PalletOwner');
         },
 
         /**
-         * If true, all pallet transactions are failed immediately.
+         * The current operating mode of the pallet.
          *
-         * @returns {Promise<string | null>} Bool
+         * Depending on the mode either all, or no transactions will be allowed.
+         *
+         * @returns {Promise<string | null>} BasicOperatingMode: Enum<{0/Normal: , 1/Halted: }>
          */
-        isHalted: async (): Promise<string | null> => {
-            return await getStorage('BridgePangolinGrandpa', 'IsHalted');
+        palletOperatingMode: async (): Promise<string | null> => {
+            return await getStorage('BridgeRococoGrandpa', 'PalletOperatingMode');
         },
     };
 };

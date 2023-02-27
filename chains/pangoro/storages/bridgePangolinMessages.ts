@@ -18,7 +18,7 @@ export const getBridgePangolinMessages = (getStorage: GetStorage) => {
          * runtime methods may still be used to do that (i.e. democracy::referendum to update halt
          * flag directly or call the `halt_operations`).
          *
-         * @returns {Promise<string | null>} AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         palletOwner: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinMessages', 'PalletOwner');
@@ -29,7 +29,7 @@ export const getBridgePangolinMessages = (getStorage: GetStorage) => {
          *
          * Depending on the mode either all, some, or no transactions will be allowed.
          *
-         * @returns {Promise<string | null>} OperatingMode: Enum<{0/Normal: , 1/RejectingOutboundMessages: , 2/Halted: }>
+         * @returns {Promise<string | null>} MessagesOperatingMode: Enum<{0/Basic: Enum<{0/Normal: , 1/Halted: }>, 1/RejectingOutboundMessages: }>
          */
         palletOperatingMode: async (): Promise<string | null> => {
             return await getStorage('BridgePangolinMessages', 'PalletOperatingMode');
@@ -39,7 +39,7 @@ export const getBridgePangolinMessages = (getStorage: GetStorage) => {
          * Map of lane id => inbound lane data.
          *
          * @param {unknown} param0 [U8; 4]
-         * @returns {Promise<string | null>} InboundLaneData: {relayers: Vec<{relayer: [U8; 32], messages: {begin: U64, end: U64, dispatch_results: BitVec<U8>}}>, last_confirmed_nonce: U64}
+         * @returns {Promise<string | null>} InboundLaneData: {relayers: Vec<{relayer: [U8; 20], messages: {begin: U64, end: U64, dispatch_results: BitVec<U8>}}>, last_confirmed_nonce: U64}
          */
         inboundLanes: async (param0: unknown): Promise<string | null> => {
             return await getStorage('BridgePangolinMessages', 'InboundLanes', param0);
