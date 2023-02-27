@@ -36,7 +36,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * We assume the maximum weight among all 3 cases: vote_equal, vote_more and vote_less.
          * # </weight>
          *
-         * @param {unknown} _votes Vec<[U8; 32]>
+         * @param {unknown} _votes Vec<[U8; 20]>
          * @param {unknown} _value Compact<U128>
          * @instance
          */
@@ -245,7 +245,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * the outgoing member is slashed.
          * 
          * If a runner-up is available, then the best runner-up will be removed and replaces the
-         * outgoing member. Otherwise, a new phragmen election is started.
+         * outgoing member. Otherwise, if `rerun_election` is `true`, a new phragmen election is
+         * started, else, nothing happens.
+         * 
+         * If `slash_bond` is set to true, the bond of the member being removed is slashed. Else,
+         * it is returned.
          * 
          * The dispatch origin of this call must be root.
          * 
@@ -256,14 +260,16 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * will go into phragmen, we assume full block for now.
          * # </weight>
          *
-         * @param {unknown} _who Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param {unknown} _has_replacement Bool
+         * @param {unknown} _who [U8; 20]
+         * @param {unknown} _slash_bond Bool
+         * @param {unknown} _rerun_election Bool
          * @instance
          */
-        removeMember: async (signer: ethers.Signer, _who: unknown, _has_replacement: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        removeMember: async (signer: ethers.Signer, _who: unknown, _slash_bond: unknown, _rerun_election: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, {
                 who: _who,
-                has_replacement: _has_replacement,
+                slash_bond: _slash_bond,
+                rerun_election: _rerun_election,
            });
         },
 
@@ -282,10 +288,11 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildRemoveMemberCall: (_who: unknown, _has_replacement: unknown) => {
+        buildRemoveMemberCall: (_who: unknown, _slash_bond: unknown, _rerun_election: unknown) => {
             return buildRuntimeCall(metadata, 'PhragmenElection', 'removeMember', {
                 who: _who,
-                has_replacement: _has_replacement,
+                slash_bond: _slash_bond,
+                rerun_election: _rerun_election,
             });
         },
 

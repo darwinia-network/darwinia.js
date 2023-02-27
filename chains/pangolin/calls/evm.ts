@@ -1,7 +1,7 @@
 /**
- * This is the doc comment for pallet `EVM`'s calls. 
+ * This is the doc comment for pallet `Evm`'s calls. 
  * 
- * `EVM`'s storages: {@link: module:pangolin/evm/storages}
+ * `Evm`'s storages: {@link: module:pangolin/evm/storages}
  *
  * @module pangolin/evm/calls
  */
@@ -9,8 +9,54 @@ import { buildRuntimeCall, Dispatch, decodeCall } from "../../../index";
 import { ethers, BytesLike } from "ethers";
 import { Metadata } from "@polkadot/types";
 
-export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
+export const getEvm = (dispatch: Dispatch, metadata: Metadata) => {
     return {
+        /**
+         * Withdraw balance from EVM into currency/balances pallet.
+         *
+         * @param {unknown} _address [U8; 20]
+         * @param {unknown} _value U128
+         * @instance
+         */
+        withdraw: async (signer: ethers.Signer, _address: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Evm', 'withdraw', false, {
+                address: _address,
+                value: _value,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangolin/evm/calls/withdraw}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        withdrawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Evm', 'withdraw', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCall: (_address: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Evm', 'withdraw', {
+                address: _address,
+                value: _value,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildWithdrawCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Evm', 'withdraw', argsBytes)
+        },
+
         /**
          * Issue an EVM call operation. This is similar to a message call transaction in Ethereum.
          *
@@ -26,7 +72,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'call', false, {
+            return await dispatch(signer, 'Evm', 'call', false, {
                 source: _source,
                 target: _target,
                 input: _input,
@@ -46,7 +92,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         callH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'call', true, argsBytes);
+            return await dispatch(signer, 'Evm', 'call', true, argsBytes);
         },
 
         /**
@@ -55,7 +101,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCallCall: (_source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
-            return buildRuntimeCall(metadata, 'EVM', 'call', {
+            return buildRuntimeCall(metadata, 'Evm', 'call', {
                 source: _source,
                 target: _target,
                 input: _input,
@@ -75,7 +121,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCallCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'EVM', 'call', argsBytes)
+            return decodeCall(metadata, 'Evm', 'call', argsBytes)
         },
 
         /**
@@ -93,7 +139,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         create: async (signer: ethers.Signer, _source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'create', false, {
+            return await dispatch(signer, 'Evm', 'create', false, {
                 source: _source,
                 init: _init,
                 value: _value,
@@ -112,7 +158,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'create', true, argsBytes);
+            return await dispatch(signer, 'Evm', 'create', true, argsBytes);
         },
 
         /**
@@ -121,7 +167,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCreateCall: (_source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
-            return buildRuntimeCall(metadata, 'EVM', 'create', {
+            return buildRuntimeCall(metadata, 'Evm', 'create', {
                 source: _source,
                 init: _init,
                 value: _value,
@@ -140,7 +186,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCreateCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'EVM', 'create', argsBytes)
+            return decodeCall(metadata, 'Evm', 'create', argsBytes)
         },
 
         /**
@@ -158,7 +204,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'create2', false, {
+            return await dispatch(signer, 'Evm', 'create2', false, {
                 source: _source,
                 init: _init,
                 salt: _salt,
@@ -178,7 +224,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @instance
          */
         create2H: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'EVM', 'create2', true, argsBytes);
+            return await dispatch(signer, 'Evm', 'create2', true, argsBytes);
         },
 
         /**
@@ -187,7 +233,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCreate2Call: (_source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
-            return buildRuntimeCall(metadata, 'EVM', 'create2', {
+            return buildRuntimeCall(metadata, 'Evm', 'create2', {
                 source: _source,
                 init: _init,
                 salt: _salt,
@@ -207,7 +253,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @returns {CallAsParam} 
          */
         buildCreate2CallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'EVM', 'create2', argsBytes)
+            return decodeCall(metadata, 'Evm', 'create2', argsBytes)
         },
 
     }

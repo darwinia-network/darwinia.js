@@ -27,7 +27,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          * - DbWrites per key id: `KeyOwner`
          * # </weight>
          *
-         * @param {unknown} _keys {babe: [U8; 32], grandpa: [U8; 32], beefy: [U8; 33], im_online: [U8; 32], authority_discovery: [U8; 32]}
+         * @param {unknown} _keys {aura: [U8; 32]}
          * @param {unknown} _proof Vec<U8>
          * @instance
          */
