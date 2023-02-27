@@ -13,7 +13,7 @@ export const getSession = (getStorage: GetStorage) => {
         /**
          * The current set of validators.
          *
-         * @returns {Promise<string | null>} Vec<[U8; 32]>
+         * @returns {Promise<string | null>} Vec<[U8; 20]>
          */
         validators: async (): Promise<string | null> => {
             return await getStorage('Session', 'Validators');
@@ -42,7 +42,7 @@ export const getSession = (getStorage: GetStorage) => {
          * The queued keys for the next session. When the next session begins, these keys
          * will be used to determine the validator's session keys.
          *
-         * @returns {Promise<string | null>} Vec<([U8; 32], {babe: [U8; 32], grandpa: [U8; 32], beefy: [U8; 33], im_online: [U8; 32], authority_discovery: [U8; 32]})>
+         * @returns {Promise<string | null>} Vec<([U8; 20], {aura: [U8; 32]})>
          */
         queuedKeys: async (): Promise<string | null> => {
             return await getStorage('Session', 'QueuedKeys');
@@ -64,8 +64,8 @@ export const getSession = (getStorage: GetStorage) => {
         /**
          * The next session keys for a validator.
          *
-         * @param {unknown} param0 AccountId32: [U8; 32]
-         * @returns {Promise<string | null>} SessionKeys: {babe: [U8; 32], grandpa: [U8; 32], beefy: [U8; 33], im_online: [U8; 32], authority_discovery: [U8; 32]}
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} SessionKeys: {aura: [U8; 32]}
          */
         nextKeys: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Session', 'NextKeys', param0);
@@ -75,7 +75,7 @@ export const getSession = (getStorage: GetStorage) => {
          * The owner of a key. The key is the `KeyTypeId` + the encoded key.
          *
          * @param {unknown} param0 ([U8; 4], Vec<U8>)
-         * @returns {Promise<string | null>} AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         keyOwner: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Session', 'KeyOwner', param0);

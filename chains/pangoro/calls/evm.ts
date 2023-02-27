@@ -12,6 +12,52 @@ import { Metadata } from "@polkadot/types";
 export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
+         * Withdraw balance from EVM into currency/balances pallet.
+         *
+         * @param {unknown} _address [U8; 20]
+         * @param {unknown} _value U128
+         * @instance
+         */
+        withdraw: async (signer: ethers.Signer, _address: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'withdraw', false, {
+                address: _address,
+                value: _value,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangoro/evm/calls/withdraw}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        withdrawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'withdraw', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCall: (_address: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'EVM', 'withdraw', {
+                address: _address,
+                value: _value,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildWithdrawCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'EVM', 'withdraw', argsBytes)
+        },
+
+        /**
          * Issue an EVM call operation. This is similar to a message call transaction in Ethereum.
          *
          * @param {unknown} _source [U8; 20]
@@ -23,6 +69,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _max_priority_fee_per_gas Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _nonce Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
+         * @instance
          */
         call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'call', false, {
@@ -35,23 +82,24 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
                 max_priority_fee_per_gas: _max_priority_fee_per_gas,
                 nonce: _nonce,
                 access_list: _access_list,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangoro/evm/calls/call}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangoro/evm/calls/call}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         callH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'call', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCallCall: (_source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'EVM', 'call', {
                 source: _source,
@@ -67,11 +115,11 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCallCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCallCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCallCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'EVM', 'call', argsBytes)
         },
@@ -88,6 +136,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _max_priority_fee_per_gas Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _nonce Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
+         * @instance
          */
         create: async (signer: ethers.Signer, _source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'create', false, {
@@ -99,23 +148,24 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
                 max_priority_fee_per_gas: _max_priority_fee_per_gas,
                 nonce: _nonce,
                 access_list: _access_list,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangoro/evm/calls/create}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangoro/evm/calls/create}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'create', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCreateCall: (_source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'EVM', 'create', {
                 source: _source,
@@ -130,11 +180,11 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCreateCall, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCreateCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCreateCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'EVM', 'create', argsBytes)
         },
@@ -151,6 +201,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _max_priority_fee_per_gas Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _nonce Enum<{0/None: , 1/Some: [U64; 4]}>
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
+         * @instance
          */
         create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'create2', false, {
@@ -163,23 +214,24 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
                 max_priority_fee_per_gas: _max_priority_fee_per_gas,
                 nonce: _nonce,
                 access_list: _access_list,
-	    });
+           });
         },
 
         /**
-	 * Similar to {@link: pangoro/evm/calls/create2}, but with scale encoded args.
-	 *
-	 * @param {BytesLike} argsBytes the args bytes
-	 */
+         * Similar to {@link: pangoro/evm/calls/create2}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
         create2H: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EVM', 'create2', true, argsBytes);
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCreate2Call: (_source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown) => {
             return buildRuntimeCall(metadata, 'EVM', 'create2', {
                 source: _source,
@@ -195,14 +247,15 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-	 * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-	 * Similar to buildCreate2Call, but with scale encoded args.
-	 *
-	 * @returns {CallAsParam} 
-	 */
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildCreate2Call, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
         buildCreate2CallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'EVM', 'create2', argsBytes)
         },
 
     }
 }
+
