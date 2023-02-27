@@ -2,23 +2,22 @@ import { ethers } from "ethers";
 import { clientBuilder } from "../index"
 
 async function main(): Promise<void> {
-    // web3 provider, provided by sdk users
-    const provider = new ethers.providers.JsonRpcProvider("https://cors.kahub.in/http://g1.dev.darwinia.network:10000");
+  // web3 provider, provided by sdk users
+  const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
 
-    // DOROTHY: 0x773539d4Ac0e786233D90A233654ccEE26a613D9
-    const signer = new ethers.Wallet("39539ab1876910bbf3a223d84a29e28f1cb4e2e456503e7e91ed39b2e7223d68", provider);
+  const signer = new ethers.Wallet("39539ab1876910bbf3a223d84a29e28f1cb4e2e456503e7e91ed39b2e7223d68", provider);
 
-    const pangolin2 = clientBuilder.buildPangolin2Client(provider);
+  const pangolin = clientBuilder.buildPangolinClient(provider);
 
-    const receipt = await pangolin2.calls.session.setKeys(
-        signer,
-        {
-            aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da28c"
-        }, // keys
-        "0x00" // proof
-    );
+  const receipt = await pangolin.calls.session.setKeys(
+    signer,
+    {
+      aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da28c"
+    }, // keys
+    "0x00" // proof
+  );
 
-    console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`tx hash: ${receipt.transactionHash}`);
 }
 
 main().catch(err => console.log(err));

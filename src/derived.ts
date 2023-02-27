@@ -5,18 +5,18 @@ import { hexToU8a } from "@polkadot/util";
 import { hexlify } from "ethers/lib/utils";
 
 type Client = {
-    calls: {
-        session: { buildSetKeysCallH: any },
-        staking: { buildNominateCall: any, buildStakeCall: any, buildCollectCall: any },
-        utility: { batchAll: any }
-    },
-    storages: {
-        system: {
-            events: Function
-        }
-    },
-    metadata: Metadata,
-    provider: ethers.providers.BaseProvider
+  calls: {
+    session: { buildSetKeysCallH: any },
+    darwiniaStaking: { buildNominateCall: any, buildStakeCall: any, buildCollectCall: any },
+    utility: { batchAll: any }
+  },
+  storages: {
+    system: {
+      events: Function
+    }
+  },
+  metadata: Metadata,
+  provider: ethers.providers.BaseProvider
 }
 
 /**
@@ -28,21 +28,21 @@ type Client = {
  * @param deposits: deposit ids to stake
  */
 export async function nominateAndStake(client: Client, signer: ethers.Signer, target: BytesLike, ringAmount: number, ktonAmount: number, deposits: number[]) {
-    const weisOfRingAmount = (ringAmount * 10 ** 18).toString();
-    const weisOfKtonAmount = (ktonAmount * 10 ** 18).toString();
-    const depositIds = deposits.map((d) => d.toString());
+  const weisOfRingAmount = (ringAmount * 10 ** 18).toString();
+  const weisOfKtonAmount = (ktonAmount * 10 ** 18).toString();
+  const depositIds = deposits.map((d) => d.toString());
 
-    const nominateCall = client.calls.staking.buildNominateCall(target);
-    const stakeCall = client.calls.staking.buildStakeCall(
-        weisOfRingAmount,
-        weisOfKtonAmount,
-        depositIds
-    );
+  const nominateCall = client.calls.darwiniaStaking.buildNominateCall(target);
+  const stakeCall = client.calls.darwiniaStaking.buildStakeCall(
+    weisOfRingAmount,
+    weisOfKtonAmount,
+    depositIds
+  );
 
-    return await client.calls.utility.batchAll(signer, [
-        stakeCall,
-        nominateCall
-    ]);
+  return await client.calls.utility.batchAll(signer, [
+    stakeCall,
+    nominateCall
+  ]);
 }
 
 /**
@@ -52,20 +52,20 @@ export async function nominateAndStake(client: Client, signer: ethers.Signer, ta
  * @param commission: integer >= 0 and <= 100
  */
 export async function setSessionKeysAndCommission(client: Client, signer: ethers.Signer, keys: BytesLike, commission: number) {
-    if (!(Number.isInteger(commission) && commission >= 0 && commission <= 100)) {
-        throw "Wrong commission value, it should be an integer between 0 and 100(inclusive).";
-    }
+  if (!(Number.isInteger(commission) && commission >= 0 && commission <= 100)) {
+    throw "Wrong commission value, it should be an integer between 0 and 100(inclusive).";
+  }
 
-    const setKeysCall = client.calls.session.buildSetKeysCallH(
-        ethers.utils.concat([keys, "0x00"])
-    );
+  const setKeysCall = client.calls.session.buildSetKeysCallH(
+    ethers.utils.concat([keys, "0x00"])
+  );
 
-    const collectCall = client.calls.staking.buildCollectCall((commission * 10_000_000).toString());
+  const collectCall = client.calls.darwiniaStaking.buildCollectCall((commission * 10_000_000).toString());
 
-    return await client.calls.utility.batchAll(signer, [
-        setKeysCall,
-        collectCall
-    ]);
+  return await client.calls.utility.batchAll(signer, [
+    setKeysCall,
+    collectCall
+  ]);
 }
 
 
@@ -73,75 +73,75 @@ export async function setSessionKeysAndCommission(client: Client, signer: ethers
  * TODO: cache meta
  */
 export async function getSystemEvents(client: Client2): Promise<EventData[]> {
-    const result: EventData[] = [];
+  const result: EventData[] = [];
 
-    const eventsJsonStr = await client.storages.system.events();
-    const events = JSON.parse(eventsJsonStr)
-    for (let i = 0; i < events.length; i++) {
-        const event = events[i].event;
-        const eventIndex = hexToU8a(event.index);
-        const eventMeta = getEventMetaByIndex(client.metadata, eventIndex[0], eventIndex[1]);
-        result.push(buildEvent(eventMeta, event));
-    }
+  const eventsJsonStr = await client.storages.system.events();
+  const events = JSON.parse(eventsJsonStr)
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i].event;
+    const eventIndex = hexToU8a(event.index);
+    const eventMeta = getEventMetaByIndex(client.metadata, eventIndex[0], eventIndex[1]);
+    result.push(buildEvent(eventMeta, event));
+  }
 
-    return result;
+  return result;
 }
 
 //////////////////////////////////////////
 // track events
 //////////////////////////////////////////
 async function getLatestBlock(provider: ethers.providers.BaseProvider, current: number): Promise<number> {
-    const latestBlock = await provider.getBlockNumber();
-    if (latestBlock > current) {
-        return latestBlock;
-    } else {
-        await new Promise(f => setTimeout(f, 1000));
-        return await getLatestBlock(provider, current);
-    }
+  const latestBlock = await provider.getBlockNumber();
+  if (latestBlock > current) {
+    return latestBlock;
+  } else {
+    await new Promise(f => setTimeout(f, 1000));
+    return await getLatestBlock(provider, current);
+  }
 }
 
 async function subscribeSystemEvents(provider: ethers.providers.BaseProvider, client: Client2, currentBlock: number, cb: (events: string) => Promise<void>) {
-    try {
-        const newBlock = await getLatestBlock(provider, currentBlock)
-        console.debug(`block: ${newBlock}`)
+  try {
+    const newBlock = await getLatestBlock(provider, currentBlock)
+    console.debug(`block: ${newBlock}`)
 
-        const result = await client.storages.system.events();
-        await cb(result);
-        await subscribeSystemEvents(provider, client, newBlock, cb);
-    } catch (err) {
-        console.log((err as Error).message);
-        await new Promise(f => setTimeout(f, 5000));
-        await subscribeSystemEvents(provider, client, currentBlock, cb);
-    }
+    const result = await client.storages.system.events();
+    await cb(result);
+    await subscribeSystemEvents(provider, client, newBlock, cb);
+  } catch (err) {
+    console.log((err as Error).message);
+    await new Promise(f => setTimeout(f, 5000));
+    await subscribeSystemEvents(provider, client, currentBlock, cb);
+  }
 }
 
 function buildEvent(eventMeta: EventMeta, event: object): EventData {
-    const result = {
-        palletName: eventMeta.palletName,
-        eventName: eventMeta.eventName,
-        data: new Map()
-    };
+  const result = {
+    palletName: eventMeta.palletName,
+    eventName: eventMeta.eventName,
+    data: new Map()
+  };
 
-    const values = (event as { data: any }).data;
-    for (let j = 0; j < eventMeta.fields.length; j++) {
-        const field = eventMeta.fields[j];
-        const value = values[j];
-        result.data.set(field.name, value);
-    }
+  const values = (event as { data: any }).data;
+  for (let j = 0; j < eventMeta.fields.length; j++) {
+    const field = eventMeta.fields[j];
+    const value = values[j];
+    result.data.set(field.name, value);
+  }
 
-    return result;
+  return result;
 }
 
 type Client2 = {
-    storages: { system: { events: Function } },
-    metadata: Metadata,
-    provider: ethers.providers.BaseProvider
+  storages: { system: { events: Function } },
+  metadata: Metadata,
+  provider: ethers.providers.BaseProvider
 }
 
 export type EventData = {
-    palletName: string,
-    eventName: string,
-    data: Map<string, any>
+  palletName: string,
+  eventName: string,
+  data: Map<string, any>
 }
 
 /**
@@ -152,30 +152,30 @@ export type EventData = {
  * @param cb: callback
  */
 export async function trackSystemEvents(client: Client2, eventsToTrack: [string, string][], cb: (event: EventData) => Promise<void>) {
-    // Map<
-    //   eventIndexHex,
-    //   eventMeta
-    // >
-    const eventMetas = eventsToTrack
-        .map(e => {
-            return getEventMeta(client.metadata, e[0], e[1]);
-        })
-        .reduce((r, eventMeta) => {
-            if (eventMeta.eventIndex) {
-                const eventIndexHex = hexlify(eventMeta.eventIndex as [number, number]);
-                r.set(eventIndexHex, eventMeta);
-            }
-            return r;
-        }, new Map<string, EventMeta>());
-
-    await subscribeSystemEvents(client.provider, client, 1, async (eventsJsonStr) => {
-        const events = JSON.parse(eventsJsonStr)
-        for (let i = 0; i < events.length; i++) {
-            const event = events[i].event;
-            const eventMeta = eventMetas.get(event.index); // event.index is a two-bytes hex string
-            if (eventMeta) {
-                cb(buildEvent(eventMeta, event));
-            }
-        }
+  // Map<
+  //   eventIndexHex,
+  //   eventMeta
+  // >
+  const eventMetas = eventsToTrack
+    .map(e => {
+      return getEventMeta(client.metadata, e[0], e[1]);
     })
+    .reduce((r, eventMeta) => {
+      if (eventMeta.eventIndex) {
+        const eventIndexHex = hexlify(eventMeta.eventIndex as [number, number]);
+        r.set(eventIndexHex, eventMeta);
+      }
+      return r;
+    }, new Map<string, EventMeta>());
+
+  await subscribeSystemEvents(client.provider, client, 1, async (eventsJsonStr) => {
+    const events = JSON.parse(eventsJsonStr)
+    for (let i = 0; i < events.length; i++) {
+      const event = events[i].event;
+      const eventMeta = eventMetas.get(event.index); // event.index is a two-bytes hex string
+      if (eventMeta) {
+        cb(buildEvent(eventMeta, event));
+      }
+    }
+  })
 }
