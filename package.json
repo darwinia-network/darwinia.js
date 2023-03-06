@@ -8,7 +8,7 @@
     "mypublish": "npm run build && npm publish",
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
     "gencrab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
-    "genpangoro": "CHAIN=pangoro ENDPOINT=http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
+    "genpangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
     "gendarwinia": "CHAIN=darwinia ENDPOINT=https://rpc.darwinia.network ts-node generator/generator.ts",
     "test": "npm run build && jest",
     "doc": "npm run build && rm -rf doc && jsdoc -r -c jsdoc.json --verbose"

@@ -31,7 +31,6 @@ import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
 import {getProxy} from "./proxy";
-import {getMultisig} from "./multisig";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getDmpQueue} from "./dmpQueue";
@@ -74,7 +73,6 @@ export const buildPangoroStoragesClient = (provider: providers.BaseProvider, met
         scheduler: getScheduler(getStorage),
         preimage: getPreimage(getStorage),
         proxy: getProxy(getStorage),
-        multisig: getMultisig(getStorage),
         xcmpQueue: getXcmpQueue(getStorage),
         polkadotXcm: getPolkadotXcm(getStorage),
         dmpQueue: getDmpQueue(getStorage),
