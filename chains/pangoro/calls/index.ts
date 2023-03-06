@@ -29,7 +29,6 @@ import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
 import {getProxy} from "./proxy";
-import {getMultisig} from "./multisig";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getCumulusXcm} from "./cumulusXcm";
@@ -73,7 +72,6 @@ export const buildPangoroCallsClient = (provider: providers.BaseProvider, metada
         scheduler: getScheduler(dispatch, metadata),
         preimage: getPreimage(dispatch, metadata),
         proxy: getProxy(dispatch, metadata),
-        multisig: getMultisig(dispatch, metadata),
         xcmpQueue: getXcmpQueue(dispatch, metadata),
         polkadotXcm: getPolkadotXcm(dispatch, metadata),
         cumulusXcm: getCumulusXcm(dispatch, metadata),
