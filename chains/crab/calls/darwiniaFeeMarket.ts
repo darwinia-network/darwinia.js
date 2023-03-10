@@ -60,26 +60,25 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
         },
 
         /**
-         * Update locked collateral for enrolled relayer, only supporting lock more. (Update market
-         * needed)
+         * Increase relayer's locked collateral
          *
          * @param {unknown} _new_collateral U128
          * @instance
          */
-        updateLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaFeeMarket', 'updateLockedCollateral', false, {
+        increaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaFeeMarket', 'increaseLockedCollateral', false, {
                 new_collateral: _new_collateral,
            });
         },
 
         /**
-         * Similar to {@link: crab/darwiniaFeeMarket/calls/updateLockedCollateral}, but with scale encoded args.
+         * Similar to {@link: crab/darwiniaFeeMarket/calls/increaseLockedCollateral}, but with scale encoded args.
          *
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'DarwiniaFeeMarket', 'updateLockedCollateral', true, argsBytes);
+        increaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaFeeMarket', 'increaseLockedCollateral', true, argsBytes);
         },
 
         /**
@@ -87,20 +86,63 @@ export const getDarwiniaFeeMarket = (dispatch: Dispatch, metadata: Metadata) => 
          *
          * @returns {CallAsParam} 
          */
-        buildUpdateLockedCollateralCall: (_new_collateral: unknown) => {
-            return buildRuntimeCall(metadata, 'DarwiniaFeeMarket', 'updateLockedCollateral', {
+        buildIncreaseLockedCollateralCall: (_new_collateral: unknown) => {
+            return buildRuntimeCall(metadata, 'DarwiniaFeeMarket', 'increaseLockedCollateral', {
                 new_collateral: _new_collateral,
             });
         },
 
         /**
          * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildUpdateLockedCollateralCall, but with scale encoded args.
+         * Similar to buildIncreaseLockedCollateralCall, but with scale encoded args.
          *
          * @returns {CallAsParam} 
          */
-        buildUpdateLockedCollateralCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'DarwiniaFeeMarket', 'updateLockedCollateral', argsBytes)
+        buildIncreaseLockedCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'DarwiniaFeeMarket', 'increaseLockedCollateral', argsBytes)
+        },
+
+        /**
+         * Decrease relayer's locked collateral
+         *
+         * @param {unknown} _new_collateral U128
+         * @instance
+         */
+        decreaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaFeeMarket', 'decreaseLockedCollateral', false, {
+                new_collateral: _new_collateral,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/darwiniaFeeMarket/calls/decreaseLockedCollateral}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        decreaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaFeeMarket', 'decreaseLockedCollateral', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildDecreaseLockedCollateralCall: (_new_collateral: unknown) => {
+            return buildRuntimeCall(metadata, 'DarwiniaFeeMarket', 'decreaseLockedCollateral', {
+                new_collateral: _new_collateral,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildDecreaseLockedCollateralCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildDecreaseLockedCollateralCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'DarwiniaFeeMarket', 'decreaseLockedCollateral', argsBytes)
         },
 
         /**

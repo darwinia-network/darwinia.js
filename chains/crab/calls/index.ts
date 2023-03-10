@@ -3,17 +3,19 @@ import { Metadata } from "@polkadot/types";
 import { providers } from "ethers";
 
 import {getSystem} from "./system";
-import {getBabe} from "./babe";
+import {getParachainSystem} from "./parachainSystem";
 import {getTimestamp} from "./timestamp";
-import {getIndices} from "./indices";
+import {getParachainInfo} from "./parachainInfo";
 import {getBalances} from "./balances";
-import {getKton} from "./kton";
+import {getAssets} from "./assets";
+import {getVesting} from "./vesting";
+import {getDeposit} from "./deposit";
+import {getAccountMigration} from "./accountMigration";
 import {getAuthorship} from "./authorship";
-import {getElectionProviderMultiPhase} from "./electionProviderMultiPhase";
-import {getStaking} from "./staking";
+import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
-import {getGrandpa} from "./grandpa";
-import {getImOnline} from "./imOnline";
+import {getMessageGadget} from "./messageGadget";
+import {getEcdsaAuthority} from "./ecdsaAuthority";
 import {getDemocracy} from "./democracy";
 import {getCouncil} from "./council";
 import {getTechnicalCommittee} from "./technicalCommittee";
@@ -21,42 +23,42 @@ import {getPhragmenElection} from "./phragmenElection";
 import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
 import {getTips} from "./tips";
-import {getBounties} from "./bounties";
+import {getSudo} from "./sudo";
 import {getUtility} from "./utility";
 import {getIdentity} from "./identity";
-import {getSociety} from "./society";
-import {getRecovery} from "./recovery";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
-import {getVesting} from "./vesting";
 import {getProxy} from "./proxy";
-import {getMultisig} from "./multisig";
-import {getEVM} from "./evm";
+import {getXcmpQueue} from "./xcmpQueue";
+import {getPolkadotXcm} from "./polkadotXcm";
+import {getCumulusXcm} from "./cumulusXcm";
+import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
-import {getBaseFee} from "./baseFee";
+import {getEVM} from "./evm";
+import {getMessageTransact} from "./messageTransact";
+import {getBridgePolkadotGrandpa} from "./bridgePolkadotGrandpa";
+import {getBridgePolkadotParachain} from "./bridgePolkadotParachain";
 import {getBridgeDarwiniaMessages} from "./bridgeDarwiniaMessages";
-import {getBridgeDarwiniaGrandpa} from "./bridgeDarwiniaGrandpa";
-import {getBridgeKusamaGrandpa} from "./bridgeKusamaGrandpa";
-import {getBridgeKusamaParachain} from "./bridgeKusamaParachain";
-import {getBridgeCrabParachainMessages} from "./bridgeCrabParachainMessages";
+import {getBridgeDarwiniaDispatch} from "./bridgeDarwiniaDispatch";
 import {getDarwiniaFeeMarket} from "./darwiniaFeeMarket";
-import {getCrabParachainFeeMarket} from "./crabParachainFeeMarket";
 
 export const buildCrabCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const dispatch = dispatchCall(provider, metadata);
     return {
         system: getSystem(dispatch, metadata),
-        babe: getBabe(dispatch, metadata),
+        parachainSystem: getParachainSystem(dispatch, metadata),
         timestamp: getTimestamp(dispatch, metadata),
-        indices: getIndices(dispatch, metadata),
+        parachainInfo: getParachainInfo(dispatch, metadata),
         balances: getBalances(dispatch, metadata),
-        kton: getKton(dispatch, metadata),
+        assets: getAssets(dispatch, metadata),
+        vesting: getVesting(dispatch, metadata),
+        deposit: getDeposit(dispatch, metadata),
+        accountMigration: getAccountMigration(dispatch, metadata),
         authorship: getAuthorship(dispatch, metadata),
-        electionProviderMultiPhase: getElectionProviderMultiPhase(dispatch, metadata),
-        staking: getStaking(dispatch, metadata),
+        darwiniaStaking: getDarwiniaStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
-        grandpa: getGrandpa(dispatch, metadata),
-        imOnline: getImOnline(dispatch, metadata),
+        messageGadget: getMessageGadget(dispatch, metadata),
+        ecdsaAuthority: getEcdsaAuthority(dispatch, metadata),
         democracy: getDemocracy(dispatch, metadata),
         council: getCouncil(dispatch, metadata),
         technicalCommittee: getTechnicalCommittee(dispatch, metadata),
@@ -64,25 +66,23 @@ export const buildCrabCallsClient = (provider: providers.BaseProvider, metadata:
         technicalMembership: getTechnicalMembership(dispatch, metadata),
         treasury: getTreasury(dispatch, metadata),
         tips: getTips(dispatch, metadata),
-        bounties: getBounties(dispatch, metadata),
+        sudo: getSudo(dispatch, metadata),
         utility: getUtility(dispatch, metadata),
         identity: getIdentity(dispatch, metadata),
-        society: getSociety(dispatch, metadata),
-        recovery: getRecovery(dispatch, metadata),
         scheduler: getScheduler(dispatch, metadata),
         preimage: getPreimage(dispatch, metadata),
-        vesting: getVesting(dispatch, metadata),
         proxy: getProxy(dispatch, metadata),
-        multisig: getMultisig(dispatch, metadata),
-        evm: getEVM(dispatch, metadata),
+        xcmpQueue: getXcmpQueue(dispatch, metadata),
+        polkadotXcm: getPolkadotXcm(dispatch, metadata),
+        cumulusXcm: getCumulusXcm(dispatch, metadata),
+        dmpQueue: getDmpQueue(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
-        baseFee: getBaseFee(dispatch, metadata),
+        evm: getEVM(dispatch, metadata),
+        messageTransact: getMessageTransact(dispatch, metadata),
+        bridgePolkadotGrandpa: getBridgePolkadotGrandpa(dispatch, metadata),
+        bridgePolkadotParachain: getBridgePolkadotParachain(dispatch, metadata),
         bridgeDarwiniaMessages: getBridgeDarwiniaMessages(dispatch, metadata),
-        bridgeDarwiniaGrandpa: getBridgeDarwiniaGrandpa(dispatch, metadata),
-        bridgeKusamaGrandpa: getBridgeKusamaGrandpa(dispatch, metadata),
-        bridgeKusamaParachain: getBridgeKusamaParachain(dispatch, metadata),
-        bridgeCrabParachainMessages: getBridgeCrabParachainMessages(dispatch, metadata),
+        bridgeDarwiniaDispatch: getBridgeDarwiniaDispatch(dispatch, metadata),
         darwiniaFeeMarket: getDarwiniaFeeMarket(dispatch, metadata),
-        crabParachainFeeMarket: getCrabParachainFeeMarket(dispatch, metadata),
     };
 }

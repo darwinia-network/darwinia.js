@@ -12,6 +12,52 @@ import { Metadata } from "@polkadot/types";
 export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
+         * Withdraw balance from EVM into currency/balances pallet.
+         *
+         * @param {unknown} _address [U8; 20]
+         * @param {unknown} _value U128
+         * @instance
+         */
+        withdraw: async (signer: ethers.Signer, _address: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'withdraw', false, {
+                address: _address,
+                value: _value,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/evm/calls/withdraw}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        withdrawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'EVM', 'withdraw', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCall: (_address: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'EVM', 'withdraw', {
+                address: _address,
+                value: _value,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildWithdrawCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildWithdrawCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'EVM', 'withdraw', argsBytes)
+        },
+
+        /**
          * Issue an EVM call operation. This is similar to a message call transaction in Ethereum.
          *
          * @param {unknown} _source [U8; 20]

@@ -13,7 +13,7 @@ export const getVesting = (getStorage: GetStorage) => {
         /**
          * Information regarding the vesting of a given account.
          *
-         * @param {unknown} param0 AccountId32: [U8; 32]
+         * @param {unknown} param0 AccountId20: [U8; 20]
          * @returns {Promise<string | null>} BoundedVec: Vec<{locked: U128, per_block: U128, starting_block: U32}>
          */
         vesting: async (param0: unknown): Promise<string | null> => {

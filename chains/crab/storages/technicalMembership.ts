@@ -13,7 +13,7 @@ export const getTechnicalMembership = (getStorage: GetStorage) => {
         /**
          * The current membership, stored as an ordered Vec.
          *
-         * @returns {Promise<string | null>} Vec<[U8; 32]>
+         * @returns {Promise<string | null>} BoundedVec: Vec<[U8; 20]>
          */
         members: async (): Promise<string | null> => {
             return await getStorage('TechnicalMembership', 'Members');
@@ -22,7 +22,7 @@ export const getTechnicalMembership = (getStorage: GetStorage) => {
         /**
          * The current prime member, if one exists.
          *
-         * @returns {Promise<string | null>} AccountId32: [U8; 32]
+         * @returns {Promise<string | null>} AccountId20: [U8; 20]
          */
         prime: async (): Promise<string | null> => {
             return await getStorage('TechnicalMembership', 'Prime');
