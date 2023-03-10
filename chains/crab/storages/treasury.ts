@@ -23,10 +23,19 @@ export const getTreasury = (getStorage: GetStorage) => {
          * Proposals that have been made.
          *
          * @param {unknown} param0 U32
-         * @returns {Promise<string | null>} Proposal: {proposer: [U8; 32], value: U128, beneficiary: [U8; 32], bond: U128}
+         * @returns {Promise<string | null>} Proposal: {proposer: [U8; 20], value: U128, beneficiary: [U8; 20], bond: U128}
          */
         proposals: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Treasury', 'Proposals', param0);
+        },
+
+        /**
+         * The amount which has been reported as inactive to Currency.
+         *
+         * @returns {Promise<string | null>} U128
+         */
+        deactivated: async (): Promise<string | null> => {
+            return await getStorage('Treasury', 'Deactivated');
         },
 
         /**

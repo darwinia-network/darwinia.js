@@ -59,6 +59,11 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
 
         /**
          * Clear an unrequested preimage from the runtime storage.
+         * 
+         * If `len` is provided, then it will be a much cheaper operation.
+         * 
+         * - `hash`: The hash of the preimage to be removed from the store.
+         * - `len`: The length of the preimage of `hash`.
          *
          * @param {unknown} _hash [U8; 32]
          * @instance
