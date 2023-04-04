@@ -11,7 +11,6 @@ import {getAssets} from "./assets";
 import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
-import {getAuthorship} from "./authorship";
 import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
 import {getMessageGadget} from "./messageGadget";
@@ -29,14 +28,19 @@ import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
 import {getProxy} from "./proxy";
-import {getMultisig} from "./multisig";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getCumulusXcm} from "./cumulusXcm";
+import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
-import {getEvm} from "./evm";
+import {getEVM} from "./evm";
 import {getMessageTransact} from "./messageTransact";
+import {getBridgeMoonbaseGrandpa} from "./bridgeMoonbaseGrandpa";
+import {getBridgeMoonbaseParachain} from "./bridgeMoonbaseParachain";
+import {getBridgePangoroMessages} from "./bridgePangoroMessages";
+import {getBridgePangoroDispatch} from "./bridgePangoroDispatch";
+import {getPangoroFeeMarket} from "./pangoroFeeMarket";
 
 export const buildPangolinCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const dispatch = dispatchCall(provider, metadata);
@@ -50,7 +54,6 @@ export const buildPangolinCallsClient = (provider: providers.BaseProvider, metad
         vesting: getVesting(dispatch, metadata),
         deposit: getDeposit(dispatch, metadata),
         accountMigration: getAccountMigration(dispatch, metadata),
-        authorship: getAuthorship(dispatch, metadata),
         darwiniaStaking: getDarwiniaStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
         messageGadget: getMessageGadget(dispatch, metadata),
@@ -68,13 +71,18 @@ export const buildPangolinCallsClient = (provider: providers.BaseProvider, metad
         scheduler: getScheduler(dispatch, metadata),
         preimage: getPreimage(dispatch, metadata),
         proxy: getProxy(dispatch, metadata),
-        multisig: getMultisig(dispatch, metadata),
         xcmpQueue: getXcmpQueue(dispatch, metadata),
         polkadotXcm: getPolkadotXcm(dispatch, metadata),
         cumulusXcm: getCumulusXcm(dispatch, metadata),
+        ethereumXcm: getEthereumXcm(dispatch, metadata),
         dmpQueue: getDmpQueue(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
-        evm: getEvm(dispatch, metadata),
+        evm: getEVM(dispatch, metadata),
         messageTransact: getMessageTransact(dispatch, metadata),
+        bridgeMoonbaseGrandpa: getBridgeMoonbaseGrandpa(dispatch, metadata),
+        bridgeMoonbaseParachain: getBridgeMoonbaseParachain(dispatch, metadata),
+        bridgePangoroMessages: getBridgePangoroMessages(dispatch, metadata),
+        bridgePangoroDispatch: getBridgePangoroDispatch(dispatch, metadata),
+        pangoroFeeMarket: getPangoroFeeMarket(dispatch, metadata),
     };
 }

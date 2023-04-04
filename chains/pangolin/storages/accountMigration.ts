@@ -82,7 +82,7 @@ export const getAccountMigration = (getStorage: GetStorage) => {
          * Multisig migration caches.
          *
          * @param {unknown} param0 AccountId32: [U8; 32]
-         * @returns {Promise<string | null>} Multisig: {migrate_to: [U8; 20], members: Vec<([U8; 32], Bool)>, threshold: U16}
+         * @returns {Promise<string | null>} MultisigMigrationDetail: {to: [U8; 20], members: Vec<([U8; 32], Bool)>, threshold: U16}
          */
         multisigs: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'Multisigs', param0);

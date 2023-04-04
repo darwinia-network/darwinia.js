@@ -1,13 +1,13 @@
 import { GetStorage } from "../../../src/storage";
 
 /**
- * This is the doc comment for pallet `Evm`'s storages.
+ * This is the doc comment for pallet `EVM`'s storages.
  * 
- * `Evm`'s calls: {@link: module:pangolin/evm/calls}
+ * `EVM`'s calls: {@link: module:pangolin/evm/calls}
  *
  * @module pangolin/evm/storages
  */
-export const getEvm = (getStorage: GetStorage) => {
+export const getEVM = (getStorage: GetStorage) => {
     return {
 
         /**
@@ -16,7 +16,7 @@ export const getEvm = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} Vec<U8>
          */
         accountCodes: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('Evm', 'AccountCodes', param0);
+            return await getStorage('EVM', 'AccountCodes', param0);
         },
 
         /**
@@ -26,7 +26,7 @@ export const getEvm = (getStorage: GetStorage) => {
          * @returns {Promise<string | null>} H256: [U8; 32]
          */
         accountStorages: async (param0: unknown, param1: unknown): Promise<string | null> => {
-            return await getStorage('Evm', 'AccountStorages', param0, param1);
+            return await getStorage('EVM', 'AccountStorages', param0, param1);
         },
     };
 };

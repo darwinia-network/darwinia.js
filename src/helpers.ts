@@ -69,6 +69,7 @@ export type CallMeta = {
     callIndex: [number, number],
     args: string[],
     belongsTo: string,
+    callName: [string, string]
 };
 
 export function getCallMeta(metadata: Metadata, palletName: string, callName: string): CallMeta {
@@ -98,7 +99,40 @@ export function getCallMeta(metadata: Metadata, palletName: string, callName: st
         args: call.fields.map(field => {
             return metadata.registry.createLookupType(field.type);
         }),
-        belongsTo: metadata.registry.createLookupType(calls.type)
+        belongsTo: metadata.registry.createLookupType(calls.type),
+        callName: [palletName, callName]
+    };
+}
+
+export function getCallMetaByIndex(metadata: Metadata, callIndex: [number, number]): CallMeta {
+    // get pallet
+    const pallet = metadata.asLatest.pallets.find(pallet => {
+        return pallet.index.toNumber() == callIndex[0];
+    });
+    if (!pallet) {
+        throw `Can not find pallet #${callIndex[0]} in metadata`;
+    }
+
+    // get call which is a variant item from pallet
+    if (pallet.calls.isNone) {
+        throw `Pallet #${callIndex[0]} has no calls`;
+    }
+    const calls = pallet.calls.unwrap();
+    const callsType = metadata.registry.lookup.getSiType(calls.type);
+    const call = callsType.def.asVariant.variants.find(v => {
+        return v.index.toNumber() == callIndex[1];
+    });
+    if (!call) {
+        throw `Can not find #${callIndex[1]} dispatch call in #${callIndex[0]} pallet`;
+    }
+
+    return {
+        callIndex: callIndex,
+        args: call.fields.map(field => {
+            return metadata.registry.createLookupType(field.type);
+        }),
+        belongsTo: metadata.registry.createLookupType(calls.type),
+        callName: [pallet.name.toString(), call.name.toString()]
     };
 }
 
@@ -239,3 +273,16 @@ export function encodeCall(metadata: Metadata, palletName: string, callName: str
     return encodedCall;
 }
 
+export function encodeCall2(metadata: Metadata, call: { callIndex: [number, number], args: { [key: string]: any } }): BytesLike {
+    const { callIndex, callName, belongsTo } = getCallMetaByIndex(metadata, call.callIndex);
+    const callNameWithArgs: { [key: string]: any } = {};
+    callNameWithArgs[callName[1]] = call.args;
+
+    const encodedCall =
+        u8aConcat(
+            [callIndex[0]],
+            metadata.registry.createType(belongsTo, callNameWithArgs).toU8a()
+        );
+
+    return encodedCall;
+}
