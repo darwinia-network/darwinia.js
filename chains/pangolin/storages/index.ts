@@ -31,12 +31,16 @@ import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
 import {getProxy} from "./proxy";
-import {getMultisig} from "./multisig";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
+import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
-import {getEvm} from "./evm";
+import {getEVM} from "./evm";
+import {getBridgeMoonbaseGrandpa} from "./bridgeMoonbaseGrandpa";
+import {getBridgeMoonbaseParachain} from "./bridgeMoonbaseParachain";
+import {getBridgePangoroMessages} from "./bridgePangoroMessages";
+import {getPangoroFeeMarket} from "./pangoroFeeMarket";
 
 export const buildPangolinStoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const getStorage = getStorageFunction(provider, metadata);
@@ -70,11 +74,15 @@ export const buildPangolinStoragesClient = (provider: providers.BaseProvider, me
         scheduler: getScheduler(getStorage),
         preimage: getPreimage(getStorage),
         proxy: getProxy(getStorage),
-        multisig: getMultisig(getStorage),
         xcmpQueue: getXcmpQueue(getStorage),
         polkadotXcm: getPolkadotXcm(getStorage),
+        ethereumXcm: getEthereumXcm(getStorage),
         dmpQueue: getDmpQueue(getStorage),
         ethereum: getEthereum(getStorage),
-        evm: getEvm(getStorage),
+        evm: getEVM(getStorage),
+        bridgeMoonbaseGrandpa: getBridgeMoonbaseGrandpa(getStorage),
+        bridgeMoonbaseParachain: getBridgeMoonbaseParachain(getStorage),
+        bridgePangoroMessages: getBridgePangoroMessages(getStorage),
+        pangoroFeeMarket: getPangoroFeeMarket(getStorage),
     };
 }
