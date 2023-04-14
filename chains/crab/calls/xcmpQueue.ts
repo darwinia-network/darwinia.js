@@ -27,7 +27,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `OverweightServiced`: On success.
          *
          * @param {unknown} _index U64
-         * @param {unknown} _weight_limit U64
+         * @param {unknown} _weight_limit {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -302,7 +302,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.threshold_weight`
          *
-         * @param {unknown} _new U64
+         * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
         updateThresholdWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -349,7 +349,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.weight_restrict_decay`.
          *
-         * @param {unknown} _new U64
+         * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
         updateWeightRestrictDecay: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -396,7 +396,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * - `origin`: Must pass `Root`.
          * - `new`: Desired value for `QueueConfigData.xcmp_max_individual_weight`.
          *
-         * @param {unknown} _new U64
+         * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
         updateXcmpMaxIndividualWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {

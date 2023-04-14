@@ -11,7 +11,6 @@ import {getAssets} from "./assets";
 import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
-import {getAuthorship} from "./authorship";
 import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
 import {getMessageGadget} from "./messageGadget";
@@ -54,7 +53,6 @@ export const buildCrabCallsClient = (provider: providers.BaseProvider, metadata:
         vesting: getVesting(dispatch, metadata),
         deposit: getDeposit(dispatch, metadata),
         accountMigration: getAccountMigration(dispatch, metadata),
-        authorship: getAuthorship(dispatch, metadata),
         darwiniaStaking: getDarwiniaStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
         messageGadget: getMessageGadget(dispatch, metadata),

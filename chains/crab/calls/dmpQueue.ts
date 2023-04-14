@@ -13,20 +13,9 @@ export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
          * Service a single overweight message.
-         * 
-         * - `origin`: Must pass `ExecuteOverweightOrigin`.
-         * - `index`: The index of the overweight message to service.
-         * - `weight_limit`: The amount of weight that message execution may take.
-         * 
-         * Errors:
-         * - `Unknown`: Message of `index` is unknown.
-         * - `OverLimit`: Message execution may use greater than `weight_limit`.
-         * 
-         * Events:
-         * - `OverweightServiced`: On success.
          *
          * @param {unknown} _index U64
-         * @param {unknown} _weight_limit U64
+         * @param {unknown} _weight_limit {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
         serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {

@@ -40,31 +40,19 @@ export const getEcdsaAuthority = (getStorage: GetStorage) => {
         /**
          * The authorities change waiting for signing.
          *
-         * @returns {Promise<string | null>} (Enum<{0/AddMember: {new: [U8; 20]}, 1/RemoveMember: {pre: [U8; 20], old: [U8; 20]}, 2/SwapMembers: {pre: [U8; 20], old: [U8; 20], new: [U8; 20]}}>, Enum<{0/None: , 1/Some: U32}>, [U8; 32], Vec<([U8; 20], [U8; 65])>)
+         * @returns {Promise<string | null>} AuthoritiesChangeSigned: {operation: Enum<{0/AddMember: {new: [U8; 20]}, 1/RemoveMember: {pre: [U8; 20], old: [U8; 20]}, 2/SwapMembers: {pre: [U8; 20], old: [U8; 20], new: [U8; 20]}}>, threshold: Enum<{0/None: , 1/Some: U32}>, message: [U8; 32], signatures: Vec<([U8; 20], [U8; 65])>}
          */
         authoritiesChangeToSign: async (): Promise<string | null> => {
             return await getStorage('EcdsaAuthority', 'AuthoritiesChangeToSign');
         },
 
         /**
-         * The new message root waiting for signing.
+         * The incoming message root waiting for signing.
          *
-         * @returns {Promise<string | null>} ({block_number: U32, message_root: [U8; 32], nonce: U32}, [U8; 32], Vec<([U8; 20], [U8; 65])>)
+         * @returns {Promise<string | null>} MessageRootSigned: {commitment: {block_number: U32, message_root: [U8; 32], nonce: U32}, message: [U8; 32], signatures: Vec<([U8; 20], [U8; 65])>, authorized: Bool}
          */
-        newMessageRootToSign: async (): Promise<string | null> => {
-            return await getStorage('EcdsaAuthority', 'NewMessageRootToSign');
-        },
-
-        /**
-         * Record the previous message root.
-         *
-         * Use for checking if the message root getter get the same message root as the previous one.
-         * And if this is empty, it means the message root is require to be relayed.
-         *
-         * @returns {Promise<string | null>} (U32, [U8; 32])
-         */
-        previousMessageRoot: async (): Promise<string | null> => {
-            return await getStorage('EcdsaAuthority', 'PreviousMessageRoot');
+        messageRootToSign: async (): Promise<string | null> => {
+            return await getStorage('EcdsaAuthority', 'MessageRootToSign');
         },
     };
 };
