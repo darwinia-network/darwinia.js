@@ -33,7 +33,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _reason Vec<U8>
-         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _who [U8; 20]
          * @instance
          */
         reportAwesome: async (signer: ethers.Signer, _reason: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -161,7 +161,7 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _reason Vec<U8>
-         * @param {unknown} _who [U8; 32]
+         * @param {unknown} _who [U8; 20]
          * @param {unknown} _tip_value Compact<U128>
          * @instance
          */

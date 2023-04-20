@@ -80,7 +80,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account
          * # </weight>
          *
-         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target [U8; 20]
          * @instance
          */
         vestOther: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -139,7 +139,7 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account, [Sender Account]
          * # </weight>
          *
-         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target [U8; 20]
          * @param {unknown} _schedule {locked: U128, per_block: U128, starting_block: U32}
          * @instance
          */
@@ -202,8 +202,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          *     - Writes: Vesting Storage, Balances Locks, Target Account, Source Account
          * # </weight>
          *
-         * @param {unknown} _source Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
-         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _source [U8; 20]
+         * @param {unknown} _target [U8; 20]
          * @param {unknown} _schedule {locked: U128, per_block: U128, starting_block: U32}
          * @instance
          */
