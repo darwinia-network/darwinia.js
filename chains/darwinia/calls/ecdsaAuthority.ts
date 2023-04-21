@@ -155,13 +155,11 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Free to submit the first-correct signature.
          *
-         * @param {unknown} _address [U8; 20]
          * @param {unknown} _signature [U8; 65]
          * @instance
          */
-        submitAuthoritiesChangeSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        submitAuthoritiesChangeSignature: async (signer: ethers.Signer, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', false, {
-                address: _address,
                 signature: _signature,
            });
         },
@@ -181,9 +179,8 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildSubmitAuthoritiesChangeSignatureCall: (_address: unknown, _signature: unknown) => {
+        buildSubmitAuthoritiesChangeSignatureCall: (_signature: unknown) => {
             return buildRuntimeCall(metadata, 'EcdsaAuthority', 'submitAuthoritiesChangeSignature', {
-                address: _address,
                 signature: _signature,
             });
         },
@@ -203,13 +200,11 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Free to submit the first-correct signature.
          *
-         * @param {unknown} _address [U8; 20]
          * @param {unknown} _signature [U8; 65]
          * @instance
          */
-        submitNewMessageRootSignature: async (signer: ethers.Signer, _address: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        submitNewMessageRootSignature: async (signer: ethers.Signer, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'EcdsaAuthority', 'submitNewMessageRootSignature', false, {
-                address: _address,
                 signature: _signature,
            });
         },
@@ -229,9 +224,8 @@ export const getEcdsaAuthority = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildSubmitNewMessageRootSignatureCall: (_address: unknown, _signature: unknown) => {
+        buildSubmitNewMessageRootSignatureCall: (_signature: unknown) => {
             return buildRuntimeCall(metadata, 'EcdsaAuthority', 'submitNewMessageRootSignature', {
-                address: _address,
                 signature: _signature,
             });
         },

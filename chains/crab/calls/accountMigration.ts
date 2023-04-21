@@ -70,15 +70,17 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _threshold U16
          * @param {unknown} _to [U8; 20]
          * @param {unknown} _signature [U8; 64]
+         * @param {unknown} _new_multisig_params Enum<{0/None: , 1/Some: {address: [U8; 20], members: Vec<[U8; 20]>, threshold: U16}}>
          * @instance
          */
-        migrateMultisig: async (signer: ethers.Signer, _submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        migrateMultisig: async (signer: ethers.Signer, _submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown, _new_multisig_params: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'AccountMigration', 'migrateMultisig', false, {
                 submitter: _submitter,
                 others: _others,
                 threshold: _threshold,
                 to: _to,
                 signature: _signature,
+                new_multisig_params: _new_multisig_params,
            });
         },
 
@@ -97,13 +99,14 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildMigrateMultisigCall: (_submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown) => {
+        buildMigrateMultisigCall: (_submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown, _new_multisig_params: unknown) => {
             return buildRuntimeCall(metadata, 'AccountMigration', 'migrateMultisig', {
                 submitter: _submitter,
                 others: _others,
                 threshold: _threshold,
                 to: _to,
                 signature: _signature,
+                new_multisig_params: _new_multisig_params,
             });
         },
 

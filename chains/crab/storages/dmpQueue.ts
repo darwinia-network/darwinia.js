@@ -47,5 +47,14 @@ export const getDmpQueue = (getStorage: GetStorage) => {
         overweight: async (param0: unknown): Promise<string | null> => {
             return await getStorage('DmpQueue', 'Overweight', param0);
         },
+
+        /**
+         *Counter for the related counted storage map
+         *
+         * @returns {Promise<string | null>} U32
+         */
+        counterForOverweight: async (): Promise<string | null> => {
+            return await getStorage('DmpQueue', 'CounterForOverweight');
+        },
     };
 };

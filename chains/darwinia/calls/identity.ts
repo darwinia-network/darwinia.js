@@ -26,7 +26,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - One event.
          * # </weight>
          *
-         * @param {unknown} _account [U8; 32]
+         * @param {unknown} _account [U8; 20]
          * @instance
          */
         addRegistrar: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -150,7 +150,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          *   - One storage-exists (`IdentityOf::contains_key`).
          * # </weight>
          *
-         * @param {unknown} _subs Vec<([U8; 32], Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>
+         * @param {unknown} _subs Vec<([U8; 20], Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>
          * @instance
          */
         setSubs: async (signer: ethers.Signer, _subs: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -448,7 +448,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _index Compact<U32>
-         * @param {unknown} _new [U8; 32]
+         * @param {unknown} _new [U8; 20]
          * @instance
          */
         setAccountId: async (signer: ethers.Signer, _index: unknown, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -558,6 +558,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - `target`: the account whose identity the judgement is upon. This must be an account
          *   with a registered identity.
          * - `judgement`: the judgement of the registrar of index `reg_index` about `target`.
+         * - `identity`: The hash of the [`IdentityInfo`] for that the judgement is provided.
          * 
          * Emits `JudgementGiven` if successful.
          * 
@@ -570,15 +571,17 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * # </weight>
          *
          * @param {unknown} _reg_index Compact<U32>
-         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target [U8; 20]
          * @param {unknown} _judgement Enum<{0/Unknown: , 1/FeePaid: U128, 2/Reasonable: , 3/KnownGood: , 4/OutOfDate: , 5/LowQuality: , 6/Erroneous: }>
+         * @param {unknown} _identity [U8; 32]
          * @instance
          */
-        provideJudgement: async (signer: ethers.Signer, _reg_index: unknown, _target: unknown, _judgement: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        provideJudgement: async (signer: ethers.Signer, _reg_index: unknown, _target: unknown, _judgement: unknown, _identity: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'Identity', 'provideJudgement', false, {
                 reg_index: _reg_index,
                 target: _target,
                 judgement: _judgement,
+                identity: _identity,
            });
         },
 
@@ -597,11 +600,12 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildProvideJudgementCall: (_reg_index: unknown, _target: unknown, _judgement: unknown) => {
+        buildProvideJudgementCall: (_reg_index: unknown, _target: unknown, _judgement: unknown, _identity: unknown) => {
             return buildRuntimeCall(metadata, 'Identity', 'provideJudgement', {
                 reg_index: _reg_index,
                 target: _target,
                 judgement: _judgement,
+                identity: _identity,
             });
         },
 
@@ -636,7 +640,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - One event.
          * # </weight>
          *
-         * @param {unknown} _target Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _target [U8; 20]
          * @instance
          */
         killIdentity: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
@@ -685,7 +689,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch origin for this call must be _Signed_ and the sender must have a registered
          * sub identity of `sub`.
          *
-         * @param {unknown} _sub Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _sub [U8; 20]
          * @param {unknown} _data Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>
          * @instance
          */
@@ -734,7 +738,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch origin for this call must be _Signed_ and the sender must have a registered
          * sub identity of `sub`.
          *
-         * @param {unknown} _sub Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _sub [U8; 20]
          * @param {unknown} _data Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>
          * @instance
          */
@@ -786,7 +790,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * The dispatch origin for this call must be _Signed_ and the sender must have a registered
          * sub identity of `sub`.
          *
-         * @param {unknown} _sub Enum<{0/Id: [U8; 32], 1/Index: Compact<()>, 2/Raw: Vec<U8>, 3/Address32: [U8; 32], 4/Address20: [U8; 20]}>
+         * @param {unknown} _sub [U8; 20]
          * @instance
          */
         removeSub: async (signer: ethers.Signer, _sub: unknown): Promise<ethers.providers.TransactionReceipt> => {
