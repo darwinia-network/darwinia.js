@@ -1,6 +1,6 @@
 {
   "name": "darwinia-js-sdk",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
     "gencrab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
     "genpangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
-    "gendarwinia": "CHAIN=darwinia ENDPOINT=http://g1.dev.darwinia.network:10000 ts-node generator/generator.ts",
+    "gendarwinia": "CHAIN=darwinia ENDPOINT=https://rpc.darwinia.network ts-node generator/generator.ts",
     "test": "npm run build && jest",
     "doc": "npm run build && rm -rf doc && jsdoc -r -c jsdoc.json --verbose"
   },
