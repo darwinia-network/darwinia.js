@@ -1,4 +1,4 @@
-import { Bytes, BytesLike, ethers, providers } from "ethers";
+import { BigNumber, Bytes, BytesLike, ethers, providers } from "ethers";
 import { Metadata } from "@polkadot/types";
 import { camelToSnakeCase } from "./utils";
 import { encodeCall, getCallMeta } from "./helpers";
@@ -42,7 +42,6 @@ export async function doDispatch(
     await dryRun(provider, tx);
 
     tx.gasLimit = await provider.estimateGas(tx);
-    tx.gasPrice = ethers.utils.parseUnits("1", "gwei");
 
     const sentTx = await signer.sendTransaction(tx);
     return sentTx.wait();
