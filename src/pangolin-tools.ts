@@ -5,10 +5,10 @@ import { encodeCall2 } from "./helpers";
 
 async function getMarketFee(
   provider: ethers.providers.BaseProvider,
-  pangolinEndpoint: string
+  pangolinMessageHub: string
 ): Promise<number> {
   const contract = new ethers.Contract(
-    pangolinEndpoint,
+    pangolinMessageHub,
     ["function fee() public view returns (uint256)"],
     provider
   );
@@ -37,65 +37,62 @@ function buildEthereumXcmTransactCall(
   return encodeCall2(pangolin.metadata, call);
 }
 
-function buildTransactCallForExecuteOnEthereum(
+function buildTransactSend(
   provider: ethers.providers.BaseProvider,
   // for pangolin
-  pangolinEndpoint: BytesLike,
-  gasLimitForCallingForExecuteOnEthereum: BigInt,
+  pangolinMessageHub: BytesLike,
+  gasLimit: BigInt,
   // for ethereum
-  bigThanMarketFee: BigInt, // fee to cross-chain to ethereum
-  ethereumContract: BytesLike,
-  ethereumCall: BytesLike
+  fee: BigInt, // fee to cross-chain to ethereum
+  ethereumMessageReceivingContract: BytesLike,
+  messagePayload: BytesLike
 ) {
-  // Generate the call data of executeOnEthereum
+  // Generate the call data of send
   let ABI = [
-    "function executeOnEthereum(address target,bytes memory call) external payable returns (uint64 nonce)",
+    "function send(address _toDappAddress,bytes calldata _message) external payable returns (uint256 nonce)",
   ];
   let iface = new ethers.utils.Interface(ABI);
-  const dataOfExecuteOnEthereum = iface.encodeFunctionData(
-    "executeOnEthereum",
-    [ethereumContract, ethereumCall]
-  );
-  console.debug(
-    `data of executeOnEthereum: ${hexlify(dataOfExecuteOnEthereum)}`
-  );
+  const dataOfSend = iface.encodeFunctionData("send", [
+    ethereumMessageReceivingContract,
+    messagePayload,
+  ]);
+  console.debug(`data of send: ${hexlify(dataOfSend)}`);
 
-  // Wrap the call data of executeOnEthereum inside ethereumXcm.transact
+  // Wrap the call data of send inside ethereumXcm.transact
   return buildEthereumXcmTransactCall(
     provider,
-    pangolinEndpoint,
-    bigThanMarketFee,
-    dataOfExecuteOnEthereum,
-    gasLimitForCallingForExecuteOnEthereum
+    pangolinMessageHub,
+    fee,
+    dataOfSend,
+    gasLimit
   );
 }
 
-async function buildTransactCallForExecuteOnEthereum2(
+async function buildTransactSend2(
   provider: ethers.providers.JsonRpcProvider,
-  pangolinEndpoint: string,
+  pangolinMessageHub: string,
   gasLimit: BigInt,
-  ethereumContract: string,
-  ethereumCall: BytesLike
+  ethereumMessageReceivingContract: string,
+  messagePayload: BytesLike
 ) {
   // Get market fee from pangolin endpoint
-  const fee = await getMarketFee(provider, pangolinEndpoint);
+  const fee = await getMarketFee(provider, pangolinMessageHub);
   console.log(`market fee: ${fee}`);
 
   // Generate the pangolin call data
   // which will be used to construct the `message` param of `PolkadotXcm.send(dest, message)` on parachain .
-  return buildTransactCallForExecuteOnEthereum(
+  return buildTransactSend(
     provider,
-    pangolinEndpoint,
+    pangolinMessageHub,
     gasLimit,
     BigInt(fee),
-    ethereumContract,
-    ethereumCall
+    ethereumMessageReceivingContract,
+    messagePayload
   );
 }
 
 export const pangolinTools = {
   getMarketFee,
-  buildEthereumXcmTransactCall,
-  buildTransactCallForExecuteOnEthereum,
-  buildTransactCallForExecuteOnEthereum2,
+  buildTransactSend,
+  buildTransactSend2,
 };
