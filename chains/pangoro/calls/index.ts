@@ -11,7 +11,6 @@ import {getAssets} from "./assets";
 import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
-import {getAuthorship} from "./authorship";
 import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
 import {getMessageGadget} from "./messageGadget";
@@ -32,6 +31,7 @@ import {getProxy} from "./proxy";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getCumulusXcm} from "./cumulusXcm";
+import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
@@ -54,7 +54,6 @@ export const buildPangoroCallsClient = (provider: providers.BaseProvider, metada
         vesting: getVesting(dispatch, metadata),
         deposit: getDeposit(dispatch, metadata),
         accountMigration: getAccountMigration(dispatch, metadata),
-        authorship: getAuthorship(dispatch, metadata),
         darwiniaStaking: getDarwiniaStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
         messageGadget: getMessageGadget(dispatch, metadata),
@@ -75,6 +74,7 @@ export const buildPangoroCallsClient = (provider: providers.BaseProvider, metada
         xcmpQueue: getXcmpQueue(dispatch, metadata),
         polkadotXcm: getPolkadotXcm(dispatch, metadata),
         cumulusXcm: getCumulusXcm(dispatch, metadata),
+        ethereumXcm: getEthereumXcm(dispatch, metadata),
         dmpQueue: getDmpQueue(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
         evm: getEVM(dispatch, metadata),

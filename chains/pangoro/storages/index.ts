@@ -33,6 +33,7 @@ import {getPreimage} from "./preimage";
 import {getProxy} from "./proxy";
 import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
+import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
@@ -75,6 +76,7 @@ export const buildPangoroStoragesClient = (provider: providers.BaseProvider, met
         proxy: getProxy(getStorage),
         xcmpQueue: getXcmpQueue(getStorage),
         polkadotXcm: getPolkadotXcm(getStorage),
+        ethereumXcm: getEthereumXcm(getStorage),
         dmpQueue: getDmpQueue(getStorage),
         ethereum: getEthereum(getStorage),
         evm: getEVM(getStorage),
