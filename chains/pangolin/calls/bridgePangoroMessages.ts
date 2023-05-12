@@ -109,7 +109,7 @@ export const getBridgePangoroMessages = (dispatch: Dispatch, metadata: Metadata)
          * The weight is: single read for permissions check + 2 writes for parameter value and
          * event.
          *
-         * @param {unknown} _parameter Enum<{0/PangoroToPangolinConversionRate: U128}>
+         * @param {unknown} _parameter ()
          * @instance
          */
         updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {

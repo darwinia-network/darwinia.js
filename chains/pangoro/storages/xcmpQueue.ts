@@ -88,6 +88,15 @@ export const getXcmpQueue = (getStorage: GetStorage) => {
         },
 
         /**
+         *Counter for the related counted storage map
+         *
+         * @returns {Promise<string | null>} U32
+         */
+        counterForOverweight: async (): Promise<string | null> => {
+            return await getStorage('XcmpQueue', 'CounterForOverweight');
+        },
+
+        /**
          * The number of overweight messages ever recorded in `Overweight`. Also doubles as the next
          * available free overweight index.
          *

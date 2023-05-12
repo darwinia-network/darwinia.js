@@ -336,6 +336,53 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
             return decodeCall(metadata, 'DarwiniaStaking', 'chill', argsBytes)
         },
 
+        /**
+         * Set collator count.
+         * 
+         * This will apply to the incoming session.
+         * 
+         * Require root origin.
+         *
+         * @param {unknown} _count U32
+         * @instance
+         */
+        setCollatorCount: async (signer: ethers.Signer, _count: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'setCollatorCount', false, {
+                count: _count,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangoro/darwiniaStaking/calls/setCollatorCount}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        setCollatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'setCollatorCount', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetCollatorCountCall: (_count: unknown) => {
+            return buildRuntimeCall(metadata, 'DarwiniaStaking', 'setCollatorCount', {
+                count: _count,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetCollatorCountCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetCollatorCountCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'DarwiniaStaking', 'setCollatorCount', argsBytes)
+        },
+
     }
 }
 
