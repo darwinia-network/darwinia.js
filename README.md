@@ -15,16 +15,30 @@ npm install darwinia-js-sdk
 ## Browser
 
 ```html
+Collators Amount: <span id="result"></span>
+
 <script type="module">
-  import { ethers } from "https://esm.sh/ethers@5.2.0";
+  import { ethers } from "https://esm.sh/ethers@5.7.2";
   import { clientBuilder } from "https://esm.sh/darwinia-js-sdk@2.0.9";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
 
+	// storage
   const result = await client.storages.darwiniaStaking.collatorCount();
-  console.log(`result: ${result}`);
+  const resultEl = document.getElementById("result");
+  resultEl.innerHTML = result;
+  
+  // call
+  await window.ethereum.request({method: 'eth_requestAccounts'});
+  const signer = provider.getSigner();
+  const from = await signer.getAddress();
+  await client.calls.system.remarkWithEvent(signer, "0x12345678");
 </script>
 ```
+
+Try it in jsfiddle:
+
+https://jsfiddle.net/wuminzhe/2u80mbfp
 
 ## Usage
 
