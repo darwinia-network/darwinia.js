@@ -1,15 +1,15 @@
 {
   "name": "darwinia-js-sdk",
-  "version": "2.0.7",
+  "version": "2.0.10",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "mypublish": "npm run build && npm publish",
-    "genpangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
-    "gencrab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
-    "genpangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
-    "gendarwinia": "CHAIN=darwinia ENDPOINT=https://rpc.darwinia.network ts-node generator/generator.ts",
+    "gen:pangolin": "CHAIN=pangolin ENDPOINT=https://pangolin-rpc.darwinia.network ts-node generator/generator.ts",
+    "gen:crab": "CHAIN=crab ENDPOINT=https://crab-rpc.darwinia.network ts-node generator/generator.ts",
+    "gen:pangoro": "CHAIN=pangoro ENDPOINT=https://pangoro-rpc.darwinia.network ts-node generator/generator.ts",
+    "gen:darwinia": "CHAIN=darwinia ENDPOINT=https://rpc.darwinia.network ts-node generator/generator.ts",
+    "gen": "npm run gen:pangolin && npm run gen:crab && npm run gen:pangoro && npm run gen:darwinia",
     "test": "npm run build && jest",
     "doc": "npm run build && rm -rf doc && jsdoc -r -c jsdoc.json --verbose"
   },
