@@ -1,6 +1,6 @@
 {
-  "name": "darwinia-js-sdk",
-  "version": "2.0.10",
+  "name": "darwinia.js",
+  "version": "3.0.0",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darwinia-network/darwinia-js-sdk.git"
+    "url": "git+https://github.com/darwinia-network/darwinia.js.git"
   },
   "keywords": [
     "substrate",
@@ -26,9 +26,9 @@
   "author": "Aki Wu",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/darwinia-network/darwinia-js-sdk/issues"
+    "url": "https://github.com/darwinia-network/darwinia.js/issues"
   },
-  "homepage": "https://github.com/darwinia-network/darwinia-js-sdk#readme",
+  "homepage": "https://github.com/darwinia-network/darwinia.js#readme",
   "type": "commonjs",
   "devDependencies": {
     "@types/ejs": "^3.1.1",
