@@ -1,4 +1,6 @@
-# darwinia-js-sdk
+# darwinia.js
+
+User ^3.0.0 for Darwinia 2.0. Version < 3.0.0 is for Darwinia 1.0.
 
 A library to help
 
@@ -9,7 +11,7 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia-js-sdk
+npm install darwinia.js@^3.0.0
 ```
 
 ## Browser
@@ -19,17 +21,17 @@ Collators Amount: <span id="result"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia-js-sdk@2.0.9";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
 
-	// storage
+  // storage
   const result = await client.storages.darwiniaStaking.collatorCount();
   const resultEl = document.getElementById("result");
   resultEl.innerHTML = result;
-  
+
   // call
-  await window.ethereum.request({method: 'eth_requestAccounts'});
+  await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = provider.getSigner();
   const from = await signer.getAddress();
   await client.calls.system.remarkWithEvent(signer, "0x12345678");
@@ -48,7 +50,7 @@ The returns of this lib's functions are all json string or null.
 
 ```typescript
 import { ethers } from "ethers";
-import { clientBuilder } from "darwinia-js-sdk";
+import { clientBuilder } from "darwinia.js";
 
 async function main(): Promise<void> {
   const provider = new ethers.providers.JsonRpcProvider(
@@ -72,7 +74,7 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { clientBuilder } from "darwinia-js-sdk";
+import { clientBuilder } from "darwinia.js";
 
 async function main(): Promise<void> {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -97,7 +99,7 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { clientBuilder } from "darwinia-js-sdk";
+import { clientBuilder } from "darwinia.js";
 
 async function main(): Promise<void> {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -129,7 +131,7 @@ main();
 
 ```typescript
 import { ethers } from "ethers";
-import { clientBuilder } from "darwinia-js-sdk";
+import { clientBuilder } from "darwinia.js";
 
 async function main(): Promise<void> {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -148,7 +150,7 @@ async function main(): Promise<void> {
 main();
 ```
 
-More examples in [examples](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples)
+More examples in [examples](https://github.com/darwinia-network/darwinia.js/tree/main/examples)
 
 ## Derived API List
 
@@ -158,17 +160,17 @@ Nominate a collator and stake tokens to the collator.
 
 #### setSessionKeysAndCommission
 
-Set session keys and commission percetage. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_set_session_keys_and_commission.ts)
+Set session keys and commission percetage. [Example](https://github.com/darwinia-network/darwinia.js/tree/main/examples/derived_set_session_keys_and_commission.ts)
 
 #### trackSystemEvents
 
-Track specified events. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_track_system_events.ts)
+Track specified events. [Example](https://github.com/darwinia-network/darwinia.js/tree/main/examples/derived_track_system_events.ts)
 
 #### getSystemEvents
 
-Get the latest events. You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/examples/derived_get_system_events.ts)
+Get the latest events. You can use this function with `provider.on('block', callback)` to implement the tracking functionality like `trackSystemEvents`. [Example](https://github.com/darwinia-network/darwinia.js/tree/main/examples/derived_get_system_events.ts)
 
-See [src/derived.ts](https://github.com/darwinia-network/darwinia-js-sdk/tree/main/src/derived.ts).
+See [src/derived.ts](https://github.com/darwinia-network/darwinia.js/tree/main/src/derived.ts).
 
 ## TODO
 

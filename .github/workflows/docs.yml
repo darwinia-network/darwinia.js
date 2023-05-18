@@ -13,7 +13,6 @@ env:
   OPENSSL_STATIC: 1
   RUST_TOOLCHAIN: nightly
 
-
 jobs:
   deploy-docs:
     name: Deploy docs
@@ -45,11 +44,10 @@ jobs:
           vercel_group: itering
           preview_output: true
           dist_path: doc
-          project_name: docs-darwinia-js-sdk
+          project_name: docs-darwinia.js
           prod_mode: true
           script_run: false
           enable_cache: true
           enable_notify_slack: true
-          slack_channel: darwinia-js-sdk
+          slack_channel: darwinia.js
           slack_webhook: ${{ secrets.SLACK_INCOMING_WEBHOOK_URL }}
-
