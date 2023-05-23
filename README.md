@@ -1,6 +1,6 @@
 # darwinia.js
 
-User ^3.0.0 for Darwinia 2.0. Version < 3.0.0 is for Darwinia 1.0.
+Version >= ^3.0.0 for Darwinia 2.0. Version < 3.0.0 is for Darwinia 1.0.
 
 A library to help
 
@@ -172,15 +172,8 @@ Get the latest events. You can use this function with `provider.on('block', call
 
 See [src/derived.ts](https://github.com/darwinia-network/darwinia.js/tree/main/src/derived.ts).
 
-## TODO
+## Update Chains Metadata
 
-1. metadata check. automatically check whether the metadata carried by lib is outdated, prompting to upgrade
-
-## Get the metadata static hex string from darwinia node
-
-```shell
-curl -X POST \
-     -H 'Content-Type: application/json' \
-     -d '{"jsonrpc":"2.0","id":"1","method":"state_getMetadata","params":[]}' \
-     https://darwinia-crab.api.onfinality.io/public/
+```
+npm run gen
 ```
