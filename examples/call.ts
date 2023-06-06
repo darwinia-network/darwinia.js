@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { clientBuilder } from "../index"
+import { clientBuilder } from "../index";
 
 async function main(): Promise<void> {
   // web3 provider, provided by sdk users
