@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@polkadot/types": "^9.9.4",
-    "ethers": "^5.7.2"
+    "ethers": "^5.7.2",
+    "soltypes": "^2.0.0"
   }
 }
