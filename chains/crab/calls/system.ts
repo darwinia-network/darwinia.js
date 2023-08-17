@@ -14,9 +14,8 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Make some on-chain remark.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)`
-         * # </weight>
          *
          * @param {unknown} _remark Vec<U8>
          * @instance
@@ -104,16 +103,8 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Set the new runtime code.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(C + S)` where `C` length of `code` and `S` complexity of `can_set_code`
-         * - 1 call to `can_set_code`: `O(S)` (calls `sp_io::misc::runtime_version` which is
-         *   expensive).
-         * - 1 storage write (codec `O(C)`).
-         * - 1 digest item.
-         * - 1 event.
-         * The weight of this function is dependent on the runtime, but generally this is very
-         * expensive. We will treat this as a full block.
-         * # </weight>
          *
          * @param {unknown} _code Vec<U8>
          * @instance
@@ -158,13 +149,8 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Set the new runtime code without doing any checks of the given `code`.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(C)` where `C` length of `code`
-         * - 1 storage write (codec `O(C)`).
-         * - 1 digest item.
-         * - 1 event.
-         * The weight of this function is dependent on the runtime. We will treat this as a full
-         * block. # </weight>
          *
          * @param {unknown} _code Vec<U8>
          * @instance

@@ -25,12 +25,9 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `NewTip` if successful.
          * 
-         * # <weight>
-         * - Complexity: `O(R)` where `R` length of `reason`.
+         * ## Complexity
+         * - `O(R)` where `R` length of `reason`.
          *   - encoding and hashing of 'reason'
-         * - DbReads: `Reasons`, `Tips`
-         * - DbWrites: `Reasons`, `Tips`
-         * # </weight>
          *
          * @param {unknown} _reason Vec<U8>
          * @param {unknown} _who [U8; 20]
@@ -89,12 +86,9 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `TipRetracted` if successful.
          * 
-         * # <weight>
-         * - Complexity: `O(1)`
+         * ## Complexity
+         * - `O(1)`
          *   - Depends on the length of `T::Hash` which is fixed.
-         * - DbReads: `Tips`, `origin account`
-         * - DbWrites: `Reasons`, `Tips`, `origin account`
-         * # </weight>
          *
          * @param {unknown} _hash [U8; 32]
          * @instance
@@ -150,15 +144,12 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `NewTip` if successful.
          * 
-         * # <weight>
-         * - Complexity: `O(R + T)` where `R` length of `reason`, `T` is the number of tippers.
+         * ## Complexity
+         * - `O(R + T)` where `R` length of `reason`, `T` is the number of tippers.
          *   - `O(T)`: decoding `Tipper` vec of length `T`. `T` is charged as upper bound given by
          *     `ContainsLengthBound`. The actual cost depends on the implementation of
          *     `T::Tippers`.
          *   - `O(R)`: hashing and encoding of reason of length `R`
-         * - DbReads: `Tippers`, `Reasons`
-         * - DbWrites: `Reasons`, `Tips`
-         * # </weight>
          *
          * @param {unknown} _reason Vec<U8>
          * @param {unknown} _who [U8; 20]
@@ -221,16 +212,13 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * Emits `TipClosing` if the threshold of tippers has been reached and the countdown period
          * has started.
          * 
-         * # <weight>
-         * - Complexity: `O(T)` where `T` is the number of tippers. decoding `Tipper` vec of length
-         *   `T`, insert tip and check closing, `T` is charged as upper bound given by
-         *   `ContainsLengthBound`. The actual cost depends on the implementation of `T::Tippers`.
+         * ## Complexity
+         * - `O(T)` where `T` is the number of tippers. decoding `Tipper` vec of length `T`, insert
+         *   tip and check closing, `T` is charged as upper bound given by `ContainsLengthBound`.
+         *   The actual cost depends on the implementation of `T::Tippers`.
          * 
          *   Actually weight could be lower as it depends on how many tips are in `OpenTip` but it
          *   is weighted as if almost full i.e of length `T-1`.
-         * - DbReads: `Tippers`, `Tips`
-         * - DbWrites: `Tips`
-         * # </weight>
          *
          * @param {unknown} _hash [U8; 32]
          * @param {unknown} _tip_value Compact<U128>
@@ -285,13 +273,10 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * - `hash`: The identity of the open tip for which a tip value is declared. This is formed
          *   as the hash of the tuple of the original tip `reason` and the beneficiary account ID.
          * 
-         * # <weight>
-         * - Complexity: `O(T)` where `T` is the number of tippers. decoding `Tipper` vec of length
-         *   `T`. `T` is charged as upper bound given by `ContainsLengthBound`. The actual cost
-         *   depends on the implementation of `T::Tippers`.
-         * - DbReads: `Tips`, `Tippers`, `tip finder`
-         * - DbWrites: `Reasons`, `Tips`, `Tippers`, `tip finder`
-         * # </weight>
+         * ## Complexity
+         * - : `O(T)` where `T` is the number of tippers. decoding `Tipper` vec of length `T`. `T`
+         *   is charged as upper bound given by `ContainsLengthBound`. The actual cost depends on
+         *   the implementation of `T::Tippers`.
          *
          * @param {unknown} _hash [U8; 32]
          * @instance
@@ -342,10 +327,8 @@ export const getTips = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `TipSlashed` if successful.
          * 
-         * # <weight>
-         *   `T` is charged as upper bound given by `ContainsLengthBound`.
-         *   The actual cost depends on the implementation of `T::Tippers`.
-         * # </weight>
+         * ## Complexity
+         * - O(1).
          *
          * @param {unknown} _hash [U8; 32]
          * @instance

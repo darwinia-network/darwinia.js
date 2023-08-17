@@ -249,7 +249,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * Extoll that a particular destination can be communicated with through a particular
          * version of XCM.
          * 
-         * - `origin`: Must be Root.
+         * - `origin`: Must be an origin specified by AdminOrigin.
          * - `location`: The destination that is being described.
          * - `xcm_version`: The latest version of XCM that `location` supports.
          *
@@ -300,7 +300,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * Set a safe XCM version (the version that XCM should be encoded with if the most recent
          * version a destination can accept is unknown).
          * 
-         * - `origin`: Must be Root.
+         * - `origin`: Must be an origin specified by AdminOrigin.
          * - `maybe_xcm_version`: The default XCM encoding version, or `None` to disable.
          *
          * @param {unknown} _maybe_xcm_version Enum<{0/None: , 1/Some: U32}>
@@ -346,7 +346,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Ask a location to notify us regarding their XCM version and any changes to it.
          * 
-         * - `origin`: Must be Root.
+         * - `origin`: Must be an origin specified by AdminOrigin.
          * - `location`: The location to which we should subscribe for XCM version notifications.
          *
          * @param {unknown} _location Enum<{1/V2: {parents: U8, interior: Enum<{0/Here: , 1/X1: Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, 2/X2: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 3/X3: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 4/X4: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 5/X5: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 6/X6: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 7/X7: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>), 8/X8: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality}>)}>}, 3/V3: {parents: U8, interior: Enum<{0/Here: , 1/X1: Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, 2/X2: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 3/X3: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 4/X4: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 5/X5: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 6/X6: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 7/X7: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>), 8/X8: (Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>, Enum<{0/Parachain, 1/AccountId32, 2/AccountIndex64, 3/AccountKey20, 4/PalletInstance, 5/GeneralIndex, 6/GeneralKey, 7/OnlyChild, 8/Plurality, 9/GlobalConsensus}>)}>}}>
@@ -393,7 +393,7 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * Require that a particular destination should no longer notify us regarding any XCM
          * version changes.
          * 
-         * - `origin`: Must be Root.
+         * - `origin`: Must be an origin specified by AdminOrigin.
          * - `location`: The location to which we are currently subscribed for XCM version
          *   notifications which we no longer desire.
          *
@@ -578,6 +578,52 @@ export const getPolkadotXcm = (dispatch: Dispatch, metadata: Metadata) => {
          */
         buildLimitedTeleportAssetsCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'PolkadotXcm', 'limitedTeleportAssets', argsBytes)
+        },
+
+        /**
+         * Set or unset the global suspension state of the XCM executor.
+         * 
+         * - `origin`: Must be an origin specified by AdminOrigin.
+         * - `suspended`: `true` to suspend, `false` to resume.
+         *
+         * @param {unknown} _suspended Bool
+         * @instance
+         */
+        forceSuspension: async (signer: ethers.Signer, _suspended: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceSuspension', false, {
+                suspended: _suspended,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangolin/polkadotXcm/calls/forceSuspension}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        forceSuspensionH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'PolkadotXcm', 'forceSuspension', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildForceSuspensionCall: (_suspended: unknown) => {
+            return buildRuntimeCall(metadata, 'PolkadotXcm', 'forceSuspension', {
+                suspended: _suspended,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceSuspensionCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildForceSuspensionCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'PolkadotXcm', 'forceSuspension', argsBytes)
         },
 
     }

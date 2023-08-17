@@ -105,13 +105,23 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Authorize an upgrade to a given `code_hash` for the runtime. The runtime can be supplied
+         * later.
+         * 
+         * The `check_version` parameter sets a boolean flag for whether or not the runtime's spec
+         * version and name should be verified on upgrade. Since the authorization only has a hash,
+         * it cannot actually perform the verification.
+         * 
+         * This call requires Root origin.
          *
          * @param {unknown} _code_hash [U8; 32]
+         * @param {unknown} _check_version Bool
          * @instance
          */
-        authorizeUpgrade: async (signer: ethers.Signer, _code_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        authorizeUpgrade: async (signer: ethers.Signer, _code_hash: unknown, _check_version: unknown): Promise<ethers.providers.TransactionReceipt> => {
             return await dispatch(signer, 'ParachainSystem', 'authorizeUpgrade', false, {
                 code_hash: _code_hash,
+                check_version: _check_version,
            });
         },
 
@@ -130,9 +140,10 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildAuthorizeUpgradeCall: (_code_hash: unknown) => {
+        buildAuthorizeUpgradeCall: (_code_hash: unknown, _check_version: unknown) => {
             return buildRuntimeCall(metadata, 'ParachainSystem', 'authorizeUpgrade', {
                 code_hash: _code_hash,
+                check_version: _check_version,
             });
         },
 
@@ -147,6 +158,15 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * Provide the preimage (runtime binary) `code` for an upgrade that has been authorized.
+         * 
+         * If the authorization required a version check, this call will ensure the spec name
+         * remains unchanged and that the spec version has increased.
+         * 
+         * Note that this function will not apply the new `code`, but only attempt to schedule the
+         * upgrade with the Relay Chain.
+         * 
+         * All origins are allowed.
          *
          * @param {unknown} _code Vec<U8>
          * @instance

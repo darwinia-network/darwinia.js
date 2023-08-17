@@ -31,10 +31,6 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * It is the responsibility of the caller to **NOT** place all of their balance into the
          * lock and keep some for further operations.
-         * 
-         * # <weight>
-         * We assume the maximum weight among all 3 cases: vote_equal, vote_more and vote_less.
-         * # </weight>
          *
          * @param {unknown} _votes Vec<[U8; 20]>
          * @param {unknown} _value Compact<U128>
@@ -136,9 +132,9 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * Even if a candidate ends up being a member, they must call [`Call::renounce_candidacy`]
          * to get their deposit back. Losing the spot in an election will always lead to a slash.
          * 
-         * # <weight>
          * The number of current candidates must be provided as witness data.
-         * # </weight>
+         * ## Complexity
+         * O(C + log(C)) where C is candidate_count.
          *
          * @param {unknown} _candidate_count Compact<U32>
          * @instance
@@ -195,10 +191,12 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          *   next round.
          * 
          * The dispatch origin of this call must be signed, and have one of the above roles.
-         * 
-         * # <weight>
          * The type of renouncing must be provided as witness data.
-         * # </weight>
+         * 
+         * ## Complexity
+         *   - Renouncing::Candidate(count): O(count + log(count))
+         *   - Renouncing::Member: O(1)
+         *   - Renouncing::RunnerUp: O(1)
          *
          * @param {unknown} _renouncing Enum<{0/Member: , 1/RunnerUp: , 2/Candidate: Compact<U32>}>
          * @instance
@@ -255,10 +253,8 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Note that this does not affect the designated block number of the next election.
          * 
-         * # <weight>
-         * If we have a replacement, we use a small weight. Else, since this is a root call and
-         * will go into phragmen, we assume full block for now.
-         * # </weight>
+         * ## Complexity
+         * - Check details of remove_and_replace_member() and do_phragmen().
          *
          * @param {unknown} _who [U8; 20]
          * @param {unknown} _slash_bond Bool
@@ -314,9 +310,8 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin of this call must be root.
          * 
-         * # <weight>
-         * The total number of voters and those that are defunct must be provided as witness data.
-         * # </weight>
+         * ## Complexity
+         * - Check is_defunct_voter() details.
          *
          * @param {unknown} _num_voters U32
          * @param {unknown} _num_defunct U32

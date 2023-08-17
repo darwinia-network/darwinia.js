@@ -983,6 +983,66 @@ export const getDemocracy = (dispatch: Dispatch, metadata: Metadata) => {
             return decodeCall(metadata, 'Democracy', 'cancelProposal', argsBytes)
         },
 
+        /**
+         * Set or clear a metadata of a proposal or a referendum.
+         * 
+         * Parameters:
+         * - `origin`: Must correspond to the `MetadataOwner`.
+         *     - `ExternalOrigin` for an external proposal with the `SuperMajorityApprove`
+         *       threshold.
+         *     - `ExternalDefaultOrigin` for an external proposal with the `SuperMajorityAgainst`
+         *       threshold.
+         *     - `ExternalMajorityOrigin` for an external proposal with the `SimpleMajority`
+         *       threshold.
+         *     - `Signed` by a creator for a public proposal.
+         *     - `Signed` to clear a metadata for a finished referendum.
+         *     - `Root` to set a metadata for an ongoing referendum.
+         * - `owner`: an identifier of a metadata owner.
+         * - `maybe_hash`: The hash of an on-chain stored preimage. `None` to clear a metadata.
+         *
+         * @param {unknown} _owner Enum<{0/External: , 1/Proposal: U32, 2/Referendum: U32}>
+         * @param {unknown} _maybe_hash Enum<{0/None: , 1/Some: [U8; 32]}>
+         * @instance
+         */
+        setMetadata: async (signer: ethers.Signer, _owner: unknown, _maybe_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Democracy', 'setMetadata', false, {
+                owner: _owner,
+                maybe_hash: _maybe_hash,
+           });
+        },
+
+        /**
+         * Similar to {@link: darwinia/democracy/calls/setMetadata}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        setMetadataH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Democracy', 'setMetadata', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetMetadataCall: (_owner: unknown, _maybe_hash: unknown) => {
+            return buildRuntimeCall(metadata, 'Democracy', 'setMetadata', {
+                owner: _owner,
+                maybe_hash: _maybe_hash,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetMetadataCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetMetadataCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Democracy', 'setMetadata', argsBytes)
+        },
+
     }
 }
 

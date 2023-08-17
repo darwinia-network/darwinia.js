@@ -20,11 +20,8 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `RegistrarAdded` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R)` where `R` registrar-count (governance-bounded and code-bounded).
-         * - One storage mutation (codec `O(R)`).
-         * - One event.
-         * # </weight>
          *
          * @param {unknown} _account [U8; 20]
          * @instance
@@ -78,14 +75,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `IdentitySet` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(X + X' + R)`
          *   - where `X` additional-field-count (deposit-bounded and code-bounded)
          *   - where `R` judgements-count (registrar-count-bounded)
-         * - One balance reserve operation.
-         * - One storage mutation (codec-read `O(X' + R)`, codec-write `O(X + R)`).
-         * - One event.
-         * # </weight>
          *
          * @param {unknown} _info {additional: Vec<(Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>, display: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, legal: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, web: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, riot: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, email: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, pgp_fingerprint: Enum<{0/None: , 1/Some: [U8; 20]}>, image: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, twitter: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>}
          * @instance
@@ -138,17 +131,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * - `subs`: The identity's (new) sub-accounts.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(P + S)`
          *   - where `P` old-subs-count (hard- and deposit-bounded).
          *   - where `S` subs-count (hard- and deposit-bounded).
-         * - At most one balance operations.
-         * - DB:
-         *   - `P + S` storage mutations (codec complexity `O(1)`)
-         *   - One storage read (codec complexity `O(P)`).
-         *   - One storage write (codec complexity `O(S)`).
-         *   - One storage-exists (`IdentityOf::contains_key`).
-         * # </weight>
          *
          * @param {unknown} _subs Vec<([U8; 20], Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>
          * @instance
@@ -200,15 +186,11 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `IdentityCleared` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R + S + X)`
          *   - where `R` registrar-count (governance-bounded).
          *   - where `S` subs-count (hard- and deposit-bounded).
          *   - where `X` additional-field-count (deposit-bounded and code-bounded).
-         * - One balance-unreserve operation.
-         * - `2` storage reads and `S + 2` storage deletions.
-         * - One event.
-         * # </weight>
          *
          * @instance
          */
@@ -265,12 +247,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `JudgementRequested` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R + X)`.
-         * - One balance-reserve operation.
-         * - Storage: 1 read `O(R)`, 1 mutate `O(X + R)`.
-         * - One event.
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
+         *   - where `X` additional-field-count (deposit-bounded and code-bounded).
          *
          * @param {unknown} _reg_index Compact<U32>
          * @param {unknown} _max_fee Compact<U128>
@@ -327,12 +307,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `JudgementUnrequested` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R + X)`.
-         * - One balance-reserve operation.
-         * - One storage mutation `O(R + X)`.
-         * - One event
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
+         *   - where `X` additional-field-count (deposit-bounded and code-bounded).
          *
          * @param {unknown} _reg_index U32
          * @instance
@@ -383,11 +361,9 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - `index`: the index of the registrar whose fee is to be set.
          * - `fee`: the new fee.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R)`.
-         * - One storage mutation `O(R)`.
-         * - Benchmark: 7.315 + R * 0.329 µs (min squares analysis)
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
          *
          * @param {unknown} _index Compact<U32>
          * @param {unknown} _fee Compact<U128>
@@ -441,11 +417,9 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - `index`: the index of the registrar whose fee is to be set.
          * - `new`: the new account ID.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R)`.
-         * - One storage mutation `O(R)`.
-         * - Benchmark: 8.823 + R * 0.32 µs (min squares analysis)
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
          *
          * @param {unknown} _index Compact<U32>
          * @param {unknown} _new [U8; 20]
@@ -499,11 +473,9 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * - `index`: the index of the registrar whose fee is to be set.
          * - `fields`: the fields that the registrar concerns themselves with.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R)`.
-         * - One storage mutation `O(R)`.
-         * - Benchmark: 7.464 + R * 0.325 µs (min squares analysis)
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
          *
          * @param {unknown} _index Compact<U32>
          * @param {unknown} _fields U64
@@ -562,13 +534,10 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `JudgementGiven` if successful.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(R + X)`.
-         * - One balance-transfer operation.
-         * - Up to one account-lookup operation.
-         * - Storage: 1 read `O(R)`, 1 mutate `O(R + X)`.
-         * - One event.
-         * # </weight>
+         *   - where `R` registrar-count (governance-bounded).
+         *   - where `X` additional-field-count (deposit-bounded and code-bounded).
          *
          * @param {unknown} _reg_index Compact<U32>
          * @param {unknown} _target [U8; 20]
@@ -633,12 +602,11 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits `IdentityKilled` if successful.
          * 
-         * # <weight>
-         * - `O(R + S + X)`.
-         * - One balance-reserve operation.
-         * - `S + 2` storage mutations.
-         * - One event.
-         * # </weight>
+         * ## Complexity
+         * - `O(R + S + X)`
+         *   - where `R` registrar-count (governance-bounded).
+         *   - where `S` subs-count (hard- and deposit-bounded).
+         *   - where `X` additional-field-count (deposit-bounded and code-bounded).
          *
          * @param {unknown} _target [U8; 20]
          * @instance

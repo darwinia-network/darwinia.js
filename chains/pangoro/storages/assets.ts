@@ -25,7 +25,7 @@ export const getAssets = (getStorage: GetStorage) => {
          *
          * @param {unknown} param0 U64
          * @param {unknown} param1 AccountId20: [U8; 20]
-         * @returns {Promise<string | null>} AssetAccount: {balance: U128, is_frozen: Bool, reason: Enum<{0/Consumer: , 1/Sufficient: , 2/DepositHeld: U128, 3/DepositRefunded: }>, extra: ()}
+         * @returns {Promise<string | null>} AssetAccount: {balance: U128, status: Enum<{0/Liquid: , 1/Frozen: , 2/Blocked: }>, reason: Enum<{0/Consumer: , 1/Sufficient: , 2/DepositHeld: U128, 3/DepositRefunded: , 4/DepositFrom: ([U8; 20], U128)}>, extra: ()}
          */
         account: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('Assets', 'Account', param0, param1);

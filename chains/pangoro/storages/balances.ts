@@ -55,7 +55,7 @@ export const getBalances = (getStorage: GetStorage) => {
          * NOTE: This is only used in the case that this pallet is used to store balances.
          *
          * @param {unknown} param0 AccountId20: [U8; 20]
-         * @returns {Promise<string | null>} AccountData: {free: U128, reserved: U128, misc_frozen: U128, fee_frozen: U128}
+         * @returns {Promise<string | null>} AccountData: {free: U128, reserved: U128, frozen: U128, flags: U128}
          */
         account: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Balances', 'Account', param0);
@@ -80,6 +80,26 @@ export const getBalances = (getStorage: GetStorage) => {
          */
         reserves: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Balances', 'Reserves', param0);
+        },
+
+        /**
+         * Holds on account balances.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} BoundedVec: Vec<{id: (), amount: U128}>
+         */
+        holds: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('Balances', 'Holds', param0);
+        },
+
+        /**
+         * Freeze locks on account balances.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} BoundedVec: Vec<{id: (), amount: U128}>
+         */
+        freezes: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('Balances', 'Freezes', param0);
         },
     };
 };

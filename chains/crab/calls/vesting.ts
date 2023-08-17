@@ -19,12 +19,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits either `VestingCompleted` or `VestingUpdated`.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)`.
-         * - DbWeight: 2 Reads, 2 Writes
-         *     - Reads: Vesting Storage, Balances Locks, [Sender Account]
-         *     - Writes: Vesting Storage, Balances Locks, [Sender Account]
-         * # </weight>
          *
          * @instance
          */
@@ -73,12 +69,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * Emits either `VestingCompleted` or `VestingUpdated`.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)`.
-         * - DbWeight: 3 Reads, 3 Writes
-         *     - Reads: Vesting Storage, Balances Locks, Target Account
-         *     - Writes: Vesting Storage, Balances Locks, Target Account
-         * # </weight>
          *
          * @param {unknown} _target [U8; 20]
          * @instance
@@ -132,12 +124,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * NOTE: This will unlock all schedules through the current block.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)`.
-         * - DbWeight: 3 Reads, 3 Writes
-         *     - Reads: Vesting Storage, Balances Locks, Target Account, [Sender Account]
-         *     - Writes: Vesting Storage, Balances Locks, Target Account, [Sender Account]
-         * # </weight>
          *
          * @param {unknown} _target [U8; 20]
          * @param {unknown} _schedule {locked: U128, per_block: U128, starting_block: U32}
@@ -195,12 +183,8 @@ export const getVesting = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * NOTE: This will unlock all schedules through the current block.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)`.
-         * - DbWeight: 4 Reads, 4 Writes
-         *     - Reads: Vesting Storage, Balances Locks, Target Account, Source Account
-         *     - Writes: Vesting Storage, Balances Locks, Target Account, Source Account
-         * # </weight>
          *
          * @param {unknown} _source [U8; 20]
          * @param {unknown} _target [U8; 20]

@@ -9,7 +9,6 @@ import {getParachainInfo} from "./parachainInfo";
 import {getBalances} from "./balances";
 import {getTransactionPayment} from "./transactionPayment";
 import {getAssets} from "./assets";
-import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
 import {getAuthorship} from "./authorship";
@@ -52,7 +51,6 @@ export const buildPangolinStoragesClient = (provider: providers.BaseProvider, me
         balances: getBalances(getStorage),
         transactionPayment: getTransactionPayment(getStorage),
         assets: getAssets(getStorage),
-        vesting: getVesting(getStorage),
         deposit: getDeposit(getStorage),
         accountMigration: getAccountMigration(getStorage),
         authorship: getAuthorship(getStorage),

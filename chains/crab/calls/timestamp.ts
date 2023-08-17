@@ -22,12 +22,11 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * The dispatch origin for this call must be `Inherent`.
          * 
-         * # <weight>
+         * ## Complexity
          * - `O(1)` (Note that implementations of `OnTimestampSet` must also be `O(1)`)
          * - 1 storage read and 1 storage mutation (codec `O(1)`). (because of `DidUpdate::take` in
          *   `on_finalize`)
          * - 1 event handler `on_timestamp_set`. Must be `O(1)`.
-         * # </weight>
          *
          * @param {unknown} _now Compact<U64>
          * @instance

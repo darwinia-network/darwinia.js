@@ -1702,6 +1702,63 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
             return decodeCall(metadata, 'Assets', 'refund', argsBytes)
         },
 
+        /**
+         * Sets the minimum balance of an asset.
+         * 
+         * Only works if there aren't any accounts that are holding the asset or if
+         * the new value of `min_balance` is less than the old one.
+         * 
+         * Origin must be Signed and the sender has to be the Owner of the
+         * asset `id`.
+         * 
+         * - `id`: The identifier of the asset.
+         * - `min_balance`: The new value of `min_balance`.
+         * 
+         * Emits `AssetMinBalanceChanged` event when successful.
+         *
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _min_balance U128
+         * @instance
+         */
+        setMinBalance: async (signer: ethers.Signer, _id: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'setMinBalance', false, {
+                id: _id,
+                min_balance: _min_balance,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/assets/calls/setMinBalance}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        setMinBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'setMinBalance', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetMinBalanceCall: (_id: unknown, _min_balance: unknown) => {
+            return buildRuntimeCall(metadata, 'Assets', 'setMinBalance', {
+                id: _id,
+                min_balance: _min_balance,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetMinBalanceCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetMinBalanceCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Assets', 'setMinBalance', argsBytes)
+        },
+
     }
 }
 

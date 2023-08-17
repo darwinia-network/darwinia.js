@@ -126,5 +126,20 @@ export const getDemocracy = (getStorage: GetStorage) => {
         cancellations: async (param0: unknown): Promise<string | null> => {
             return await getStorage('Democracy', 'Cancellations', param0);
         },
+
+        /**
+         * General information concerning any proposal or referendum.
+         * The `PreimageHash` refers to the preimage of the `Preimages` provider which can be a JSON
+         * dump or IPFS hash of a JSON file.
+         *
+         * Consider a garbage collection for a metadata of finished referendums to `unrequest` (remove)
+         * large preimages.
+         *
+         * @param {unknown} param0 MetadataOwner: Enum<{0/External: , 1/Proposal: U32, 2/Referendum: U32}>
+         * @returns {Promise<string | null>} H256: [U8; 32]
+         */
+        metadataOf: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('Democracy', 'MetadataOf', param0);
+        },
     };
 };

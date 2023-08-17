@@ -22,7 +22,6 @@ import {getPhragmenElection} from "./phragmenElection";
 import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
 import {getTips} from "./tips";
-import {getSudo} from "./sudo";
 import {getUtility} from "./utility";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
@@ -64,7 +63,6 @@ export const buildCrabCallsClient = (provider: providers.BaseProvider, metadata:
         technicalMembership: getTechnicalMembership(dispatch, metadata),
         treasury: getTreasury(dispatch, metadata),
         tips: getTips(dispatch, metadata),
-        sudo: getSudo(dispatch, metadata),
         utility: getUtility(dispatch, metadata),
         identity: getIdentity(dispatch, metadata),
         scheduler: getScheduler(dispatch, metadata),

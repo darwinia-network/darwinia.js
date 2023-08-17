@@ -14,49 +14,31 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Transfer some liquid free balance to another account.
          * 
-         * `transfer` will set the `FreeBalance` of the sender and receiver.
+         * `transfer_allow_death` will set the `FreeBalance` of the sender and receiver.
          * If the sender's account is below the existential deposit as a result
          * of the transfer, the account will be reaped.
          * 
          * The dispatch origin for this call must be `Signed` by the transactor.
-         * 
-         * # <weight>
-         * - Dependent on arguments but not critical, given proper implementations for input config
-         *   types. See related functions below.
-         * - It contains a limited number of reads and writes internally and no complex
-         *   computation.
-         * 
-         * Related functions:
-         * 
-         *   - `ensure_can_withdraw` is always called internally but has a bounded complexity.
-         *   - Transferring balances to accounts that did not exist before will cause
-         *     `T::OnNewAccount::on_new_account` to be called.
-         *   - Removing enough funds from an account will trigger `T::DustRemoval::on_unbalanced`.
-         *   - `transfer_keep_alive` works the same way as `transfer`, but has an additional check
-         *     that the transfer will not kill the origin account.
-         * ---------------------------------
-         * - Origin account is already in memory, so no DB operations for them.
-         * # </weight>
          *
          * @param {unknown} _dest [U8; 20]
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Balances', 'transfer', false, {
+        transferAllowDeath: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'transferAllowDeath', false, {
                 dest: _dest,
                 value: _value,
            });
         },
 
         /**
-         * Similar to {@link: pangolin/balances/calls/transfer}, but with scale encoded args.
+         * Similar to {@link: pangolin/balances/calls/transferAllowDeath}, but with scale encoded args.
          *
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Balances', 'transfer', true, argsBytes);
+        transferAllowDeathH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'transferAllowDeath', true, argsBytes);
         },
 
         /**
@@ -64,8 +46,8 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildTransferCall: (_dest: unknown, _value: unknown) => {
-            return buildRuntimeCall(metadata, 'Balances', 'transfer', {
+        buildTransferAllowDeathCall: (_dest: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'transferAllowDeath', {
                 dest: _dest,
                 value: _value,
             });
@@ -73,45 +55,43 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
 
         /**
          * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildTransferCall, but with scale encoded args.
+         * Similar to buildTransferAllowDeathCall, but with scale encoded args.
          *
          * @returns {CallAsParam} 
          */
-        buildTransferCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Balances', 'transfer', argsBytes)
+        buildTransferAllowDeathCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'transferAllowDeath', argsBytes)
         },
 
         /**
-         * Set the balances of a given account.
-         * 
-         * This will alter `FreeBalance` and `ReservedBalance` in storage. it will
-         * also alter the total issuance of the system (`TotalIssuance`) appropriately.
-         * If the new free or reserved balance is below the existential deposit,
-         * it will reset the account nonce (`frame_system::AccountNonce`).
+         * Set the regular balance of a given account; it also takes a reserved balance but this
+         * must be the same as the account's current reserved balance.
          * 
          * The dispatch origin for this call is `root`.
+         * 
+         * WARNING: This call is DEPRECATED! Use `force_set_balance` instead.
          *
          * @param {unknown} _who [U8; 20]
          * @param {unknown} _new_free Compact<U128>
-         * @param {unknown} _new_reserved Compact<U128>
+         * @param {unknown} _old_reserved Compact<U128>
          * @instance
          */
-        setBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _new_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Balances', 'setBalance', false, {
+        setBalanceDeprecated: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _old_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'setBalanceDeprecated', false, {
                 who: _who,
                 new_free: _new_free,
-                new_reserved: _new_reserved,
+                old_reserved: _old_reserved,
            });
         },
 
         /**
-         * Similar to {@link: pangolin/balances/calls/setBalance}, but with scale encoded args.
+         * Similar to {@link: pangolin/balances/calls/setBalanceDeprecated}, but with scale encoded args.
          *
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
-            return await dispatch(signer, 'Balances', 'setBalance', true, argsBytes);
+        setBalanceDeprecatedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'setBalanceDeprecated', true, argsBytes);
         },
 
         /**
@@ -119,31 +99,27 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildSetBalanceCall: (_who: unknown, _new_free: unknown, _new_reserved: unknown) => {
-            return buildRuntimeCall(metadata, 'Balances', 'setBalance', {
+        buildSetBalanceDeprecatedCall: (_who: unknown, _new_free: unknown, _old_reserved: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'setBalanceDeprecated', {
                 who: _who,
                 new_free: _new_free,
-                new_reserved: _new_reserved,
+                old_reserved: _old_reserved,
             });
         },
 
         /**
          * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildSetBalanceCall, but with scale encoded args.
+         * Similar to buildSetBalanceDeprecatedCall, but with scale encoded args.
          *
          * @returns {CallAsParam} 
          */
-        buildSetBalanceCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'Balances', 'setBalance', argsBytes)
+        buildSetBalanceDeprecatedCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'setBalanceDeprecated', argsBytes)
         },
 
         /**
-         * Exactly as `transfer`, except the origin must be root and the source account may be
-         * specified.
-         * # <weight>
-         * - Same as transfer, but additional read and write because the source account is not
-         *   assumed to be in the overlay.
-         * # </weight>
+         * Exactly as `transfer_allow_death`, except the origin must be root and the source account
+         * may be specified.
          *
          * @param {unknown} _source [U8; 20]
          * @param {unknown} _dest [U8; 20]
@@ -192,12 +168,12 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Same as the [`transfer`] call, but with a check that the transfer will not kill the
-         * origin account.
+         * Same as the [`transfer_allow_death`] call, but with a check that the transfer will not
+         * kill the origin account.
          * 
-         * 99% of the time you want [`transfer`] instead.
+         * 99% of the time you want [`transfer_allow_death`] instead.
          * 
-         * [`transfer`]: struct.Pallet.html#method.transfer
+         * [`transfer_allow_death`]: struct.Pallet.html#method.transfer
          *
          * @param {unknown} _dest [U8; 20]
          * @param {unknown} _value Compact<U128>
@@ -257,9 +233,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * - `keep_alive`: A boolean to determine if the `transfer_all` operation should send all
          *   of the funds the account has, causing the sender account to be killed (false), or
          *   transfer everything except at least the existential deposit, which will guarantee to
-         *   keep the sender account alive (true). # <weight>
-         * - O(1). Just like transfer, but reading the user's transferable balance first.
-         *   #</weight>
+         *   keep the sender account alive (true).
          *
          * @param {unknown} _dest [U8; 20]
          * @param {unknown} _keep_alive Bool
@@ -350,6 +324,152 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          */
         buildForceUnreserveCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Balances', 'forceUnreserve', argsBytes)
+        },
+
+        /**
+         * Upgrade a specified account.
+         * 
+         * - `origin`: Must be `Signed`.
+         * - `who`: The account to be upgraded.
+         * 
+         * This will waive the transaction fee if at least all but 10% of the accounts needed to
+         * be upgraded. (We let some not have to be upgraded just in order to allow for the
+         * possibililty of churn).
+         *
+         * @param {unknown} _who Vec<[U8; 20]>
+         * @instance
+         */
+        upgradeAccounts: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'upgradeAccounts', false, {
+                who: _who,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangolin/balances/calls/upgradeAccounts}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        upgradeAccountsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'upgradeAccounts', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildUpgradeAccountsCall: (_who: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'upgradeAccounts', {
+                who: _who,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildUpgradeAccountsCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildUpgradeAccountsCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'upgradeAccounts', argsBytes)
+        },
+
+        /**
+         * Alias for `transfer_allow_death`, provided only for name-wise compatibility.
+         * 
+         * WARNING: DEPRECATED! Will be released in approximately 3 months.
+         *
+         * @param {unknown} _dest [U8; 20]
+         * @param {unknown} _value Compact<U128>
+         * @instance
+         */
+        transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'transfer', false, {
+                dest: _dest,
+                value: _value,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangolin/balances/calls/transfer}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'transfer', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildTransferCall: (_dest: unknown, _value: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'transfer', {
+                dest: _dest,
+                value: _value,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTransferCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildTransferCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'transfer', argsBytes)
+        },
+
+        /**
+         * Set the regular balance of a given account.
+         * 
+         * The dispatch origin for this call is `root`.
+         *
+         * @param {unknown} _who [U8; 20]
+         * @param {unknown} _new_free Compact<U128>
+         * @instance
+         */
+        forceSetBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'forceSetBalance', false, {
+                who: _who,
+                new_free: _new_free,
+           });
+        },
+
+        /**
+         * Similar to {@link: pangolin/balances/calls/forceSetBalance}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        forceSetBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Balances', 'forceSetBalance', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildForceSetBalanceCall: (_who: unknown, _new_free: unknown) => {
+            return buildRuntimeCall(metadata, 'Balances', 'forceSetBalance', {
+                who: _who,
+                new_free: _new_free,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildForceSetBalanceCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildForceSetBalanceCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Balances', 'forceSetBalance', argsBytes)
         },
 
     }

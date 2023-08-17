@@ -8,7 +8,6 @@ import {getTimestamp} from "./timestamp";
 import {getParachainInfo} from "./parachainInfo";
 import {getBalances} from "./balances";
 import {getAssets} from "./assets";
-import {getVesting} from "./vesting";
 import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
 import {getDarwiniaStaking} from "./darwiniaStaking";
@@ -51,7 +50,6 @@ export const buildPangoroCallsClient = (provider: providers.BaseProvider, metada
         parachainInfo: getParachainInfo(dispatch, metadata),
         balances: getBalances(dispatch, metadata),
         assets: getAssets(dispatch, metadata),
-        vesting: getVesting(dispatch, metadata),
         deposit: getDeposit(dispatch, metadata),
         accountMigration: getAccountMigration(dispatch, metadata),
         darwiniaStaking: getDarwiniaStaking(dispatch, metadata),

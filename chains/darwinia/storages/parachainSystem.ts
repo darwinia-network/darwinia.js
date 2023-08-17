@@ -234,7 +234,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * The next authorized upgrade, if there is one.
          *
-         * @returns {Promise<string | null>} H256: [U8; 32]
+         * @returns {Promise<string | null>} CodeUpgradeAuthorization: {code_hash: [U8; 32], check_version: Bool}
          */
         authorizedUpgrade: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'AuthorizedUpgrade');

@@ -51,13 +51,23 @@ export const getDarwiniaStaking = (getStorage: GetStorage) => {
         },
 
         /**
-         * Stakers' exposure.
+         * Current stakers' exposure.
          *
          * @param {unknown} param0 AccountId20: [U8; 20]
          * @returns {Promise<string | null>} Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
          */
         exposures: async (param0: unknown): Promise<string | null> => {
             return await getStorage('DarwiniaStaking', 'Exposures', param0);
+        },
+
+        /**
+         * Next stakers' exposure.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
+         */
+        nextExposures: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'NextExposures', param0);
         },
 
         /**

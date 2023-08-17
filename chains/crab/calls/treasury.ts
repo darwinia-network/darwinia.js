@@ -16,11 +16,8 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * is reserved and slashed if the proposal is rejected. It is returned once the
          * proposal is awarded.
          * 
-         * # <weight>
-         * - Complexity: O(1)
-         * - DbReads: `ProposalCount`, `origin account`
-         * - DbWrites: `ProposalCount`, `Proposals`, `origin account`
-         * # </weight>
+         * ## Complexity
+         * - O(1)
          *
          * @param {unknown} _value Compact<U128>
          * @param {unknown} _beneficiary [U8; 20]
@@ -70,11 +67,8 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * May only be called from `T::RejectOrigin`.
          * 
-         * # <weight>
-         * - Complexity: O(1)
-         * - DbReads: `Proposals`, `rejected proposer account`
-         * - DbWrites: `Proposals`, `rejected proposer account`
-         * # </weight>
+         * ## Complexity
+         * - O(1)
          *
          * @param {unknown} _proposal_id Compact<U32>
          * @instance
@@ -122,11 +116,8 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * 
          * May only be called from `T::ApproveOrigin`.
          * 
-         * # <weight>
-         * - Complexity: O(1).
-         * - DbReads: `Proposals`, `Approvals`
-         * - DbWrite: `Approvals`
-         * # </weight>
+         * ## Complexity
+         *  - O(1).
          *
          * @param {unknown} _proposal_id Compact<U32>
          * @instance
@@ -228,10 +219,8 @@ export const getTreasury = (dispatch: Dispatch, metadata: Metadata) => {
          * May only be called from `T::RejectOrigin`.
          * - `proposal_id`: The index of a proposal
          * 
-         * # <weight>
-         * - Complexity: O(A) where `A` is the number of approvals
-         * - Db reads and writes: `Approvals`
-         * # </weight>
+         * ## Complexity
+         * - O(A) where `A` is the number of approvals
          * 
          * Errors:
          * - `ProposalNotApproved`: The `proposal_id` supplied was not found in the approval queue,
