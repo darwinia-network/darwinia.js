@@ -1,6 +1,6 @@
 # darwinia.js
 
-Version >= ^3.0.1 for Darwinia 2.0. Version < 3.0.0 is for Darwinia 1.0.
+Version >= ^3.0.2 for Darwinia 2.0. Version < 3.0.0 is for Darwinia 1.0.
 
 A library to help
 
@@ -11,7 +11,7 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.0.1
+npm install darwinia.js@^3.0.2
 ```
 
 ## Browser
@@ -21,7 +21,7 @@ Collators Amount: <span id="result"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.1";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.2";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
 
@@ -40,7 +40,7 @@ Collators Amount: <span id="result"></span>
 
 Try it in jsfiddle:
 
-https://jsfiddle.net/wuminzhe/gwp4ovz1/
+https://jsfiddle.net/wuminzhe/gwp4ovz1/4/
 
 ## Usage
 
