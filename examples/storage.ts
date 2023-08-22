@@ -5,21 +5,12 @@ async function main(): Promise<void> {
   // web3 provider, provided by sdk users
   const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
 
-  // Way 1
-  const metadata = buildMetadata(pangolinStaticMetadata);
-  const getPangolinStorage = getStorage(provider, metadata);
-  let result = await getPangolinStorage(
-    "System", // start with a upcase char
-    "Account", // start with a upcase char
-    "0x773539d4Ac0e786233D90A233654ccEE26a613D9"
-  );
-  console.log(`decoded: ${result}\n`);
+  let result
 
-  result = await getPangolinStorage("System", 'Account', "0x773539d4Ac0e786233D90A233654ccEE26a613D9");
-  console.log(`decoded: ${result}\n`);
-
-  // Way 2
   const pangolin = clientBuilder.buildPangolinClient(provider);
+  result = await pangolin.storages.darwiniaStaking.ledgers("0xf24FF3a9CF04c71Dbc94D0b566f7A27B94566cac");
+  console.log(`decoded: ${result}\n`);
+
   result = await pangolin.storages.darwiniaStaking.collatorCount();
   console.log(`decoded: ${result}\n`);
 }

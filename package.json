@@ -1,6 +1,6 @@
 {
   "name": "darwinia.js",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
@@ -43,7 +43,7 @@
     "typescript": "^4.9.3"
   },
   "dependencies": {
-    "@polkadot/types": "^9.9.4",
+    "@polkadot/types": "^9.14.2",
     "ethers": "^5.7.2"
   }
 }
