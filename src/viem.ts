@@ -140,21 +140,33 @@ export async function publicClientToProvider(publicClient: PublicClient) {
   }
 }
 
-export function walletClientToSigner(walletClient: WalletClient, privateKey?: `0x${string}`): [ethers.providers.BaseProvider, ethers.Signer] {
-  const { transport } = walletClient
-
-  if (privateKey && transport.type == 'http') {
-    const provider = new ethers.providers.JsonRpcProvider(transport.url)
-    const signer = new ethers.Wallet(privateKey, provider);
-    return [provider, signer]
-  } else if (transport.type == 'custom') {
-    const windowEthereum = eval("window.ethereum")
-    const provider = new ethers.providers.Web3Provider(windowEthereum)
-    const signer = provider.getSigner()
-    return [provider, signer]
-  } else {
-    throw new Error("not support")
+// export function walletClientToSigner(walletClient: WalletClient, privateKey?: `0x${string}`): [ethers.providers.BaseProvider, ethers.Signer] {
+//   const { transport } = walletClient
+//
+//   if (privateKey && transport.type == 'http') {
+//     const provider = new ethers.providers.JsonRpcProvider(transport.url)
+//     const signer = new ethers.Wallet(privateKey, provider);
+//     return [provider, signer]
+//   } else if (transport.type == 'custom') {
+//     const windowEthereum = eval("window.ethereum")
+//     const provider = new ethers.providers.Web3Provider(windowEthereum)
+//     const signer = provider.getSigner()
+//     return [provider, signer]
+//   } else {
+//     throw new Error("not support")
+//   }
+// }
+//
+export function walletClientToSigner(walletClient: WalletClient) {
+  const { account, chain, transport } = walletClient
+  const network = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: chain.contracts?.ensRegistry?.address,
   }
+  const provider = new providers.Web3Provider(transport, network)
+  const signer = provider.getSigner(account.address)
+  return signer
 }
 
 // import { http, createPublicClient, createWalletClient } from "viem"
