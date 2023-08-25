@@ -113,61 +113,88 @@ function getChainByChainId(chainId: number) {
 ////////////////////////////
 export const darwiniaChains = { darwinia, crab, pangolin, pangoro }
 
-export async function publicClientToProvider(publicClient: PublicClient) {
-  const chainId = await publicClient.getChainId()
-  const chain = getChainByChainId(chainId)
+export async function publicClientToProvider(publicClient: PublicClient): Promise<ethers.providers.BaseProvider> {
+  let { chain, transport } = publicClient
 
-  const { transport } = publicClient
-
-  const network = {
-    chainId: chain.id,
-    name: chain.name
+  // check if the chain id matches
+  const chainIdFromTransport = await publicClient.getChainId()
+  if (chain && chain.id != chainIdFromTransport) {
+    throw new Error(`chain id not match, chain: ${chain.id}, transport: ${chainIdFromTransport}`)
   }
 
-  if (transport.type === 'custom') {
-    const url = chain.rpcUrls.default.http[0]
-    return new ethers.providers.JsonRpcProvider(url)
-  } else if (transport.type === 'fallback') {
-    return new ethers.providers.FallbackProvider(
-      (transport.transports as ReturnType<HttpTransport>[]).map(
-        ({ value }) => new ethers.providers.JsonRpcProvider(value?.url, network),
-      ),
-    )
-  } else if (transport.type === 'http') {
-    return new ethers.providers.JsonRpcProvider(transport.url, network)
-  } else {
-    throw new Error("not support")
-  }
-}
+  chain = getChainByChainId(chainIdFromTransport)
+  // only support darwinia chain as only the darwinia chains have the dispatch precompile.
+  if (!chain) throw new Error(`wrong darwinia chain id: ${chainIdFromTransport}`)
 
-// export function walletClientToSigner(walletClient: WalletClient, privateKey?: `0x${string}`): [ethers.providers.BaseProvider, ethers.Signer] {
-//   const { transport } = walletClient
-//
-//   if (privateKey && transport.type == 'http') {
-//     const provider = new ethers.providers.JsonRpcProvider(transport.url)
-//     const signer = new ethers.Wallet(privateKey, provider);
-//     return [provider, signer]
-//   } else if (transport.type == 'custom') {
-//     const windowEthereum = eval("window.ethereum")
-//     const provider = new ethers.providers.Web3Provider(windowEthereum)
-//     const signer = provider.getSigner()
-//     return [provider, signer]
-//   } else {
-//     throw new Error("not support")
-//   }
-// }
-//
-export function walletClientToSigner(walletClient: WalletClient) {
-  const { account, chain, transport } = walletClient
   const network = {
     chainId: chain.id,
     name: chain.name,
     ensAddress: chain.contracts?.ensRegistry?.address,
   }
-  const provider = new providers.Web3Provider(transport, network)
-  const signer = provider.getSigner(account.address)
-  return signer
+
+  if (transport.type === 'fallback')
+    return new ethers.providers.FallbackProvider(
+      (transport.transports as ReturnType<HttpTransport>[]).map(
+        ({ value }) => new ethers.providers.JsonRpcProvider(value?.url, network),
+      ),
+    )
+
+  // check if there is a window ethereum object exists
+  try {
+    const windowEthereum = eval("window.ethereum")
+    return new ethers.providers.Web3Provider(windowEthereum, network)
+  } catch (err) {
+    const url = transport.url || chain.rpcUrls?.default?.http[0]
+    if (url) {
+      return new ethers.providers.JsonRpcProvider(url, network)
+    } else {
+      throw new Error(`not support, transport: ${JSON.stringify(transport)}`)
+    }
+  }
 }
+
+export async function walletClientToSigner(walletClient: WalletClient, privateKey?: `0x${string}`): Promise<[ethers.providers.BaseProvider, ethers.Signer]> {
+  let { account, chain, transport } = walletClient
+
+  // check if the chain id matches
+  const chainIdFromTransport = await walletClient.getChainId()
+  if (chain && chain.id != chainIdFromTransport) {
+    throw new Error(`chain id not match, chain: ${chain.id}, transport: ${chainIdFromTransport}`)
+  }
+
+  chain = getChainByChainId(chainIdFromTransport)
+  // only support darwinia chain as only the darwinia chains have the dispatch precompile.
+  if (!chain) throw new Error(`wrong darwinia chain id: ${chainIdFromTransport}`)
+
+  const network = {
+    chainId: chain.id,
+    name: chain.name,
+    ensAddress: chain.contracts?.ensRegistry?.address,
+  }
+
+  // check if there is a window ethereum object exists
+  try {
+    const windowEthereum = eval("window.ethereum")
+    const provider = new ethers.providers.Web3Provider(windowEthereum, network)
+    let signer: ethers.Signer;
+    if (account) {
+      signer = provider.getSigner(account.address)
+    } else {
+      signer = provider.getSigner()
+    }
+    return [provider, signer]
+  } catch (err) {
+    const url = transport.url || chain.rpcUrls?.default?.http[0]
+    if (url && privateKey) {
+      const provider = new ethers.providers.JsonRpcProvider(url, network)
+      const signer = new ethers.Wallet(privateKey, provider);
+      return [provider, signer]
+    } else {
+      throw new Error(`url or privateKey not found, transport: ${JSON.stringify(transport)}`)
+    }
+  }
+}
+
 
 // import { http, createPublicClient, createWalletClient } from "viem"
 // import { clientBuilder } from "../index"
@@ -189,7 +216,7 @@ export function walletClientToSigner(walletClient: WalletClient) {
 //     transport: http("https://pangolin-rpc.darwinia.network")
 //   })
 //
-//   const [provider, signer] = walletClientToSigner(walletClient, privateKey)
+//   const [provider, signer] = await walletClientToSigner(walletClient, privateKey)
 //
 //   const pangolin = clientBuilder.buildPangolinClient(provider);
 //   return await pangolin.calls.session.setKeys(
@@ -200,8 +227,9 @@ export function walletClientToSigner(walletClient: WalletClient) {
 //     "0x" // proof
 //   );
 // }
+//
 // async function main(): Promise<void> {
-//   // await getStorage()
+//   await getStorage()
 //   console.log(await dispatchCall())
 // }
 // main().catch(err => console.log(err));
