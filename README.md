@@ -42,6 +42,61 @@ Try it in jsfiddle:
 
 https://jsfiddle.net/wuminzhe/gwp4ovz1/4/
 
+## Browser - viem
+
+```html
+Collators Amount: <span id="result"></span>
+
+<script type="module">
+  import {
+    ethers
+  } from "https://esm.sh/ethers@5.7.2";
+  import {
+    custom,
+    createPublicClient,
+    createWalletClient
+  } from "https://esm.sh/viem@1.7.0"
+  import {
+    clientBuilder,
+    publicClientToProvider,
+    walletClientToSigner
+  } from "https://esm.sh/darwinia.js@3.0.3";
+  
+  ///////////////////////
+  // storage
+  ///////////////////////
+  // convert viem public client to ethers provider
+  const publicClient = createPublicClient({
+    transport: custom(window.ethereum)
+  })
+  const provider = await publicClientToProvider(publicClient);
+	//
+  const client = clientBuilder.buildPangolinClient(provider);
+  const result = await client.storages.darwiniaStaking.collatorCount();
+  const resultEl = document.getElementById("result");
+  resultEl.innerHTML = result; 
+  
+  ///////////////////////
+  // call
+  ///////////////////////
+  // convert viem wallet client to ethers provider & signer
+	const walletClient = createWalletClient({
+    transport: custom(window.ethereum)
+  })
+  const [provider2, signer] = walletClientToSigner(walletClient)
+  //
+  const pangolin = clientBuilder.buildPangolinClient(provider2);
+  await pangolin.calls.session.setKeys(
+    signer, {
+      aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
+    }, // keys
+    "0x" // proof
+  );
+</script>
+```
+
+https://jsfiddle.net/wuminzhe/amwL4jpk/1/
+
 ## Usage
 
 ### fetch storage
