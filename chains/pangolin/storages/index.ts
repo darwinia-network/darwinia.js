@@ -34,6 +34,8 @@ import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
+import {getAssetManager} from "./assetManager";
+import {getAssetLimit} from "./assetLimit";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
 import {getBridgeMoonbaseGrandpa} from "./bridgeMoonbaseGrandpa";
@@ -76,6 +78,8 @@ export const buildPangolinStoragesClient = (provider: providers.BaseProvider, me
         polkadotXcm: getPolkadotXcm(getStorage),
         ethereumXcm: getEthereumXcm(getStorage),
         dmpQueue: getDmpQueue(getStorage),
+        assetManager: getAssetManager(getStorage),
+        assetLimit: getAssetLimit(getStorage),
         ethereum: getEthereum(getStorage),
         evm: getEVM(getStorage),
         bridgeMoonbaseGrandpa: getBridgeMoonbaseGrandpa(getStorage),

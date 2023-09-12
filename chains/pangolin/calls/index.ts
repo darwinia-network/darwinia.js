@@ -32,6 +32,9 @@ import {getPolkadotXcm} from "./polkadotXcm";
 import {getCumulusXcm} from "./cumulusXcm";
 import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
+import {getAssetManager} from "./assetManager";
+import {getXTokens} from "./xTokens";
+import {getAssetLimit} from "./assetLimit";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
 import {getMessageTransact} from "./messageTransact";
@@ -74,6 +77,9 @@ export const buildPangolinCallsClient = (provider: providers.BaseProvider, metad
         cumulusXcm: getCumulusXcm(dispatch, metadata),
         ethereumXcm: getEthereumXcm(dispatch, metadata),
         dmpQueue: getDmpQueue(dispatch, metadata),
+        assetManager: getAssetManager(dispatch, metadata),
+        xTokens: getXTokens(dispatch, metadata),
+        assetLimit: getAssetLimit(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
         evm: getEVM(dispatch, metadata),
         messageTransact: getMessageTransact(dispatch, metadata),

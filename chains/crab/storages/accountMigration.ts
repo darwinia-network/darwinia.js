@@ -16,7 +16,7 @@ export const getAccountMigration = (getStorage: GetStorage) => {
          * <https://github.dev/paritytech/substrate/blob/19162e43be45817b44c7d48e50d03f074f60fbf4/frame/system/src/lib.rs#L545>
          *
          * @param {unknown} param0 AccountId32: [U8; 32]
-         * @returns {Promise<string | null>} AccountInfo: {nonce: U32, consumers: U32, providers: U32, sufficients: U32, data: {free: U128, reserved: U128, misc_frozen: U128, fee_frozen: U128}}
+         * @returns {Promise<string | null>} AccountInfo: {nonce: U32, consumers: U32, providers: U32, sufficients: U32, data: {free: U128, reserved: U128, frozen: U128, flags: U128}}
          */
         accounts: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'Accounts', param0);
@@ -32,18 +32,6 @@ export const getAccountMigration = (getStorage: GetStorage) => {
          */
         ktonAccounts: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'KtonAccounts', param0);
-        },
-
-        /**
-         * [`pallet_vesting::Vesting`] data.
-         *
-         * <https://github.dev/paritytech/substrate/blob/19162e43be45817b44c7d48e50d03f074f60fbf4/frame/vesting/src/lib.rs#L188>
-         *
-         * @param {unknown} param0 AccountId32: [U8; 32]
-         * @returns {Promise<string | null>} Vec<{locked: U128, per_block: U128, starting_block: U32}>
-         */
-        vestings: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('AccountMigration', 'Vestings', param0);
         },
 
         /**

@@ -104,7 +104,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @returns {Promise<string | null>} MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: (U32, U32), ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
+         * @returns {Promise<string | null>} MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: {remaining_count: U32, remaining_size: U32}, ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
          */
         relevantMessagingState: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'RelevantMessagingState');

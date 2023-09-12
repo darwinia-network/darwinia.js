@@ -687,7 +687,9 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Disallow further unprivileged transfers from an account.
+         * Disallow further unprivileged transfers of an asset `id` from an account `who`. `who`
+         * must already exist as an entry in `Account`s of the asset. If you want to freeze an
+         * account that does not have an entry, use `touch_other` first.
          * 
          * Origin must be Signed and the sender should be the Freezer of the asset `id`.
          * 
@@ -742,7 +744,7 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Allow unprivileged transfers from an account again.
+         * Allow unprivileged transfers to and from an account again.
          * 
          * Origin must be Signed and the sender should be the Admin of the asset `id`.
          * 
@@ -1650,11 +1652,13 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Return the deposit (if any) of an asset account.
+         * Return the deposit (if any) of an asset account or a consumer reference (if any) of an
+         * account.
          * 
          * The origin must be Signed.
          * 
-         * - `id`: The identifier of the asset for the account to be created.
+         * - `id`: The identifier of the asset for which the caller would like the deposit
+         *   refunded.
          * - `allow_burn`: If `true` then assets may be destroyed in order to complete the refund.
          * 
          * Emits `Refunded` event when successful.
@@ -1757,6 +1761,171 @@ export const getAssets = (dispatch: Dispatch, metadata: Metadata) => {
          */
         buildSetMinBalanceCallH: (argsBytes: BytesLike) => {
             return decodeCall(metadata, 'Assets', 'setMinBalance', argsBytes)
+        },
+
+        /**
+         * Create an asset account for `who`.
+         * 
+         * A deposit will be taken from the signer account.
+         * 
+         * - `origin`: Must be Signed by `Freezer` or `Admin` of the asset `id`; the signer account
+         *   must have sufficient funds for a deposit to be taken.
+         * - `id`: The identifier of the asset for the account to be created.
+         * - `who`: The account to be created.
+         * 
+         * Emits `Touched` event when successful.
+         *
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
+         * @instance
+         */
+        touchOther: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'touchOther', false, {
+                id: _id,
+                who: _who,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/assets/calls/touchOther}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        touchOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'touchOther', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildTouchOtherCall: (_id: unknown, _who: unknown) => {
+            return buildRuntimeCall(metadata, 'Assets', 'touchOther', {
+                id: _id,
+                who: _who,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildTouchOtherCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildTouchOtherCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Assets', 'touchOther', argsBytes)
+        },
+
+        /**
+         * Return the deposit (if any) of a target asset account. Useful if you are the depositor.
+         * 
+         * The origin must be Signed and either the account owner, depositor, or asset `Admin`. In
+         * order to burn a non-zero balance of the asset, the caller must be the account and should
+         * use `refund`.
+         * 
+         * - `id`: The identifier of the asset for the account holding a deposit.
+         * - `who`: The account to refund.
+         * 
+         * Emits `Refunded` event when successful.
+         *
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
+         * @instance
+         */
+        refundOther: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'refundOther', false, {
+                id: _id,
+                who: _who,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/assets/calls/refundOther}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        refundOtherH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'refundOther', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildRefundOtherCall: (_id: unknown, _who: unknown) => {
+            return buildRuntimeCall(metadata, 'Assets', 'refundOther', {
+                id: _id,
+                who: _who,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildRefundOtherCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildRefundOtherCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Assets', 'refundOther', argsBytes)
+        },
+
+        /**
+         * Disallow further unprivileged transfers of an asset `id` to and from an account `who`.
+         * 
+         * Origin must be Signed and the sender should be the Freezer of the asset `id`.
+         * 
+         * - `id`: The identifier of the account's asset.
+         * - `who`: The account to be unblocked.
+         * 
+         * Emits `Blocked`.
+         * 
+         * Weight: `O(1)`
+         *
+         * @param {unknown} _id Compact<U64>
+         * @param {unknown} _who [U8; 20]
+         * @instance
+         */
+        block: async (signer: ethers.Signer, _id: unknown, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'block', false, {
+                id: _id,
+                who: _who,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/assets/calls/block}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        blockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+            return await dispatch(signer, 'Assets', 'block', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildBlockCall: (_id: unknown, _who: unknown) => {
+            return buildRuntimeCall(metadata, 'Assets', 'block', {
+                id: _id,
+                who: _who,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildBlockCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildBlockCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'Assets', 'block', argsBytes)
         },
 
     }
