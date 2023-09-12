@@ -14,7 +14,6 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         /**
          * Make some on-chain remark.
          * 
-         * ## Complexity
          * - `O(1)`
          *
          * @param {unknown} _remark Vec<U8>
@@ -102,9 +101,6 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 
         /**
          * Set the new runtime code.
-         * 
-         * ## Complexity
-         * - `O(C + S)` where `C` length of `code` and `S` complexity of `can_set_code`
          *
          * @param {unknown} _code Vec<U8>
          * @instance
@@ -148,9 +144,6 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
 
         /**
          * Set the new runtime code without doing any checks of the given `code`.
-         * 
-         * ## Complexity
-         * - `O(C)` where `C` length of `code`
          *
          * @param {unknown} _code Vec<U8>
          * @instance
