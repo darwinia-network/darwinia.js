@@ -11,7 +11,7 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.0.2
+npm install darwinia.js@^3.0.4
 ```
 
 ## Browser
@@ -21,7 +21,7 @@ Collators Amount: <span id="result"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.2";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.4";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
 
