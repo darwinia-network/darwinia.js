@@ -30,7 +30,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _weight_limit {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
-        serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        serviceOverweight: async (signer: ethers.Signer, _index: unknown, _weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', false, {
                 index: _index,
                 weight_limit: _weight_limit,
@@ -43,7 +43,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        serviceOverweightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        serviceOverweightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'serviceOverweight', true, argsBytes);
         },
 
@@ -76,7 +76,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        suspendXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        suspendXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'suspendXcmExecution', false, {
            });
         },
@@ -87,7 +87,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        suspendXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        suspendXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'suspendXcmExecution', true);
         },
 
@@ -120,7 +120,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        resumeXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        resumeXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'resumeXcmExecution', false, {
            });
         },
@@ -131,7 +131,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        resumeXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        resumeXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'resumeXcmExecution', true);
         },
 
@@ -165,7 +165,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new U32
          * @instance
          */
-        updateSuspendThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateSuspendThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', false, {
                 new: _new,
            });
@@ -177,7 +177,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateSuspendThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateSuspendThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateSuspendThreshold', true, argsBytes);
         },
 
@@ -212,7 +212,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new U32
          * @instance
          */
-        updateDropThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateDropThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', false, {
                 new: _new,
            });
@@ -224,7 +224,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateDropThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateDropThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateDropThreshold', true, argsBytes);
         },
 
@@ -259,7 +259,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new U32
          * @instance
          */
-        updateResumeThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateResumeThreshold: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', false, {
                 new: _new,
            });
@@ -271,7 +271,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateResumeThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateResumeThresholdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateResumeThreshold', true, argsBytes);
         },
 
@@ -305,7 +305,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
-        updateThresholdWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateThresholdWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', false, {
                 new: _new,
            });
@@ -317,7 +317,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateThresholdWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateThresholdWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateThresholdWeight', true, argsBytes);
         },
 
@@ -352,7 +352,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
-        updateWeightRestrictDecay: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateWeightRestrictDecay: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', false, {
                 new: _new,
            });
@@ -364,7 +364,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateWeightRestrictDecayH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateWeightRestrictDecayH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateWeightRestrictDecay', true, argsBytes);
         },
 
@@ -399,7 +399,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
-        updateXcmpMaxIndividualWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateXcmpMaxIndividualWeight: async (signer: ethers.Signer, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', false, {
                 new: _new,
            });
@@ -411,7 +411,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateXcmpMaxIndividualWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateXcmpMaxIndividualWeightH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XcmpQueue', 'updateXcmpMaxIndividualWeight', true, argsBytes);
         },
 

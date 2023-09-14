@@ -20,7 +20,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _is_sufficient Bool
          * @instance
          */
-        registerForeignAsset: async (signer: ethers.Signer, _asset: unknown, _metadata: unknown, _min_amount: unknown, _is_sufficient: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        registerForeignAsset: async (signer: ethers.Signer, _asset: unknown, _metadata: unknown, _min_amount: unknown, _is_sufficient: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'registerForeignAsset', false, {
                 asset: _asset,
                 metadata: _metadata,
@@ -35,7 +35,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        registerForeignAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        registerForeignAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'registerForeignAsset', true, argsBytes);
         },
 
@@ -72,7 +72,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_assets_weight_hint U32
          * @instance
          */
-        setAssetUnitsPerSecond: async (signer: ethers.Signer, _asset_type: unknown, _units_per_second: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setAssetUnitsPerSecond: async (signer: ethers.Signer, _asset_type: unknown, _units_per_second: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'setAssetUnitsPerSecond', false, {
                 asset_type: _asset_type,
                 units_per_second: _units_per_second,
@@ -86,7 +86,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setAssetUnitsPerSecondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setAssetUnitsPerSecondH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'setAssetUnitsPerSecond', true, argsBytes);
         },
 
@@ -123,7 +123,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_assets_weight_hint U32
          * @instance
          */
-        changeExistingAssetType: async (signer: ethers.Signer, _asset_id: unknown, _new_asset_type: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        changeExistingAssetType: async (signer: ethers.Signer, _asset_id: unknown, _new_asset_type: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'changeExistingAssetType', false, {
                 asset_id: _asset_id,
                 new_asset_type: _new_asset_type,
@@ -137,7 +137,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        changeExistingAssetTypeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        changeExistingAssetTypeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'changeExistingAssetType', true, argsBytes);
         },
 
@@ -170,7 +170,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_assets_weight_hint U32
          * @instance
          */
-        removeSupportedAsset: async (signer: ethers.Signer, _asset_type: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        removeSupportedAsset: async (signer: ethers.Signer, _asset_type: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'removeSupportedAsset', false, {
                 asset_type: _asset_type,
                 num_assets_weight_hint: _num_assets_weight_hint,
@@ -183,7 +183,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        removeSupportedAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeSupportedAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'removeSupportedAsset', true, argsBytes);
         },
 
@@ -216,7 +216,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_assets_weight_hint U32
          * @instance
          */
-        removeExistingAssetType: async (signer: ethers.Signer, _asset_id: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        removeExistingAssetType: async (signer: ethers.Signer, _asset_id: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'removeExistingAssetType', false, {
                 asset_id: _asset_id,
                 num_assets_weight_hint: _num_assets_weight_hint,
@@ -229,7 +229,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        removeExistingAssetTypeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeExistingAssetTypeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'removeExistingAssetType', true, argsBytes);
         },
 
@@ -268,7 +268,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _min_balance U128
          * @instance
          */
-        registerLocalAsset: async (signer: ethers.Signer, _creator: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        registerLocalAsset: async (signer: ethers.Signer, _creator: unknown, _owner: unknown, _is_sufficient: unknown, _min_balance: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'registerLocalAsset', false, {
                 creator: _creator,
                 owner: _owner,
@@ -283,7 +283,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        registerLocalAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        registerLocalAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'registerLocalAsset', true, argsBytes);
         },
 
@@ -321,7 +321,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_assets_weight_hint U32
          * @instance
          */
-        destroyForeignAsset: async (signer: ethers.Signer, _asset_id: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        destroyForeignAsset: async (signer: ethers.Signer, _asset_id: unknown, _num_assets_weight_hint: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'destroyForeignAsset', false, {
                 asset_id: _asset_id,
                 num_assets_weight_hint: _num_assets_weight_hint,
@@ -334,7 +334,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        destroyForeignAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        destroyForeignAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'destroyForeignAsset', true, argsBytes);
         },
 
@@ -369,7 +369,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _asset_id U64
          * @instance
          */
-        destroyLocalAsset: async (signer: ethers.Signer, _asset_id: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        destroyLocalAsset: async (signer: ethers.Signer, _asset_id: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'destroyLocalAsset', false, {
                 asset_id: _asset_id,
            });
@@ -381,7 +381,7 @@ export const getAssetManager = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        destroyLocalAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        destroyLocalAssetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetManager', 'destroyLocalAsset', true, argsBytes);
         },
 

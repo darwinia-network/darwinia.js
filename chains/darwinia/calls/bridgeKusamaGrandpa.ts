@@ -24,7 +24,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {unknown} _justification {round: U64, commit: {target_hash: [U8; 32], target_number: U32, precommits: Vec<{precommit: {target_hash: [U8; 32], target_number: U32}, signature: [U8; 64], id: [U8; 32]}>}, votes_ancestries: Vec<{parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}>}
          * @instance
          */
-        submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProof: async (signer: ethers.Signer, _finality_target: unknown, _justification: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'submitFinalityProof', false, {
                 finality_target: _finality_target,
                 justification: _justification,
@@ -37,7 +37,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        submitFinalityProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitFinalityProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'submitFinalityProof', true, argsBytes);
         },
 
@@ -77,7 +77,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {unknown} _init_data {header: {parent_hash: [U8; 32], number: Compact<U32>, state_root: [U8; 32], extrinsics_root: [U8; 32], digest: {logs: Vec<Enum<{6/PreRuntime: ([U8; 4], Vec<U8>), 4/Consensus: ([U8; 4], Vec<U8>), 5/Seal: ([U8; 4], Vec<U8>), 0/Other: Vec<U8>, 8/RuntimeEnvironmentUpdated: }>>}}, authority_list: Vec<([U8; 32], U64)>, set_id: U64, operating_mode: Enum<{0/Normal: , 1/Halted: }>}
          * @instance
          */
-        initialize: async (signer: ethers.Signer, _init_data: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        initialize: async (signer: ethers.Signer, _init_data: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'initialize', false, {
                 init_data: _init_data,
            });
@@ -89,7 +89,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        initializeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        initializeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'initialize', true, argsBytes);
         },
 
@@ -122,7 +122,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 20]}>
          * @instance
          */
-        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'setOwner', false, {
                 new_owner: _new_owner,
            });
@@ -134,7 +134,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'setOwner', true, argsBytes);
         },
 
@@ -167,7 +167,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {unknown} _operating_mode Enum<{0/Normal: , 1/Halted: }>
          * @instance
          */
-        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'setOperatingMode', false, {
                 operating_mode: _operating_mode,
            });
@@ -179,7 +179,7 @@ export const getBridgeKusamaGrandpa = (dispatch: Dispatch, metadata: Metadata) =
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaGrandpa', 'setOperatingMode', true, argsBytes);
         },
 

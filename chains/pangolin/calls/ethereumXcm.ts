@@ -18,7 +18,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _xcm_transaction Enum<{0/V1: {gas_limit: [U64; 4], fee_payment: Enum<{0/Manual: {gas_price: Enum<{0/None, 1/Some}>, max_fee_per_gas: Enum<{0/None, 1/Some}>}, 1/Auto: }>, action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}, 1/V2: {gas_limit: [U64; 4], action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}}>
          * @instance
          */
-        transact: async (signer: ethers.Signer, _xcm_transaction: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transact: async (signer: ethers.Signer, _xcm_transaction: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'transact', false, {
                 xcm_transaction: _xcm_transaction,
            });
@@ -30,7 +30,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transactH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transactH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'transact', true, argsBytes);
         },
 
@@ -63,7 +63,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _xcm_transaction Enum<{0/V1: {gas_limit: [U64; 4], fee_payment: Enum<{0/Manual: {gas_price: Enum<{0/None, 1/Some}>, max_fee_per_gas: Enum<{0/None, 1/Some}>}, 1/Auto: }>, action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}, 1/V2: {gas_limit: [U64; 4], action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}}>
          * @instance
          */
-        transactThroughProxy: async (signer: ethers.Signer, _transact_as: unknown, _xcm_transaction: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transactThroughProxy: async (signer: ethers.Signer, _transact_as: unknown, _xcm_transaction: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'transactThroughProxy', false, {
                 transact_as: _transact_as,
                 xcm_transaction: _xcm_transaction,
@@ -76,7 +76,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transactThroughProxyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transactThroughProxyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'transactThroughProxy', true, argsBytes);
         },
 
@@ -109,7 +109,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        suspendEthereumXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        suspendEthereumXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'suspendEthereumXcmExecution', false, {
            });
         },
@@ -120,7 +120,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        suspendEthereumXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        suspendEthereumXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'suspendEthereumXcmExecution', true);
         },
 
@@ -151,7 +151,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        resumeEthereumXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        resumeEthereumXcmExecution: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'resumeEthereumXcmExecution', false, {
            });
         },
@@ -162,7 +162,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        resumeEthereumXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        resumeEthereumXcmExecutionH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EthereumXcm', 'resumeEthereumXcmExecution', true);
         },
 

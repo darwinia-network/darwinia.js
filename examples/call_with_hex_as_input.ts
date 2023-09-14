@@ -11,12 +11,12 @@ async function main(): Promise<void> {
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
   // call ended with `H` is the version that accept params encoded in scale codec  
-  const receipt = await pangolin.calls.session.setKeysH(
+  const tx = await pangolin.calls.session.setKeysH(
     signer,
     "0xd42593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00", // encoded keys and proof
   );
 
-  console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));

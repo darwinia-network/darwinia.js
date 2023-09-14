@@ -33,8 +33,8 @@ Collators Amount: <span id="result"></span>
   // call
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = provider.getSigner();
-  const from = await signer.getAddress();
-  await client.calls.system.remarkWithEvent(signer, "0x12345678");
+  const tx = await client.calls.system.remarkWithEvent(signer, "0x12345678");
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 </script>
 ```
 
@@ -83,13 +83,14 @@ async function main(): Promise<void> {
 
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
-  await pangolin.calls.session.setKeys(
+  const tx = await pangolin.calls.session.setKeys(
     signer,
     {
       aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
     }, // keys
     "0x" // proof
   );
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();
@@ -121,7 +122,8 @@ async function main(): Promise<void> {
   const collectCall = pangolin.calls.staking.buildCollectCall(120000000);
 
   // dispatch
-  await pangolin.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  const tx = await pangolin.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();
@@ -141,10 +143,11 @@ async function main(): Promise<void> {
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
   // call ended with `D` is the version that accept params encoded in scale codec
-  await pangolin.calls.session.setKeysH(
+  const tx = await pangolin.calls.session.setKeysH(
     signer,
     "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00" // encoded (keys, proof)
   );
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();

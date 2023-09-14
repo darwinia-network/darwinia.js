@@ -18,7 +18,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value U128
          * @instance
          */
-        withdraw: async (signer: ethers.Signer, _address: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        withdraw: async (signer: ethers.Signer, _address: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'withdraw', false, {
                 address: _address,
                 value: _value,
@@ -31,7 +31,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        withdrawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        withdrawH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'withdraw', true, argsBytes);
         },
 
@@ -71,7 +71,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
          * @instance
          */
-        call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        call: async (signer: ethers.Signer, _source: unknown, _target: unknown, _input: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'call', false, {
                 source: _source,
                 target: _target,
@@ -91,7 +91,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        callH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        callH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'call', true, argsBytes);
         },
 
@@ -138,7 +138,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
          * @instance
          */
-        create: async (signer: ethers.Signer, _source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        create: async (signer: ethers.Signer, _source: unknown, _init: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'create', false, {
                 source: _source,
                 init: _init,
@@ -157,7 +157,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        createH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'create', true, argsBytes);
         },
 
@@ -203,7 +203,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _access_list Vec<([U8; 20], Vec<[U8; 32]>)>
          * @instance
          */
-        create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        create2: async (signer: ethers.Signer, _source: unknown, _init: unknown, _salt: unknown, _value: unknown, _gas_limit: unknown, _max_fee_per_gas: unknown, _max_priority_fee_per_gas: unknown, _nonce: unknown, _access_list: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'create2', false, {
                 source: _source,
                 init: _init,
@@ -223,7 +223,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        create2H: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        create2H: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'EVM', 'create2', true, argsBytes);
         },
 

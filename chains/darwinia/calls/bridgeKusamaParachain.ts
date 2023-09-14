@@ -24,7 +24,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {unknown} _parachain_heads_proof Vec<Vec<U8>>
          * @instance
          */
-        submitParachainHeads: async (signer: ethers.Signer, _at_relay_block: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        submitParachainHeads: async (signer: ethers.Signer, _at_relay_block: unknown, _parachains: unknown, _parachain_heads_proof: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', false, {
                 at_relay_block: _at_relay_block,
                 parachains: _parachains,
@@ -38,7 +38,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        submitParachainHeadsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitParachainHeadsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'submitParachainHeads', true, argsBytes);
         },
 
@@ -73,7 +73,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 20]}>
          * @instance
          */
-        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'setOwner', false, {
                 new_owner: _new_owner,
            });
@@ -85,7 +85,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'setOwner', true, argsBytes);
         },
 
@@ -118,7 +118,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {unknown} _operating_mode Enum<{0/Normal: , 1/Halted: }>
          * @instance
          */
-        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'setOperatingMode', false, {
                 operating_mode: _operating_mode,
            });
@@ -130,7 +130,7 @@ export const getBridgeKusamaParachain = (dispatch: Dispatch, metadata: Metadata)
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgeKusamaParachain', 'setOperatingMode', true, argsBytes);
         },
 

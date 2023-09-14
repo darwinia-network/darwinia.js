@@ -26,7 +26,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _proof Vec<U8>
          * @instance
          */
-        setKeys: async (signer: ethers.Signer, _keys: unknown, _proof: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setKeys: async (signer: ethers.Signer, _keys: unknown, _proof: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Session', 'setKeys', false, {
                 keys: _keys,
                 proof: _proof,
@@ -39,7 +39,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setKeysH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setKeysH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Session', 'setKeys', true, argsBytes);
         },
 
@@ -81,7 +81,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        purgeKeys: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        purgeKeys: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Session', 'purgeKeys', false, {
            });
         },
@@ -92,7 +92,7 @@ export const getSession = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        purgeKeysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        purgeKeysH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Session', 'purgeKeys', true);
         },
 

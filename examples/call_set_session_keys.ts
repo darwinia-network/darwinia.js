@@ -9,7 +9,7 @@ async function main(): Promise<void> {
 
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
-  const receipt = await pangolin.calls.session.setKeys(
+  const tx = await pangolin.calls.session.setKeys(
     signer,
     {
       aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da28c"
@@ -17,7 +17,7 @@ async function main(): Promise<void> {
     "0x00" // proof
   );
 
-  console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));

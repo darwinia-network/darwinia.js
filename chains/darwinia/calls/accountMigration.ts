@@ -19,7 +19,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _signature [U8; 64]
          * @instance
          */
-        migrate: async (signer: ethers.Signer, _from: unknown, _to: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        migrate: async (signer: ethers.Signer, _from: unknown, _to: unknown, _signature: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'migrate', false, {
                 from: _from,
                 to: _to,
@@ -33,7 +33,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        migrateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        migrateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'migrate', true, argsBytes);
         },
 
@@ -73,7 +73,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new_multisig_params Enum<{0/None: , 1/Some: {address: [U8; 20], members: Vec<[U8; 20]>, threshold: U16}}>
          * @instance
          */
-        migrateMultisig: async (signer: ethers.Signer, _submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown, _new_multisig_params: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        migrateMultisig: async (signer: ethers.Signer, _submitter: unknown, _others: unknown, _threshold: unknown, _to: unknown, _signature: unknown, _new_multisig_params: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'migrateMultisig', false, {
                 submitter: _submitter,
                 others: _others,
@@ -90,7 +90,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        migrateMultisigH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        migrateMultisigH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'migrateMultisig', true, argsBytes);
         },
 
@@ -130,7 +130,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _signature [U8; 64]
          * @instance
          */
-        completeMultisigMigration: async (signer: ethers.Signer, _multisig: unknown, _submitter: unknown, _signature: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        completeMultisigMigration: async (signer: ethers.Signer, _multisig: unknown, _submitter: unknown, _signature: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'completeMultisigMigration', false, {
                 multisig: _multisig,
                 submitter: _submitter,
@@ -144,7 +144,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        completeMultisigMigrationH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        completeMultisigMigrationH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AccountMigration', 'completeMultisigMigration', true, argsBytes);
         },
 

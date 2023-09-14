@@ -19,7 +19,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _new_owner Enum<{0/None: , 1/Some: [U8; 20]}>
          * @instance
          */
-        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOwner: async (signer: ethers.Signer, _new_owner: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'setOwner', false, {
                 new_owner: _new_owner,
            });
@@ -31,7 +31,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOwnerH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'setOwner', true, argsBytes);
         },
 
@@ -64,7 +64,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _operating_mode Enum<{0/Basic: Enum<{0/Normal: , 1/Halted: }>, 1/RejectingOutboundMessages: }>
          * @instance
          */
-        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingMode: async (signer: ethers.Signer, _operating_mode: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'setOperatingMode', false, {
                 operating_mode: _operating_mode,
            });
@@ -76,7 +76,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setOperatingModeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'setOperatingMode', true, argsBytes);
         },
 
@@ -112,7 +112,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _parameter ()
          * @instance
          */
-        updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updatePalletParameter: async (signer: ethers.Signer, _parameter: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'updatePalletParameter', false, {
                 parameter: _parameter,
            });
@@ -124,7 +124,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updatePalletParameterH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updatePalletParameterH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'updatePalletParameter', true, argsBytes);
         },
 
@@ -157,7 +157,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _delivery_and_dispatch_fee U128
          * @instance
          */
-        sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        sendMessage: async (signer: ethers.Signer, _lane_id: unknown, _payload: unknown, _delivery_and_dispatch_fee: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'sendMessage', false, {
                 lane_id: _lane_id,
                 payload: _payload,
@@ -171,7 +171,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        sendMessageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        sendMessageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'sendMessage', true, argsBytes);
         },
 
@@ -214,7 +214,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _dispatch_weight {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
          */
-        receiveMessagesProof: async (signer: ethers.Signer, _relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesProof: async (signer: ethers.Signer, _relayer_id_at_bridged_chain: unknown, _proof: unknown, _messages_count: unknown, _dispatch_weight: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'receiveMessagesProof', false, {
                 relayer_id_at_bridged_chain: _relayer_id_at_bridged_chain,
                 proof: _proof,
@@ -229,7 +229,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        receiveMessagesProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'receiveMessagesProof', true, argsBytes);
         },
 
@@ -264,7 +264,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {unknown} _relayers_state {unrewarded_relayer_entries: U64, messages_in_oldest_entry: U64, total_messages: U64, last_delivered_nonce: U64}
          * @instance
          */
-        receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesDeliveryProof: async (signer: ethers.Signer, _proof: unknown, _relayers_state: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'receiveMessagesDeliveryProof', false, {
                 proof: _proof,
                 relayers_state: _relayers_state,
@@ -277,7 +277,7 @@ export const getBridgePangolinMessages = (dispatch: Dispatch, metadata: Metadata
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        receiveMessagesDeliveryProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        receiveMessagesDeliveryProofH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'BridgePangolinMessages', 'receiveMessagesDeliveryProof', true, argsBytes);
         },
 

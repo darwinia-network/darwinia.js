@@ -42,7 +42,7 @@ _%>
 _%>
          * @instance
          */
-        <%= callName %>: async (signer: ethers.Signer<%= input.length > 0 ? `, ${input.join(", ")}` : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+        <%= callName %>: async (signer: ethers.Signer<%= input.length > 0 ? `, ${input.join(", ")}` : '' %>): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', false, {
 <%_
             for(let j = 0; j < callParams.length; j++) {
@@ -63,7 +63,7 @@ _%>
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', argsBytes: BytesLike' : '' %>): Promise<ethers.providers.TransactionReceipt> => {
+        <%= `${callName}H` %>: async (signer: ethers.Signer<%= input.length > 0 ? ', argsBytes: BytesLike' : '' %>): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, '<%= prefix %>', '<%= callName %>', true<%= input.length > 0 ? ', argsBytes' : '' %>);
         },
 

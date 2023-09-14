@@ -20,7 +20,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _bytes Vec<U8>
          * @instance
          */
-        notePreimage: async (signer: ethers.Signer, _bytes: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimage: async (signer: ethers.Signer, _bytes: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', false, {
                 bytes: _bytes,
            });
@@ -32,7 +32,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        notePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        notePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'notePreimage', true, argsBytes);
         },
 
@@ -68,7 +68,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _hash [U8; 32]
          * @instance
          */
-        unnotePreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        unnotePreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', false, {
                 hash: _hash,
            });
@@ -80,7 +80,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        unnotePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unnotePreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'unnotePreimage', true, argsBytes);
         },
 
@@ -114,7 +114,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _hash [U8; 32]
          * @instance
          */
-        requestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        requestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', false, {
                 hash: _hash,
            });
@@ -126,7 +126,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        requestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        requestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'requestPreimage', true, argsBytes);
         },
 
@@ -159,7 +159,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _hash [U8; 32]
          * @instance
          */
-        unrequestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        unrequestPreimage: async (signer: ethers.Signer, _hash: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', false, {
                 hash: _hash,
            });
@@ -171,7 +171,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        unrequestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unrequestPreimageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Preimage', 'unrequestPreimage', true, argsBytes);
         },
 

@@ -27,7 +27,7 @@ export async function doDispatch(
   provider: Provider,
   signer: ethers.Signer,
   data: BytesLike
-): Promise<ethers.providers.TransactionReceipt> {
+): Promise<ethers.providers.TransactionResponse> {
   try {
     const contractAddress = "0x0000000000000000000000000000000000000401";
 
@@ -43,8 +43,7 @@ export async function doDispatch(
 
     tx.gasLimit = await provider.estimateGas(tx);
 
-    const sentTx = await signer.sendTransaction(tx);
-    return sentTx.wait();
+    return await signer.sendTransaction(tx);
   } catch (ex: any) {
     // TODO: better error handling
     const message = (ex as EthersError).error?.error?.message;
@@ -63,7 +62,7 @@ export function dispatch(provider: Provider, metadata: Metadata) {
     callName: string,
     argsEncoded: boolean,
     args: any
-  ): Promise<ethers.providers.TransactionReceipt> => {
+  ): Promise<ethers.providers.TransactionResponse> => {
     // prepare call data
     let callData: Bytes = [];
     if (argsEncoded) {
@@ -88,4 +87,4 @@ export type Dispatch = (
   callName: string,
   paramsEncoded: boolean,
   args?: any
-) => Promise<ethers.providers.TransactionReceipt>;
+) => Promise<ethers.providers.TransactionResponse>;

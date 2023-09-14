@@ -13,7 +13,7 @@ async function main(): Promise<void> {
   // const receipt = await pangolin.calls.democracy.second(signer, 6)
 
   // vote
-  const receipt = await pangolin.calls.democracy.vote(signer, 12, {
+  const tx = await pangolin.calls.democracy.vote(signer, 12, {
     Standard: {
       vote: {
         aye: true,
@@ -23,7 +23,7 @@ async function main(): Promise<void> {
     }
   })
 
-  console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));

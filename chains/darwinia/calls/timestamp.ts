@@ -31,7 +31,7 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _now Compact<U64>
          * @instance
          */
-        set: async (signer: ethers.Signer, _now: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        set: async (signer: ethers.Signer, _now: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Timestamp', 'set', false, {
                 now: _now,
            });
@@ -43,7 +43,7 @@ export const getTimestamp = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Timestamp', 'set', true, argsBytes);
         },
 

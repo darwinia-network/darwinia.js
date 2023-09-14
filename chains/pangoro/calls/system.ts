@@ -19,7 +19,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _remark Vec<U8>
          * @instance
          */
-        remark: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        remark: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'remark', false, {
                 remark: _remark,
            });
@@ -31,7 +31,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        remarkH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        remarkH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'remark', true, argsBytes);
         },
 
@@ -62,7 +62,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _pages U64
          * @instance
          */
-        setHeapPages: async (signer: ethers.Signer, _pages: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setHeapPages: async (signer: ethers.Signer, _pages: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setHeapPages', false, {
                 pages: _pages,
            });
@@ -74,7 +74,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setHeapPagesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setHeapPagesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setHeapPages', true, argsBytes);
         },
 
@@ -105,7 +105,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _code Vec<U8>
          * @instance
          */
-        setCode: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setCode: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setCode', false, {
                 code: _code,
            });
@@ -117,7 +117,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setCodeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setCode', true, argsBytes);
         },
 
@@ -148,7 +148,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _code Vec<U8>
          * @instance
          */
-        setCodeWithoutChecks: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeWithoutChecks: async (signer: ethers.Signer, _code: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', false, {
                 code: _code,
            });
@@ -160,7 +160,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setCodeWithoutChecksH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCodeWithoutChecksH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setCodeWithoutChecks', true, argsBytes);
         },
 
@@ -191,7 +191,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _items Vec<(Vec<U8>, Vec<U8>)>
          * @instance
          */
-        setStorage: async (signer: ethers.Signer, _items: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setStorage: async (signer: ethers.Signer, _items: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setStorage', false, {
                 items: _items,
            });
@@ -203,7 +203,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'setStorage', true, argsBytes);
         },
 
@@ -234,7 +234,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _keys Vec<Vec<U8>>
          * @instance
          */
-        killStorage: async (signer: ethers.Signer, _keys: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        killStorage: async (signer: ethers.Signer, _keys: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'killStorage', false, {
                 keys: _keys,
            });
@@ -246,7 +246,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        killStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killStorageH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'killStorage', true, argsBytes);
         },
 
@@ -281,7 +281,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _subkeys U32
          * @instance
          */
-        killPrefix: async (signer: ethers.Signer, _prefix: unknown, _subkeys: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        killPrefix: async (signer: ethers.Signer, _prefix: unknown, _subkeys: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'killPrefix', false, {
                 prefix: _prefix,
                 subkeys: _subkeys,
@@ -294,7 +294,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        killPrefixH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killPrefixH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'killPrefix', true, argsBytes);
         },
 
@@ -326,7 +326,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _remark Vec<U8>
          * @instance
          */
-        remarkWithEvent: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        remarkWithEvent: async (signer: ethers.Signer, _remark: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', false, {
                 remark: _remark,
            });
@@ -338,7 +338,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        remarkWithEventH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        remarkWithEventH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'System', 'remarkWithEvent', true, argsBytes);
         },
 

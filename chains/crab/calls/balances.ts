@@ -24,7 +24,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        transferAllowDeath: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferAllowDeath: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferAllowDeath', false, {
                 dest: _dest,
                 value: _value,
@@ -37,7 +37,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferAllowDeathH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferAllowDeathH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferAllowDeath', true, argsBytes);
         },
 
@@ -76,7 +76,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _old_reserved Compact<U128>
          * @instance
          */
-        setBalanceDeprecated: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _old_reserved: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setBalanceDeprecated: async (signer: ethers.Signer, _who: unknown, _new_free: unknown, _old_reserved: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'setBalanceDeprecated', false, {
                 who: _who,
                 new_free: _new_free,
@@ -90,7 +90,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setBalanceDeprecatedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setBalanceDeprecatedH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'setBalanceDeprecated', true, argsBytes);
         },
 
@@ -126,7 +126,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        forceTransfer: async (signer: ethers.Signer, _source: unknown, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        forceTransfer: async (signer: ethers.Signer, _source: unknown, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', false, {
                 source: _source,
                 dest: _dest,
@@ -140,7 +140,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceTransferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceTransfer', true, argsBytes);
         },
 
@@ -179,7 +179,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        transferKeepAlive: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferKeepAlive: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', false, {
                 dest: _dest,
                 value: _value,
@@ -192,7 +192,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferKeepAliveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferKeepAlive', true, argsBytes);
         },
 
@@ -239,7 +239,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _keep_alive Bool
          * @instance
          */
-        transferAll: async (signer: ethers.Signer, _dest: unknown, _keep_alive: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferAll: async (signer: ethers.Signer, _dest: unknown, _keep_alive: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferAll', false, {
                 dest: _dest,
                 keep_alive: _keep_alive,
@@ -252,7 +252,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferAllH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferAllH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transferAll', true, argsBytes);
         },
 
@@ -287,7 +287,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _amount U128
          * @instance
          */
-        forceUnreserve: async (signer: ethers.Signer, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        forceUnreserve: async (signer: ethers.Signer, _who: unknown, _amount: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', false, {
                 who: _who,
                 amount: _amount,
@@ -300,7 +300,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        forceUnreserveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceUnreserveH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceUnreserve', true, argsBytes);
         },
 
@@ -339,7 +339,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _who Vec<[U8; 20]>
          * @instance
          */
-        upgradeAccounts: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        upgradeAccounts: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'upgradeAccounts', false, {
                 who: _who,
            });
@@ -351,7 +351,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        upgradeAccountsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        upgradeAccountsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'upgradeAccounts', true, argsBytes);
         },
 
@@ -385,7 +385,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transfer: async (signer: ethers.Signer, _dest: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transfer', false, {
                 dest: _dest,
                 value: _value,
@@ -398,7 +398,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'transfer', true, argsBytes);
         },
 
@@ -433,7 +433,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new_free Compact<U128>
          * @instance
          */
-        forceSetBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        forceSetBalance: async (signer: ethers.Signer, _who: unknown, _new_free: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceSetBalance', false, {
                 who: _who,
                 new_free: _new_free,
@@ -446,7 +446,7 @@ export const getBalances = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        forceSetBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        forceSetBalanceH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Balances', 'forceSetBalance', true, argsBytes);
         },
 

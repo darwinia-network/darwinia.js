@@ -42,7 +42,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _old_count U32
          * @instance
          */
-        setMembers: async (signer: ethers.Signer, _new_members: unknown, _prime: unknown, _old_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setMembers: async (signer: ethers.Signer, _new_members: unknown, _prime: unknown, _old_count: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'setMembers', false, {
                 new_members: _new_members,
                 prime: _prime,
@@ -56,7 +56,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setMembersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'setMembers', true, argsBytes);
         },
 
@@ -98,7 +98,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _length_bound Compact<U32>
          * @instance
          */
-        execute: async (signer: ethers.Signer, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        execute: async (signer: ethers.Signer, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'execute', false, {
                 proposal: _proposal,
                 length_bound: _length_bound,
@@ -111,7 +111,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        executeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        executeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'execute', true, argsBytes);
         },
 
@@ -158,7 +158,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _length_bound Compact<U32>
          * @instance
          */
-        propose: async (signer: ethers.Signer, _threshold: unknown, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        propose: async (signer: ethers.Signer, _threshold: unknown, _proposal: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'propose', false, {
                 threshold: _threshold,
                 proposal: _proposal,
@@ -172,7 +172,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        proposeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        proposeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'propose', true, argsBytes);
         },
 
@@ -215,7 +215,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _approve Bool
          * @instance
          */
-        vote: async (signer: ethers.Signer, _proposal: unknown, _index: unknown, _approve: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        vote: async (signer: ethers.Signer, _proposal: unknown, _index: unknown, _approve: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'vote', false, {
                 proposal: _proposal,
                 index: _index,
@@ -229,7 +229,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'vote', true, argsBytes);
         },
 
@@ -271,7 +271,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _proposal_hash [U8; 32]
          * @instance
          */
-        disapproveProposal: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        disapproveProposal: async (signer: ethers.Signer, _proposal_hash: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'disapproveProposal', false, {
                 proposal_hash: _proposal_hash,
            });
@@ -283,7 +283,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        disapproveProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        disapproveProposalH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'disapproveProposal', true, argsBytes);
         },
 
@@ -340,7 +340,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _length_bound Compact<U32>
          * @instance
          */
-        close: async (signer: ethers.Signer, _proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        close: async (signer: ethers.Signer, _proposal_hash: unknown, _index: unknown, _proposal_weight_bound: unknown, _length_bound: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'close', false, {
                 proposal_hash: _proposal_hash,
                 index: _index,
@@ -355,7 +355,7 @@ export const getCouncil = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        closeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        closeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Council', 'close', true, argsBytes);
         },
 

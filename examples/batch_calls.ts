@@ -13,12 +13,12 @@ async function main(): Promise<void> {
 
   // run batch calls
   // expect call data: 0x1502080900d43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00080339300000
-  const receipt = await pangolin.calls.utility.batchAll(wallet, [
+  const tx = await pangolin.calls.utility.batchAll(wallet, [
     call1,
     call2
   ]);
 
-  console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));
