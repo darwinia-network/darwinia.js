@@ -11,10 +11,10 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.1.0
+npm install darwinia.js@^3.1.1
 ```
 NOTE:  
-* 3.1.0 break change:
+* 3.1 break change:
 
   call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
 
@@ -27,7 +27,7 @@ call(remarkWithEvemt): <span id="remark"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.0";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.1";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
   
