@@ -20,7 +20,6 @@ import {getTechnicalCommittee} from "./technicalCommittee";
 import {getPhragmenElection} from "./phragmenElection";
 import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
-import {getTips} from "./tips";
 import {getSudo} from "./sudo";
 import {getUtility} from "./utility";
 import {getIdentity} from "./identity";
@@ -62,7 +61,6 @@ export const buildPangoroCallsClient = (provider: providers.BaseProvider, metada
         phragmenElection: getPhragmenElection(dispatch, metadata),
         technicalMembership: getTechnicalMembership(dispatch, metadata),
         treasury: getTreasury(dispatch, metadata),
-        tips: getTips(dispatch, metadata),
         sudo: getSudo(dispatch, metadata),
         utility: getUtility(dispatch, metadata),
         identity: getIdentity(dispatch, metadata),

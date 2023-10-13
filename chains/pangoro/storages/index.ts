@@ -24,7 +24,6 @@ import {getTechnicalCommittee} from "./technicalCommittee";
 import {getPhragmenElection} from "./phragmenElection";
 import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
-import {getTips} from "./tips";
 import {getSudo} from "./sudo";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
@@ -66,7 +65,6 @@ export const buildPangoroStoragesClient = (provider: providers.BaseProvider, met
         phragmenElection: getPhragmenElection(getStorage),
         technicalMembership: getTechnicalMembership(getStorage),
         treasury: getTreasury(getStorage),
-        tips: getTips(getStorage),
         sudo: getSudo(getStorage),
         identity: getIdentity(getStorage),
         scheduler: getScheduler(getStorage),

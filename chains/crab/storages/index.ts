@@ -25,7 +25,6 @@ import {getTechnicalCommittee} from "./technicalCommittee";
 import {getPhragmenElection} from "./phragmenElection";
 import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
-import {getTips} from "./tips";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
@@ -66,7 +65,6 @@ export const buildCrabStoragesClient = (provider: providers.BaseProvider, metada
         phragmenElection: getPhragmenElection(getStorage),
         technicalMembership: getTechnicalMembership(getStorage),
         treasury: getTreasury(getStorage),
-        tips: getTips(getStorage),
         identity: getIdentity(getStorage),
         scheduler: getScheduler(getStorage),
         preimage: getPreimage(getStorage),
