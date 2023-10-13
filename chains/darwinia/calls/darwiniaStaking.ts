@@ -21,7 +21,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _deposits Vec<U16>
          * @instance
          */
-        stake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        stake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'stake', false, {
                 ring_amount: _ring_amount,
                 kton_amount: _kton_amount,
@@ -35,7 +35,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        stakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        stakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'stake', true, argsBytes);
         },
 
@@ -70,7 +70,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _deposits Vec<U16>
          * @instance
          */
-        unstake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        unstake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'unstake', false, {
                 ring_amount: _ring_amount,
                 kton_amount: _kton_amount,
@@ -84,7 +84,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        unstakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        unstakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'unstake', true, argsBytes);
         },
 
@@ -121,7 +121,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _deposits Vec<U16>
          * @instance
          */
-        restake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        restake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'restake', false, {
                 ring_amount: _ring_amount,
                 kton_amount: _kton_amount,
@@ -135,7 +135,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        restakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        restakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'restake', true, argsBytes);
         },
 
@@ -167,7 +167,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'claim', false, {
            });
         },
@@ -178,7 +178,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'claim', true);
         },
 
@@ -210,7 +210,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _commission U32
          * @instance
          */
-        collect: async (signer: ethers.Signer, _commission: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        collect: async (signer: ethers.Signer, _commission: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'collect', false, {
                 commission: _commission,
            });
@@ -222,7 +222,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        collectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        collectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'collect', true, argsBytes);
         },
 
@@ -255,7 +255,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _target [U8; 20]
          * @instance
          */
-        nominate: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        nominate: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'nominate', false, {
                 target: _target,
            });
@@ -267,7 +267,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        nominateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        nominateH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'nominate', true, argsBytes);
         },
 
@@ -301,7 +301,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        chill: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        chill: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'chill', false, {
            });
         },
@@ -312,7 +312,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        chillH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        chillH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'chill', true);
         },
 
@@ -346,7 +346,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _count U32
          * @instance
          */
-        setCollatorCount: async (signer: ethers.Signer, _count: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setCollatorCount: async (signer: ethers.Signer, _count: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'setCollatorCount', false, {
                 count: _count,
            });
@@ -358,7 +358,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setCollatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCollatorCountH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'setCollatorCount', true, argsBytes);
         },
 

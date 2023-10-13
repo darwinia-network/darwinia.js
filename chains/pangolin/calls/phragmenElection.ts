@@ -36,7 +36,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _value Compact<U128>
          * @instance
          */
-        vote: async (signer: ethers.Signer, _votes: unknown, _value: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        vote: async (signer: ethers.Signer, _votes: unknown, _value: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', false, {
                 votes: _votes,
                 value: _value,
@@ -49,7 +49,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        voteH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'vote', true, argsBytes);
         },
 
@@ -84,7 +84,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        removeVoter: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        removeVoter: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', false, {
            });
         },
@@ -95,7 +95,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        removeVoterH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        removeVoterH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'removeVoter', true);
         },
 
@@ -139,7 +139,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _candidate_count Compact<U32>
          * @instance
          */
-        submitCandidacy: async (signer: ethers.Signer, _candidate_count: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        submitCandidacy: async (signer: ethers.Signer, _candidate_count: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', false, {
                 candidate_count: _candidate_count,
            });
@@ -151,7 +151,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        submitCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        submitCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'submitCandidacy', true, argsBytes);
         },
 
@@ -201,7 +201,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _renouncing Enum<{0/Member: , 1/RunnerUp: , 2/Candidate: Compact<U32>}>
          * @instance
          */
-        renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        renounceCandidacy: async (signer: ethers.Signer, _renouncing: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', false, {
                 renouncing: _renouncing,
            });
@@ -213,7 +213,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        renounceCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        renounceCandidacyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'renounceCandidacy', true, argsBytes);
         },
 
@@ -261,7 +261,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _rerun_election Bool
          * @instance
          */
-        removeMember: async (signer: ethers.Signer, _who: unknown, _slash_bond: unknown, _rerun_election: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        removeMember: async (signer: ethers.Signer, _who: unknown, _slash_bond: unknown, _rerun_election: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', false, {
                 who: _who,
                 slash_bond: _slash_bond,
@@ -275,7 +275,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        removeMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeMemberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'removeMember', true, argsBytes);
         },
 
@@ -317,7 +317,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _num_defunct U32
          * @instance
          */
-        cleanDefunctVoters: async (signer: ethers.Signer, _num_voters: unknown, _num_defunct: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        cleanDefunctVoters: async (signer: ethers.Signer, _num_voters: unknown, _num_defunct: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', false, {
                 num_voters: _num_voters,
                 num_defunct: _num_defunct,
@@ -330,7 +330,7 @@ export const getPhragmenElection = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        cleanDefunctVotersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cleanDefunctVotersH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'PhragmenElection', 'cleanDefunctVoters', true, argsBytes);
         },
 

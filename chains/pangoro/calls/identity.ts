@@ -26,7 +26,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _account [U8; 20]
          * @instance
          */
-        addRegistrar: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        addRegistrar: async (signer: ethers.Signer, _account: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'addRegistrar', false, {
                 account: _account,
            });
@@ -38,7 +38,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        addRegistrarH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        addRegistrarH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'addRegistrar', true, argsBytes);
         },
 
@@ -83,7 +83,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _info {additional: Vec<(Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>, display: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, legal: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, web: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, riot: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, email: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, pgp_fingerprint: Enum<{0/None: , 1/Some: [U8; 20]}>, image: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>, twitter: Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>}
          * @instance
          */
-        setIdentity: async (signer: ethers.Signer, _info: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setIdentity: async (signer: ethers.Signer, _info: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setIdentity', false, {
                 info: _info,
            });
@@ -95,7 +95,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setIdentityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setIdentityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setIdentity', true, argsBytes);
         },
 
@@ -139,7 +139,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _subs Vec<([U8; 20], Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>)>
          * @instance
          */
-        setSubs: async (signer: ethers.Signer, _subs: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setSubs: async (signer: ethers.Signer, _subs: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setSubs', false, {
                 subs: _subs,
            });
@@ -151,7 +151,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setSubsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setSubsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setSubs', true, argsBytes);
         },
 
@@ -194,7 +194,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        clearIdentity: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        clearIdentity: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'clearIdentity', false, {
            });
         },
@@ -205,7 +205,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        clearIdentityH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        clearIdentityH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'clearIdentity', true);
         },
 
@@ -256,7 +256,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _max_fee Compact<U128>
          * @instance
          */
-        requestJudgement: async (signer: ethers.Signer, _reg_index: unknown, _max_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        requestJudgement: async (signer: ethers.Signer, _reg_index: unknown, _max_fee: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'requestJudgement', false, {
                 reg_index: _reg_index,
                 max_fee: _max_fee,
@@ -269,7 +269,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        requestJudgementH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        requestJudgementH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'requestJudgement', true, argsBytes);
         },
 
@@ -315,7 +315,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _reg_index U32
          * @instance
          */
-        cancelRequest: async (signer: ethers.Signer, _reg_index: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        cancelRequest: async (signer: ethers.Signer, _reg_index: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'cancelRequest', false, {
                 reg_index: _reg_index,
            });
@@ -327,7 +327,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        cancelRequestH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        cancelRequestH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'cancelRequest', true, argsBytes);
         },
 
@@ -369,7 +369,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _fee Compact<U128>
          * @instance
          */
-        setFee: async (signer: ethers.Signer, _index: unknown, _fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setFee: async (signer: ethers.Signer, _index: unknown, _fee: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setFee', false, {
                 index: _index,
                 fee: _fee,
@@ -382,7 +382,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setFee', true, argsBytes);
         },
 
@@ -425,7 +425,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new [U8; 20]
          * @instance
          */
-        setAccountId: async (signer: ethers.Signer, _index: unknown, _new: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setAccountId: async (signer: ethers.Signer, _index: unknown, _new: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setAccountId', false, {
                 index: _index,
                 new: _new,
@@ -438,7 +438,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setAccountIdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setAccountIdH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setAccountId', true, argsBytes);
         },
 
@@ -481,7 +481,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _fields U64
          * @instance
          */
-        setFields: async (signer: ethers.Signer, _index: unknown, _fields: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setFields: async (signer: ethers.Signer, _index: unknown, _fields: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setFields', false, {
                 index: _index,
                 fields: _fields,
@@ -494,7 +494,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setFieldsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setFieldsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'setFields', true, argsBytes);
         },
 
@@ -545,7 +545,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _identity [U8; 32]
          * @instance
          */
-        provideJudgement: async (signer: ethers.Signer, _reg_index: unknown, _target: unknown, _judgement: unknown, _identity: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        provideJudgement: async (signer: ethers.Signer, _reg_index: unknown, _target: unknown, _judgement: unknown, _identity: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'provideJudgement', false, {
                 reg_index: _reg_index,
                 target: _target,
@@ -560,7 +560,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        provideJudgementH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        provideJudgementH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'provideJudgement', true, argsBytes);
         },
 
@@ -611,7 +611,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _target [U8; 20]
          * @instance
          */
-        killIdentity: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        killIdentity: async (signer: ethers.Signer, _target: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'killIdentity', false, {
                 target: _target,
            });
@@ -623,7 +623,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        killIdentityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        killIdentityH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'killIdentity', true, argsBytes);
         },
 
@@ -661,7 +661,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _data Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>
          * @instance
          */
-        addSub: async (signer: ethers.Signer, _sub: unknown, _data: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        addSub: async (signer: ethers.Signer, _sub: unknown, _data: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'addSub', false, {
                 sub: _sub,
                 data: _data,
@@ -674,7 +674,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        addSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        addSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'addSub', true, argsBytes);
         },
 
@@ -710,7 +710,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _data Enum<{0/None: , 1/Raw0: [undefined; 0], 2/Raw1: [U8; 1], 3/Raw2: [U8; 2], 4/Raw3: [U8; 3], 5/Raw4: [U8; 4], 6/Raw5: [U8; 5], 7/Raw6: [U8; 6], 8/Raw7: [U8; 7], 9/Raw8: [U8; 8], 10/Raw9: [U8; 9], 11/Raw10: [U8; 10], 12/Raw11: [U8; 11], 13/Raw12: [U8; 12], 14/Raw13: [U8; 13], 15/Raw14: [U8; 14], 16/Raw15: [U8; 15], 17/Raw16: [U8; 16], 18/Raw17: [U8; 17], 19/Raw18: [U8; 18], 20/Raw19: [U8; 19], 21/Raw20: [U8; 20], 22/Raw21: [U8; 21], 23/Raw22: [U8; 22], 24/Raw23: [U8; 23], 25/Raw24: [U8; 24], 26/Raw25: [U8; 25], 27/Raw26: [U8; 26], 28/Raw27: [U8; 27], 29/Raw28: [U8; 28], 30/Raw29: [U8; 29], 31/Raw30: [U8; 30], 32/Raw31: [U8; 31], 33/Raw32: [U8; 32], 34/BlakeTwo256: [U8; 32], 35/Sha256: [U8; 32], 36/Keccak256: [U8; 32], 37/ShaThree256: [U8; 32]}>
          * @instance
          */
-        renameSub: async (signer: ethers.Signer, _sub: unknown, _data: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        renameSub: async (signer: ethers.Signer, _sub: unknown, _data: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'renameSub', false, {
                 sub: _sub,
                 data: _data,
@@ -723,7 +723,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        renameSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        renameSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'renameSub', true, argsBytes);
         },
 
@@ -761,7 +761,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _sub [U8; 20]
          * @instance
          */
-        removeSub: async (signer: ethers.Signer, _sub: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        removeSub: async (signer: ethers.Signer, _sub: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'removeSub', false, {
                 sub: _sub,
            });
@@ -773,7 +773,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        removeSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        removeSubH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'removeSub', true, argsBytes);
         },
 
@@ -812,7 +812,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        quitSub: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        quitSub: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'quitSub', false, {
            });
         },
@@ -823,7 +823,7 @@ export const getIdentity = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        quitSubH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        quitSubH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Identity', 'quitSub', true);
         },
 

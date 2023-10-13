@@ -12,7 +12,7 @@ async function main(): Promise<void> {
 
   const metadata = buildMetadata(pangolinStaticMetadata);
   const dispatchPangolinCall = dispatch(provider, metadata);
-  const receipt = await dispatchPangolinCall(
+  const tx = await dispatchPangolinCall(
     signer,
     "Session",
     "setKeys",
@@ -25,7 +25,7 @@ async function main(): Promise<void> {
     }
   );
 
-  console.log(`tx hash: ${receipt.transactionHash}`);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));

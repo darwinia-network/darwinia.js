@@ -18,7 +18,7 @@ export const getAssetLimit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _units_limit U128
          * @instance
          */
-        setForeignAssetLimit: async (signer: ethers.Signer, _asset_type: unknown, _units_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setForeignAssetLimit: async (signer: ethers.Signer, _asset_type: unknown, _units_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetLimit', 'setForeignAssetLimit', false, {
                 asset_type: _asset_type,
                 units_limit: _units_limit,
@@ -31,7 +31,7 @@ export const getAssetLimit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setForeignAssetLimitH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setForeignAssetLimitH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'AssetLimit', 'setForeignAssetLimit', true, argsBytes);
         },
 

@@ -11,36 +11,41 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.0.4
+npm install darwinia.js@^3.1.0
 ```
+NOTE:  
+* 3.1.0 break change:
+
+  call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
 
 ## Browser
 
+
 ```html
-Collators Amount: <span id="result"></span>
+storage(collatorCount): <span id="collators"></span><br/>
+call(remarkWithEvemt): <span id="remark"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.4";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
-
-  // storage
-  const result = await client.storages.darwiniaStaking.collatorCount();
-  const resultEl = document.getElementById("result");
-  resultEl.innerHTML = result;
-
+  
+    // storage
+  const collatorsCount = await client.storages.darwiniaStaking.collatorCount();
+  const collatorsEl = document.getElementById("collators");
+  collatorsEl.innerHTML = collatorsCount; 
+     
   // call
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = provider.getSigner();
-  const from = await signer.getAddress();
-  await client.calls.system.remarkWithEvent(signer, "0x12345678");
+  const tx = await client.calls.system.remarkWithEvent(signer, "0x12345678");
+  const remarkEl = document.getElementById("remark");
+  remarkEl.innerHTML = `<a href="https://pangolin.subscan.io/tx/${tx.hash}">${tx.hash}</a>`; 
 </script>
 ```
 
-Try it in jsfiddle:
-
-https://jsfiddle.net/wuminzhe/gwp4ovz1/4/
+Try it in [jsfiddle](https://jsfiddle.net/wuminzhe/d2gzbcjt/2/):
 
 ## Usage
 
@@ -83,13 +88,14 @@ async function main(): Promise<void> {
 
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
-  await pangolin.calls.session.setKeys(
+  const tx = await pangolin.calls.session.setKeys(
     signer,
     {
       aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
     }, // keys
     "0x" // proof
   );
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();
@@ -121,7 +127,8 @@ async function main(): Promise<void> {
   const collectCall = pangolin.calls.staking.buildCollectCall(120000000);
 
   // dispatch
-  await pangolin.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  const tx = await pangolin.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();
@@ -141,10 +148,11 @@ async function main(): Promise<void> {
   const pangolin = clientBuilder.buildPangolinClient(provider);
 
   // call ended with `D` is the version that accept params encoded in scale codec
-  await pangolin.calls.session.setKeysH(
+  const tx = await pangolin.calls.session.setKeysH(
     signer,
     "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00" // encoded (keys, proof)
   );
+  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
 }
 
 main();

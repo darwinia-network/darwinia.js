@@ -31,7 +31,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transfer: async (signer: ethers.Signer, _currency_id: unknown, _amount: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transfer: async (signer: ethers.Signer, _currency_id: unknown, _amount: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transfer', false, {
                 currency_id: _currency_id,
                 amount: _amount,
@@ -46,7 +46,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transfer', true, argsBytes);
         },
 
@@ -93,7 +93,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transferMultiasset: async (signer: ethers.Signer, _asset: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiasset: async (signer: ethers.Signer, _asset: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiasset', false, {
                 asset: _asset,
                 dest: _dest,
@@ -107,7 +107,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferMultiassetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiassetH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiasset', true, argsBytes);
         },
 
@@ -164,7 +164,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transferWithFee: async (signer: ethers.Signer, _currency_id: unknown, _amount: unknown, _fee: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferWithFee: async (signer: ethers.Signer, _currency_id: unknown, _amount: unknown, _fee: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferWithFee', false, {
                 currency_id: _currency_id,
                 amount: _amount,
@@ -180,7 +180,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferWithFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferWithFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferWithFee', true, argsBytes);
         },
 
@@ -238,7 +238,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transferMultiassetWithFee: async (signer: ethers.Signer, _asset: unknown, _fee: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiassetWithFee: async (signer: ethers.Signer, _asset: unknown, _fee: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiassetWithFee', false, {
                 asset: _asset,
                 fee: _fee,
@@ -253,7 +253,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferMultiassetWithFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiassetWithFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiassetWithFee', true, argsBytes);
         },
 
@@ -304,7 +304,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transferMulticurrencies: async (signer: ethers.Signer, _currencies: unknown, _fee_item: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferMulticurrencies: async (signer: ethers.Signer, _currencies: unknown, _fee_item: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMulticurrencies', false, {
                 currencies: _currencies,
                 fee_item: _fee_item,
@@ -319,7 +319,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferMulticurrenciesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferMulticurrenciesH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMulticurrencies', true, argsBytes);
         },
 
@@ -370,7 +370,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _dest_weight_limit Enum<{0/Unlimited: , 1/Limited: {ref_time: Compact<U64>, proof_size: Compact<U64>}}>
          * @instance
          */
-        transferMultiassets: async (signer: ethers.Signer, _assets: unknown, _fee_item: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiassets: async (signer: ethers.Signer, _assets: unknown, _fee_item: unknown, _dest: unknown, _dest_weight_limit: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiassets', false, {
                 assets: _assets,
                 fee_item: _fee_item,
@@ -385,7 +385,7 @@ export const getXTokens = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        transferMultiassetsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        transferMultiassetsH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'XTokens', 'transferMultiassets', true, argsBytes);
         },
 

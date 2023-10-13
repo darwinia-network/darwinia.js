@@ -20,7 +20,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _relay_fee Enum<{0/None: , 1/Some: U128}>
          * @instance
          */
-        enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        enrollAndLockCollateral: async (signer: ethers.Signer, _lock_collateral: unknown, _relay_fee: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'enrollAndLockCollateral', false, {
                 lock_collateral: _lock_collateral,
                 relay_fee: _relay_fee,
@@ -33,7 +33,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        enrollAndLockCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        enrollAndLockCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'enrollAndLockCollateral', true, argsBytes);
         },
 
@@ -65,7 +65,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new_collateral U128
          * @instance
          */
-        increaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        increaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'increaseLockedCollateral', false, {
                 new_collateral: _new_collateral,
            });
@@ -77,7 +77,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        increaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        increaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'increaseLockedCollateral', true, argsBytes);
         },
 
@@ -108,7 +108,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new_collateral U128
          * @instance
          */
-        decreaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        decreaseLockedCollateral: async (signer: ethers.Signer, _new_collateral: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'decreaseLockedCollateral', false, {
                 new_collateral: _new_collateral,
            });
@@ -120,7 +120,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        decreaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        decreaseLockedCollateralH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'decreaseLockedCollateral', true, argsBytes);
         },
 
@@ -151,7 +151,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _new_fee U128
          * @instance
          */
-        updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        updateRelayFee: async (signer: ethers.Signer, _new_fee: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'updateRelayFee', false, {
                 new_fee: _new_fee,
            });
@@ -163,7 +163,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        updateRelayFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        updateRelayFeeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'updateRelayFee', true, argsBytes);
         },
 
@@ -193,7 +193,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        cancelEnrollment: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'cancelEnrollment', false, {
            });
         },
@@ -204,7 +204,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        cancelEnrollmentH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'cancelEnrollment', true);
         },
 
@@ -233,7 +233,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _slash_protect U128
          * @instance
          */
-        setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setSlashProtect: async (signer: ethers.Signer, _slash_protect: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'setSlashProtect', false, {
                 slash_protect: _slash_protect,
            });
@@ -245,7 +245,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setSlashProtectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setSlashProtectH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'setSlashProtect', true, argsBytes);
         },
 
@@ -275,7 +275,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _number U32
          * @instance
          */
-        setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setAssignedRelayersNumber: async (signer: ethers.Signer, _number: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'setAssignedRelayersNumber', false, {
                 number: _number,
            });
@@ -287,7 +287,7 @@ export const getCrabFeeMarket = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setAssignedRelayersNumberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setAssignedRelayersNumberH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'CrabFeeMarket', 'setAssignedRelayersNumber', true, argsBytes);
         },
 

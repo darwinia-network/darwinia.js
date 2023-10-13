@@ -18,7 +18,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _months U8
          * @instance
          */
-        lock: async (signer: ethers.Signer, _amount: unknown, _months: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        lock: async (signer: ethers.Signer, _amount: unknown, _months: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'lock', false, {
                 amount: _amount,
                 months: _months,
@@ -31,7 +31,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        lockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        lockH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'lock', true, argsBytes);
         },
 
@@ -62,7 +62,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @instance
          */
-        claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'claim', false, {
            });
         },
@@ -73,7 +73,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionReceipt> => {
+        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'claim', true);
         },
 
@@ -103,7 +103,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _id U16
          * @instance
          */
-        claimWithPenalty: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        claimWithPenalty: async (signer: ethers.Signer, _id: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', false, {
                 id: _id,
            });
@@ -115,7 +115,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        claimWithPenaltyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        claimWithPenaltyH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'Deposit', 'claimWithPenalty', true, argsBytes);
         },
 

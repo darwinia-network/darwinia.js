@@ -16,7 +16,7 @@ export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {unknown} _commitment_contract [U8; 20]
          * @instance
          */
-        setCommitmentContract: async (signer: ethers.Signer, _commitment_contract: unknown): Promise<ethers.providers.TransactionReceipt> => {
+        setCommitmentContract: async (signer: ethers.Signer, _commitment_contract: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'MessageGadget', 'setCommitmentContract', false, {
                 commitment_contract: _commitment_contract,
            });
@@ -28,7 +28,7 @@ export const getMessageGadget = (dispatch: Dispatch, metadata: Metadata) => {
          * @param {BytesLike} argsBytes the args bytes
          * @instance
          */
-        setCommitmentContractH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionReceipt> => {
+        setCommitmentContractH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'MessageGadget', 'setCommitmentContract', true, argsBytes);
         },
 
