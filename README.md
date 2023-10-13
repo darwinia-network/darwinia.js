@@ -45,7 +45,7 @@ Collators Amount: <span id="result"></span>
 
 Try it in jsfiddle:
 
-https://jsfiddle.net/wuminzhe/gwp4ovz1/4/
+https://jsfiddle.net/cz5npo89/1/
 
 ## Usage
 
