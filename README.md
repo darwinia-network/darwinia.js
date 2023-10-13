@@ -22,28 +22,30 @@ NOTE:
 
 
 ```html
-Collators Amount: <span id="result"></span>
+storage(collatorCount): <span id="collators"></span><br/>
+call(remarkWithEvemt): <span id="remark"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
   import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
-
-  // storage
-  const result = await client.storages.darwiniaStaking.collatorCount();
-  const resultEl = document.getElementById("result");
-  resultEl.innerHTML = result;
-
+  
+    // storage
+  const collatorsCount = await client.storages.darwiniaStaking.collatorCount();
+  const collatorsEl = document.getElementById("collators");
+  collatorsEl.innerHTML = collatorsCount; 
+     
   // call
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = provider.getSigner();
   const tx = await client.calls.system.remarkWithEvent(signer, "0x12345678");
-  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
+  const remarkEl = document.getElementById("remark");
+  remarkEl.innerHTML = `<a href="https://pangolin.subscan.io/tx/${tx.hash}">${tx.hash}</a>`; 
 </script>
 ```
 
-Try it in [jsfiddle](https://jsfiddle.net/cz5npo89/1/):
+Try it in [jsfiddle](https://jsfiddle.net/wuminzhe/d2gzbcjt/2/):
 
 ## Usage
 
