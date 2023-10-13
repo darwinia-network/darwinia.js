@@ -16,7 +16,7 @@ npm install darwinia.js@^3.1.0
 NOTE:  
 * 3.1.0 break change:
 
-  call returns `ethers.providers.TransactionResponse`, not `ethers.providers.TransactionReceipt`.
+  call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
 
 ## Browser
 
@@ -43,9 +43,7 @@ Collators Amount: <span id="result"></span>
 </script>
 ```
 
-Try it in jsfiddle:
-
-https://jsfiddle.net/cz5npo89/1/
+Try it in [jsfiddle](https://jsfiddle.net/cz5npo89/1/):
 
 ## Usage
 
