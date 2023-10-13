@@ -11,17 +11,22 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.0.4
+npm install darwinia.js@^3.1.0
 ```
+NOTE:  
+* 3.1.0 break change:
+
+  call returns `ethers.providers.TransactionResponse`, not `ethers.providers.TransactionReceipt`.
 
 ## Browser
+
 
 ```html
 Collators Amount: <span id="result"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.0.4";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildPangolinClient(provider);
 

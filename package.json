@@ -1,6 +1,6 @@
 {
   "name": "darwinia.js",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "description": "A library to help fetch darwinia storages and dispatch calls",
   "main": "dist/index.js",
   "scripts": {
