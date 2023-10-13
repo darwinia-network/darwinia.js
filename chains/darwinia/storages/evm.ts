@@ -37,5 +37,14 @@ export const getEVM = (getStorage: GetStorage) => {
         accountStorages: async (param0: unknown, param1: unknown): Promise<string | null> => {
             return await getStorage('EVM', 'AccountStorages', param0, param1);
         },
+
+        /**
+         *
+         * @param {unknown} param0 H160: [U8; 20]
+         * @returns {Promise<string | null>} ()
+         */
+        suicided: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('EVM', 'Suicided', param0);
+        },
     };
 };
