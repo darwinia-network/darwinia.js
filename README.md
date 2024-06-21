@@ -13,19 +13,20 @@ A library to help
 ```shell
 npm install darwinia.js@^3.2.0
 ```
-NOTE:  
-* 3.1 changes:
+
+NOTE:
+
+- 3.1 changes:
   1. call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
-* 3.2 changes:
+- 3.2 changes:
   1. Removed pangolin and pangolin testnets.
   2. Removed pangolin tools.
   3. Added koi testnet.
 
 ## Browser
 
-
 ```html
-storage(collatorCount): <span id="collators"></span><br/>
+storage(collatorCount): <span id="collators"></span><br />
 call(remarkWithEvemt): <span id="remark"></span>
 
 <script type="module">
@@ -33,22 +34,22 @@ call(remarkWithEvemt): <span id="remark"></span>
   import { clientBuilder } from "https://esm.sh/darwinia.js@3.2.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const client = clientBuilder.buildKoiClient(provider);
-  
-    // storage
+
+  // storage
   const collatorsCount = await client.storages.darwiniaStaking.collatorCount();
   const collatorsEl = document.getElementById("collators");
-  collatorsEl.innerHTML = collatorsCount; 
-     
+  collatorsEl.innerHTML = collatorsCount;
+
   // call
   await window.ethereum.request({ method: "eth_requestAccounts" });
   const signer = provider.getSigner();
   const tx = await client.calls.system.remarkWithEvent(signer, "0x12345678");
   const remarkEl = document.getElementById("remark");
-  remarkEl.innerHTML = `<a href="https://koi-scan.darwinia.network/tx/${tx.hash}">${tx.hash}</a>`; 
+  remarkEl.innerHTML = `<a href="https://koi-scan.darwinia.network/tx/${tx.hash}">${tx.hash}</a>`;
 </script>
 ```
 
-Try it in [jsfiddle](https://jsfiddle.net/wuminzhe/d2gzbcjt/2/):
+Try it in [jsfiddle](https://jsfiddle.net/wuminzhe/5qx0pcej/1/):
 
 ## Usage
 
@@ -130,7 +131,10 @@ async function main(): Promise<void> {
   const collectCall = koi.calls.staking.buildCollectCall(120000000);
 
   // dispatch
-  const tx = await koi.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  const tx = await koi.calls.utility.batchAll(signer, [
+    setKeysCall,
+    collectCall,
+  ]);
   console.log(`https://koi-scan.darwinia.network/tx/${tx.hash}`);
 }
 
