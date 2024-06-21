@@ -17,14 +17,13 @@ import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
 import {getAura} from "./aura";
 import {getAuraExt} from "./auraExt";
-import {getMessageGadget} from "./messageGadget";
-import {getEcdsaAuthority} from "./ecdsaAuthority";
-import {getDemocracy} from "./democracy";
 import {getCouncil} from "./council";
 import {getTechnicalCommittee} from "./technicalCommittee";
-import {getPhragmenElection} from "./phragmenElection";
-import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
+import {getDemocracy} from "./democracy";
+import {getConvictionVoting} from "./convictionVoting";
+import {getReferenda} from "./referenda";
+import {getWhitelist} from "./whitelist";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
 import {getPreimage} from "./preimage";
@@ -33,12 +32,10 @@ import {getXcmpQueue} from "./xcmpQueue";
 import {getPolkadotXcm} from "./polkadotXcm";
 import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
+import {getAssetManager} from "./assetManager";
+import {getAssetLimit} from "./assetLimit";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
-import {getBridgeKusamaGrandpa} from "./bridgeKusamaGrandpa";
-import {getBridgeKusamaParachain} from "./bridgeKusamaParachain";
-import {getBridgeCrabMessages} from "./bridgeCrabMessages";
-import {getCrabFeeMarket} from "./crabFeeMarket";
 
 export const buildDarwiniaStoragesClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const getStorage = getStorageFunction(provider, metadata);
@@ -58,14 +55,13 @@ export const buildDarwiniaStoragesClient = (provider: providers.BaseProvider, me
         session: getSession(getStorage),
         aura: getAura(getStorage),
         auraExt: getAuraExt(getStorage),
-        messageGadget: getMessageGadget(getStorage),
-        ecdsaAuthority: getEcdsaAuthority(getStorage),
-        democracy: getDemocracy(getStorage),
         council: getCouncil(getStorage),
         technicalCommittee: getTechnicalCommittee(getStorage),
-        phragmenElection: getPhragmenElection(getStorage),
-        technicalMembership: getTechnicalMembership(getStorage),
         treasury: getTreasury(getStorage),
+        democracy: getDemocracy(getStorage),
+        convictionVoting: getConvictionVoting(getStorage),
+        referenda: getReferenda(getStorage),
+        whitelist: getWhitelist(getStorage),
         identity: getIdentity(getStorage),
         scheduler: getScheduler(getStorage),
         preimage: getPreimage(getStorage),
@@ -74,11 +70,9 @@ export const buildDarwiniaStoragesClient = (provider: providers.BaseProvider, me
         polkadotXcm: getPolkadotXcm(getStorage),
         ethereumXcm: getEthereumXcm(getStorage),
         dmpQueue: getDmpQueue(getStorage),
+        assetManager: getAssetManager(getStorage),
+        assetLimit: getAssetLimit(getStorage),
         ethereum: getEthereum(getStorage),
         evm: getEVM(getStorage),
-        bridgeKusamaGrandpa: getBridgeKusamaGrandpa(getStorage),
-        bridgeKusamaParachain: getBridgeKusamaParachain(getStorage),
-        bridgeCrabMessages: getBridgeCrabMessages(getStorage),
-        crabFeeMarket: getCrabFeeMarket(getStorage),
     };
 }

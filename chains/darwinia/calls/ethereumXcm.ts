@@ -12,8 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Xcm Transact an Ethereum transaction.
-         * Weight: Gas limit plus the db read involving the suspension check
+         * See `Pallet::transact`.
          *
          * @param {unknown} _xcm_transaction Enum<{0/V1: {gas_limit: [U64; 4], fee_payment: Enum<{0/Manual: {gas_price: Enum<{0/None, 1/Some}>, max_fee_per_gas: Enum<{0/None, 1/Some}>}, 1/Auto: }>, action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}, 1/V2: {gas_limit: [U64; 4], action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}}>
          * @instance
@@ -56,8 +55,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Xcm Transact an Ethereum transaction through proxy.
-         * Weight: Gas limit plus the db reads involving the suspension and proxy checks
+         * See `Pallet::transact_through_proxy`.
          *
          * @param {unknown} _transact_as [U8; 20]
          * @param {unknown} _xcm_transaction Enum<{0/V1: {gas_limit: [U64; 4], fee_payment: Enum<{0/Manual: {gas_price: Enum<{0/None, 1/Some}>, max_fee_per_gas: Enum<{0/None, 1/Some}>}, 1/Auto: }>, action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}, 1/V2: {gas_limit: [U64; 4], action: Enum<{0/Call: [U8; 20], 1/Create: }>, value: [U64; 4], input: Vec<U8>, access_list: Enum<{0/None: , 1/Some: Vec<([U8; 20], Vec<[U8; 32]>)>}>}}>
@@ -103,9 +101,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Suspends all Ethereum executions from XCM.
-         * 
-         * - `origin`: Must pass `ControllerOrigin`.
+         * See `Pallet::suspend_ethereum_xcm_execution`.
          *
          * @instance
          */
@@ -145,9 +141,7 @@ export const getEthereumXcm = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Resumes all Ethereum executions from XCM.
-         * 
-         * - `origin`: Must pass `ControllerOrigin`.
+         * See `Pallet::resume_ethereum_xcm_execution`.
          *
          * @instance
          */

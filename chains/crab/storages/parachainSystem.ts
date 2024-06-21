@@ -11,12 +11,37 @@ export const getParachainSystem = (getStorage: GetStorage) => {
     return {
 
         /**
-         * In case of a scheduled upgrade, this storage field contains the validation code to be applied.
+         * Latest included block descendants the runtime accepted. In other words, these are
+         * ancestors of the currently executing block which have not been included in the observed
+         * relay-chain state.
          *
-         * As soon as the relay chain gives us the go-ahead signal, we will overwrite the [`:code`][well_known_keys::CODE]
-         * which will result the next block process with the new validation code. This concludes the upgrade process.
+         * The segment length is limited by the capacity returned from the [`ConsensusHook`] configured
+         * in the pallet.
          *
-         * [well_known_keys::CODE]: sp_core::storage::well_known_keys::CODE
+         * @returns {Promise<string | null>} Vec<{used_bandwidth: {ump_msg_count: U32, ump_total_bytes: U32, hrmp_outgoing: Vec<(U32, {msg_count: U32, total_bytes: U32})>}, para_head_hash: Enum<{0/None: , 1/Some: [U8; 32]}>, consumed_go_ahead_signal: Enum<{0/None: , 1/Some: Enum<{0/Abort: , 1/GoAhead: }>}>}>
+         */
+        unincludedSegment: async (): Promise<string | null> => {
+            return await getStorage('ParachainSystem', 'UnincludedSegment');
+        },
+
+        /**
+         * Storage field that keeps track of bandwidth used by the unincluded segment along with the
+         * latest the latest HRMP watermark. Used for limiting the acceptance of new blocks with
+         * respect to relay chain constraints.
+         *
+         * @returns {Promise<string | null>} SegmentTracker: {used_bandwidth: {ump_msg_count: U32, ump_total_bytes: U32, hrmp_outgoing: Vec<(U32, {msg_count: U32, total_bytes: U32})>}, hrmp_watermark: Enum<{0/None: , 1/Some: U32}>, consumed_go_ahead_signal: Enum<{0/None: , 1/Some: Enum<{0/Abort: , 1/GoAhead: }>}>}
+         */
+        aggregatedUnincludedSegment: async (): Promise<string | null> => {
+            return await getStorage('ParachainSystem', 'AggregatedUnincludedSegment');
+        },
+
+        /**
+         * In case of a scheduled upgrade, this storage field contains the validation code to be
+         * applied.
+         *
+         * As soon as the relay chain gives us the go-ahead signal, we will overwrite the
+         * [`:code`][sp_core::storage::well_known_keys::CODE] which will result the next block process
+         * with the new validation code. This concludes the upgrade process.
          *
          * @returns {Promise<string | null>} Vec<U8>
          */
@@ -82,6 +107,19 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         },
 
         /**
+         * Optional upgrade go-ahead signal from the relay-chain.
+         *
+         * This storage item is a mirror of the corresponding value for the current parachain from the
+         * relay-chain. This value is ephemeral which means it doesn't hit the storage. This value is
+         * set after the inherent.
+         *
+         * @returns {Promise<string | null>} Option: Enum<{0/None: , 1/Some: Enum<{0/Abort: , 1/GoAhead: }>}>
+         */
+        upgradeGoAhead: async (): Promise<string | null> => {
+            return await getStorage('ParachainSystem', 'UpgradeGoAhead');
+        },
+
+        /**
          * The state proof for the last relay parent block.
          *
          * This field is meant to be updated each block with the validation data inherent. Therefore,
@@ -104,7 +142,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @returns {Promise<string | null>} MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_size: {remaining_count: U32, remaining_size: U32}, ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
+         * @returns {Promise<string | null>} MessagingStateSnapshot: {dmq_mqc_head: [U8; 32], relay_dispatch_queue_remaining_capacity: {remaining_count: U32, remaining_size: U32}, ingress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>, egress_channels: Vec<(U32, {max_capacity: U32, max_total_size: U32, max_message_size: U32, msg_count: U32, total_size: U32, mqc_head: Enum<{0/None: , 1/Some: [U8; 32]}>})>}
          */
         relevantMessagingState: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'RelevantMessagingState');
@@ -118,7 +156,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
          *
          * This data is also absent from the genesis.
          *
-         * @returns {Promise<string | null>} AbridgedHostConfiguration: {max_code_size: U32, max_head_data_size: U32, max_upward_queue_count: U32, max_upward_queue_size: U32, max_upward_message_size: U32, max_upward_message_num_per_candidate: U32, hrmp_max_message_num_per_candidate: U32, validation_upgrade_cooldown: U32, validation_upgrade_delay: U32}
+         * @returns {Promise<string | null>} AbridgedHostConfiguration: {max_code_size: U32, max_head_data_size: U32, max_upward_queue_count: U32, max_upward_queue_size: U32, max_upward_message_size: U32, max_upward_message_num_per_candidate: U32, hrmp_max_message_num_per_candidate: U32, validation_upgrade_cooldown: U32, validation_upgrade_delay: U32, async_backing_params: {max_candidate_depth: U32, allowed_ancestry_len: U32}}
          */
         hostConfiguration: async (): Promise<string | null> => {
             return await getStorage('ParachainSystem', 'HostConfiguration');
@@ -243,7 +281,7 @@ export const getParachainSystem = (getStorage: GetStorage) => {
         /**
          * A custom head data that should be returned as result of `validate_block`.
          *
-         * See [`Pallet::set_custom_validation_head_data`] for more information.
+         * See `Pallet::set_custom_validation_head_data` for more information.
          *
          * @returns {Promise<string | null>} Vec<U8>
          */

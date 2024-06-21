@@ -57,10 +57,10 @@ export const getAccountMigration = (getStorage: GetStorage) => {
         },
 
         /**
-         * [`darwinia_staking::Ledgers`] data.
+         * [`darwinia_staking::migration::v2::OldLedger`] data.
          *
          * @param {unknown} param0 AccountId32: [U8; 32]
-         * @returns {Promise<string | null>} Ledger: {staked_ring: U128, staked_kton: U128, staked_deposits: Vec<U16>, unstaking_ring: Vec<(U128, U32)>, unstaking_kton: Vec<(U128, U32)>, unstaking_deposits: Vec<(U16, U32)>}
+         * @returns {Promise<string | null>} OldLedger: {staked_ring: U128, staked_kton: U128, staked_deposits: Vec<U16>, unstaking_ring: Vec<(U128, U32)>, unstaking_kton: Vec<(U128, U32)>, unstaking_deposits: Vec<(U16, U32)>}
          */
         ledgers: async (param0: unknown): Promise<string | null> => {
             return await getStorage('AccountMigration', 'Ledgers', param0);

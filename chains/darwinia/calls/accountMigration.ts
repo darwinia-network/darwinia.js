@@ -12,7 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Migrate all the account data under the `from` to `to`.
+         * See [`Pallet::migrate`].
          *
          * @param {unknown} _from [U8; 32]
          * @param {unknown} _to [U8; 20]
@@ -61,9 +61,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Similar to `migrate` but for multisig accounts.
-         * 
-         * The `_signature` should be provided by `who`.
+         * See [`Pallet::migrate_multisig`].
          *
          * @param {unknown} _submitter [U8; 32]
          * @param {unknown} _others Vec<[U8; 32]>
@@ -121,9 +119,7 @@ export const getAccountMigration = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * To complete the pending multisig migration.
-         * 
-         * The `_signature` should be provided by `submitter`.
+         * See [`Pallet::complete_multisig_migration`].
          *
          * @param {unknown} _multisig [U8; 32]
          * @param {unknown} _submitter [U8; 32]

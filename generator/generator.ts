@@ -323,8 +323,8 @@ function generateChainIndex(chainName: string) {
 }
 
 async function main() {
-    const chainName = process.env["CHAIN"] || "pangolin";
-    const endpoint = process.env["ENDPOINT"] || "https://pangolin-rpc.darwinia.network";
+    const chainName = process.env["CHAIN"] || "koi";
+    const endpoint = process.env["ENDPOINT"] || "https://koi-rpc.darwinia.network";
 
     // Prepare metadata
     const metaStatic = await getMetadata(endpoint);

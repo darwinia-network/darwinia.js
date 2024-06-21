@@ -12,7 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Withdraw balance from EVM into currency/balances pallet.
+         * See [`Pallet::withdraw`].
          *
          * @param {unknown} _address [U8; 20]
          * @param {unknown} _value U128
@@ -58,7 +58,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Issue an EVM call operation. This is similar to a message call transaction in Ethereum.
+         * See [`Pallet::call`].
          *
          * @param {unknown} _source [U8; 20]
          * @param {unknown} _target [U8; 20]
@@ -125,8 +125,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Issue an EVM create operation. This is similar to a contract creation transaction in
-         * Ethereum.
+         * See [`Pallet::create`].
          *
          * @param {unknown} _source [U8; 20]
          * @param {unknown} _init Vec<U8>
@@ -190,7 +189,7 @@ export const getEVM = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Issue an EVM create2 operation.
+         * See [`Pallet::create2`].
          *
          * @param {unknown} _source [U8; 20]
          * @param {unknown} _init Vec<U8>

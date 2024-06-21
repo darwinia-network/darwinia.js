@@ -12,19 +12,15 @@ import { Metadata } from "@polkadot/types";
 export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Add stakes to the staking pool.
-         * 
-         * This will transfer the stakes to a pallet/contact account.
+         * See [`Pallet::stake`].
          *
          * @param {unknown} _ring_amount U128
-         * @param {unknown} _kton_amount U128
          * @param {unknown} _deposits Vec<U16>
          * @instance
          */
-        stake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
+        stake: async (signer: ethers.Signer, _ring_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'stake', false, {
                 ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
                 deposits: _deposits,
            });
         },
@@ -44,10 +40,9 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildStakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
+        buildStakeCall: (_ring_amount: unknown, _deposits: unknown) => {
             return buildRuntimeCall(metadata, 'DarwiniaStaking', 'stake', {
                 ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
                 deposits: _deposits,
             });
         },
@@ -63,17 +58,15 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Withdraw stakes from the staking pool.
+         * See [`Pallet::unstake`].
          *
          * @param {unknown} _ring_amount U128
-         * @param {unknown} _kton_amount U128
          * @param {unknown} _deposits Vec<U16>
          * @instance
          */
-        unstake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
+        unstake: async (signer: ethers.Signer, _ring_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
             return await dispatch(signer, 'DarwiniaStaking', 'unstake', false, {
                 ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
                 deposits: _deposits,
            });
         },
@@ -93,10 +86,9 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
          *
          * @returns {CallAsParam} 
          */
-        buildUnstakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
+        buildUnstakeCall: (_ring_amount: unknown, _deposits: unknown) => {
             return buildRuntimeCall(metadata, 'DarwiniaStaking', 'unstake', {
                 ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
                 deposits: _deposits,
             });
         },
@@ -112,100 +104,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Cancel the `unstake` operation.
-         * 
-         * Re-stake the unstaking assets immediately.
-         *
-         * @param {unknown} _ring_amount U128
-         * @param {unknown} _kton_amount U128
-         * @param {unknown} _deposits Vec<U16>
-         * @instance
-         */
-        restake: async (signer: ethers.Signer, _ring_amount: unknown, _kton_amount: unknown, _deposits: unknown): Promise<ethers.providers.TransactionResponse> => {
-            return await dispatch(signer, 'DarwiniaStaking', 'restake', false, {
-                ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
-                deposits: _deposits,
-           });
-        },
-
-        /**
-         * Similar to {@link: crab/darwiniaStaking/calls/restake}, but with scale encoded args.
-         *
-         * @param {BytesLike} argsBytes the args bytes
-         * @instance
-         */
-        restakeH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
-            return await dispatch(signer, 'DarwiniaStaking', 'restake', true, argsBytes);
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildRestakeCall: (_ring_amount: unknown, _kton_amount: unknown, _deposits: unknown) => {
-            return buildRuntimeCall(metadata, 'DarwiniaStaking', 'restake', {
-                ring_amount: _ring_amount,
-                kton_amount: _kton_amount,
-                deposits: _deposits,
-            });
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildRestakeCall, but with scale encoded args.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildRestakeCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'DarwiniaStaking', 'restake', argsBytes)
-        },
-
-        /**
-         * Claim the stakes from the pallet/contract account.
-         *
-         * @instance
-         */
-        claim: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
-            return await dispatch(signer, 'DarwiniaStaking', 'claim', false, {
-           });
-        },
-
-        /**
-         * Similar to {@link: crab/darwiniaStaking/calls/claim}, but with scale encoded args.
-         *
-         * @param {BytesLike} argsBytes the args bytes
-         * @instance
-         */
-        claimH: async (signer: ethers.Signer): Promise<ethers.providers.TransactionResponse> => {
-            return await dispatch(signer, 'DarwiniaStaking', 'claim', true);
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildClaimCall: () => {
-            return buildRuntimeCall(metadata, 'DarwiniaStaking', 'claim', {
-            });
-        },
-
-        /**
-         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
-         * Similar to buildClaimCall, but with scale encoded args.
-         *
-         * @returns {CallAsParam} 
-         */
-        buildClaimCallH: (argsBytes: BytesLike) => {
-            return decodeCall(metadata, 'DarwiniaStaking', 'claim', argsBytes)
-        },
-
-        /**
-         * Declare the desire to collect.
-         * 
-         * Effects will be felt at the beginning of the next session.
+         * See [`Pallet::collect`].
          *
          * @param {unknown} _commission U32
          * @instance
@@ -248,9 +147,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Declare the desire to nominate a collator.
-         * 
-         * Effects will be felt at the beginning of the next session.
+         * See [`Pallet::nominate`].
          *
          * @param {unknown} _target [U8; 20]
          * @instance
@@ -293,11 +190,7 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Declare no desire to either collect or nominate.
-         * 
-         * Effects will be felt at the beginning of the next era.
-         * 
-         * If the target is a collator, its nominators need to re-nominate.
+         * See [`Pallet::chill`].
          *
          * @instance
          */
@@ -337,11 +230,93 @@ export const getDarwiniaStaking = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Set collator count.
-         * 
-         * This will apply to the incoming session.
-         * 
-         * Require root origin.
+         * See [`Pallet::payout`].
+         *
+         * @param {unknown} _who [U8; 20]
+         * @instance
+         */
+        payout: async (signer: ethers.Signer, _who: unknown): Promise<ethers.providers.TransactionResponse> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'payout', false, {
+                who: _who,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/darwiniaStaking/calls/payout}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        payoutH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'payout', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildPayoutCall: (_who: unknown) => {
+            return buildRuntimeCall(metadata, 'DarwiniaStaking', 'payout', {
+                who: _who,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildPayoutCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildPayoutCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'DarwiniaStaking', 'payout', argsBytes)
+        },
+
+        /**
+         * See [`Pallet::set_rate_limit`].
+         *
+         * @param {unknown} _amount U128
+         * @instance
+         */
+        setRateLimit: async (signer: ethers.Signer, _amount: unknown): Promise<ethers.providers.TransactionResponse> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'setRateLimit', false, {
+                amount: _amount,
+           });
+        },
+
+        /**
+         * Similar to {@link: crab/darwiniaStaking/calls/setRateLimit}, but with scale encoded args.
+         *
+         * @param {BytesLike} argsBytes the args bytes
+         * @instance
+         */
+        setRateLimitH: async (signer: ethers.Signer, argsBytes: BytesLike): Promise<ethers.providers.TransactionResponse> => {
+            return await dispatch(signer, 'DarwiniaStaking', 'setRateLimit', true, argsBytes);
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetRateLimitCall: (_amount: unknown) => {
+            return buildRuntimeCall(metadata, 'DarwiniaStaking', 'setRateLimit', {
+                amount: _amount,
+            });
+        },
+
+        /**
+         * Build a call object to be used as a call param in other functions, such as `utilities.batchAll`.
+         * Similar to buildSetRateLimitCall, but with scale encoded args.
+         *
+         * @returns {CallAsParam} 
+         */
+        buildSetRateLimitCallH: (argsBytes: BytesLike) => {
+            return decodeCall(metadata, 'DarwiniaStaking', 'setRateLimit', argsBytes)
+        },
+
+        /**
+         * See [`Pallet::set_collator_count`].
          *
          * @param {unknown} _count U32
          * @instance

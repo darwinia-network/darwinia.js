@@ -12,9 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Make some on-chain remark.
-         * 
-         * - `O(1)`
+         * See [`Pallet::remark`].
          *
          * @param {unknown} _remark Vec<U8>
          * @instance
@@ -57,7 +55,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Set the number of pages in the WebAssembly environment's heap.
+         * See [`Pallet::set_heap_pages`].
          *
          * @param {unknown} _pages U64
          * @instance
@@ -100,7 +98,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Set the new runtime code.
+         * See [`Pallet::set_code`].
          *
          * @param {unknown} _code Vec<U8>
          * @instance
@@ -143,7 +141,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Set the new runtime code without doing any checks of the given `code`.
+         * See [`Pallet::set_code_without_checks`].
          *
          * @param {unknown} _code Vec<U8>
          * @instance
@@ -186,7 +184,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Set some items of storage.
+         * See [`Pallet::set_storage`].
          *
          * @param {unknown} _items Vec<(Vec<U8>, Vec<U8>)>
          * @instance
@@ -229,7 +227,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Kill some items from storage.
+         * See [`Pallet::kill_storage`].
          *
          * @param {unknown} _keys Vec<Vec<U8>>
          * @instance
@@ -272,10 +270,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Kill all storage items with a key that starts with the given prefix.
-         * 
-         * **NOTE:** We rely on the Root origin to provide us the number of subkeys under
-         * the prefix we are removing to accurately calculate the weight of this function.
+         * See [`Pallet::kill_prefix`].
          *
          * @param {unknown} _prefix Vec<U8>
          * @param {unknown} _subkeys U32
@@ -321,7 +316,7 @@ export const getSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Make some on-chain remark and emit event.
+         * See [`Pallet::remark_with_event`].
          *
          * @param {unknown} _remark Vec<U8>
          * @instance

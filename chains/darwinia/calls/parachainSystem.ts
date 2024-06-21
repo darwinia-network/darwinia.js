@@ -12,15 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Set the current validation data.
-         * 
-         * This should be invoked exactly once per block. It will panic at the finalization
-         * phase if the call was not invoked.
-         * 
-         * The dispatch origin for this call must be `Inherent`
-         * 
-         * As a side effect, this function upgrades the current validation function
-         * if the appropriate time has come.
+         * See [`Pallet::set_validation_data`].
          *
          * @param {unknown} _data {validation_data: {parent_head: Vec<U8>, relay_parent_number: U32, relay_parent_storage_root: [U8; 32], max_pov_size: U32}, relay_chain_state: {trie_nodes: Vec<Vec<U8>>}, downward_messages: Vec<{sent_at: U32, msg: Vec<U8>}>, horizontal_messages: Vec<(U32, Vec<{sent_at: U32, data: Vec<U8>}>)>}
          * @instance
@@ -63,6 +55,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
+         * See [`Pallet::sudo_send_upward_message`].
          *
          * @param {unknown} _message Vec<U8>
          * @instance
@@ -105,14 +98,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Authorize an upgrade to a given `code_hash` for the runtime. The runtime can be supplied
-         * later.
-         * 
-         * The `check_version` parameter sets a boolean flag for whether or not the runtime's spec
-         * version and name should be verified on upgrade. Since the authorization only has a hash,
-         * it cannot actually perform the verification.
-         * 
-         * This call requires Root origin.
+         * See [`Pallet::authorize_upgrade`].
          *
          * @param {unknown} _code_hash [U8; 32]
          * @param {unknown} _check_version Bool
@@ -158,15 +144,7 @@ export const getParachainSystem = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Provide the preimage (runtime binary) `code` for an upgrade that has been authorized.
-         * 
-         * If the authorization required a version check, this call will ensure the spec name
-         * remains unchanged and that the spec version has increased.
-         * 
-         * Note that this function will not apply the new `code`, but only attempt to schedule the
-         * upgrade with the Relay Chain.
-         * 
-         * All origins are allowed.
+         * See [`Pallet::enact_authorized_upgrade`].
          *
          * @param {unknown} _code Vec<U8>
          * @instance
