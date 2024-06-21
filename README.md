@@ -11,12 +11,15 @@ A library to help
 ## Nodejs
 
 ```shell
-npm install darwinia.js@^3.1.1
+npm install darwinia.js@^3.2.0
 ```
 NOTE:  
-* 3.1 break change:
-
-  call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
+* 3.1 changes:
+  1. call returns `ethers.providers.TransactionResponse` instead of `ethers.providers.TransactionReceipt`.
+* 3.2 changes:
+  1. Removed pangolin and pangolin testnets.
+  2. Removed pangolin tools.
+  3. Added koi testnet.
 
 ## Browser
 
@@ -27,9 +30,9 @@ call(remarkWithEvemt): <span id="remark"></span>
 
 <script type="module">
   import { ethers } from "https://esm.sh/ethers@5.7.2";
-  import { clientBuilder } from "https://esm.sh/darwinia.js@3.1.1";
+  import { clientBuilder } from "https://esm.sh/darwinia.js@3.2.0";
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const client = clientBuilder.buildPangolinClient(provider);
+  const client = clientBuilder.buildKoiClient(provider);
   
     // storage
   const collatorsCount = await client.storages.darwiniaStaking.collatorCount();
@@ -41,7 +44,7 @@ call(remarkWithEvemt): <span id="remark"></span>
   const signer = provider.getSigner();
   const tx = await client.calls.system.remarkWithEvent(signer, "0x12345678");
   const remarkEl = document.getElementById("remark");
-  remarkEl.innerHTML = `<a href="https://pangolin.subscan.io/tx/${tx.hash}">${tx.hash}</a>`; 
+  remarkEl.innerHTML = `<a href="https://koi-scan.darwinia.network/tx/${tx.hash}">${tx.hash}</a>`; 
 </script>
 ```
 
@@ -59,14 +62,14 @@ import { clientBuilder } from "darwinia.js";
 
 async function main(): Promise<void> {
   const provider = new ethers.providers.JsonRpcProvider(
-    "https://pangolin-rpc.darwinia.network"
+    "https://koi-rpc.darwinia.network"
   );
   // or
   // const provider = new ethers.providers.Web3Provider(window.ethereum);
 
-  const pangolin = clientBuilder.buildPangolinClient(provider);
+  const koi = clientBuilder.buildKoiClient(provider);
 
-  let result = await pangolin.storages.system.account(
+  let result = await koi.storages.system.account(
     "0x794BF0B66926D84CB735283D849f454A2A8d9a44"
   );
   console.log(`${result}\n`);
@@ -86,16 +89,16 @@ async function main(): Promise<void> {
 
   const signer = provider.getSigner();
 
-  const pangolin = clientBuilder.buildPangolinClient(provider);
+  const koi = clientBuilder.buildKoiClient(provider);
 
-  const tx = await pangolin.calls.session.setKeys(
+  const tx = await koi.calls.session.setKeys(
     signer,
     {
       aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
     }, // keys
     "0x" // proof
   );
-  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
+  console.log(`https://koi-scan.darwinia.network/tx/${tx.hash}`);
 }
 
 main();
@@ -112,10 +115,10 @@ async function main(): Promise<void> {
 
   const signer = provider.getSigner();
 
-  const pangolin = clientBuilder.buildPangolinClient(provider);
+  const koi = clientBuilder.buildKoiClient(provider);
 
   // prepare calls
-  const setKeysCall = pangolin.calls.session.buildSetKeysCall(
+  const setKeysCall = koi.calls.session.buildSetKeysCall(
     // keys
     {
       aura: "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d",
@@ -124,11 +127,11 @@ async function main(): Promise<void> {
     "px"
   );
 
-  const collectCall = pangolin.calls.staking.buildCollectCall(120000000);
+  const collectCall = koi.calls.staking.buildCollectCall(120000000);
 
   // dispatch
-  const tx = await pangolin.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
-  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
+  const tx = await koi.calls.utility.batchAll(signer, [setKeysCall, collectCall]);
+  console.log(`https://koi-scan.darwinia.network/tx/${tx.hash}`);
 }
 
 main();
@@ -145,14 +148,14 @@ async function main(): Promise<void> {
 
   const signer = provider.getSigner();
 
-  const pangolin = clientBuilder.buildPangolinClient(provider);
+  const koi = clientBuilder.buildKoiClient(provider);
 
   // call ended with `D` is the version that accept params encoded in scale codec
-  const tx = await pangolin.calls.session.setKeysH(
+  const tx = await koi.calls.session.setKeysH(
     signer,
     "0xd43593c715fdd31c61141abd04a99fd6822c8558854ccde39a5684e7a56da27d00" // encoded (keys, proof)
   );
-  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
+  console.log(`https://koi-scan.darwinia.network/tx/${tx.hash}`);
 }
 
 main();

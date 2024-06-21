@@ -12,7 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Lock the RING for some KTON profit/interest.
+         * See [`Pallet::lock`].
          *
          * @param {unknown} _amount U128
          * @param {unknown} _months U8
@@ -58,7 +58,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Claim the expired-locked RING.
+         * See [`Pallet::claim`].
          *
          * @instance
          */
@@ -98,7 +98,7 @@ export const getDeposit = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Claim the unexpired-locked RING by paying the KTON penalty.
+         * See [`Pallet::claim_with_penalty`].
          *
          * @param {unknown} _id U16
          * @instance

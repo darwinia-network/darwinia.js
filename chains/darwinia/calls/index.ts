@@ -13,14 +13,13 @@ import {getDeposit} from "./deposit";
 import {getAccountMigration} from "./accountMigration";
 import {getDarwiniaStaking} from "./darwiniaStaking";
 import {getSession} from "./session";
-import {getMessageGadget} from "./messageGadget";
-import {getEcdsaAuthority} from "./ecdsaAuthority";
-import {getDemocracy} from "./democracy";
 import {getCouncil} from "./council";
 import {getTechnicalCommittee} from "./technicalCommittee";
-import {getPhragmenElection} from "./phragmenElection";
-import {getTechnicalMembership} from "./technicalMembership";
 import {getTreasury} from "./treasury";
+import {getDemocracy} from "./democracy";
+import {getConvictionVoting} from "./convictionVoting";
+import {getReferenda} from "./referenda";
+import {getWhitelist} from "./whitelist";
 import {getUtility} from "./utility";
 import {getIdentity} from "./identity";
 import {getScheduler} from "./scheduler";
@@ -31,14 +30,12 @@ import {getPolkadotXcm} from "./polkadotXcm";
 import {getCumulusXcm} from "./cumulusXcm";
 import {getEthereumXcm} from "./ethereumXcm";
 import {getDmpQueue} from "./dmpQueue";
+import {getAssetManager} from "./assetManager";
+import {getXTokens} from "./xTokens";
+import {getAssetLimit} from "./assetLimit";
 import {getEthereum} from "./ethereum";
 import {getEVM} from "./evm";
-import {getMessageTransact} from "./messageTransact";
-import {getBridgeKusamaGrandpa} from "./bridgeKusamaGrandpa";
-import {getBridgeKusamaParachain} from "./bridgeKusamaParachain";
-import {getBridgeCrabMessages} from "./bridgeCrabMessages";
-import {getBridgeCrabDispatch} from "./bridgeCrabDispatch";
-import {getCrabFeeMarket} from "./crabFeeMarket";
+import {getEthTxForwarder} from "./ethTxForwarder";
 
 export const buildDarwiniaCallsClient = (provider: providers.BaseProvider, metadata: Metadata) => {
     const dispatch = dispatchCall(provider, metadata);
@@ -54,14 +51,13 @@ export const buildDarwiniaCallsClient = (provider: providers.BaseProvider, metad
         accountMigration: getAccountMigration(dispatch, metadata),
         darwiniaStaking: getDarwiniaStaking(dispatch, metadata),
         session: getSession(dispatch, metadata),
-        messageGadget: getMessageGadget(dispatch, metadata),
-        ecdsaAuthority: getEcdsaAuthority(dispatch, metadata),
-        democracy: getDemocracy(dispatch, metadata),
         council: getCouncil(dispatch, metadata),
         technicalCommittee: getTechnicalCommittee(dispatch, metadata),
-        phragmenElection: getPhragmenElection(dispatch, metadata),
-        technicalMembership: getTechnicalMembership(dispatch, metadata),
         treasury: getTreasury(dispatch, metadata),
+        democracy: getDemocracy(dispatch, metadata),
+        convictionVoting: getConvictionVoting(dispatch, metadata),
+        referenda: getReferenda(dispatch, metadata),
+        whitelist: getWhitelist(dispatch, metadata),
         utility: getUtility(dispatch, metadata),
         identity: getIdentity(dispatch, metadata),
         scheduler: getScheduler(dispatch, metadata),
@@ -72,13 +68,11 @@ export const buildDarwiniaCallsClient = (provider: providers.BaseProvider, metad
         cumulusXcm: getCumulusXcm(dispatch, metadata),
         ethereumXcm: getEthereumXcm(dispatch, metadata),
         dmpQueue: getDmpQueue(dispatch, metadata),
+        assetManager: getAssetManager(dispatch, metadata),
+        xTokens: getXTokens(dispatch, metadata),
+        assetLimit: getAssetLimit(dispatch, metadata),
         ethereum: getEthereum(dispatch, metadata),
         evm: getEVM(dispatch, metadata),
-        messageTransact: getMessageTransact(dispatch, metadata),
-        bridgeKusamaGrandpa: getBridgeKusamaGrandpa(dispatch, metadata),
-        bridgeKusamaParachain: getBridgeKusamaParachain(dispatch, metadata),
-        bridgeCrabMessages: getBridgeCrabMessages(dispatch, metadata),
-        bridgeCrabDispatch: getBridgeCrabDispatch(dispatch, metadata),
-        crabFeeMarket: getCrabFeeMarket(dispatch, metadata),
+        ethTxForwarder: getEthTxForwarder(dispatch, metadata),
     };
 }

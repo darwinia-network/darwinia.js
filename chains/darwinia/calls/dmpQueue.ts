@@ -12,7 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getDmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Service a single overweight message.
+         * See [`Pallet::service_overweight`].
          *
          * @param {unknown} _index U64
          * @param {unknown} _weight_limit {ref_time: Compact<U64>, proof_size: Compact<U64>}

@@ -1,30 +1,21 @@
-import { pangolinStaticMetadata, buildPangolinCallsClient, buildPangolinStoragesClient } from "./pangolin";
-export { pangolinStaticMetadata } from "./pangolin";
-import { pangoroStaticMetadata, buildPangoroCallsClient, buildPangoroStoragesClient } from "./pangoro";
-export { pangoroStaticMetadata } from "./pangoro";
+import { koiStaticMetadata, buildKoiCallsClient, buildKoiStoragesClient } from "./koi";
+export { koiStaticMetadata } from "./koi";
+
 import { crabStaticMetadata, buildCrabCallsClient, buildCrabStoragesClient } from "./crab";
 export { crabStaticMetadata } from "./crab";
+
 import { darwiniaStaticMetadata, buildDarwiniaCallsClient, buildDarwiniaStoragesClient } from "./darwinia";
 export { darwiniaStaticMetadata } from "./darwinia";
 
-import { providers } from "ethers";
+import type { providers } from "ethers";
 import { buildMetadata } from "../index";
 
 export const clientBuilder = {
-  buildPangolinClient: (provider: providers.BaseProvider) => {
-    const metadata = buildMetadata(pangolinStaticMetadata);
+  buildKoiClient: (provider: providers.BaseProvider) => {
+    const metadata = buildMetadata(koiStaticMetadata);
     return {
-      calls: buildPangolinCallsClient(provider, metadata),
-      storages: buildPangolinStoragesClient(provider, metadata),
-      metadata: metadata,
-      provider: provider
-    };
-  },
-  buildPangoroClient: (provider: providers.BaseProvider) => {
-    const metadata = buildMetadata(pangoroStaticMetadata);
-    return {
-      calls: buildPangoroCallsClient(provider, metadata),
-      storages: buildPangoroStoragesClient(provider, metadata),
+      calls: buildKoiCallsClient(provider, metadata),
+      storages: buildKoiStoragesClient(provider, metadata),
       metadata: metadata,
       provider: provider
     };

@@ -14,30 +14,10 @@ export const getDarwiniaStaking = (getStorage: GetStorage) => {
          * All staking ledgers.
          *
          * @param {unknown} param0 AccountId20: [U8; 20]
-         * @returns {Promise<string | null>} Ledger: {staked_ring: U128, staked_kton: U128, staked_deposits: Vec<U16>, unstaking_ring: Vec<(U128, U32)>, unstaking_kton: Vec<(U128, U32)>, unstaking_deposits: Vec<(U16, U32)>}
+         * @returns {Promise<string | null>} Ledger: {ring: U128, deposits: Vec<U16>}
          */
         ledgers: async (param0: unknown): Promise<string | null> => {
             return await getStorage('DarwiniaStaking', 'Ledgers', param0);
-        },
-
-        /**
-         * Total staked RING.
-         *
-         * This will count RING + deposit(locking RING).
-         *
-         * @returns {Promise<string | null>} U128
-         */
-        ringPool: async (): Promise<string | null> => {
-            return await getStorage('DarwiniaStaking', 'RingPool');
-        },
-
-        /**
-         * Total staked KTON.
-         *
-         * @returns {Promise<string | null>} U128
-         */
-        ktonPool: async (): Promise<string | null> => {
-            return await getStorage('DarwiniaStaking', 'KtonPool');
         },
 
         /**
@@ -51,23 +31,63 @@ export const getDarwiniaStaking = (getStorage: GetStorage) => {
         },
 
         /**
-         * Current stakers' exposure.
+         * Exposure cache states.
          *
-         * @param {unknown} param0 AccountId20: [U8; 20]
-         * @returns {Promise<string | null>} Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
+         * To avoid extra DB RWs during new session, such as:
+         * ```nocompile
+         * previous = current;
+         * current = next;
+         * next = elect();
+         * ```
+         *
+         * Now, with data:
+         * ```nocompile
+         * cache1 == previous;
+         * cache2 == current;
+         * cache3 == next;
+         * ```
+         * Just need to shift the marker and write the storage map once:
+         * ```nocompile
+         * mark(cache3, current);
+         * mark(cache2, previous);
+         * mark(cache1, next);
+         * cache1 = elect();
+         * ```
+         *
+         * @returns {Promise<string | null>} (Enum<{0/Previous: , 1/Current: , 2/Next: }>, Enum<{0/Previous: , 1/Current: , 2/Next: }>, Enum<{0/Previous: , 1/Current: , 2/Next: }>)
          */
-        exposures: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('DarwiniaStaking', 'Exposures', param0);
+        exposureCacheStates: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'ExposureCacheStates');
         },
 
         /**
-         * Next stakers' exposure.
+         * Exposure cache 0.
          *
          * @param {unknown} param0 AccountId20: [U8; 20]
-         * @returns {Promise<string | null>} Exposure: {total: U32, nominators: Vec<{who: [U8; 20], value: U32}>}
+         * @returns {Promise<string | null>} Exposure: {commission: U32, vote: U128, nominators: Vec<{who: [U8; 20], vote: U128}>}
          */
-        nextExposures: async (param0: unknown): Promise<string | null> => {
-            return await getStorage('DarwiniaStaking', 'NextExposures', param0);
+        exposureCache0: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'ExposureCache0', param0);
+        },
+
+        /**
+         * Exposure cache 1.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Exposure: {commission: U32, vote: U128, nominators: Vec<{who: [U8; 20], vote: U128}>}
+         */
+        exposureCache1: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'ExposureCache1', param0);
+        },
+
+        /**
+         * Exposure cache 2.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} Exposure: {commission: U32, vote: U128, nominators: Vec<{who: [U8; 20], vote: U128}>}
+         */
+        exposureCache2: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'ExposureCache2', param0);
         },
 
         /**
@@ -91,12 +111,22 @@ export const getDarwiniaStaking = (getStorage: GetStorage) => {
         },
 
         /**
-         * Collator's reward points.
+         * Number of blocks authored by the collator within current session.
          *
          * @returns {Promise<string | null>} (U32, Vec<([U8; 20], U32)>)
          */
-        rewardPoints: async (): Promise<string | null> => {
-            return await getStorage('DarwiniaStaking', 'RewardPoints');
+        authoredBlocksCount: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'AuthoredBlocksCount');
+        },
+
+        /**
+         * All outstanding rewards since the last payment.
+         *
+         * @param {unknown} param0 AccountId20: [U8; 20]
+         * @returns {Promise<string | null>} U128
+         */
+        pendingRewards: async (param0: unknown): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'PendingRewards', param0);
         },
 
         /**
@@ -115,6 +145,28 @@ export const getDarwiniaStaking = (getStorage: GetStorage) => {
          */
         elapsedTime: async (): Promise<string | null> => {
             return await getStorage('DarwiniaStaking', 'ElapsedTime');
+        },
+
+        /**
+         * Rate limit.
+         *
+         * The maximum amount of RING that can be staked or unstaked in one session.
+         *
+         * @returns {Promise<string | null>} U128
+         */
+        rateLimit: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'RateLimit');
+        },
+
+        /**
+         * Rate limit state.
+         *
+         * Tracks the rate limit state in a session.
+         *
+         * @returns {Promise<string | null>} RateLimiter: Enum<{0/Pos: U128, 1/Neg: U128}>
+         */
+        rateLimitState: async (): Promise<string | null> => {
+            return await getStorage('DarwiniaStaking', 'RateLimitState');
         },
     };
 };

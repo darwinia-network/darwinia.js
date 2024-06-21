@@ -3,11 +3,11 @@ import { hexlify } from "ethers/lib/utils";
 import { clientBuilder, encodeCall2 } from "../index"
 
 async function main(): Promise<void> {
-  const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
+  const provider = new ethers.providers.JsonRpcProvider("https://koi-rpc.darwinia.network");
 
-  const pangolin = clientBuilder.buildPangolinClient(provider);
+  const koi = clientBuilder.buildKoiClient(provider);
 
-  const call = await pangolin.calls.ethereumXcm.buildTransactCall({
+  const call = await koi.calls.ethereumXcm.buildTransactCall({
     V2: {
       gas_limit: 500000,
       action: {
@@ -18,7 +18,7 @@ async function main(): Promise<void> {
       access_list: null
     }
   });
-  const callData = encodeCall2(pangolin.metadata, call);
+  const callData = encodeCall2(koi.metadata, call);
   console.debug(`call data: ${hexlify(callData)}`);
 }
 

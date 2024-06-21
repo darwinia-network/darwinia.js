@@ -12,19 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Services a single overweight XCM.
-         * 
-         * - `origin`: Must pass `ExecuteOverweightOrigin`.
-         * - `index`: The index of the overweight XCM to service
-         * - `weight_limit`: The amount of weight that XCM execution may take.
-         * 
-         * Errors:
-         * - `BadOverweightIndex`: XCM under `index` is not found in the `Overweight` storage map.
-         * - `BadXcm`: XCM under `index` cannot be properly decoded into a valid XCM format.
-         * - `WeightOverLimit`: XCM execution may use greater `weight_limit`.
-         * 
-         * Events:
-         * - `OverweightServiced`: On success.
+         * See [`Pallet::service_overweight`].
          *
          * @param {unknown} _index U64
          * @param {unknown} _weight_limit {ref_time: Compact<U64>, proof_size: Compact<U64>}
@@ -70,9 +58,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Suspends all XCM executions for the XCMP queue, regardless of the sender's origin.
-         * 
-         * - `origin`: Must pass `ControllerOrigin`.
+         * See [`Pallet::suspend_xcm_execution`].
          *
          * @instance
          */
@@ -112,11 +98,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Resumes all XCM executions for the XCMP queue.
-         * 
-         * Note that this function doesn't change the status of the in/out bound channels.
-         * 
-         * - `origin`: Must pass `ControllerOrigin`.
+         * See [`Pallet::resume_xcm_execution`].
          *
          * @instance
          */
@@ -156,11 +138,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrites the number of pages of messages which must be in the queue for the other side to be told to
-         * suspend their sending.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.suspend_value`
+         * See [`Pallet::update_suspend_threshold`].
          *
          * @param {unknown} _new U32
          * @instance
@@ -203,11 +181,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrites the number of pages of messages which must be in the queue after which we drop any further
-         * messages from the channel.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.drop_threshold`
+         * See [`Pallet::update_drop_threshold`].
          *
          * @param {unknown} _new U32
          * @instance
@@ -250,11 +224,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrites the number of pages of messages which the queue must be reduced to before it signals that
-         * message sending may recommence after it has been suspended.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.resume_threshold`
+         * See [`Pallet::update_resume_threshold`].
          *
          * @param {unknown} _new U32
          * @instance
@@ -297,10 +267,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrites the amount of remaining weight under which we stop processing messages.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.threshold_weight`
+         * See [`Pallet::update_threshold_weight`].
          *
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
@@ -343,11 +310,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrites the speed to which the available weight approaches the maximum weight.
-         * A lower number results in a faster progression. A value of 1 makes the entire weight available initially.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.weight_restrict_decay`.
+         * See [`Pallet::update_weight_restrict_decay`].
          *
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance
@@ -390,11 +353,7 @@ export const getXcmpQueue = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Overwrite the maximum amount of weight any individual message may consume.
-         * Messages above this weight go into the overweight queue and may only be serviced explicitly.
-         * 
-         * - `origin`: Must pass `Root`.
-         * - `new`: Desired value for `QueueConfigData.xcmp_max_individual_weight`.
+         * See [`Pallet::update_xcmp_max_individual_weight`].
          *
          * @param {unknown} _new {ref_time: Compact<U64>, proof_size: Compact<U64>}
          * @instance

@@ -12,10 +12,7 @@ import { Metadata } from "@polkadot/types";
 export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
     return {
         /**
-         * Register a preimage on-chain.
-         * 
-         * If the preimage was previously requested, no fees or deposits are taken for providing
-         * the preimage. Otherwise, a deposit is taken proportional to the size of the preimage.
+         * See [`Pallet::note_preimage`].
          *
          * @param {unknown} _bytes Vec<U8>
          * @instance
@@ -58,12 +55,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Clear an unrequested preimage from the runtime storage.
-         * 
-         * If `len` is provided, then it will be a much cheaper operation.
-         * 
-         * - `hash`: The hash of the preimage to be removed from the store.
-         * - `len`: The length of the preimage of `hash`.
+         * See [`Pallet::unnote_preimage`].
          *
          * @param {unknown} _hash [U8; 32]
          * @instance
@@ -106,10 +98,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Request a preimage be uploaded to the chain without paying any fees or deposits.
-         * 
-         * If the preimage requests has already been provided on-chain, we unreserve any deposit
-         * a user may have paid, and take the control of the preimage out of their hands.
+         * See [`Pallet::request_preimage`].
          *
          * @param {unknown} _hash [U8; 32]
          * @instance
@@ -152,9 +141,7 @@ export const getPreimage = (dispatch: Dispatch, metadata: Metadata) => {
         },
 
         /**
-         * Clear a previously made request for a preimage.
-         * 
-         * NOTE: THIS MUST NOT BE CALLED ON `hash` MORE TIMES THAN `request_preimage`.
+         * See [`Pallet::unrequest_preimage`].
          *
          * @param {unknown} _hash [U8; 32]
          * @instance

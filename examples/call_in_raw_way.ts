@@ -1,18 +1,18 @@
 import { ethers } from "ethers";
-import { buildMetadata, pangolinStaticMetadata, dispatch } from "../index"
+import { buildMetadata, koiStaticMetadata, dispatch } from "../index"
 
 // The raw way to dipatch call
 async function main(): Promise<void> {
   // web3 provider, provided by sdk users
-  const provider = new ethers.providers.JsonRpcProvider("https://pangolin-rpc.darwinia.network");
+  const provider = new ethers.providers.JsonRpcProvider("https://koi-rpc.darwinia.network");
 
-  const signer = new ethers.Wallet("d5dd1909b74029eb3164b10ce84abaf9b0ea379b3ea0d4e2a96241806b8f8175", provider);
+  const signer = new ethers.Wallet("39539ab1876910bbf3a223d84a29e28f1cb4e2e456503e7e91ed39b2e7223d68", provider);
   // or
   // const signer = provider.getSigner();
 
-  const metadata = buildMetadata(pangolinStaticMetadata);
-  const dispatchPangolinCall = dispatch(provider, metadata);
-  const tx = await dispatchPangolinCall(
+  const metadata = buildMetadata(koiStaticMetadata);
+  const dispatchKoiCall = dispatch(provider, metadata);
+  const tx = await dispatchKoiCall(
     signer,
     "Session",
     "setKeys",
@@ -25,7 +25,7 @@ async function main(): Promise<void> {
     }
   );
 
-  console.log(`https://pangolin.subscan.io/tx/${tx.hash}`);
+  console.log(`https://koi-scan.darwinia.network/tx/${tx.hash}`);
 }
 
 main().catch(err => console.log(err));
